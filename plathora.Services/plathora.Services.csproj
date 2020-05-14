@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\plathora.Entity\plathora.Entity.csproj" />
+    <ProjectReference Include="..\plathora.Persistence\plathora.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
