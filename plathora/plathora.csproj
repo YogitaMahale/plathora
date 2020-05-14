@@ -20,6 +20,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\uploads\Affiltate\adharcardphoto\" />
+    <Folder Include="wwwroot\uploads\Affiltate\pancardphoto\" />
+    <Folder Include="wwwroot\uploads\Affiltate\profilephoto\" />
   </ItemGroup>
 
 </Project>

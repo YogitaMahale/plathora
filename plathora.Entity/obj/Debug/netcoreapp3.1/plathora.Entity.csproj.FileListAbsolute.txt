@@ -6,3 +6,4 @@ E:\yogita 6.8.19\asp.net core\plathora final\plathora.Entity\obj\Debug\netcoreap
 E:\yogita 6.8.19\asp.net core\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
 E:\yogita 6.8.19\asp.net core\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.dll
 E:\yogita 6.8.19\asp.net core\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.pdb
+E:\yogita 6.8.19\asp.net core\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache

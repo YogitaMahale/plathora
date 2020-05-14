@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace plathora.Entity
+namespace plathora.Models
 {
-   public  class AffiltateRegistration
+    public class AffiltateRegistrationDetailsViewModel
     {
         public int id { get; set; }
-        [Required]
+       
         public string name { get; set; }
 
         public string profilephoto { get; set; }
-        [Required]
+       
         public string mobileno1 { get; set; }
         public string mobileno2 { get; set; }
         public string emailid1 { get; set; }
@@ -22,14 +22,13 @@ namespace plathora.Entity
 
         public string pancardno { get; set; }
         public string pancardphoto { get; set; }
-        [Required]
+       
         public string password { get; set; }
-        [Required]
-        public string  gender { get; set; }
+       
+        public string gender { get; set; }
 
         public DateTime DOB { get; set; }
 
         public DateTime createddate { get; set; }
-
     }
 }

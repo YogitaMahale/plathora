@@ -13,6 +13,6 @@ namespace plathora.Persistence
             : base(options)
         {
         }
-        DbSet<AffiltateRegistration> affiltateRegistrations { get; set; }
+       public  DbSet<AffiltateRegistration> affiltateRegistrations { get; set; }
     }
 }
