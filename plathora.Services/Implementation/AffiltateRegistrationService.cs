@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace plathora.Services.Implementation
 {
-   public  class AffiltateRegistrationService
+   public  class AffiltateRegistrationService: IAffiltateRegistrationService
     {
         private readonly ApplicationDbContext _context;
         public AffiltateRegistrationService(ApplicationDbContext context)

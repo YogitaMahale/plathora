@@ -34,7 +34,7 @@ namespace plathora.Controllers
                 DOB = x.DOB,
                 createddate = x.createddate
             }).ToList();
-            return View();
+            return View(affilatemaster);
         }
         [HttpGet]
         public IActionResult Create()
