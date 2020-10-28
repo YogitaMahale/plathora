@@ -1,0 +1,99 @@
+﻿@model AffilatePackageEditModel;
+@{
+    ViewBag.Title = "Edit Registration";
+}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Affilate Package List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Affilate Package</li>
+                </ol>
+            </nav><br /><br />
+
+
+
+                        <form name="form1" method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div style="text-align:center;color:red;font-size:larger;"> @Html.ValidationMessage("CustomError")</div>
+                            <br />
+
+         
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="membershipid"></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <select name="membershipid" id="membershipid" asp-for="membershipid" class="form-control"
+                                            asp-items="@(new SelectList(ViewBag.MembershipList,"id","membershipName"))">
+
+                                        <option>--- Select  ---</option>
+                                    </select>
+                                    <span asp-validation-for="membershipid" class="text-danger"></span>
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="commissionid"></label>
+                                </div>
+                                <div class="form-group col-md-4">
+
+                                    <select name="commissionid" id="commissionid" asp-for="commissionid" class="form-control"
+                                            asp-items="@(new SelectList(ViewBag.CommissionList,"id","commissionper"))">
+
+                                        <option>--- Select  ---</option>
+                                    </select>
+
+
+                                    <span asp-validation-for="commissionid" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="amount"></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input asp-for="amount" class="form-control" placeholder="Enter Amount.." />
+                                    <span asp-validation-for="amount" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="Description"></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input asp-for="Description" class="form-control" placeholder="Enter Description.." />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Update</button>
+                                <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                                <br />
+                                <br />
+                                <br />
+
+                            </div>
+                        </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+ 
+ 
+ 

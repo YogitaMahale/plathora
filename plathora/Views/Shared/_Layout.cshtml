@@ -6,13 +6,13 @@
     <title>@ViewData["Title"] - plathora</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/style.css" rel="stylesheet" />
+   <link href="~/css/style.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo"><img src="~/images/Paycompute2.gif" alt="logo" /></a>
+                <a class="navbar-brand brand-logo"><img src="~/images/text.gif" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <partial name="_LoginPartial" />
@@ -21,6 +21,54 @@
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Payroll" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
+                            <span class="menu-title">Master</span>
+                            <i class="menu-arrow text-primary"></i>
+                        </a>
+                        <div class="collapse" id="Payroll">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="CountryRegistration" asp-action="Index"> Country</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="StateRegistration" asp-action="Index"> State</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="CityRegistration" asp-action="Index"> City</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Taluka" asp-action="Index"> Taluka </a></li>
+
+                                @*<li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> Customer</a></li>*@
+                                <li class="nav-item"><a class="nav-link" asp-controller="SectorRegistration" asp-action="Index"> Sector</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="BusinessRegistration" asp-action="Index"> Business </a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Product" asp-action="Index"> Product </a></li>
+
+                                <li class="nav-item"><a class="nav-link" asp-controller="PackageRegistration" asp-action="Index"> Package </a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="BusinessPackage" asp-action="Index"> Business Package </a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Advertise" asp-action="Index"> Advertise </a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="tax" asp-action="Index"> Tax </a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Membership" asp-action="Index"> Membership</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="commission" asp-action="Index"> commission</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="AffilatePackage" asp-action="Index"> Affilate Package</a></li>
+
+
+                                <li class="nav-item"><a class="nav-link" asp-controller="BankRegistration" asp-action="Index"> Bank</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="slider" asp-action="Index"> Slider</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Video" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                            <span class="menu-title">Video</span>
+                            <i class="menu-arrow text-primary"></i>
+                        </a>
+                        <div class="collapse" id="Video">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="Modulemaster" asp-action="Index"> Module Master</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Video" asp-action="Index"> Video Details</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
                             <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
@@ -29,25 +77,38 @@
                         </a>
                         <div class="collapse" id="Employee">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Create"> New Employee</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Index"> All Employees</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Create"> New Registration</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Index"> All Details</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Business" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                            <span class="menu-title">Business Owner  </span>
+                            <i class="menu-arrow text-primary"></i>
+                        </a>
+                        <div class="collapse" id="Business">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="BusinessOwner" asp-action="Create"> New Registration</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="BusinessOwner" asp-action="Index"> All Details</a></li>
+                            </ul>
+                        </div>
+                    </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Customer" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                            <span class="menu-title">Customer  </span>
+                            <i class="menu-arrow text-primary"></i>
+                        </a>
+                        <div class="collapse" id="Customer">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Create"> New Registration</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> All Details</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#Payroll" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
-                            <span class="menu-title">Payroll</span>
-                            <i class="menu-arrow text-primary"></i>
-                        </a>
-                        <div class="collapse" id="Payroll">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" asp-controller="Pay" asp-action="Create"> New Pay</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-controller="Pay" asp-action="Index"> Payment Records</a></li>
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
             </nav>
             <div class="main-panel">
@@ -56,7 +117,7 @@
                     @RenderBody()
                 </div>
                 <footer class="footer">
-                    <p> &copy; @DateTime.UtcNow.Year - Paycompute - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+                    @*<p> &copy; <a asp-area="" asp-controller="Home" asp-action="Privacy"></a></p>*@
                 </footer>
             </div>
         </div>

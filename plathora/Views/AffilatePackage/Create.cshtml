@@ -1,0 +1,137 @@
+﻿@model AffilatePackageCreateModel;
+@{
+    ViewBag.Title = "New Registration";
+}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Affilate package List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">New Affilate Package Registration</li>
+                </ol>
+            </nav><br /><br />
+
+            @*id, name, profilephoto, mobileno1, mobileno2, emailid1, emailid2, adharcardno, adharcardphoto
+                , pancardno, pancardphoto, password, gender, DOB, createddate*@
+
+        <form name="form1" method="post" enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br />
+
+            <div style="text-align:center;color:red;font-size:larger;"> @Html.ValidationMessage("CustomError")</div>
+           
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="membershipid"></label>
+                </div>
+                <div class="form-group col-md-4">
+                    @*<select name="countryid" id="countryid" asp-for="countryid" class="form-control"
+                        asp-items="@ViewBag.Countries"
+                        onchange="DoPostBack();">
+                    <option selected>--- Select  ---</option>
+                </select>*@
+                    <select name="membershipid" id="membershipid" asp-for="membershipid" class="form-control"
+                            asp-items="@(new SelectList(ViewBag.MembershipList,"id","membershipName"))">
+
+
+                        <option>--- Select  ---</option>
+                    </select>
+                    <span asp-validation-for="membershipid" class="text-danger"></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="commissionid"></label>
+                </div>
+                <div class="form-group col-md-4">
+                    <select name="commissionid" id="commissionid" asp-for="commissionid" class="form-control"
+                            asp-items="@(new SelectList(ViewBag.CommissionList,"id","commissionper"))">
+
+
+                        <option>--- Select  ---</option>
+                    </select>
+
+
+
+                    <span asp-validation-for="commissionid" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="amount"></label>
+                </div>
+                <div class="form-group col-md-4">
+                    <input asp-for="amount" class="form-control" placeholder="Enter amount.." />
+                    <span asp-validation-for="amount" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="form-group col-md-4">
+                    <input asp-for="Description" class="form-control" placeholder="Enter Description.." />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
+                <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+ 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(function() {
+        @*$("#countryid").change(function () {
+             
+            var url = '@Url.Content("~/")' + 'CityRegistration/getstatebyid';
+            var ddlsource = "#countryid";
+            $.getJSON(url,
+                { id: $(ddlsource).val() },
+                function (data) {
+                //   console.log(data);
+                    var item = '';
+                    $("#stateid").empty();
+                    $.each(data, function (i, row) {
+                        
+                        item += "<option value='" + row.value + "'>" + row.text + "  </option > ";
+                       // alert(row);
+                    });
+                    $("#stateid").html(item);
+                }
+            )
+        });*@
+    });
+    //function DoPostBack() {
+    //   // alert('df');
+    //    var select = document.getElementById("countryid");
+    //    var option = select.options[select.selectedIndex];
+    //    if (option.value != "Please select") {
+    //        document.form1.action = "/CityRegistration/GetStates";
+    //        document.form1.submit();
+    //    }
+    //}
+</script>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AffiltateRegistrationIndexViewModel>
+﻿@model plathora.pagination.AffilateRegPagination<AffiltateRegistrationIndexViewModel>
 @{
     ViewBag.Title = "Affiltate Details";
 }
@@ -27,14 +27,14 @@
                                     <th>Email ID</th>
                                     <th>Date of Birth</th>
                                     <th>Registration Date</th>
-                                    
+                                    @*<th>Active</th>*@
                                     <th class="text-warning">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                   
+
                                     <tr>
                                         <td>
                                             <a asp-action="Detail" asp-route-id="@item.id">
@@ -47,15 +47,18 @@
                                         <td>@item.mobileno1</td>
                                         <td>@item.emailid1</td>
                                         <td>@item.DOB.ToString("dd/MM/yyyy")</td>
-                                         
+
                                         <td>@item.createddate.ToString("dd/MM/yyyy")</td>
+                                        @*<td>
+                                            <input type="checkbox" class="checkedchanged"  name="myCheckbox" asp-for="@item.isactive">
+                                        </td>*@
                                         <td>
-                                            <a class="text-primary" asp-action="Edit" asp-route-id="@item.id">
+                                            <a class="text-success" asp-action="Edit" asp-route-id="@item.id">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            <a class="text-success" asp-action="Details" asp-route-id="@item.id">
-                                                <i class="fas fa-bars"></i> Detail
-                                            </a>
+                                            @*<a class="text-success" asp-action="Details" asp-route-id="@item.id">
+                                                    <i class="fas fa-bars"></i> Detail
+                                                </a>*@
                                             <a class="text-danger" asp-action="Delete" asp-route-id="@item.id">
                                                 <i class="far fa-trash-alt"></i> Delete
                                             </a>
@@ -64,21 +67,21 @@
                                 }
                             </tbody>
                         </table><br />
-                        @*@{
-                                var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
-                                var disableNext = !Model.IsNextAvailable ? "disabled" : "";
-                            }
+                        @{
+                            var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
+                            var disableNext = !Model.IsNextAvailable ? "disabled" : "";
+                        }
 
-                            <a asp-action="Index"
-                               asp-route-pageNumber="@(Model.PageIndex - 1)"
-                               class="btn btn-primary @disablePrevious">
-                                Previous
-                            </a>
-                            <a asp-action="Index"
-                               asp-route-pageNumber="@(Model.PageIndex + 1)"
-                               class="btn btn-primary @disableNext">
-                                Next
-                            </a>*@
+                        <a asp-action="Index"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           class="btn btn-primary @disablePrevious">
+                            Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           class="btn btn-primary @disableNext">
+                            Next
+                        </a>
 
                     </div>
                 </div>
@@ -86,3 +89,15 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@*<table>
+    <tr>
+        <td class="first"><input class="selects" type="checkbox" value="CBVALUE" id="r0"></td>
+        <td class="second"><a target="_blank" href="rGjgODop0">Somevalue</a></td>
+        <td class="third"><a class="option s" id="option_0">Expand</a> <a href=""></a></td>
+        <td class="fourth">2018-08-31T08:25:09.617Z</td>
+    </tr>
+</table>*@
+ 

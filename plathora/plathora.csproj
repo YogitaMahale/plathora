@@ -3,14 +3,23 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-plathora-3FCDE094-789D-419E-B729-DB14C0053C2F</UserSecretsId>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\CustomerAPIController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +30,35 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="wwwroot\uploads\Affiltate\adharcardphoto\" />
+    <Folder Include="wwwroot\uploads\Affiltate\passbookphoto\" />
     <Folder Include="wwwroot\uploads\Affiltate\pancardphoto\" />
     <Folder Include="wwwroot\uploads\Affiltate\profilephoto\" />
+    <Folder Include="wwwroot\uploads\BusinessOwner\slider\" />
+    <Folder Include="wwwroot\uploads\customer\" />
+    <Folder Include="wwwroot\uploads\business\" />
+    <Folder Include="wwwroot\uploads\advertisements\" />
+    <Folder Include="wwwroot\uploads\advertisementInfo\" />
+    <Folder Include="wwwroot\uploads\feedback\" />
+    <Folder Include="wwwroot\uploads\AdvertiseMaster\" />
+    <Folder Include="wwwroot\uploads\slider\" />
+    <Folder Include="wwwroot\uploads\social\" />
+    <Folder Include="wwwroot\uploads\product\" />
+    <Folder Include="wwwroot\uploads\sector\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\slider\Create.cshtml" />
+    <None Include="Views\slider\Edit.cshtml" />
+    <None Include="Views\slider\Index.cshtml" />
+    <None Include="Views\tax\Create.cshtml" />
+    <None Include="Views\tax\Edit.cshtml" />
+    <None Include="Views\tax\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web.Http">
+      <HintPath>C:\Users\Admin\Downloads\System.Web.Http\System.Web.Http.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

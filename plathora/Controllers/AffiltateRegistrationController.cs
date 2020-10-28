@@ -8,6 +8,11 @@ using plathora.Models;
 using plathora.Entity;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using plathora.pagination;
+using Microsoft.AspNetCore.Mvc.Rendering;
+ 
+using System.Security.Cryptography.X509Certificates;
+using System.Web.Http.Validation;
 
 namespace plathora.Controllers
 {
@@ -15,13 +20,23 @@ namespace plathora.Controllers
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IAffiltateRegistrationService _AffiltateRegistrationService;
-        public AffiltateRegistrationController(IAffiltateRegistrationService AffiltateRegistrationService, IWebHostEnvironment hostingEnvironment)
+        private readonly IMembershipServices _MembershipServices;
+        private readonly ICountryRegistrationservices _CountryRegistrationservices;
+        private readonly IStateRegistrationService _StateRegistrationService;
+        private readonly ICityRegistrationservices _CityRegistrationservices;
+        private readonly IAffilatePackageServices _AffilatePackageServices;
+        public AffiltateRegistrationController(IMembershipServices MembershipServices, ICityRegistrationservices CityRegistrationservices,IStateRegistrationService StateRegistrationService,ICountryRegistrationservices CountryRegistrationservices, IAffiltateRegistrationService AffiltateRegistrationService, IWebHostEnvironment hostingEnvironment, IAffilatePackageServices AffilatePackageServices)
         {
             _AffiltateRegistrationService = AffiltateRegistrationService;
             _hostingEnvironment = hostingEnvironment;
+            _CountryRegistrationservices = CountryRegistrationservices;
+            _CityRegistrationservices = CityRegistrationservices;
+            _StateRegistrationService = StateRegistrationService;
+            _MembershipServices = MembershipServices;
+            _AffilatePackageServices = AffilatePackageServices;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? PageNumber)
         {
             var affilatemaster = _AffiltateRegistrationService.GetAll().Select(x => new AffiltateRegistrationIndexViewModel
             {
@@ -32,13 +47,26 @@ namespace plathora.Controllers
                 mobileno2 = x.mobileno2,
                 emailid1 = x.emailid1,
                 DOB = x.DOB,
-                createddate = x.createddate
+                createddate = x.createddate,
+                isactive=x.isactive
             }).ToList();
-            return View(affilatemaster);
+           // return View(affilatemaster);
+            int PageSize = 4;
+            return View(AffilateRegPagination<AffiltateRegistrationIndexViewModel>.Create(affilatemaster, PageNumber ?? 1, PageSize));
+        }
+        
+        public JsonResult getpackageamtbymembershipid(int membershipid)
+        {
+
+            AffilatePackage obj = _AffilatePackageServices.GetAll().Where(x => x.membershipid == membershipid&&x.isdeleted==false).FirstOrDefault();
+            
+            return Json(obj);
         }
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Countries = _CountryRegistrationservices.GetAll().ToList();
+            ViewBag.membershiplist = _MembershipServices.GetAll().ToList();
             var model = new AffiltateRegistrationCreateViewModel();
             return View(model);
         }
@@ -70,7 +98,29 @@ namespace plathora.Controllers
                     password = model.password,
                     gender = model.gender,
                     DOB = model.DOB,
-                    createddate = model.createddate
+                    createddate = model.createddate,
+                   
+                    isdeleted=false,
+                    isactive = false,
+                    house = model.house,
+                    landmark = model.landmark ,
+                    street = model.street ,
+                    cityid = model.cityid ,
+                    zipcode = model.zipcode ,
+
+                    companyName = model.companyName ,
+                    designation = model.designation,
+                    gstno = model.gstno ,
+                    Website = model.Website ,
+                    bankname = model.bankname ,
+                    accountname = model.accountname ,
+                    accountno = model.accountno,
+                    ifsccode = model.ifsccode ,
+                    branch = model.branch ,
+
+                    Membershipid = model.Membershipid,
+                    amount = model.amount ,
+                    registerbyAffilateID=0
                 };
 
                 if (model.profilephoto != null && model.profilephoto.Length > 0)
@@ -81,7 +131,7 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.profilephoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                   await  model.profilephoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     objAffiltateRegistration.profilephoto = '/' + uploadDir + '/' + fileName;
 
                 }
@@ -93,7 +143,7 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.pancardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    await model.pancardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     objAffiltateRegistration.pancardphoto = '/' + uploadDir + '/' + fileName;
 
                 }
@@ -105,8 +155,20 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.adharcardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    await model.adharcardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     objAffiltateRegistration.adharcardphoto = '/' + uploadDir + '/' + fileName;
+
+                }
+                if (model.passbookphoto != null && model.passbookphoto.Length > 0)
+                {
+                    var uploadDir = @"uploads/Affiltate/passbookphoto";
+                    var fileName = Path.GetFileNameWithoutExtension(model.passbookphoto.FileName);
+                    var extesion = Path.GetExtension(model.passbookphoto.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.passbookphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objAffiltateRegistration.passbookphoto = '/' + uploadDir + '/' + fileName;
 
                 }
                 await _AffiltateRegistrationService.CreateAsync(objAffiltateRegistration);
@@ -121,31 +183,57 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var affilateregi = _AffiltateRegistrationService.GetById(id);
-            if (affilateregi != null)
+            var model = _AffiltateRegistrationService.GetById(id);
+            ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
+            ViewBag.membershiplist = _MembershipServices.GetAll().ToList();
+            int stateid = _CityRegistrationservices.GetById(model.cityid).stateid;
+            int countryid = _StateRegistrationService.GetById(stateid).countryid;
+            if (model == null)
             {
                 return NotFound();
             }
-            var model = new AffiltateRegistrationEditViewModel
+            var obj = new AffiltateRegistrationEditViewModel
             {
-                id = affilateregi.id,
+                id = model.id,
 
-                name = affilateregi.name,
-                //   profilephoto = affilateregi.profilephoto,
-                mobileno1 = affilateregi.mobileno1,
-                mobileno2 = affilateregi.mobileno2,
-                emailid1 = affilateregi.emailid1,
-                emailid2 = affilateregi.emailid2,
-                adharcardno = affilateregi.adharcardno,
-                // adharcardphoto = affilateregi.adharcardno,
-                pancardno = affilateregi.pancardno,
-                //   pancardphoto = affilateregi.pancardno,
-                password = affilateregi.password,
-                gender = affilateregi.gender,
-                DOB = affilateregi.DOB,
-                createddate = affilateregi.createddate
+                name = model.name,
+                //profilephoto,
+                mobileno1 = model.mobileno1,
+                mobileno2 = model.mobileno2,
+                emailid1 = model.emailid1,
+                emailid2 = model.emailid2,
+                adharcardno = model.adharcardno,
+                //adharcardphoto,
+                pancardno = model.pancardno,
+                // pancardphoto,
+                password = model.password,
+                gender = model.gender,
+                DOB = model.DOB,
+
+                house = model.house,
+                landmark = model.landmark,
+                street = model.street,
+                countryid = countryid,
+                stateid= stateid,
+                cityid = model.cityid,
+                zipcode = model.zipcode,
+
+                companyName = model.companyName,
+                designation = model.designation,
+                gstno = model.gstno,
+                Website = model.Website,
+                bankname = model.bankname,
+                accountname = model.accountname,
+                accountno = model.accountno,
+                ifsccode = model.ifsccode,
+                branch = model.branch,
+
+                Membershipid = model.Membershipid,
+                amount = model.amount
             };
-            return View(model);
+            ViewBag.States = _StateRegistrationService.GetAllState(countryid);
+            ViewBag.Cities = _CityRegistrationservices.GetAllCity(stateid);
+            return View(obj);
 
 
         }
@@ -160,6 +248,9 @@ namespace plathora.Controllers
                 {
                     return NotFound();
                 }
+              
+                    
+
                 affilatereg.id = model.id;
                 affilatereg.name = model.name;
                 //profilephoto,
@@ -174,7 +265,27 @@ namespace plathora.Controllers
                 affilatereg.password = model.password;
                 affilatereg.gender = model.gender;
                 affilatereg.DOB = model.DOB;
-                affilatereg.createddate = model.createddate;
+                //   affilatereg.createddate = model.createddate;
+                affilatereg.house = model.house;
+                affilatereg.landmark = model.landmark;
+                affilatereg.street = model.street;
+                affilatereg.cityid = model.cityid;
+                affilatereg.companyName = model.companyName;
+                affilatereg.designation = model.designation;
+                affilatereg.gstno = model.gstno;
+                affilatereg.Website = model.Website;
+                affilatereg.bankname = model.bankname;
+                affilatereg.accountname = model.accountname;
+
+                affilatereg.accountno = model.accountno;
+                affilatereg.ifsccode = model.ifsccode;
+                affilatereg.branch = model.branch;
+                affilatereg.Membershipid = model.Membershipid;
+                affilatereg.amount = model.amount;
+               
+               
+               
+
                 if (model.profilephoto != null && model.profilephoto.Length > 0)
                 {
                     var uploadDir = @"uploads/Affiltate/profilephoto";
@@ -183,7 +294,7 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.profilephoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    await model.profilephoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     affilatereg.profilephoto = '/' + uploadDir + '/' + fileName;
 
                 }
@@ -195,7 +306,7 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.pancardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    await model.pancardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     affilatereg.pancardphoto = '/' + uploadDir + '/' + fileName;
 
                 }
@@ -207,8 +318,20 @@ namespace plathora.Controllers
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    model.adharcardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    await model.adharcardphoto.CopyToAsync(new FileStream(path, FileMode.Create));
                     affilatereg.adharcardphoto = '/' + uploadDir + '/' + fileName;
+
+                }
+                if (model.passbookphoto != null && model.passbookphoto.Length > 0)
+                {
+                    var uploadDir = @"uploads/Affiltate/passbookphoto";
+                    var fileName = Path.GetFileNameWithoutExtension(model.passbookphoto.FileName);
+                    var extesion = Path.GetExtension(model.passbookphoto.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.passbookphoto.CopyToAsync(new FileStream(path, FileMode.Create));
+                    affilatereg.passbookphoto = '/' + uploadDir + '/' + fileName;
 
                 }
                 await _AffiltateRegistrationService.UpdateAsync(affilatereg);

@@ -17,6 +17,7 @@ namespace plathora.Models
 
         public DateTime DOB { get; set; }
         public DateTime createddate { get; set; }
+        public Boolean isactive { get; set; }
 
     }
 }

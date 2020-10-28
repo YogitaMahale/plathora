@@ -1,0 +1,71 @@
+﻿@model BusinessPackageEditViewModel;
+@{
+    ViewBag.Title = "Edit Business Details";
+}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Business List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Business Package</li>
+                </ol>
+            </nav><br /><br />
+
+            @*id, pkgId, Amount, description, period, isdeleted, isactive*@
+
+            <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="pkgId"></label>
+                    <select asp-for="pkgId" class="form-control" asp-items="ViewBag.AllPackage">
+                        <option selected>--- Select Package ---</option>
+                    </select>
+                    <span asp-validation-for="pkgId" class="text-danger"></span>
+                </div><br /><br /><br />
+                <div class="form-row">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" placeholder="Enter Amount.." />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+
+
+                </div>
+                <div class="form-row">
+                    <label asp-for="description"></label>
+                    <input asp-for="description" class="form-control" placeholder="Enter description.." />
+                    <span asp-validation-for="description" class="text-danger"></span>
+
+
+                </div>
+                <div class="form-row">
+                    <label asp-for="period"></label>
+                    <input asp-for="period" class="form-control" placeholder="Enter period.." />
+                    <span asp-validation-for="period" class="text-danger"></span>
+
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Update</button>
+                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                    <br />
+                    <br />
+                    <br />
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        alert('ready');
+    });
+</script>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

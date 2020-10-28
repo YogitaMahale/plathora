@@ -4,4 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="AdvertiseDetails.cs" />
+    <Compile Remove="AdvertisementDetails.cs" />
+    <Compile Remove="advertisementtest.cs" />
+    <Compile Remove="BusinessOwnerRegistration.cs" />
+  </ItemGroup>
+
 </Project>

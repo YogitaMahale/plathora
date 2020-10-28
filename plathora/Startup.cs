@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using plathora.Services;
 using plathora.Services.Implementation;
+using plathora.Entity;
+using appFoodDelivery.Services.Implementation;
 
 namespace plathora
 {
@@ -37,6 +39,37 @@ namespace plathora
             services.AddControllersWithViews();
             // services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();
             services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();
+            services.AddScoped<ICountryRegistrationservices , CountryRegistrationServices>();
+            services.AddScoped<IStateRegistrationService, StateRegistrationService>();
+            services.AddScoped<ICityRegistrationservices, CityRegistrationservices >();
+            services.AddScoped<ICustomerRegistrationservices, CustomerRegistrationservices>();
+            services.AddScoped<ISectorRegistrationServices, SectorRegistrationServices>();
+            services.AddScoped<IBankRegistrationServices, BankRegistrationServices>();
+            services.AddScoped<IBusinessRegistrationServieces , BusinessRegistrationServieces >();
+            services.AddScoped<IPackageRegistrationServices, PackageRegistrationServices>();
+            services.AddScoped<IBusinessPackageServices, BusinessPackageServices>();
+            services.AddScoped<IAdvertiseServices, AdvertiseServices>();
+            services.AddScoped<ItaxServices , taxServices >();
+            services.AddScoped<ITalukaServices, TalukaServices>();
+            services.AddScoped<IProductMasterServices , ProductMasterServices >();
+            services.AddScoped<IMembershipServices , MembershipServices>();
+            services.AddScoped<IcommissionServices, commissionServices>();
+            services.AddScoped<IAffilatePackageServices, AffilatePackageServices>();
+            services.AddScoped<IBusinessOwnerRegiServices, BusinessOwnerRegiServices>();
+            services.AddScoped<ISP_Call, SP_Call>();
+            services.AddScoped<IModuleMasterServices, ModuleMasterServices>();
+            services.AddScoped<IVideoServices,VideoServices>();
+            //services.AddScoped<IadvertiseDetailsServices, advertiseDetailsServices>();
+            //services.AddScoped<IadvertisementDetailsServices, advertisementDetailsServices>();
+            //services.AddScoped<IadvertisementtestServices,advertisementtestServices>();
+            services.AddScoped<IsocialsServices, socialsServices>();
+            services.AddScoped<IadvertisementInfoServices, advertisementInfoServices>();
+            services.AddScoped<IsliderServices, sliderServices>();
+            services.AddScoped<Iratingsservices,ratingsservices>();
+            services.AddScoped<IdistanceServices, distanceServices>();
+            services.AddScoped<IbusinessratingsServices, businessratingsServices>();
+            services.AddScoped<ItblfeedbackServices, tblfeedbackServices>();
+            services.AddScoped<IsocialdetailsServices, socialdetailsServices>();
             services.AddRazorPages();
            
         }

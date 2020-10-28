@@ -9,7 +9,8 @@ namespace plathora.Services
 {
    public  interface IAffiltateRegistrationService
     {
-        Task CreateAsync(AffiltateRegistration obj);
+        //Task CreateAsync(AffiltateRegistration obj);
+        Task<int> CreateAsync(AffiltateRegistration obj);
         AffiltateRegistration GetById(int affilateid);
         Task UpdateAsync(AffiltateRegistration obj);
         Task Delete(int affilateid);

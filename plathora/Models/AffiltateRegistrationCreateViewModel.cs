@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using plathora.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,8 +38,67 @@ namespace plathora.Models
         public string gender { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Date of Borth")]
-        public DateTime DOB { get; set; }
+        public DateTime DOB { get; set; }= DateTime.UtcNow;
         [DataType(DataType.Date), Display(Name = "Date")]
-        public DateTime createddate { get; set; }
+        public DateTime createddate { get; set; }= DateTime.UtcNow;
+
+
+        //--------
+        [Display(Name = "House/Block/Building")]
+        public string house { get; set; }
+        [Display(Name = "LandMark")]
+        public string landmark { get; set; }
+        [Display(Name = "Street")]
+        public string street { get; set; }
+        [Required]
+        [Display(Name = "Country")]
+        public int countryid { get; set; }
+        [Required]
+        [Display(Name = "State")]
+        public int stateid { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public int cityid { get; set; }
+        public CityRegistration CityRegistration { get; set; }
+        [Display(Name = "Select Zipcode")]
+        public string zipcode { get; set; }
+
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+
+        //-----------
+        [Display(Name = "CompanyName")]
+        public string companyName { get; set; }
+        [Display(Name = "Designation")]
+        public string designation { get; set; }
+        [Display(Name = "GST No.")]
+        public string gstno { get; set; }
+        [Display(Name = "Website")]
+        public string Website { get; set; }
+        [Display(Name = "Bank Name")]
+        //--------bank info---
+        public string bankname { get; set; }
+        [Display(Name = "Account Name")]
+        public string accountname { get; set; }
+        [Display(Name = "Account No")]
+        public string accountno { get; set; }
+        [Display(Name = "IFSC code")]
+        public string ifsccode { get; set; }
+        [Display(Name = "Branch")]
+        public string branch { get; set; }
+        [Display(Name = "Passbook")]
+        public IFormFile passbookphoto { get; set; }
+        //----affliate membership
+       [Required]
+        [Display(Name = "Membership")]
+        public int Membershipid { get; set; }
+        public Membership Membership { get; set; }
+        [Display(Name = "Amount")]
+        public string amount { get; set; }
+        public int registerbyAffilateID { get; set; }
     }
 }
+//id, name, profilephoto, mobileno1, mobileno2, emailid1, emailid2, adharcardno, adharcardphoto, pancardno,
+// pancardphoto, password, gender, DOB, createddate, isdeleted, isactive, house, landmark, street, cityid, zipcode,
+//  latitude, longitude, companyName, designation, gstno, Website, bankname, accountname, accountno, ifsccode, branch,
+//   passbookphoto, Membershipid, amount
