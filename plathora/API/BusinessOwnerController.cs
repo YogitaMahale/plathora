@@ -425,7 +425,92 @@ namespace plathora.API
                 }
 
 
+                if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
+                {
+                    
 
+                }
+                else
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg1));
+                    obj.sliderimg1 = "/uploads/businessowner/slider/" + filename;
+                }
+
+                if (model.sliderimg2 == null || model.sliderimg2 == string.Empty)
+                {
+                    
+
+                }
+                else
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg2));
+                    obj.sliderimg2 = "/uploads/businessowner/slider/" + filename;
+                }
+                if (model.sliderimg3 == null || model.sliderimg3 == string.Empty)
+                {
+                   
+
+                }
+                else
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg3));
+                    obj.sliderimg3 = "/uploads/businessowner/slider/" + filename;
+                }
+
+                if (model.sliderimg4 == null || model.sliderimg4 == string.Empty)
+                {
+                    
+
+                }
+                else
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg4));
+                    obj.sliderimg4 = "/uploads/businessowner/slider/" + filename;
+                }
+                if (model.sliderimg5 == null || model.sliderimg5 == string.Empty)
+                {
+                    
+                }
+                else
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg5));
+                    obj.sliderimg5 = "/uploads/businessowner/slider/" + filename;
+                }
 
                 try
                 {
