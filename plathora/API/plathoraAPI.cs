@@ -854,8 +854,7 @@ namespace plathora.API
         public async Task<IActionResult> searchquery(string searchkeyword)
         {
             DataSet ds = new DataSet();
-            try
-            {
+            
                 string connString = this.Configuration.GetConnectionString("DefaultConnection");
                 SqlConnection con = new SqlConnection(connString);
                 try
@@ -870,20 +869,25 @@ namespace plathora.API
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
 
-                    if (ds.Tables[0] != null)
+                    if (ds != null)
                     {
                         if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
                         {
 
 
-                            List<SectorRegistrationIndexViewModel> objList = new List<SectorRegistrationIndexViewModel>();
+                            //List<SectorRegistrationIndexViewModel> objList = new List<SectorRegistrationIndexViewModel>();
+                            List<search_SectorRegistrationIndexViewModel> objList = new List<search_SectorRegistrationIndexViewModel>();
                             foreach (DataRow _dataRow in ds.Tables[0].Rows)
                             {
-                                SectorRegistrationIndexViewModel obj = new SectorRegistrationIndexViewModel();
+                              search_SectorRegistrationIndexViewModel    obj = new search_SectorRegistrationIndexViewModel();
                                 obj.id = Convert.ToInt32(_dataRow["id"]);
                                 obj.name = Convert.ToString(_dataRow["name"]);
                                 obj.img = Convert.ToString(_dataRow["img"]);
+                                obj.type = Convert.ToString(_dataRow["type"]);
                                 objList.Add(obj);
+
+                                //string myJson = "{\"Message\": " + "\"Bad Request\"" + "\"data\"" + "}";
+                                //return BadRequest(myJson);
                             }
 
 
@@ -892,14 +896,16 @@ namespace plathora.API
                         }
                         else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
                         {
-                            List<BusinessRegistrationIndexViewModel> objList = new List<BusinessRegistrationIndexViewModel>();
+                            //List<BusinessRegistrationIndexViewModel> objList = new List<BusinessRegistrationIndexViewModel>();
+                            List<search_BusinessRegistrationIndexViewModel> objList = new List<search_BusinessRegistrationIndexViewModel>();
                             foreach (DataRow _dataRow in ds.Tables[0].Rows)
                             {
-                                BusinessRegistrationIndexViewModel obj = new BusinessRegistrationIndexViewModel();
+                                search_BusinessRegistrationIndexViewModel obj = new search_BusinessRegistrationIndexViewModel();
                                 obj.id = Convert.ToInt32(_dataRow["id"]);
                                 obj.sectorid = Convert.ToInt32(_dataRow["sectorid"]);
                                 obj.name = Convert.ToString(_dataRow["name"]);
                                 obj.img = Convert.ToString(_dataRow["img"]);
+                                obj.type = Convert.ToString(_dataRow["type"]);
                                 objList.Add(obj);
                             }
                             return Ok(objList);
@@ -907,27 +913,30 @@ namespace plathora.API
                         else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
                         {
 
-                            List<ProductIndexViewModel> objList = new List<ProductIndexViewModel>();
+                            //List<ProductIndexViewModel> objList = new List<ProductIndexViewModel>();
+                            List<search_ProductIndexViewModel> objList = new List<search_ProductIndexViewModel>();
                             foreach (DataRow _dataRow in ds.Tables[0].Rows)
                             {
-                                ProductIndexViewModel obj = new ProductIndexViewModel();
+                                search_ProductIndexViewModel obj = new search_ProductIndexViewModel();
                                 obj.id = Convert.ToInt32(_dataRow["id"]);
                                // obj.sectorid = Convert.ToInt32(_dataRow["sectorid"]);
                                 obj.businessid = Convert.ToInt32(_dataRow["businessid"]);
                                 obj.productName = Convert.ToString(_dataRow["productName"]);
                                 obj.img = Convert.ToString(_dataRow["img"]);
-                               // obj.BusinessRegistration = null;
-                               // obj.SectorRegistration = null;
+                                obj.type  = Convert.ToString(_dataRow["type"]);
+                                // obj.BusinessRegistration = null;
+                                // obj.SectorRegistration = null;
                                 objList.Add(obj);
                             }
                             return Ok(objList);
                         }
                         else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
                         {
-                            List<BusinessOwnerRegistrationDtos> objList = new List<BusinessOwnerRegistrationDtos>();
+                            //List<BusinessOwnerRegistrationDtos> objList = new List<BusinessOwnerRegistrationDtos>();
+                            List<search_BusinessOwnerRegistrationDtos> objList = new List<search_BusinessOwnerRegistrationDtos>();
                             foreach (DataRow _dataRow in ds.Tables[0].Rows)
                             {
-                                BusinessOwnerRegistrationDtos obj = new BusinessOwnerRegistrationDtos();
+                                search_BusinessOwnerRegistrationDtos obj = new search_BusinessOwnerRegistrationDtos();
                                 
 
 
@@ -986,44 +995,59 @@ namespace plathora.API
                                 obj.lic = Convert.ToString(_dataRow["lic"]);
                                 obj.registerbyAffilateID = Convert.ToInt32(_dataRow["registerbyAffilateID"]);
                                 obj.deviceid = Convert.ToString(_dataRow["deviceid"]);
-
+                                obj.type = Convert.ToString(_dataRow["type"]);
 
                                 objList.Add(obj);
                             }
                             return Ok(objList);
                         }
+                        else
+                        {
+                            string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                            return NotFound(myJson);
+                        }
+                    }
+                    else
+                    {
+                        string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                        return NotFound(myJson);
                     }
 
                 }
-                catch { }
+                catch
+              {
+                string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
+                return NotFound(myJson2);
+             }
                 finally { con.Close(); }
-                return Ok(ds);
-                //var parameter = new DynamicParameters();
-                //parameter.Add("@searchkeyword", searchkeyword);
+            string myJson1 = "{\"Message\": " + "\"Not Found\"" + "}";
+            return NotFound(myJson1);
+            //var parameter = new DynamicParameters();
+            //parameter.Add("@searchkeyword", searchkeyword);
 
 
-                //var obj = _sP_Call.List<ProductDtos>("getproductbymultiplebusinessid", parameter);
-                ////  var categories = await _context.CustomerRegistration.ToListAsync(); 
-                //if (obj == null)
-                //{
+            //var obj = _sP_Call.List<ProductDtos>("getproductbymultiplebusinessid", parameter);
+            ////  var categories = await _context.CustomerRegistration.ToListAsync(); 
+            //if (obj == null)
+            //{
 
-                //    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
-                //    return NotFound(myJson);
-                //}
-                //else
-                //{
+            //    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+            //    return NotFound(myJson);
+            //}
+            //else
+            //{
 
-                //    return Ok(obj);
-                //}
+            //    return Ok(obj);
+            //}
 
 
-            }
-            catch (Exception obj)
-            {
-                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
-                return BadRequest(myJson);
+            //}
+            //catch (Exception obj)
+            //{
+            //    string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+            //    return BadRequest(myJson);
 
-            }
+            //}
 
         }
 
