@@ -15,6 +15,7 @@ using plathora.Entity;
 using plathora.Models;
 using plathora.Models.Dtos;
 using plathora.Services;
+//using BusinessOwnerRegiIndexViewModel = plathora.Models.BusinessOwnerRegiIndexViewModel;
 using HttpDeleteAttribute = Microsoft.AspNetCore.Mvc.HttpDeleteAttribute;
 using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
@@ -798,7 +799,7 @@ namespace plathora.API
                 parameter.Add("@Latitude", Latitude);
                 parameter.Add("@Longitude", Longitude);
 
-                var obj = _sP_Call.List<BusinessOwnerRegi>("getnearbybusiness", parameter);
+                var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("getnearbybusiness", parameter);
                 //  var categories = await _context.CustomerRegistration.ToListAsync(); 
                 if (obj == null)
                 {
@@ -836,7 +837,7 @@ namespace plathora.API
                 parameter.Add("@productid", productid);
             
 
-                var obj = _sP_Call.List<BusinessOwnerRegi>("businesslistbyprouctid", parameter);
+                var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("businesslistbyprouctid", parameter);
                 //  var categories = await _context.CustomerRegistration.ToListAsync(); 
                 if (obj == null)
                 {
