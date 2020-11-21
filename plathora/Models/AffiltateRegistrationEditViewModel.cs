@@ -26,15 +26,21 @@ namespace plathora.Models
         public string emailid1 { get; set; }
         [Display(Name = "Alternet Email ID")]
         public string emailid2 { get; set; }
+        [Display(Name = "Adharcard No")]
         public string adharcardno { get; set; }
+        [Display(Name = "Adharcard Photo")]
         public IFormFile adharcardphoto { get; set; }
-
+        [Display(Name = "Pancard No")]
         public string pancardno { get; set; }
+        [Display(Name = "Pancard No")]
         public IFormFile pancardphoto { get; set; }
 
         [Required(ErrorMessage = "Password is Required")]
+        [Display(Name = "Password")]
         public string password { get; set; }
         [Required]
+
+        [Display(Name = "Gender")]
         public string gender { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Date of Borth")]
@@ -61,8 +67,9 @@ namespace plathora.Models
         public CityRegistration CityRegistration { get; set; }
         [Display(Name = "Select Zipcode")]
         public string zipcode { get; set; }
-
+        [Display(Name = "Latitude")]
         public string latitude { get; set; }
+        [Display(Name = "Longitude")]
         public string longitude { get; set; }
 
         //-----------

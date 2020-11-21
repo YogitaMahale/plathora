@@ -14,9 +14,9 @@ namespace plathora.Models
         [Required(ErrorMessage = "Name is Required"), StringLength(500, MinimumLength = 3)]
         [RegularExpression(@"^[a-zA-Z\s]+$"), Display(Name = "Name")]
         public string name { get; set; }
-        [Display(Name = "Profile Photo")]
+        [Display(Name = "Photo")]
         public IFormFile profilephoto { get; set; }
-        [Display(Name = "Mobile No.")]
+        [Display(Name = "Mobile No")]
         [Required(ErrorMessage = "Mobile No is Required")]
         public string mobileno1 { get; set; }
         [Display(Name = "Alternet Mobile No.")]
@@ -26,15 +26,20 @@ namespace plathora.Models
         public string emailid1 { get; set; }
         [Display(Name = "Alternet Email ID")]
         public string emailid2 { get; set; }
+        [Display(Name = "Adharcard No")]
         public string adharcardno { get; set; }
+        [Display(Name = "Adharcard Photo")]
         public IFormFile adharcardphoto { get; set; }
-
+        [Display(Name = "Pancard No")]
         public string pancardno { get; set; }
+        [Display(Name = "Pancard Photo")]
         public IFormFile pancardphoto { get; set; }
+        [Display(Name = "Password")]
 
         [Required(ErrorMessage = "Password is Required")]
         public string password { get; set; }
         [Required]
+        [Display(Name = "Gender")]
         public string gender { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Date of Borth")]
@@ -62,8 +67,9 @@ namespace plathora.Models
         public CityRegistration CityRegistration { get; set; }
         [Display(Name = "Select Zipcode")]
         public string zipcode { get; set; }
-
+        [Display(Name = "Latitude")]
         public string latitude { get; set; }
+        [Display(Name = "Longitude")]
         public string longitude { get; set; }
 
         //-----------
