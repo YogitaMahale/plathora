@@ -16,6 +16,7 @@ using plathora.Services;
 using plathora.Services.Implementation;
 using plathora.Entity;
 using appFoodDelivery.Services.Implementation;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace plathora
 {
@@ -37,6 +38,7 @@ namespace plathora
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             // services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();
             services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();
             services.AddScoped<ICountryRegistrationservices , CountryRegistrationServices>();

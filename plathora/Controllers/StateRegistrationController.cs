@@ -13,11 +13,13 @@ namespace plathora.Controllers
     {
 
         private readonly IStateRegistrationService _StateRegistrationService;
+        private readonly ICityRegistrationservices  _cityRegistrationservices;
         private readonly ICountryRegistrationservices _CountryRegistrationservices;
-        public StateRegistrationController(IStateRegistrationService StateRegistrationService, ICountryRegistrationservices CountryRegistrationservices)
+        public StateRegistrationController(IStateRegistrationService StateRegistrationService, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices cityRegistrationservices)
         {
             _StateRegistrationService = StateRegistrationService;
             _CountryRegistrationservices = CountryRegistrationservices;
+            _cityRegistrationservices = cityRegistrationservices;
 
         }
 
@@ -117,8 +119,24 @@ namespace plathora.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            await _StateRegistrationService.Delete(id);
-            return RedirectToAction(nameof(Index));
+           
+
+
+            var obj1 = _cityRegistrationservices.GetAll().Where(x => x.stateid == id && x.isdeleted == false).ToList();
+            if (obj1 == null || obj1.Count == 0)
+            {
+                await _StateRegistrationService.Delete(id);
+                TempData["success"] = "State Deleted Successfully";
+                return RedirectToAction(nameof(Index));
+               
+                 
+            }
+            else
+            {
+
+                TempData["error"] = "This State is Not Deleted because City is aded in it";
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

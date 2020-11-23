@@ -1948,3 +1948,4 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora\obj\Release\netcoreapp3.1\staticwebassets\plathora.StaticWebAssets.Manifest.cache
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora\obj\Release\netcoreapp3.1\staticwebassets\plathora.StaticWebAssets.xml
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Notification.cshtml.g.cs

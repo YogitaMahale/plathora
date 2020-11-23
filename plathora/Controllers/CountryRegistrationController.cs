@@ -15,10 +15,11 @@ namespace plathora.Controllers
     {
         
         private readonly ICountryRegistrationservices _CountryRegistrationservices;
-        public CountryRegistrationController(ICountryRegistrationservices CountryRegistrationservices)
+        private readonly IStateRegistrationService _stateRegistrationService;
+        public CountryRegistrationController(ICountryRegistrationservices CountryRegistrationservices, IStateRegistrationService stateRegistrationService)
         {
             _CountryRegistrationservices = CountryRegistrationservices;
-            
+            _stateRegistrationService = stateRegistrationService;
         }
      
         public IActionResult Index()
@@ -99,6 +100,7 @@ namespace plathora.Controllers
                 
                  
                 await _CountryRegistrationservices .UpdateAsync(objcountry);
+                TempData["success"] = "Record Update successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -129,9 +131,21 @@ namespace plathora.Controllers
         //}
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
-        {
-            await _CountryRegistrationservices.Delete(id);
-            return RedirectToAction(nameof(Index));
+        {          
+
+            var obj1 = _stateRegistrationService.GetAll().Where(x => x.countryid == id && x.isdeleted == false).ToList();
+            if (obj1 == null || obj1.Count == 0)
+            {
+                await _CountryRegistrationservices.Delete(id);
+                TempData["success"] = "Country Deleted Successfully";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+
+                TempData["error"] = "This Country is Not Deleted because State is aded in it";
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }
