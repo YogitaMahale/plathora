@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Controllers\BusinessOwnerController.cs" />
+    <Compile Remove="Areas\Identity\Pages\Account\EditRegister.cshtml.cs" />
     <Compile Remove="Controllers\CustomerAPIController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Admin\Views\User\Edit1.cshtml" />
+    <Content Remove="Areas\Identity\Pages\Account\EditRegister.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,9 +32,11 @@
   <ItemGroup>
     <ProjectReference Include="..\plathora.Entity\plathora.Entity.csproj" />
     <ProjectReference Include="..\plathora.Services\plathora.Services.csproj" />
+    <ProjectReference Include="..\plathora.Utility\plathora.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
     <Folder Include="Data\" />
     <Folder Include="wwwroot\uploads\Affiltate\adharcardphoto\" />
     <Folder Include="wwwroot\uploads\Affiltate\passbookphoto\" />
@@ -40,6 +49,7 @@
     <Folder Include="wwwroot\uploads\advertisementInfo\" />
     <Folder Include="wwwroot\uploads\feedback\" />
     <Folder Include="wwwroot\uploads\AdvertiseMaster\" />
+    <Folder Include="wwwroot\uploads\user\" />
     <Folder Include="wwwroot\uploads\slider\" />
     <Folder Include="wwwroot\uploads\social\" />
     <Folder Include="wwwroot\uploads\product\" />
@@ -47,12 +57,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\slider\Create.cshtml" />
-    <None Include="Views\slider\Edit.cshtml" />
-    <None Include="Views\slider\Index.cshtml" />
-    <None Include="Views\tax\Create.cshtml" />
-    <None Include="Views\tax\Edit.cshtml" />
-    <None Include="Views\tax\Index.cshtml" />
+    <None Include="Areas\Admin\Views\slider\Create.cshtml" />
+    <None Include="Areas\Admin\Views\slider\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\slider\Index.cshtml" />
+    <None Include="Areas\Admin\Views\tax\Create.cshtml" />
+    <None Include="Areas\Admin\Views\tax\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\tax\Index.cshtml" />
+    <None Include="Areas\Admin\Views\User\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

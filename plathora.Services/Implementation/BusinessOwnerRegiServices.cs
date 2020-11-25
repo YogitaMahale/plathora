@@ -41,17 +41,24 @@ namespace plathora.Services.Implementation
            
         }
 
-        public async Task Delete(int id)
+        public Task Delete(int id)
         {
-            var affilate = GetById(id);
-            affilate.isdeleted = true;
-            _context.BusinessOwnerRegi.Update(affilate);
-            // _context.Remove(affilate);
-            await _context.SaveChangesAsync();
-
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<BusinessOwnerRegi> GetAll() => _context.BusinessOwnerRegi.AsNoTracking().Where(x => x.isdeleted == false).ToList();
+        /*
+public async Task Delete(int id)
+{
+   var affilate = GetById(id);
+   affilate.isdeleted = true;
+   _context.BusinessOwnerRegi.Update(affilate);
+   // _context.Remove(affilate);
+   await _context.SaveChangesAsync();
+
+}
+*/
+        //public IEnumerable<BusinessOwnerRegi> GetAll() => _context.BusinessOwnerRegi.AsNoTracking().Where(x => x.isdeleted == false).ToList();
+        public IEnumerable<BusinessOwnerRegi> GetAll() => _context.BusinessOwnerRegi.AsNoTracking().ToList();
 
         public BusinessOwnerRegi GetById(int id) =>
             _context.BusinessOwnerRegi.Where(x => x.id == id).FirstOrDefault();

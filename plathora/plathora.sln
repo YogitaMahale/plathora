@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "plathora.Services", "..\pla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "plathora.Persistence", "..\plathora.Persistence\plathora.Persistence.csproj", "{C47446E4-BD5C-41AB-A83E-A4A11F55AB74}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "plathora.Utility", "..\plathora.Utility\plathora.Utility.csproj", "{7954A7F8-479C-4A08-98EC-516AAF0F5218}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C47446E4-BD5C-41AB-A83E-A4A11F55AB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C47446E4-BD5C-41AB-A83E-A4A11F55AB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C47446E4-BD5C-41AB-A83E-A4A11F55AB74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7954A7F8-479C-4A08-98EC-516AAF0F5218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7954A7F8-479C-4A08-98EC-516AAF0F5218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7954A7F8-479C-4A08-98EC-516AAF0F5218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7954A7F8-479C-4A08-98EC-516AAF0F5218}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

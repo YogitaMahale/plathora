@@ -82,6 +82,10 @@ namespace plathora.Persistence.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -133,6 +137,8 @@ namespace plathora.Persistence.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -162,12 +168,10 @@ namespace plathora.Persistence.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -204,12 +208,10 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -451,12 +453,6 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("CallCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DOB")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Discription")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FridayClose")
                         .HasColumnType("nvarchar(max)");
 
@@ -502,9 +498,6 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("TuesdayOpen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Website")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("WednesdayClose")
                         .HasColumnType("nvarchar(max)");
 
@@ -514,98 +507,19 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("WhatssappCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("adharcardno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("adharcardphoto")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("businessid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("cityid")
-                        .HasColumnType("int");
+                    b.Property<string>("customerid")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("companyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("createddate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("customerid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("designation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("deviceid")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("emailid1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("emailid2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("gstno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("house")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isactive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isdeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("landmark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("latitude")
+                    b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lic")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("longitude")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("mobileno1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("mobileno2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pancardno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pancardphoto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pinno")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("productid")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("profilephoto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("registerbyAffilateID")
+                    b.Property<int>("productid")
                         .HasColumnType("int");
 
                     b.Property<string>("sliderimg1")
@@ -623,17 +537,11 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("sliderimg5")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("zipcode")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("id");
 
-                    b.HasIndex("cityid");
-
                     b.HasIndex("customerid");
+
+                    b.HasIndex("productid");
 
                     b.ToTable("BusinessOwnerRegi");
                 });
@@ -1315,6 +1223,118 @@ namespace plathora.Persistence.Migrations
                     b.ToTable("tblfeedback");
                 });
 
+            modelBuilder.Entity("plathora.Entity.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Membershipid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("accountname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("accountno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adharcardno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adharcardphoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("amount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bankname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("branch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("cityid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("companyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("designation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("deviceid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("emailid2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gstno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("house")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ifsccode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("landmark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("latitude")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("longitude")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mobileno2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pancardno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pancardphoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("passbookphoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("profilephoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("registerbyAffilateID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("zipcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("Membershipid");
+
+                    b.HasIndex("cityid");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1398,15 +1418,15 @@ namespace plathora.Persistence.Migrations
 
             modelBuilder.Entity("plathora.Entity.BusinessOwnerRegi", b =>
                 {
-                    b.HasOne("plathora.Entity.CityRegistration", "CityRegistration")
-                        .WithMany()
-                        .HasForeignKey("cityid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("plathora.Entity.CustomerRegistration", "customerRegistration")
+                    b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("customerid");
+
+                    b.HasOne("plathora.Entity.ProductMaster", "ProductMaster")
+                        .WithMany()
+                        .HasForeignKey("productid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("plathora.Entity.BusinessPackage", b =>
@@ -1479,6 +1499,17 @@ namespace plathora.Persistence.Migrations
                         .HasForeignKey("customerid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("plathora.Entity.ApplicationUser", b =>
+                {
+                    b.HasOne("plathora.Entity.Membership", "Membership")
+                        .WithMany()
+                        .HasForeignKey("Membershipid");
+
+                    b.HasOne("plathora.Entity.CityRegistration", "CityRegistration")
+                        .WithMany()
+                        .HasForeignKey("cityid");
                 });
 #pragma warning restore 612, 618
         }

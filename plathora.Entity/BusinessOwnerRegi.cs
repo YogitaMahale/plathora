@@ -9,69 +9,29 @@ namespace plathora.Entity
 {
   public  class BusinessOwnerRegi
     {
-        public int id { get; set; }
-        [Required]
-        public string name { get; set; }
+//        id, , , , , , , , , , 
+//, , , pinno, , , , , , , , , , ,
+// , , , , , Discription, Regcertificate, businessid, productid, lic
+// , registerbyAffilateID, deviceid, customerid, MondayOpen, MondayClose, TuesdayOpen, TuesdayClose,
+//  WednesdayOpen, WednesdayClose, ThursdayOpen, ThursdayClose, FridayOpen, FridayClose, SaturdayOpen,
+//   SaturdayClose, SundayOpen, SundayClose, CallCount, SMSCount, WhatssappCount, ShareCount,
+//    sliderimg1, sliderimg2, sliderimg3, sliderimg4, sliderimg5
 
-        public string profilephoto { get; set; }
-        [Required]
-        public string mobileno1 { get; set; }
-        public string mobileno2 { get; set; }
-        public string emailid1 { get; set; }
-        public string emailid2 { get; set; }
-        public string adharcardno { get; set; }
-        public string adharcardphoto { get; set; }
+        public int id { get; set; }  
 
-        public string pancardno { get; set; }
-        public string pancardphoto { get; set; }
-        [Required]
-        public string password { get; set; }
-        [Required]
-        public string gender { get; set; }
-        public string pinno { get; set; }
-        public DateTime DOB { get; set; }
-
-
-        public DateTime createddate { get; set; }
-
-        [DefaultValue("false")]
-        public Boolean isdeleted { get; set; }
-        [DefaultValue("false")]
-        public Boolean isactive { get; set; }
-
-
-        //--------
-        public string house { get; set; }
-        public string landmark { get; set; }
-        public string street { get; set; }
-
-        [ForeignKey("CityRegistration")]
-        public int cityid { get; set; }
-        public CityRegistration CityRegistration { get; set; }
-        public string zipcode { get; set; }
-        public string latitude { get; set; }
-        public string longitude { get; set; }
-
-        //-----------
-        public string companyName { get; set; }
-        public string designation { get; set; }
-        public string gstno { get; set; }
-        public string Website { get; set; }
-        public string Discription { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string customerid { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+       
+       
+        public string description { get; set; }
         public string Regcertificate { get; set; }
         public string businessid { get; set; }
-        public string productid { get; set; }
-        //[ForeignKey("ProductMaster")]
-        //public int productid { get; set; }
-        //public ProductMaster ProductMaster { get; set; }
-        public string lic { get; set; }
-        public int registerbyAffilateID { get; set; }
-        public string deviceid { get; set; }
-
-
-        [ForeignKey("customerRegistration")]
-        public int? customerid { get; set; }
-        public CustomerRegistration customerRegistration { get; set; }
+        // public string productid { get; set; }
+        [ForeignKey("ProductMaster")]
+        public int productid { get; set; }
+        public ProductMaster ProductMaster { get; set; }
+        public string lic { get; set; }     
 
         public string MondayOpen { get; set; }
         public string MondayClose { get; set; }       

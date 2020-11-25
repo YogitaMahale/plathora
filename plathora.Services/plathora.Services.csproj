@@ -8,9 +8,11 @@
     <Compile Remove="IadvertiseDetailsServices.cs" />
     <Compile Remove="IadvertisementDetailsServices.cs" />
     <Compile Remove="IadvertisementtestServices.cs" />
+    <Compile Remove="IApplicationUserRepository.cs" />
     <Compile Remove="Implementation\advertiseDetailsServices.cs" />
     <Compile Remove="Implementation\advertisementDetailsServices.cs" />
     <Compile Remove="Implementation\advertisementtestServices.cs" />
+    <Compile Remove="Implementation\ApplicationUserRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

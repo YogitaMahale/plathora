@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User Details</li>
+                    </ol>
+                </nav><br /><br />
+                            <div class="row">
+                                <div class="col-md-12 table-responsive-md bg-white">
+                                    <a class="btn btn-xs btn-success float-md-right" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-plus"></i> Create New User</a>
+                                    <br />
+                                    <br />
+
+
+
+                                    <table  class="table   table-bordered" style="width:100%" id="tblData" >
+                                        @*<table id="tblData" width="100%" class="table table-striped table-lightfont">*@
+                                        <thead class="thead-dark">
+                                            <tr>
+
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                @*<th>Company </th>*@
+                                                <th>Role</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                    <br />
+
+
+
+
+                                </div>
+ 
+                            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/js/user.js"></script>
+}
+

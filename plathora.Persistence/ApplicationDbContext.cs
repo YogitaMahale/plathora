@@ -44,7 +44,7 @@ namespace plathora.Persistence
         public DbSet<rating> ratings { get; set; }
         public DbSet<businessrating> businessratings { get; set; }
         public DbSet<tblfeedback> tblfeedback { get; set; }
-
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
         //public DbSet<AdvertiseDetails> advertiseDetails { get; set; }
         //public DbSet<Advadd-migrationertisementDetails> advertisementDetails { get; set; }
         //public DbSet<advertisementtest> advertisementtest { get; set; }
