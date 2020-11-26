@@ -65,5 +65,13 @@ namespace plathora.Entity
         public string sliderimg4 { get; set; }
         public string sliderimg5 { get; set; }
 
+
+        public string facebookLink { get; set; }
+        public string twitterLink { get; set; }
+        public string youtubeLink { get; set; }
+        public string linkedinLink { get; set; }
+        public string googleplusLink { get; set; }
+        public string instagramLink { get; set; }
+
     }
 }

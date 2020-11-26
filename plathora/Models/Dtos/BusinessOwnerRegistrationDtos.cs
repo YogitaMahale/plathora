@@ -7,7 +7,7 @@ namespace plathora.Models.Dtos
 {
     public class BusinessOwnerRegistrationDtos
     {
-        public int id { get; set; }
+        public int id { get; set; } = 0;
 
         
         public string customerid { get; set; }
@@ -53,6 +53,12 @@ namespace plathora.Models.Dtos
         public string sliderimg3 { get; set; }
         public string sliderimg4 { get; set; }
         public string sliderimg5 { get; set; }
+        public string facebookLink { get; set; }
+        public string twitterLink { get; set; }
+        public string youtubeLink { get; set; }
+        public string linkedinLink { get; set; }
+        public string googleplusLink { get; set; }
+        public string instagramLink { get; set; }
     }
 }
  

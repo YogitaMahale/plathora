@@ -516,7 +516,19 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("facebookLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("googleplusLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("instagramLink")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("lic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("linkedinLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("productid")
@@ -535,6 +547,12 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("sliderimg5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("twitterLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("youtubeLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");

@@ -60,15 +60,15 @@ namespace plathora.API
         //}
 
         [HttpPost]
-        [Route("updateBusinessDetails")]
-        public async Task<IActionResult> updateBusinessDetails(BusinessOwnerRegistrationDtos model)
+        [Route("saveBusinessDetails")]
+        public async Task<IActionResult> saveBusinessDetails(BusinessOwnerRegistrationDtos model)
         {
-            BusinessOwnerRegi obj = new BusinessOwnerRegi();
-              obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
-            if (obj == null)
-            {               
-
-               // obj.id = model.id;
+            BusinessOwnerRegi obj1 = new BusinessOwnerRegi();
+              obj1 = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
+            if (obj1 == null)
+            {
+                BusinessOwnerRegi obj = new BusinessOwnerRegi();
+                obj.id = model.id;
                 obj.customerid = model.customerid;
                 obj.description = model.description;
                 obj.Regcertificate = model.Regcertificate;
@@ -93,10 +93,17 @@ namespace plathora.API
                 obj.SMSCount = model.SMSCount;
                 obj.WhatssappCount = model.WhatssappCount;
                 obj.ShareCount = model.ShareCount;
+
+                obj.facebookLink = model.facebookLink;
+                obj.googleplusLink = model.googleplusLink;
+                obj.instagramLink = model.instagramLink;
+                obj.linkedinLink = model.linkedinLink;
+                obj.twitterLink = model.twitterLink;
+                obj.youtubeLink = model.youtubeLink;
+                
                 
 
 
-               
                 if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
                 {
                     obj.sliderimg1 = "";
@@ -195,15 +202,15 @@ namespace plathora.API
 
                         var postid = await _BusinessOwnerRegiServices.CreateAsync(obj);
                         int id = Convert.ToInt32(postid);
-                        if (id < 0)
+                        if (id ==0)
                         {
                             return BadRequest();
                         }
                         else
                         {
                             var customer1 = _BusinessOwnerRegiServices.GetById(id);                           
-                            string obj1 = "{\"success\" : 1, \"message\" : \" Data\", \"data\" :" + customer1.id + "}";
-                            return Ok(obj1);
+                            string obj11 = "{\"success\" : 1, \"message\" : \" Data\", \"data\" :" + customer1.id + "}";
+                            return Ok(obj11);
                         }
 
                     }
@@ -214,691 +221,487 @@ namespace plathora.API
             }
             else
             {
-               // obj.id = model.id;
-                obj.customerid = model.customerid;
-                obj.description = model.description;
-                obj.Regcertificate = model.Regcertificate;
-                obj.businessid = model.businessid;
-                obj.productid = model.productid;
-                obj.lic = model.lic;
-                obj.MondayOpen = model.MondayOpen;
-                obj.MondayClose = model.MondayClose;
-                obj.TuesdayOpen = model.TuesdayOpen;
-                obj.TuesdayClose = model.TuesdayClose;
-                obj.WednesdayOpen = model.WednesdayOpen;
-                obj.WednesdayClose = model.WednesdayClose;
-                obj.ThursdayOpen = model.ThursdayOpen;
-                obj.ThursdayClose = model.ThursdayClose;
-                obj.FridayOpen = model.FridayOpen;
-                obj.FridayClose = model.FridayClose;
-                obj.SaturdayOpen = model.SaturdayOpen;
-                obj.SaturdayClose = model.SaturdayClose;
-                obj.SundayOpen = model.SundayOpen;
-                obj.SundayClose = model.SundayClose;
-                obj.CallCount = model.CallCount;
-                obj.SMSCount = model.SMSCount;
-                obj.WhatssappCount = model.WhatssappCount;
-                obj.ShareCount = model.ShareCount;
-
-
-
-
-                if (model.sliderimg1 !=null || model.sliderimg1!= string.Empty)
-                {
-                    
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg1));
-                    obj.sliderimg1 = "/uploads/businessowner/slider/" + filename;
-                }
-
-                if (model.sliderimg2 != null || model.sliderimg2!= string.Empty)
-                { 
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg2));
-                    obj.sliderimg2 = "/uploads/businessowner/slider/" + filename;
-                }
-                if (model.sliderimg3 != null || model.sliderimg3 != string.Empty)
-                {
-                    
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg3));
-                    obj.sliderimg3 = "/uploads/businessowner/slider/" + filename;
-                }
-
-                if (model.sliderimg4 !=null || model.sliderimg4 != string.Empty)
-                {
-                    obj.sliderimg4 = "";
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg4));
-                    obj.sliderimg4 = "/uploads/businessowner/slider/" + filename;
-                }
-                if (model.sliderimg5!= null || model.sliderimg5 != string.Empty)
-                {
-                     
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg5));
-                    obj.sliderimg5 = "/uploads/businessowner/slider/" + filename;
-                }
-                 await _BusinessOwnerRegiServices.UpdateAsync(obj);
-                return Ok(obj);
+                return BadRequest("Duplicate Record");
             }
 
              
         }
-        /*
+     
         [HttpPut]
-        [Route("updateBusiness")]
-        public async Task<IActionResult> updateBusiness(BusinessOwnerRegistrationDtos model)
+        [Route("updateBusinessDetails")]
+        public async Task<IActionResult> updateBusinessDetails(BusinessOwnerRegistrationDtos model)
         {
 
-            var checkduplicate = _BusinessOwnerRegiServices.GetAll().Where(x => x.mobileno1 == model.mobileno1 && x.isdeleted == false && x.id != model.id).FirstOrDefault();
-            if (checkduplicate == null)
-            {
-                BusinessOwnerRegi obj = _BusinessOwnerRegiServices.GetById(model.id);
-                // obj.id = model.id;
-
-                // obj.id = model.id;
-                obj.name = model.name;
-                //  obj.profilephoto = model.profilephoto;
-                obj.mobileno1 = model.mobileno1;
-                obj.password = model.password;
-                obj.mobileno2 = model.mobileno2;
-                obj.emailid1 = model.emailid1;
-                obj.emailid2 = model.emailid2;
-                obj.adharcardno = model.adharcardno;
-                //  obj.adharcardphoto = model.adharcardphoto;
-                obj.pancardno = model.pancardno;
-
-                //obj.pancardphoto = model.pancardphoto;
-                obj.password = model.password;
-                obj.gender = model.gender;
-                obj.pinno = model.pinno;
-                obj.DOB = model.DOB;
-                obj.createddate = DateTime.UtcNow;
-                obj.isdeleted = false;
-                obj.isactive = false;
-                obj.house = model.house;
-                obj.landmark = model.landmark;
-                obj.street = model.street;
-                obj.cityid = model.cityid;
-                obj.zipcode = model.zipcode;
-                obj.latitude = model.latitude;
-                obj.longitude = model.longitude;
-                obj.companyName = model.companyName;
-                obj.designation = model.designation;
-                obj.gstno = model.gstno;
-                obj.Website = model.Website;
-                obj.Discription = model.Discription;
-                obj.Regcertificate = model.Regcertificate;
-                //    obj.productid = model.productid;
-
-                obj.lic = model.lic;
-                obj.deviceid = model.deviceid;
-                obj.registerbyAffilateID = model.registerbyAffilateID;
-                if (model.profilephoto == null || model.profilephoto == string.Empty)
-                {
-
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\profilephoto";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.profilephoto));
-                    obj.profilephoto = "/uploads/businessowner/profilephoto/" + filename;
-                }
-                if (model.adharcardphoto == null || model.adharcardphoto == string.Empty)
-                {
-
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\adharcardphoto";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.adharcardphoto));
-                    obj.adharcardphoto = "/uploads/businessowner/adharcardphoto/" + filename;
-                }
-                if (model.pancardphoto == null || model.pancardphoto == string.Empty)
-                {
-
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\pancardphoto";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.pancardphoto));
-                    obj.pancardphoto = "/uploads/businessowner/pancardphoto/" + filename;
-                }
-
-
-                if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
-                {
-                    
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg1));
-                    obj.sliderimg1 = "/uploads/businessowner/slider/" + filename;
-                }
-
-                if (model.sliderimg2 == null || model.sliderimg2 == string.Empty)
-                {
-                    
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg2));
-                    obj.sliderimg2 = "/uploads/businessowner/slider/" + filename;
-                }
-                if (model.sliderimg3 == null || model.sliderimg3 == string.Empty)
-                {
-                   
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg3));
-                    obj.sliderimg3 = "/uploads/businessowner/slider/" + filename;
-                }
-
-                if (model.sliderimg4 == null || model.sliderimg4 == string.Empty)
-                {
-                    
-
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg4));
-                    obj.sliderimg4 = "/uploads/businessowner/slider/" + filename;
-                }
-                if (model.sliderimg5 == null || model.sliderimg5 == string.Empty)
-                {
-                    
-                }
-                else
-                {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg5));
-                    obj.sliderimg5 = "/uploads/businessowner/slider/" + filename;
-                }
-
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-
-
-                        return Ok(obj);
-
-
-                    }
-
-
-                }
-                catch (Exception)
-                {
-
-                    return BadRequest();
-                }
-
-
-            }
-            else
-            {
-                return BadRequest("Duplicate Mobile No");
-            }
-
-            return BadRequest();
-        }
-
-        [HttpPut]
-        [Route("updateBusinessDeviceId")]
-        public async Task<IActionResult> updateBusinessDeviceId([FromUri] string deviceId, [FromUri] int id)
-        {
-            var customer = _BusinessOwnerRegiServices.GetById(id);
-            if (customer == null)
+            BusinessOwnerRegi obj1 = new BusinessOwnerRegi();
+            obj1 = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
+            if (obj1 == null)
             {
                 return NotFound();
             }
             else
             {
-                customer.deviceid = deviceId;
-                await _BusinessOwnerRegiServices.UpdateAsync(customer);
+                obj1.id = model.id;
+                obj1.customerid = model.customerid;
+                obj1.description = model.description;
+                obj1.Regcertificate = model.Regcertificate;
+                obj1.businessid = model.businessid;
+                obj1.productid = model.productid;
+                obj1.lic = model.lic;
+                obj1.MondayOpen = model.MondayOpen;
+                obj1.MondayClose = model.MondayClose;
+                obj1.TuesdayOpen = model.TuesdayOpen;
+                obj1.TuesdayClose = model.TuesdayClose;
+                obj1.WednesdayOpen = model.WednesdayOpen;
+                obj1.WednesdayClose = model.WednesdayClose;
+                obj1.ThursdayOpen = model.ThursdayOpen;
+                obj1.ThursdayClose = model.ThursdayClose;
+                obj1.FridayOpen = model.FridayOpen;
+                obj1.FridayClose = model.FridayClose;
+                obj1.SaturdayOpen = model.SaturdayOpen;
+                obj1.SaturdayClose = model.SaturdayClose;
+                obj1.SundayOpen = model.SundayOpen;
+                obj1.SundayClose = model.SundayClose;
+                obj1.CallCount = model.CallCount;
+                obj1.SMSCount = model.SMSCount;
+                obj1.WhatssappCount = model.WhatssappCount;
+                obj1.ShareCount = model.ShareCount;
 
-                if (id < 0)
-                {
-                    return BadRequest();
-                }
-                else
+                obj1.facebookLink = model.facebookLink;
+                obj1.googleplusLink = model.googleplusLink;
+                obj1.instagramLink = model.instagramLink;
+                obj1.linkedinLink = model.linkedinLink;
+                obj1.twitterLink = model.twitterLink;
+                obj1.youtubeLink = model.youtubeLink;
+
+
+
+                if (model.sliderimg1 != null || model.sliderimg1 != string.Empty)
                 {
 
-                    return Ok(customer);
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg1));
+                    obj1.sliderimg1 = "/uploads/businessowner/slider/" + filename;
                 }
+
+                if (model.sliderimg2 != null || model.sliderimg2 != string.Empty)
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg2));
+                    obj1.sliderimg2 = "/uploads/businessowner/slider/" + filename;
+                }
+                if (model.sliderimg3 != null || model.sliderimg3 != string.Empty)
+                {
+
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg3));
+                    obj1.sliderimg3 = "/uploads/businessowner/slider/" + filename;
+                }
+
+                if (model.sliderimg4 != null || model.sliderimg4 != string.Empty)
+                {
+
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg4));
+                    obj1.sliderimg4 = "/uploads/businessowner/slider/" + filename;
+                }
+                if (model.sliderimg5 != null || model.sliderimg5 != string.Empty)
+                {
+
+                    string filename = Guid.NewGuid().ToString();
+                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                    var folderpath = _hostingEnvironment.WebRootPath + @"\uploads\businessowner\slider";
+                    if (!System.IO.Directory.Exists(folderpath))
+                    {
+                        System.IO.Directory.CreateDirectory(folderpath);
+                    }
+                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.sliderimg5));
+                    obj1.sliderimg5 = "/uploads/businessowner/slider/" + filename;
+                }
+                await _BusinessOwnerRegiServices.UpdateAsync(obj1);
+                return Ok(obj1);
             }
 
-
-
-            return BadRequest();
         }
+       
+     //[HttpPut]
+     //[Route("updateBusinessDeviceId")]
+     //public async Task<IActionResult> updateBusinessDeviceId([FromUri] string deviceId, [FromUri] int id)
+     //{
+     //    var customer = _BusinessOwnerRegiServices.GetById(id);
+     //    if (customer == null)
+     //    {
+     //        return NotFound();
+     //    }
+     //    else
+     //    {
+     //        customer.deviceid = deviceId;
+     //        await _BusinessOwnerRegiServices.UpdateAsync(customer);
+
+     //        if (id < 0)
+     //        {
+     //            return BadRequest();
+     //        }
+     //        else
+     //        {
+
+     //            return Ok(customer);
+     //        }
+     //    }
 
 
-        [HttpPut]
-        [Route("updateBusinessOpeningHours")]
-        public async Task<IActionResult> updateBusinessOpeningHours(BusinessOpeningHoursViewModel model)
+
+     //    return BadRequest();
+     //}
+        
+
+    [HttpPut]
+    [Route("updateBusinessOpeningHours")]
+    public async Task<IActionResult> updateBusinessOpeningHours(BusinessOpeningHoursViewModel model)
+    {
+
+        var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
+        if (obj == null)
+        {
+            return BadRequest("Record Not Found");
+
+        }
+        else
         {
 
-            var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
-            if (obj == null)
-            {
-                return BadRequest("Record Not Found");
+            obj.MondayOpen = model.MondayOpen;
+            obj.MondayClose = model.MondayClose;
+            obj.TuesdayOpen = model.TuesdayOpen;
+            obj.TuesdayClose = model.TuesdayClose;
+            obj.WednesdayOpen = model.WednesdayOpen;
+            obj.WednesdayClose = model.WednesdayClose;
+            obj.ThursdayOpen = model.ThursdayOpen;
+            obj.ThursdayClose = model.ThursdayClose;
+            obj.FridayOpen = model.FridayOpen;
+            obj.FridayClose = model.FridayClose;
+            obj.SaturdayOpen = model.SaturdayOpen;
+            obj.SaturdayClose = model.SaturdayClose;
+            obj.SundayClose = model.SundayClose;
+            obj.SundayOpen = model.SundayOpen;
 
-            }
-            else
-            {
-
-                obj.MondayOpen = model.MondayOpen;
-                obj.MondayClose = model.MondayClose;
-                obj.TuesdayOpen = model.TuesdayOpen;
-                obj.TuesdayClose = model.TuesdayClose;
-                obj.WednesdayOpen = model.WednesdayOpen;
-                obj.WednesdayClose = model.WednesdayClose;
-                obj.ThursdayOpen = model.ThursdayOpen;
-                obj.ThursdayClose = model.ThursdayClose;
-                obj.FridayOpen = model.FridayOpen;
-                obj.FridayClose = model.FridayClose;
-                obj.SaturdayOpen = model.SaturdayOpen;
-                obj.SaturdayClose = model.SaturdayClose;
-                obj.SundayClose = model.SundayClose;
-                obj.SundayOpen = model.SundayOpen;
-
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-
-
-                        return Ok(obj);
-
-
-                    }
-
-
-                }
-                catch (Exception)
-                {
-
-                    return BadRequest();
-                }
-
-            }
-
-
-        }
-        [HttpGet]
-        [Route("GetBusinessbybusinssid")]
-        public async Task<IActionResult> GetBusinessbybusinssid(int id)
-        {
             try
             {
-                var obj = _BusinessOwnerRegiServices.GetById(id);
-                if (obj != null)
-                {
-                    return Ok(obj);
-                }
-                else
-                {
-                    return NotFound();
-
-                }
-            }
-            catch { return BadRequest(); }
-        }
-        [HttpPut]
-        [Route("updateCallCount")]
-        public async Task<IActionResult> updateCallCount(int BusinessId)
-        {
-
-            var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
-            if (obj == null)
-            {
-                return BadRequest("Record Not Found");
-            }
-            else
-            {
-                int callcountobj = (obj.CallCount + 1);
-                obj.CallCount = callcountobj;
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-                        return Ok(obj);
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-        }
-
-        [HttpPut]
-        [Route("updateSMSCount")]
-        public async Task<IActionResult> updateSMSCount(int BusinessId)
-        {
-
-            var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
-            if (obj == null)
-            {
-                return BadRequest("Record Not Found");
-            }
-            else
-            {
-                int smsCountobj = (obj.SMSCount + 1);
-                obj.SMSCount = smsCountobj;
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-                        return Ok(obj);
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-        }
-        [HttpPut]
-        [Route("updateShareCount")]
-        public async Task<IActionResult> updateShareCount(int BusinessId)
-        {
-
-            var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
-            if (obj == null)
-            {
-                return BadRequest("Record Not Found");
-            }
-            else
-            {
-                int ShareCountobj = (obj.ShareCount + 1);
-                obj.ShareCount = ShareCountobj;
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-                        return Ok(obj);
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-        }
-
-        [HttpPut]
-        [Route("updateWhatsappCount")]
-        public async Task<IActionResult> updateWhatsappCount(int BusinessId)
-        {
-
-            var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
-            if (obj == null)
-            {
-                return BadRequest("Record Not Found");
-            }
-            else
-            {
-                int WhatssappCountobj = (obj.WhatssappCount + 1);
-                obj.WhatssappCount = WhatssappCountobj;
-                try
-                {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        await _BusinessOwnerRegiServices.UpdateAsync(obj);
-                        return Ok(obj);
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-        }
-
-        [HttpGet]
-        [Route("getBusinessbDetailsbyLatitudeandLongitude")]
-        public async Task<IActionResult> getBusinessbDetailsbyLatitudeandLongitude(decimal Latitude, decimal Longitude)
-        {
-            try
-            {
-
-
-                var parameter = new DynamicParameters();
-                parameter.Add("@Latitude", Latitude);
-                parameter.Add("@Longitude", Longitude);
-
-                var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("getnearbybusiness", parameter);
-                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
                 if (obj == null)
                 {
-
-                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
-                    return NotFound(myJson);
+                    return NotFound();
                 }
                 else
                 {
 
+                    await _BusinessOwnerRegiServices.UpdateAsync(obj);
+
+
                     return Ok(obj);
+
+
                 }
 
 
             }
-            catch (Exception obj)
+            catch (Exception)
             {
-                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
-                return BadRequest(myJson);
 
+                return BadRequest();
             }
 
         }
 
 
-        [HttpGet]
-        [Route("businesslistbyprouctid")]
-        public async Task<IActionResult> businesslistbyprouctid(int productid)
+    }
+    [HttpGet]
+    [Route("GetBusinessbybusinssid")]
+    public async Task<IActionResult> GetBusinessbybusinssid(int id)
+    {
+        try
         {
+            var obj = _BusinessOwnerRegiServices.GetById(id);
+            if (obj != null)
+            {
+                return Ok(obj);
+            }
+            else
+            {
+                return NotFound();
+
+            }
+        }
+        catch { return BadRequest(); }
+    }
+    [HttpPut]
+    [Route("updateCallCount")]
+    public async Task<IActionResult> updateCallCount(int BusinessId)
+    {
+
+        var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
+        if (obj == null)
+        {
+            return BadRequest("Record Not Found");
+        }
+        else
+        {
+            int callcountobj = (obj.CallCount + 1);
+            obj.CallCount = callcountobj;
             try
             {
-
-
-                var parameter = new DynamicParameters();
-                parameter.Add("@productid", productid);
-            
-
-                var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("businesslistbyprouctid", parameter);
-                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
                 if (obj == null)
                 {
-
-                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
-                    return NotFound(myJson);
+                    return NotFound();
                 }
                 else
                 {
-
+                    await _BusinessOwnerRegiServices.UpdateAsync(obj);
                     return Ok(obj);
                 }
-
-
             }
-            catch (Exception obj)
+            catch (Exception)
             {
-                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
-                return BadRequest(myJson);
-
+                return BadRequest();
             }
-
         }
+    }
 
-        [HttpGet]
-        [Route("getLeadListbyCustomerid")]
-        public async Task<IActionResult> getLeadListbyCustomerid(int customerid)
+    [HttpPut]
+    [Route("updateSMSCount")]
+    public async Task<IActionResult> updateSMSCount(int BusinessId)
+    {
+
+        var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
+        if (obj == null)
         {
+            return BadRequest("Record Not Found");
+        }
+        else
+        {
+            int smsCountobj = (obj.SMSCount + 1);
+            obj.SMSCount = smsCountobj;
             try
             {
-                var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid);
-                if (obj != null)
+                if (obj == null)
                 {
-                    return Ok(obj);
+                    return NotFound();
                 }
                 else
                 {
-                    return NotFound();
-
+                    await _BusinessOwnerRegiServices.UpdateAsync(obj);
+                    return Ok(obj);
                 }
             }
-            catch { return BadRequest(); }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
+    }
+    [HttpPut]
+    [Route("updateShareCount")]
+    public async Task<IActionResult> updateShareCount(int BusinessId)
+    {
 
-
-        [HttpGet]
-        [Route("GetBusinessbyCustomerId")]
-        public async Task<IActionResult> GetBusinessbyCustomerId(int customerid)
+        var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
+        if (obj == null)
         {
+            return BadRequest("Record Not Found");
+        }
+        else
+        {
+            int ShareCountobj = (obj.ShareCount + 1);
+            obj.ShareCount = ShareCountobj;
             try
             {
-                var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid).ToList();
-                if (obj != null)
+                if (obj == null)
                 {
-                    return Ok(obj);
+                    return NotFound();
                 }
                 else
                 {
-                    return NotFound();
-
+                    await _BusinessOwnerRegiServices.UpdateAsync(obj);
+                    return Ok(obj);
                 }
             }
-            catch { return BadRequest(); }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
-        */
+    }
+
+    [HttpPut]
+    [Route("updateWhatsappCount")]
+    public async Task<IActionResult> updateWhatsappCount(int BusinessId)
+    {
+
+        var obj = _BusinessOwnerRegiServices.GetById(BusinessId);
+        if (obj == null)
+        {
+            return BadRequest("Record Not Found");
+        }
+        else
+        {
+            int WhatssappCountobj = (obj.WhatssappCount + 1);
+            obj.WhatssappCount = WhatssappCountobj;
+            try
+            {
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    await _BusinessOwnerRegiServices.UpdateAsync(obj);
+                    return Ok(obj);
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+    }
+
+    [HttpGet]
+    [Route("getBusinessbDetailsbyLatitudeandLongitude")]
+    public async Task<IActionResult> getBusinessbDetailsbyLatitudeandLongitude(decimal Latitude, decimal Longitude)
+    {
+        try
+        {
+
+
+            var parameter = new DynamicParameters();
+            parameter.Add("@Latitude", Latitude);
+            parameter.Add("@Longitude", Longitude);
+
+            var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("getnearbybusiness", parameter);
+            //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+            if (obj == null)
+            {
+
+                string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                return NotFound(myJson);
+            }
+            else
+            {
+
+                return Ok(obj);
+            }
+
+
+        }
+        catch (Exception obj)
+        {
+            string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+            return BadRequest(myJson);
+
+        }
+
+    }
+
+
+    [HttpGet]
+    [Route("businesslistbyprouctid")]
+    public async Task<IActionResult> businesslistbyprouctid(int productid)
+    {
+        try
+        {
+
+
+            var parameter = new DynamicParameters();
+            parameter.Add("@productid", productid);
+
+
+            var obj = _sP_Call.List<BusinessOwnerRegiIndexViewModel>("businesslistbyprouctid", parameter);
+            //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+            if (obj == null)
+            {
+
+                string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                return NotFound(myJson);
+            }
+            else
+            {
+
+                return Ok(obj);
+            }
+
+
+        }
+        catch (Exception obj)
+        {
+            string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+            return BadRequest(myJson);
+
+        }
+
+    }
+
+    [HttpGet]
+    [Route("getLeadListbyCustomerid")]
+    public async Task<IActionResult> getLeadListbyCustomerid(string  customerid)
+    {
+        try
+        {
+            var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid);
+            if (obj != null)
+            {
+                return Ok(obj);
+            }
+            else
+            {
+                return NotFound();
+
+            }
+        }
+        catch { return BadRequest(); }
+    }
+
+
+    [HttpGet]
+    [Route("GetBusinessbyCustomerId")]
+    public async Task<IActionResult> GetBusinessbyCustomerId(string  customerid)
+    {
+        try
+        {
+            var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid).ToList();
+            if (obj != null)
+            {
+                return Ok(obj);
+            }
+            else
+            {
+                return NotFound();
+
+            }
+        }
+        catch { return BadRequest(); }
+    }
+   
     }
 }
 
