@@ -139,6 +139,222 @@ namespace plathora.API
             }
 
         }
+        //[HttpPost]
+        //[Route("SaveUser1")]
+        //public async Task<IActionResult> SaveUser1(ApplicationUserSaveModelDtos model)
+        //{
+
+        //    var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1).FirstOrDefault();
+
+        //    if (checkduplicate == null)
+        //    {
+        //        string rolename = string.Empty;
+        //        if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+        //        {
+        //            rolename = SD.Role_Affilate;
+        //        }
+        //        else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+        //        {
+        //            rolename = SD.Role_Customer;
+
+        //        }
+
+        //        AffiltateRegistration obj = new AffiltateRegistration();
+
+        //        var user = new ApplicationUser
+        //        {
+
+
+        //            name = model.name,
+        //            UserName = model.mobileno1,
+        //            // profilephoto = model.pro
+        //            PhoneNumber = model.mobileno1,
+        //            mobileno2 = model.mobileno2,
+        //            Email = model.emailid1,
+        //            emailid2 = model.emailid2,
+        //            adharcardno = model.adharcardno,
+        //            // adharcardphoto = model.
+
+        //            pancardno = model.pancardno,
+        //            //pancardphoto = model.
+        //            //password = model.password,
+        //            gender = model.gender,
+        //            DOB = model.DOB,
+        //            createddate = DateTime.Now,
+        //            house = model.house,
+        //            landmark = model.landmark,
+        //            street = model.street,
+
+        //            cityid = model.cityid,
+        //            zipcode = model.zipcode,
+
+        //            latitude = model.latitude,
+        //            longitude = model.longitude,
+        //            companyName = model.companyName,
+        //            designation = model.designation,
+        //            gstno = model.gstno,
+        //            Website = model.Website,
+
+
+        //            bankname = model.bankname,
+        //            accountname = model.accountname,
+        //            accountno = model.accountno,
+        //            ifsccode = model.ifsccode,
+        //            branch = model.branch,
+        //            //passbookphoto = model.pas
+        //            Membershipid = model.Membershipid,
+        //            amount = model.amount,
+        //            registerbyAffilateID = model.registerbyAffilateID,
+        //            deviceid = model.deviceid
+
+        //        };
+
+
+
+        //        if (model.profilephoto == null || model.profilephoto.Trim() == "")
+        //        {
+        //            obj.profilephoto = "";
+        //        }
+        //        else
+        //        {
+
+        //            string fileName = Guid.NewGuid().ToString();
+        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
+        //            if (!System.IO.Directory.Exists(folderPath))
+        //            {
+        //                System.IO.Directory.CreateDirectory(folderPath);
+        //            }
+        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.profilephoto));
+        //            user.profilephoto = "/uploads/user/profilephoto/" + fileName;
+
+        //        }
+        //        if (model.adharcardphoto == null || model.adharcardphoto.Trim() == "")
+        //        {
+        //            obj.adharcardphoto = "";
+        //        }
+        //        else
+        //        {
+
+        //            string fileName = Guid.NewGuid().ToString();
+        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\adharcardphoto";
+        //            if (!System.IO.Directory.Exists(folderPath))
+        //            {
+        //                System.IO.Directory.CreateDirectory(folderPath);
+        //            }
+        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.adharcardphoto));
+        //            user.adharcardphoto = "/uploads/user/adharcardphoto/" + fileName;
+
+        //        }
+        //        if (model.pancardphoto == null || model.pancardphoto.Trim() == "")
+        //        {
+        //            obj.pancardphoto = "";
+        //        }
+        //        else
+        //        {
+
+        //            string fileName = Guid.NewGuid().ToString();
+        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\pancardphoto";
+        //            if (!System.IO.Directory.Exists(folderPath))
+        //            {
+        //                System.IO.Directory.CreateDirectory(folderPath);
+        //            }
+        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
+        //            user.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
+
+        //        }
+        //        if (model.passbookphoto == null || model.passbookphoto.Trim() == "")
+        //        {
+        //            obj.passbookphoto = "";
+        //        }
+        //        else
+        //        {
+
+        //            string fileName = Guid.NewGuid().ToString();
+        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
+        //            if (!System.IO.Directory.Exists(folderPath))
+        //            {
+        //                System.IO.Directory.CreateDirectory(folderPath);
+        //            }
+        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.passbookphoto));
+        //            user.passbookphoto = "/uploads/user/passbookphoto/" + fileName;
+
+        //        }
+        //        //if (ModelState.IsValid)
+        //        //{
+        //        try
+        //        {
+        //            if (obj == null)
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                var result = await _userManager.CreateAsync(user, model.password);
+        //                if (result.Succeeded)
+        //                {
+
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+        //                    }
+
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Affilate))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Affilate));
+        //                    }
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Customer))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
+        //                    }
+        //                    //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+        //                    if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+        //                    {
+        //                        await _userManager.AddToRoleAsync(user, SD.Role_Affilate);
+        //                    }
+        //                    else
+        //                    {
+        //                        await _userManager.AddToRoleAsync(user, SD.Role_Customer);
+        //                    }
+
+        //                    //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
+        //                    return Ok(user);
+        //                }
+        //                return Ok();
+        //                //  var postId = await _AffiltateRegistrationService.CreateAsync(obj);
+        //                //    int id = Convert.ToInt32(postId);
+        //                //if (id < 0)
+        //                //{
+        //                //    return BadRequest();
+        //                //}
+        //                //else
+        //                //{
+        //                //    var customer1 = _AffiltateRegistrationService.GetById(id);
+        //                //    return Ok(customer1);
+        //                //}
+
+        //            }
+
+
+        //        }
+        //        catch (Exception a)
+        //        {
+
+        //            return BadRequest();
+        //        }
+
+        //        //}
+        //    }
+        //    else
+        //    {
+        //        return BadRequest("Duplicate Mobile No");
+        //    }
+
+
+        //}
         [HttpPost]
         [Route("SaveUser")]
         public async Task<IActionResult> SaveUser(ApplicationUserSaveModelDtos model)
@@ -168,121 +384,19 @@ namespace plathora.API
          name = model.name,
                     UserName=model.mobileno1,
         // profilephoto = model.pro
-         PhoneNumber = model.mobileno1,
-         mobileno2 = model.mobileno2,
+         PhoneNumber = model.mobileno1,        
          Email  = model.emailid1,
-         emailid2 = model.emailid2,
-         adharcardno = model.adharcardno,
-        // adharcardphoto = model.
-
-         pancardno = model.pancardno,
-         //pancardphoto = model.
-         //password = model.password,
+         emailid2 = model.emailid2, 
          gender = model.gender,
          DOB = model.DOB,
          createddate =DateTime.Now,
-         house = model.house,
-         landmark = model.landmark,
-         street = model.street,
-         
-         cityid = model.cityid ,
-         zipcode = model.zipcode,
-
-         latitude = model.latitude,
-         longitude = model.longitude ,
-         companyName = model.companyName,
-         designation = model.designation,
-         gstno = model.gstno,
-         Website = model.Website,
-
-
-         bankname = model.bankname,
-         accountname = model.accountname,
-         accountno = model.accountno,
-         ifsccode = model.ifsccode,
-         branch = model.branch,
-         //passbookphoto = model.pas
-         Membershipid = model.Membershipid,
-         amount = model.amount,
-         registerbyAffilateID = model.registerbyAffilateID,
-         deviceid = model.deviceid 
+        
 
                 };
                 
 
 
-                if (model.profilephoto == null || model.profilephoto.Trim() == "")
-                {
-                    obj.profilephoto = "";
-                }
-                else
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
-                    if (!System.IO.Directory.Exists(folderPath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderPath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.profilephoto));
-                    user.profilephoto = "/uploads/user/profilephoto/" + fileName;
-
-                }
-                if (model.adharcardphoto == null || model.adharcardphoto.Trim() == "")
-                {
-                    obj.adharcardphoto = "";
-                }
-                else
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\adharcardphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderPath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.adharcardphoto));
-                    user.adharcardphoto = "/uploads/user/adharcardphoto/" + fileName;
-
-                }
-                if (model.pancardphoto == null || model.pancardphoto.Trim() == "")
-                {
-                    obj.pancardphoto = "";
-                }
-                else
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\pancardphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderPath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
-                    user.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
-
-                }
-                if (model.passbookphoto == null || model.passbookphoto.Trim() == "")
-                {
-                    obj.passbookphoto = "";
-                }
-                else
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderPath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.passbookphoto));
-                    user.passbookphoto = "/uploads/user/passbookphoto/" + fileName;
-
-                }
+              
                 //if (ModelState.IsValid)
                 //{
                 try
@@ -343,26 +457,31 @@ namespace plathora.API
                 catch (Exception a)
                 {
 
-                    return BadRequest();
+                    string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                    return BadRequest(myJson);
+
                 }
 
                 //}
             }
             else
             {
-                return BadRequest("Duplicate Mobile No");
+
+                string myJson = "{\"Message\": " + "\"Duplicate Mobile No\"" + "}";
+                return BadRequest(myJson);
+               
             }
 
             
         }
         [HttpPut]
         [Route("updateUser")]
-        public async Task<IActionResult> updateUser(ApplicationUserSaveModelDtos model)
+        public async Task<IActionResult> updateUser(ApplicationUserEditModelDtos model)
         {
 
-            var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1 && x.Id == model.id);               
-                
-            if (checkduplicate!= null)
+            var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1 && x.Id == model.id);
+
+            if (checkduplicate != null)
             {
                 var affilatereg = _db.applicationUsers.FirstOrDefault(u => u.Id == model.id);
                 if (affilatereg == null)
@@ -403,10 +522,10 @@ namespace plathora.API
                 affilatereg.amount = model.amount;
 
 
-                
+
                 if (model.profilephoto != null && model.profilephoto.Length > 0)
                 {
-                   
+
                     string fileName = Guid.NewGuid().ToString();
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
                     var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
@@ -419,7 +538,7 @@ namespace plathora.API
 
                 }
                 if (model.adharcardphoto != null && model.adharcardphoto.Length > 0)
-                { 
+                {
 
                     string fileName = Guid.NewGuid().ToString();
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
@@ -434,7 +553,7 @@ namespace plathora.API
                 }
                 if (model.pancardphoto != null && model.pancardphoto.Length > 0)
                 {
-                   
+
 
                     string fileName = Guid.NewGuid().ToString();
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
@@ -444,12 +563,12 @@ namespace plathora.API
                         System.IO.Directory.CreateDirectory(folderPath);
                     }
                     System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
-                    affilatereg .pancardphoto = "/uploads/user/pancardphoto/" + fileName;
+                    affilatereg.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
 
                 }
                 if (model.passbookphoto != null && model.passbookphoto.Length > 0)
                 {
-                    
+
                     string fileName = Guid.NewGuid().ToString();
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
                     var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
@@ -466,11 +585,12 @@ namespace plathora.API
                 {
                     return Ok(affilatereg);
                 }
-                 
+
             }
             else
             {
-                return BadRequest("Not Found");
+                string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                return NotFound(myJson);
             }
 
             return BadRequest();
@@ -491,13 +611,15 @@ namespace plathora.API
                
                 if (result.IsLockedOut)
                 {
-                    return BadRequest("User account locked out.");
-                   
+                     
+                    string myJson = "{\"Message\": " + "\"User account locked out.\"" + "}";
+                    return BadRequest(myJson);
                 }
                 else
                 {
-                    return BadRequest("Invalid login attempt.");
-                    
+                   
+                    string myJson = "{\"Message\": " + "\"Invalid login attempt.\"" + "}";
+                    return BadRequest(myJson);
                 }
 
                 
@@ -505,7 +627,8 @@ namespace plathora.API
             }
             catch
             {
-                return BadRequest();
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
             }
         }
         [HttpPut]
@@ -515,7 +638,8 @@ namespace plathora.API
             var customer = _db.applicationUsers.Where(x => x.Id == id).FirstOrDefault();
             if (customer == null)
             {
-                return NotFound();
+                string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                return NotFound(myJson);
             }
             else
             {
@@ -528,7 +652,8 @@ namespace plathora.API
                 else
                 {
 
-                    return NotFound();
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound (myJson);
                 }
             }
 

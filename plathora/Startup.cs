@@ -82,6 +82,8 @@ namespace plathora
             services.AddScoped<IbusinessratingsServices, businessratingsServices>();
             services.AddScoped<ItblfeedbackServices, tblfeedbackServices>();
             services.AddScoped<IsocialdetailsServices, socialdetailsServices>();
+
+            services.AddScoped<ISubscribeServices, SubscribeServices>();
             services.AddRazorPages();
             services.ConfigureApplicationCookie(options =>
             {
