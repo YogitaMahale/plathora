@@ -12,6 +12,7 @@ using plathora.Utility;
 using plathora.Services;
 using Dapper;
 using plathora.Models.Dtos;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace plathora.Controllers
 {
@@ -26,7 +27,7 @@ namespace plathora.Controllers
             //_logger = logger;
             _sP_Call = sP_Call;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             try
@@ -35,22 +36,11 @@ namespace plathora.Controllers
 
                 var parameter = new DynamicParameters();
               //  parameter.Add("@businessid", businessid);
-
-
-                var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
-                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
-                if (obj == null)
-                {
-
-                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
-                    return NotFound(myJson);
-                }
-                else
-                {
-
-                    return Ok(obj);
-                }
-
+               // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
+                IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+                  
+                return View(obj);
+              
 
             }
             catch (Exception obj)
@@ -59,7 +49,17 @@ namespace plathora.Controllers
             }
             return View();
         }
+        
+        [HttpGet]
+        public IActionResult business(string  id)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@Id", id);
 
+            getBusinessAllInfo obj = _sP_Call.OneRecord<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+
+            return View(obj);
+        }
         public IActionResult Privacy()
         {
             return View();

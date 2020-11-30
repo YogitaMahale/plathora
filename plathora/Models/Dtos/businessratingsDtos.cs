@@ -8,7 +8,7 @@ namespace plathora.Models.Dtos
     public class businessratingsDtos
     {
 
-        public int? CustomerId { get; set; }
+        public string? CustomerId { get; set; }
         public int? BusinessOwnerId { get; set; }
 
         public string rating { get; set; }

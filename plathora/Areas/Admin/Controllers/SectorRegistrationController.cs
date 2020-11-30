@@ -35,7 +35,8 @@ namespace plathora.Controllers
             var countrydetails = _SectorRegistrationServices.GetAll().Select(x => new SectorRegistrationIndexViewModel
             {
                 id = x.id,
-                name=x.name,img=x.img
+                name=x.name,img=x.img,
+                photo=x.photo
 
             }).ToList();
             return View(countrydetails);
@@ -61,7 +62,8 @@ namespace plathora.Controllers
                     name = model.name,
                      
                     isdeleted = false,
-                    isactive = false
+                    isactive = false,
+                   
                 };
                 if (model.img  != null && model.img.Length > 0)
                 {
@@ -73,6 +75,18 @@ namespace plathora.Controllers
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
                     await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
                     objcountry.img = '/' + uploadDir + '/' + fileName;
+
+                }
+                if (model.photo != null && model.photo.Length > 0)
+                {
+                    var uploadDir = @"uploads/sector";
+                    var fileName = Path.GetFileNameWithoutExtension(model.photo.FileName);
+                    var extesion = Path.GetExtension(model.photo.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.photo.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objcountry.photo = '/' + uploadDir + '/' + fileName;
 
                 }
                 await _SectorRegistrationServices.CreateAsync(objcountry);
@@ -95,7 +109,8 @@ namespace plathora.Controllers
             var model = new SectorRegistrationEditViewModel
             {
                 id = objcountry.id,
-                name = objcountry.name,
+                name = objcountry.name
+               
 
             };
             return View(model);
@@ -127,7 +142,18 @@ namespace plathora.Controllers
                     objcountry.img = '/' + uploadDir + '/' + fileName;
 
                 }
+                if (model.photo != null && model.photo.Length > 0)
+                {
+                    var uploadDir = @"uploads/sector";
+                    var fileName = Path.GetFileNameWithoutExtension(model.photo.FileName);
+                    var extesion = Path.GetExtension(model.photo.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.photo.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objcountry.photo = '/' + uploadDir + '/' + fileName;
 
+                }
                 await _SectorRegistrationServices.UpdateAsync(objcountry);
                 return RedirectToAction(nameof(Index));
             }

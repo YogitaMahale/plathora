@@ -44,7 +44,7 @@ namespace plathora.Models.Dtos
         public string ifsccode { get; set; }
         public string branch { get; set; }
         public string passbookphoto { get; set; }
-        public int Membershipid { get; set; }
+        public int? Membershipid { get; set; }
         public string amount { get; set; }
         public string registerbyAffilateID { get; set; }
         public string deviceid { get; set; }

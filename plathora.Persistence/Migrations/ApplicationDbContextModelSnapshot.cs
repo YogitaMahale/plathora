@@ -859,6 +859,9 @@ namespace plathora.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("id");
 
                     b.ToTable("SectorRegistration");
@@ -1023,8 +1026,8 @@ namespace plathora.Persistence.Migrations
                     b.Property<int?>("BusinessOwnerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("comment")
                         .HasColumnType("nvarchar(max)");

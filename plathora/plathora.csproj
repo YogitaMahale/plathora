@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\Controllers\BusinessOwnerController.cs" />
+    <Compile Remove="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Remove="Areas\Identity\Pages\Account\EditRegister.cshtml.cs" />
     <Compile Remove="Controllers\CustomerAPIController.cs" />
   </ItemGroup>

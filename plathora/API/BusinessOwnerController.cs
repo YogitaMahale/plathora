@@ -688,8 +688,13 @@ namespace plathora.API
     {
         try
         {
-            var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid).ToList();
-            if (obj != null)
+                var parameter = new DynamicParameters();
+                parameter.Add("@Id", customerid);
+
+                var obj = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+
+                // var obj = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == customerid).ToList();
+                if (obj != null)
             {
                 return Ok(obj);
             }

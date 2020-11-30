@@ -72,7 +72,7 @@ namespace plathora.Entity
         public string passbookphoto { get; set; }
         //----affliate membership
         [ForeignKey("Membership")]
-        public int? Membershipid { get; set; } 
+        public int? Membershipid { get; set; } = null;
         public Membership Membership { get; set; }
 
 

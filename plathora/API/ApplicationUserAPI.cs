@@ -483,108 +483,117 @@ namespace plathora.API
 
             if (checkduplicate != null)
             {
-                var affilatereg = _db.applicationUsers.FirstOrDefault(u => u.Id == model.id);
-                if (affilatereg == null)
+                try
                 {
-                    return NotFound();
-                }
-
-                affilatereg.Id = model.id;
-                affilatereg.name = model.name;
-                //profilephoto,
-                affilatereg.PhoneNumber = model.mobileno1;
-                affilatereg.mobileno2 = model.mobileno2;
-                affilatereg.Email = model.emailid1;
-                affilatereg.emailid2 = model.emailid2;
-                affilatereg.adharcardno = model.adharcardno;
-                //adharcardphoto,
-                affilatereg.pancardno = model.pancardno;
-                // pancardphoto,
-
-                affilatereg.gender = model.gender;
-                affilatereg.DOB = model.DOB;
-                //   affilatereg.createddate = model.createddate;
-                affilatereg.house = model.house;
-                affilatereg.landmark = model.landmark;
-                affilatereg.street = model.street;
-                affilatereg.cityid = model.cityid;
-                affilatereg.companyName = model.companyName;
-                affilatereg.designation = model.designation;
-                affilatereg.gstno = model.gstno;
-                affilatereg.Website = model.Website;
-                affilatereg.bankname = model.bankname;
-                affilatereg.accountname = model.accountname;
-
-                affilatereg.accountno = model.accountno;
-                affilatereg.ifsccode = model.ifsccode;
-                affilatereg.branch = model.branch;
-                affilatereg.Membershipid = model.Membershipid;
-                affilatereg.amount = model.amount;
-
-
-
-                if (model.profilephoto != null && model.profilephoto.Length > 0)
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
-                    if (!System.IO.Directory.Exists(folderPath))
+                    var affilatereg = _db.applicationUsers.FirstOrDefault(u => u.Id == model.id);
+                    if (affilatereg == null)
                     {
-                        System.IO.Directory.CreateDirectory(folderPath);
+                        return NotFound();
                     }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.profilephoto));
-                    affilatereg.profilephoto = "/uploads/user/profilephoto/" + fileName;
 
-                }
-                if (model.adharcardphoto != null && model.adharcardphoto.Length > 0)
-                {
+                    affilatereg.Id = model.id;
+                    affilatereg.name = model.name;
+                    //profilephoto,
+                    affilatereg.PhoneNumber = model.mobileno1;
+                    affilatereg.mobileno2 = model.mobileno2;
+                    affilatereg.Email = model.emailid1;
+                    affilatereg.emailid2 = model.emailid2;
+                    affilatereg.adharcardno = model.adharcardno;
+                    //adharcardphoto,
+                    affilatereg.pancardno = model.pancardno;
+                    // pancardphoto,
 
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\adharcardphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
+                    affilatereg.gender = model.gender;
+                    affilatereg.DOB = model.DOB;
+                    //   affilatereg.createddate = model.createddate;
+                    affilatereg.house = model.house;
+                    affilatereg.landmark = model.landmark;
+                    affilatereg.street = model.street;
+                    affilatereg.cityid = model.cityid;
+                    affilatereg.companyName = model.companyName;
+                    affilatereg.designation = model.designation;
+                    affilatereg.gstno = model.gstno;
+                    affilatereg.Website = model.Website;
+                    affilatereg.bankname = model.bankname;
+                    affilatereg.accountname = model.accountname;
+
+                    affilatereg.accountno = model.accountno;
+                    affilatereg.ifsccode = model.ifsccode;
+                    affilatereg.branch = model.branch;
+                    affilatereg.Membershipid = model.Membershipid;
+                    affilatereg.amount = model.amount;
+
+
+
+                    if (model.profilephoto != null && model.profilephoto.Length > 0)
                     {
-                        System.IO.Directory.CreateDirectory(folderPath);
+
+                        string fileName = Guid.NewGuid().ToString();
+                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+                        var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
+                        if (!System.IO.Directory.Exists(folderPath))
+                        {
+                            System.IO.Directory.CreateDirectory(folderPath);
+                        }
+                        System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.profilephoto));
+                        affilatereg.profilephoto = "/uploads/user/profilephoto/" + fileName;
+
                     }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.adharcardphoto));
-                    affilatereg.adharcardphoto = "/uploads/user/adharcardphoto/" + fileName;
-
-                }
-                if (model.pancardphoto != null && model.pancardphoto.Length > 0)
-                {
-
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\pancardphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
+                    if (model.adharcardphoto != null && model.adharcardphoto.Length > 0)
                     {
-                        System.IO.Directory.CreateDirectory(folderPath);
+
+                        string fileName = Guid.NewGuid().ToString();
+                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+                        var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\adharcardphoto";
+                        if (!System.IO.Directory.Exists(folderPath))
+                        {
+                            System.IO.Directory.CreateDirectory(folderPath);
+                        }
+                        System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.adharcardphoto));
+                        affilatereg.adharcardphoto = "/uploads/user/adharcardphoto/" + fileName;
+
                     }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
-                    affilatereg.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
-
-                }
-                if (model.passbookphoto != null && model.passbookphoto.Length > 0)
-                {
-
-                    string fileName = Guid.NewGuid().ToString();
-                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-                    var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
-                    if (!System.IO.Directory.Exists(folderPath))
+                    if (model.pancardphoto != null && model.pancardphoto.Length > 0)
                     {
-                        System.IO.Directory.CreateDirectory(folderPath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.passbookphoto));
-                    affilatereg.passbookphoto = "/uploads/user/passbookphoto/" + fileName;
 
+
+                        string fileName = Guid.NewGuid().ToString();
+                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+                        var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\pancardphoto";
+                        if (!System.IO.Directory.Exists(folderPath))
+                        {
+                            System.IO.Directory.CreateDirectory(folderPath);
+                        }
+                        System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
+                        affilatereg.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
+
+                    }
+                    if (model.passbookphoto != null && model.passbookphoto.Length > 0)
+                    {
+
+                        string fileName = Guid.NewGuid().ToString();
+                        fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
+                        var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
+                        if (!System.IO.Directory.Exists(folderPath))
+                        {
+                            System.IO.Directory.CreateDirectory(folderPath);
+                        }
+                        System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.passbookphoto));
+                        affilatereg.passbookphoto = "/uploads/user/passbookphoto/" + fileName;
+
+                    }
+                    var result = await _userManager.UpdateAsync(affilatereg);
+                    if (result.Succeeded)
+                    {
+                        return Ok(affilatereg);
+                    }
                 }
-                var result = await _userManager.UpdateAsync(affilatereg);
-                if (result.Succeeded)
+                catch(Exception obj)
                 {
-                    return Ok(affilatereg);
+
+                    string ff = obj.Message.ToString();
                 }
+              
 
             }
             else

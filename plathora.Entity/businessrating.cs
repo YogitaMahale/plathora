@@ -9,7 +9,7 @@ namespace plathora.Entity
     {
         public int id { get; set; }
 
-        public int? CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public int? BusinessOwnerId { get; set; }
 
         public string rating { get; set; }

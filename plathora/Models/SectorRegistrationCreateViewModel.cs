@@ -15,7 +15,7 @@ namespace plathora.Models
         public string name { get; set; }
 
         public IFormFile img { get; set; }
-
+        public IFormFile photo { get; set; }
         public Boolean isdeleted { get; set; }
 
         public Boolean isactive { get; set; }

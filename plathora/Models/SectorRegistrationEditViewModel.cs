@@ -15,6 +15,6 @@ namespace plathora.Models
         public string name { get; set; }
 
         public IFormFile img { get; set; }
-
+        public IFormFile photo { get; set; }
     }
 }

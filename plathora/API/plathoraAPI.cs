@@ -1354,6 +1354,40 @@ namespace plathora.API
                 return BadRequest();
             }
         }
+        [HttpGet]
+        [Route("test")]
+        public async Task<IActionResult> test()
+        {
+            try
+            {
 
+
+                var parameter = new DynamicParameters();
+            //    parameter.Add("@name", name);
+
+                var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", parameter);
+                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+                if (obj == null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(obj);
+                }
+
+
+            }
+            catch (Exception obj)
+            {
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
+            }
+
+        }
     }
 }

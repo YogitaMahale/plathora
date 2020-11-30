@@ -13,7 +13,7 @@ namespace plathora.Entity
         [Required]
         public string name { get; set; }
         public string img { get; set; }
-
+        public string photo { get; set; }
 
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }
