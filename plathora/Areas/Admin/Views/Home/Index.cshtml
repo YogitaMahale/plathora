@@ -1,11 +1,11 @@
 ﻿
-@model  IEnumerable< plathora.Models.Dtos.selectallBusinessDetailsDtos>
-    @{
-        ViewData["Title"] = "Home Page";
-        Layout = "~/Views/Shared/_front.cshtml";
-        // Layout = "~/Views/Shared/_front.cshtml";
-    }
-
+@model IEnumerable<plathora.Models.Dtos.selectallBusinessDetailsDtos>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_front.cshtml";
+    // Layout = "~/Views/Shared/_front.cshtml";
+}
+ 
     <!--Sliders Section-->
     <div>
         <div class="cover-image sptb-4 sptb-tab bg-background2" data-image-src="~/Bizdire/LTR/assets/images/banners/banner2.jpg">
@@ -18,52 +18,52 @@
                         <p class="fs-18 font-weight-light">It is a long established fact that a reader will be distracted by the readable.</p>
                     </div>
                     @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
-                    {
-                <div class="row">
-                    <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                        <div class="search-background py-3 px-4">
-                            <div class="form row row-sm">
+                        {
+                    <div class="row">
+                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                            <div class="search-background py-3 px-4">
+                                <div class="form row row-sm">
 
 
 
-                                <div class="form-group col-xl-4 col-lg-3 col-md-12 mb-0">
-                                    <input id="txtsearch" name="txtsearch" type="text" class="form-control input-lg keywords-input border-white" placeholder="Phrase or Keywords">
+                                    <div class="form-group col-xl-4 col-lg-3 col-md-12 mb-0">
+                                        <input id="txtsearch" name="txtsearch" type="text" class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
+                                    </div>
+                                    <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0" style="display:none;">
+                                        <input type="text" class="form-control input-lg location-input border-white" placeholder="Enter Location">
+                                        <span><img src="~/Bizdire/LTR/assets/images/svgs/gps.svg" class="location-gps" alt="img"></span>
+                                    </div>
+                                    <div class="form-group col-xl-3 col-lg-3 col-md-12 select2-lg mb-0 border-white">
+                                        <select class="form-control select2-show-search  border-bottom-0" data-placeholder="Select Category">
+                                            <optgroup label="Categories">
+                                                <option>Select Category</option>
+                                                <option value="0">All Categories</option>
+                                                <option value="1">Hotels</option>
+                                                <option value="2">Restaurant</option>
+                                                <option value="3">Events</option>
+                                                <option value="4">Cinema</option>
+                                                <option value="5">Gym</option>
+                                                <option value="6">Shop & Store</option>
+                                                <option value="7">Tours & Travels</option>
+                                                <option value="8">Cafe</option>
+                                                <option value="9">Mobile Store</option>
+                                                <option value="10">College</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-12 mb-0">
+                                        <button type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
+
+                                        @*<a href="#" class="btn btn-lg btn-block btn-secondary">Search Here</a>*@
+                                    </div>
+
                                 </div>
-                                <div class="form-group col-xl-3 col-lg-3 col-md-12 mb-0">
-                                    <input type="text" class="form-control input-lg location-input border-white" placeholder="Enter Location">
-                                    <span><img src="~/Bizdire/LTR/assets/images/svgs/gps.svg" class="location-gps" alt="img"></span>
-                                </div>
-                                <div class="form-group col-xl-3 col-lg-3 col-md-12 select2-lg mb-0 border-white">
-                                    <select class="form-control select2-show-search  border-bottom-0" data-placeholder="Select Category">
-                                        <optgroup label="Categories">
-                                            <option>Select Category</option>
-                                            <option value="0">All Categories</option>
-                                            <option value="1">Hotels</option>
-                                            <option value="2">Restaurant</option>
-                                            <option value="3">Events</option>
-                                            <option value="4">Cinema</option>
-                                            <option value="5">Gym</option>
-                                            <option value="6">Shop & Store</option>
-                                            <option value="7">Tours & Travels</option>
-                                            <option value="8">Cafe</option>
-                                            <option value="9">Mobile Store</option>
-                                            <option value="10">College</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <div class="col-xl-2 col-lg-3 col-md-12 mb-0">
-                                    <button type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
-
-                                    @*<a href="#" class="btn btn-lg btn-block btn-secondary">Search Here</a>*@
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
                     }
-                        
-                    </div>
+
+                </div>
             </div><!-- /header-text -->
         </div>
     </div>
@@ -100,7 +100,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M396.815,165.667h-33.132c-4.143,0-7.5,3.358-7.5,7.5v33.131c0,4.142,3.357,7.5,7.5,7.5h33.132c4.143,0,7.5-3.358,7.5-7.5   v-33.131C404.315,169.024,400.958,165.667,396.815,165.667z M389.315,198.798h-18.132v-18.131h18.132V198.798z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +164,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M396.815,331.333h-33.132c-4.143,0-7.5,3.358-7.5,7.5v33.132c0,4.142,3.357,7.5,7.5,7.5h33.132c4.143,0,7.5-3.358,7.5-7.5   v-33.132C404.315,334.691,400.958,331.333,396.815,331.333z M389.315,364.465h-18.132v-18.132h18.132V364.465z" />
 
 
@@ -148,7 +196,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M396.815,414.167h-33.132c-4.143,0-7.5,3.358-7.5,7.5v33.131c0,4.142,3.357,7.5,7.5,7.5h33.132c4.143,0,7.5-3.358,7.5-7.5   v-33.131C404.315,417.524,400.958,414.167,396.815,414.167z M389.315,447.298h-18.132v-18.131h18.132V447.298z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -527,302 +607,302 @@
                 <!-- Wrapper for carousel items -->
                 @foreach (var obj in Model)
                 {
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-danger">Open</div>
-                        <div class="item-card7-imgs">
-                            
-                                <img asp-area="Admin" asp-controller="Home" asp-action="business"  asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
-                             
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a  asp-area="Admin" asp-controller="Home" asp-action="business"  asp-route-id="@obj.Id"  class="text-white">@obj.name </a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a  asp-area="Admin" asp-controller="Home" asp-action="business"  asp-route-id="@obj.Id"  class="text-dark"><h4 class="">@obj.name</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    @*<li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 12 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> Canada</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 1 hour ago</a></li>*@
-                                    <li class="mb-0"><a  asp-area="Admin" asp-controller="Home" asp-action="business"  asp-route-id="@obj.Id"  class="icons"><i class="icon icon-phone text-muted mr-1"></i> @obj.PhoneNumber</a></li>
-                                </ul>
-                                <p class="mb-0">@obj.description</p>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-danger">Open</div>
+                            <div class="item-card7-imgs">
+
+                                <img asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
+
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="@obj.profilephoto" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Victoria<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                            <div class="item-card7-overlaytext">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-dark"><h4 class="">@obj.name</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        @*<li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 12 Views</span></a></li>
+                                            <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> Canada</a></li>
+                                            <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 1 hour ago</a></li>*@
+                                        <li class="mb-0"><a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="icons"><i class="icon icon-phone text-muted mr-1"></i> @obj.PhoneNumber</a></li>
+                                    </ul>
+                                    <p class="mb-0">@obj.description</p>
                                 </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="@obj.profilephoto" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Victoria<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
                 @*<div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/h3.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> RealEstate</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a href="business.html" class="text-dark"><h4 class="">2Bk Deluxe Flat</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 9 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 2 hours ago</a></li>
-                                    <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 358 96584</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/h3.jpg" alt="img" class="cover-image">
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/male/17.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Christopher<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> RealEstate</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a href="business.html" class="text-dark"><h4 class="">2Bk Deluxe Flat</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 9 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 2 hours ago</a></li>
+                                        <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 358 96584</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-purple">Featured</div>
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/v4.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> AutoMobile</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a href="business.html" class="text-dark"><h4 class="">Gittbo AutoMobiles</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> London</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
-                                    <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 12 654 86596</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/male/18.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Wendy	Peake<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/male/17.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Christopher<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-success">Open</div>
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/f2.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> Restaurant</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a href="business.html" class="text-dark"><h4 class="">Chinese Restaurant</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 12 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> UK</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 1 hours ago</a></li>
-                                    <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-purple">Featured</div>
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/v4.jpg" alt="img" class="cover-image">
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/female/12.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Wendy	Peake<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> AutoMobile</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a href="business.html" class="text-dark"><h4 class="">Gittbo AutoMobiles</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> London</a></li>
+                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
+                                        <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 12 654 86596</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-primary">New</div>
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/j3.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> Beauty</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text  d-flex">
-                                    <a href="business.html" class="text-dark"><h4 class="">FrogeBeauty & Spa</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/female/19.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Elizabeth<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/male/18.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Wendy	Peake<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-info">Closed</div>
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/h2.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> RealEstate</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text  d-flex">
-                                    <a href="business.html" class="text-dark"><h4 class="">2Bk DeluxRooms</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 632 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 22 hours ago</a></li>
-                                    <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-success">Open</div>
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/f2.jpg" alt="img" class="cover-image">
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/male/19.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Joshua Dickens<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> Restaurant</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a href="business.html" class="text-dark"><h4 class="">Chinese Restaurant</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 12 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> UK</a></li>
+                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 1 hours ago</a></li>
+                                        <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="arrow-ribbon bg-warning">open</div>
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/f1.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> Restaurant</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a href="business.html" class="text-dark"><h4 class="">Chinese Restaurant</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/female/12.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Ryan Lyman<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
-                                </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/female/12.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Wendy	Peake<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card mb-0 overflow-hidden">
-                        <div class="item-card7-imgs">
-                            <a href="business.html"></a>
-                            <img src="~/Bizdire/LTR/assets/images/products/products/v3.jpg" alt="img" class="cover-image">
-                        </div>
-                        <div class="item-card7-overlaytext">
-                            <a href="business.html" class="text-white"> AutoMobile</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="item-card7-desc">
-                                <div class="item-card7-text">
-                                    <a href="business.html" class="text-dark"><h4 class="">Gittbo AutoMobiles</h4></a>
-                                </div>
-                                <ul class="item-cards7-ic mb-0">
-                                    <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 62 Views</span></a></li>
-                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 22 hours ago</a></li>
-                                    <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 85742</a></li>
-                                </ul>
-                                <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-primary">New</div>
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/j3.jpg" alt="img" class="cover-image">
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="footerimg d-flex mt-0 mb-0">
-                                <div class="d-flex footerimg-l mb-0">
-                                    <img src="~/Bizdire/LTR/assets/images/faces/male/8.jpg" alt="image" class="avatar brround  mr-2">
-                                    <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Joan Hunter<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> Beauty</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text  d-flex">
+                                        <a href="business.html" class="text-dark"><h4 class="">FrogeBeauty & Spa</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
                                 </div>
-                                <div class="mt-2 footerimg-r ml-auto">
-                                    <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/female/19.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Elizabeth<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>*@
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-info">Closed</div>
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/h2.jpg" alt="img" class="cover-image">
+                            </div>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> RealEstate</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text  d-flex">
+                                        <a href="business.html" class="text-dark"><h4 class="">2Bk DeluxRooms</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 632 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 22 hours ago</a></li>
+                                        <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/male/19.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Joshua Dickens<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="arrow-ribbon bg-warning">open</div>
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/f1.jpg" alt="img" class="cover-image">
+                            </div>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> Restaurant</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a href="business.html" class="text-dark"><h4 class="">Chinese Restaurant</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 22 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 5 hours ago</a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 65430</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/female/12.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Ryan Lyman<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="card mb-0 overflow-hidden">
+                            <div class="item-card7-imgs">
+                                <a href="business.html"></a>
+                                <img src="~/Bizdire/LTR/assets/images/products/products/v3.jpg" alt="img" class="cover-image">
+                            </div>
+                            <div class="item-card7-overlaytext">
+                                <a href="business.html" class="text-white"> AutoMobile</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="item-card7-desc">
+                                    <div class="item-card7-text">
+                                        <a href="business.html" class="text-dark"><h4 class="">Gittbo AutoMobiles</h4></a>
+                                    </div>
+                                    <ul class="item-cards7-ic mb-0">
+                                        <li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 62 Views</span></a></li>
+                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 22 hours ago</a></li>
+                                        <li class="mb-0"><a href="#" class="icons"><i class="icon icon-phone text-muted mr-1"></i> 14 675 85742</a></li>
+                                    </ul>
+                                    <p class="mb-0">Omnis iste natus error sit dolore dg voluptatem accusantium</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="footerimg d-flex mt-0 mb-0">
+                                    <div class="d-flex footerimg-l mb-0">
+                                        <img src="~/Bizdire/LTR/assets/images/faces/male/8.jpg" alt="image" class="avatar brround  mr-2">
+                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Joan Hunter<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    </div>
+                                    <div class="mt-2 footerimg-r ml-auto">
+                                        <a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
             </div>
         </div>
     </section>

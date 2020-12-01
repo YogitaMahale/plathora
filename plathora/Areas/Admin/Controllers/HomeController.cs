@@ -33,8 +33,8 @@ namespace plathora.Controllers
             try
             {
 
-
-                var parameter = new DynamicParameters();
+              //  ViewBag.search = txtsearch;
+                 var parameter = new DynamicParameters();
                 //  parameter.Add("@businessid", businessid);
                 // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
                 IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
@@ -51,8 +51,26 @@ namespace plathora.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string txtsearch)
+        [ActionName("Index")]
+        public IActionResult Index1(string txtsearch)
         {
+            try
+            {
+                ViewBag.search = txtsearch;
+
+                var parameter = new DynamicParameters();
+                //  parameter.Add("@businessid", businessid);
+                // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
+                IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+
+                return View(obj);
+
+
+            }
+            catch (Exception obj)
+            {
+
+            }
             return View();
         }
 
