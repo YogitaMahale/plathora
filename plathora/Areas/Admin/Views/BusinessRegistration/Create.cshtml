@@ -24,7 +24,7 @@
                     <option selected>--- Select Sector ---</option>
                 </select>
                 <span asp-validation-for="sectorid" class="text-danger"></span>
-            </div><br /> 
+            </div><br />
             <div class="form-row">
                 <label asp-for="name"></label>
                 <input asp-for="name" class="form-control" placeholder="Enter Business Name.." />
@@ -45,7 +45,18 @@
                     </div>
                 </div>
             </div>
-
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label asp-for="photo"></label>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="btn btn-primary btn-icon-text">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <input asp-for="photo" type="file" value="Upload" />
+                        <span asp-validation-for="photo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
 

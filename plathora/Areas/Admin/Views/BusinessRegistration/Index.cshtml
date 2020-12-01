@@ -22,6 +22,7 @@
                                 <tr>
                                     <th>Sector Name</th>
                                     <th>Business Name</th>
+                                    <th>Icon</th>
                                     <th>Image</th>
                                     <th class="text-warning">Actions</th>
                                 </tr>
@@ -39,6 +40,9 @@
                                     </td>
                                     <td>
                                         <img alt="image" src="@Url.Content(item.img)" />
+                                    </td>
+                                    <td>
+                                        <img alt="image" src="@Url.Content(item.photo)" />
                                     </td>
                                     <td>
                                         <a class="text-success" asp-action="Edit" asp-route-id="@item.id">

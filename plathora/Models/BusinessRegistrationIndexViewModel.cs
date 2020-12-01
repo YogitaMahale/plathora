@@ -17,6 +17,7 @@ namespace plathora.Models
         
         public string name { get; set; }
         public string  img { get; set; }
+        public string photo { get; set; }
         public virtual SectorRegistration SectorRegistration { get; set; }
     }
 }

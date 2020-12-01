@@ -14,11 +14,16 @@ namespace plathora.Models
 
         [Required]
         public int sectorid { get; set; }
+        [Display(Name ="Name")]
         [Required(ErrorMessage = "Name is Required"), StringLength(500, MinimumLength = 3)]
-        [RegularExpression(@"^[a-zA-Z\s]+$"), Display(Name = "Name")]
+        [RegularExpression(@"^[a-zA-Z\s]+$")]
 
         public string name { get; set; }
+
+        [Display(Name = "Icon")]
         public IFormFile img { get; set; }
+        [Display(Name = "Image")]
+        public IFormFile photo { get; set; }
 
 
         public Boolean isdeleted { get; set; }

@@ -38,7 +38,8 @@ namespace plathora.Controllers
                 sectorid = x.sectorid,
                 name = x.name,
                 SectorRegistration = _SectorRegistrationServices.GetById(x.sectorid),
-                img=x.img
+                img=x.img,
+                photo=x.photo
 
             }).ToList();
             return View(statedetails);
@@ -77,6 +78,18 @@ namespace plathora.Controllers
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
                     await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
                     objcountry.img = '/' + uploadDir + '/' + fileName;
+
+                }
+                if (model.photo != null && model.photo.Length > 0)
+                {
+                    var uploadDir = @"uploads/business";
+                    var fileName = Path.GetFileNameWithoutExtension(model.photo.FileName);
+                    var extesion = Path.GetExtension(model.photo.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.photo.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objcountry.photo = '/' + uploadDir + '/' + fileName;
 
                 }
                 await _BusinessRegistrationServieces.CreateAsync(objcountry);
@@ -133,6 +146,18 @@ namespace plathora.Controllers
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
                     await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
                     objbusiness.img = '/' + uploadDir + '/' + fileName;
+
+                }
+                if (model.photo != null && model.photo.Length > 0)
+                {
+                    var uploadDir = @"uploads/business";
+                    var fileName = Path.GetFileNameWithoutExtension(model.photo.FileName);
+                    var extesion = Path.GetExtension(model.photo.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.photo.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objbusiness.photo = '/' + uploadDir + '/' + fileName;
 
                 }
                 await _BusinessRegistrationServieces.UpdateAsync(objbusiness);

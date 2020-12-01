@@ -13,8 +13,9 @@ namespace plathora.Models
         [Required]
         [Display(Name = "Sector Name")]
         public string name { get; set; }
-
+        [Display(Name = "Icon")]
         public IFormFile img { get; set; }
+        [Display(Name = "Image")]
         public IFormFile photo { get; set; }
         public Boolean isdeleted { get; set; }
 

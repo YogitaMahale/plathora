@@ -17,10 +17,10 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 namespace plathora.Controllers
 {
     [Area("Admin")]
-   // [Authorize(Roles = SD.Role_Admin)]
+    // [Authorize(Roles = SD.Role_Admin)]
     public class HomeController : Controller
     {
-       // private readonly ILogger<HomeController> _logger;
+        // private readonly ILogger<HomeController> _logger;
         private readonly ISP_Call _sP_Call;
         public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call)
         {
@@ -35,30 +35,47 @@ namespace plathora.Controllers
 
 
                 var parameter = new DynamicParameters();
-              //  parameter.Add("@businessid", businessid);
-               // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
+                //  parameter.Add("@businessid", businessid);
+                // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
                 IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                  
+
                 return View(obj);
-              
+
 
             }
             catch (Exception obj)
             {
-                
+
             }
             return View();
         }
-        
-        [HttpGet]
-        public IActionResult business(string  id)
+
+        [HttpPost]
+        public IActionResult Index(string txtsearch)
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult business(string id)
+        {
+
             var parameter = new DynamicParameters();
             parameter.Add("@Id", id);
 
             getBusinessAllInfo obj = _sP_Call.OneRecord<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+            if (obj == null)
+            {
+                return View();
+            }
+            else
+            {
+                return View(obj);
 
-            return View(obj);
+            }
+
+
+           
         }
         public IActionResult Privacy()
         {

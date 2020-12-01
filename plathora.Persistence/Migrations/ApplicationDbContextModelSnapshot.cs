@@ -618,6 +618,9 @@ namespace plathora.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("sectorid")
                         .HasColumnType("int");
 
