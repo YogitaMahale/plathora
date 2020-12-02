@@ -46,6 +46,9 @@ namespace plathora.Persistence
         public DbSet<tblfeedback> tblfeedback { get; set; }
         public DbSet<ApplicationUser> applicationUsers { get; set; }
         public DbSet<Subscribe> Subscribe { get; set; }
+
+        public DbSet<AboutUs> AboutUs { get; set; }
+        public DbSet<ContactUs> ContactUs  { get; set; }
         //public DbSet<AdvertiseDetails> advertiseDetails { get; set; }
         //public DbSet<Advadd-migrationertisementDetails> advertisementDetails { get; set; }
         //public DbSet<advertisementtest> advertisementtest { get; set; }

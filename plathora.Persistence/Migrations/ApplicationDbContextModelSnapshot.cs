@@ -221,6 +221,21 @@ namespace plathora.Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("plathora.Entity.AboutUs", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AboutUsText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("AboutUs");
+                });
+
             modelBuilder.Entity("plathora.Entity.Advertise", b =>
                 {
                     b.Property<int>("id")
@@ -656,6 +671,30 @@ namespace plathora.Persistence.Migrations
                     b.HasIndex("stateid");
 
                     b.ToTable("cityRegistrations");
+                });
+
+            modelBuilder.Entity("plathora.Entity.ContactUs", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mobileno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("plathora.Entity.CountryRegistration", b =>
