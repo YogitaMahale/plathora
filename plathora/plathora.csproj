@@ -59,6 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\AboutUs\Edit.cshtml" />
     <None Include="Areas\Admin\Views\slider\Create.cshtml" />
     <None Include="Areas\Admin\Views\slider\Edit.cshtml" />
     <None Include="Areas\Admin\Views\slider\Index.cshtml" />
