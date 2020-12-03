@@ -417,5 +417,25 @@ namespace plathora.Controllers
 
         }
 
+
+
+        public IActionResult SubscribeDetails(Subscribe obj)
+        {
+            return View();
+        }
+
+        //private void AddDetails(EmpModel obj)
+        //{
+        //    connection();
+        //    SqlCommand com = new SqlCommand("AddEmp", con);
+        //    com.CommandType = CommandType.StoredProcedure;
+        //    com.Parameters.AddWithValue("@Name", obj.Name);
+        //    com.Parameters.AddWithValue("@City", obj.City);
+        //    com.Parameters.AddWithValue("@Address", obj.Address);
+        //    con.Open();
+        //    com.ExecuteNonQuery();
+        //    con.Close();
+
+        //}
     }
 }
