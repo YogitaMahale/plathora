@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
+using plathora.Entity;
 
 namespace plathora.Controllers
 {
@@ -29,7 +30,9 @@ namespace plathora.Controllers
         private ISectorRegistrationServices _SectorRegistrationServices;
         private IBusinessRegistrationServieces _BusinessRegistrationServieces;
         private IProductMasterServices _productMasterServices;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices)
+        private IAboutUsServices _aboutUsServices;
+        private IContactUsServices _ContactUsServices;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices)
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -37,6 +40,8 @@ namespace plathora.Controllers
             _SectorRegistrationServices = SectorRegistrationServices;
             _BusinessRegistrationServieces = BusinessRegistrationServieces;
             _productMasterServices = productMasterServices;
+            _aboutUsServices = aboutUsServices;
+            _ContactUsServices = ContactUsServices;
         }
         [HttpGet]
         public IActionResult Index()
@@ -45,8 +50,8 @@ namespace plathora.Controllers
             {
                 frontwebsiteModel objmodel = new frontwebsiteModel();
 
-                 //  ViewBag.search = txtsearch;
-                 var parameter = new DynamicParameters();                
+                //  ViewBag.search = txtsearch;
+                var parameter = new DynamicParameters();
                 //IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
@@ -76,9 +81,9 @@ namespace plathora.Controllers
                 //  ViewBag.search = txtsearch;                var parameter = new DynamicParameters();
                 //IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                if(txtsearch==null||txtsearch.Trim()=="")
+                if (txtsearch == null || txtsearch.Trim() == "")
                 {
-                    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Where(x=>x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Where(x => x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                     {
                         id = x.id,
                         name = x.name,
@@ -98,7 +103,7 @@ namespace plathora.Controllers
 
                     }).ToList();
                 }
-                
+
                 //------------------------------------------------------------------------------------
                 /*
                 string connString = this.Configuration.GetConnectionString("DefaultConnection");
@@ -319,22 +324,24 @@ namespace plathora.Controllers
             }
 
 
-           
+
         }
 
         [HttpGet]
         public IActionResult businessDetails(int sectorid)
         {
-            var obj = _BusinessRegistrationServieces.GetAll().Where(x=>x.sectorid==sectorid&&x.isdeleted==false).Select(x => new BusinessRegistrationIndexViewModel
-            {
-                id = x.id,
-                sectorid = x.sectorid,
-                name = x.name,
-                SectorRegistration = _SectorRegistrationServices.GetById(x.sectorid),
-                img = x.img,
-                photo = x.photo
+            //var obj = _BusinessRegistrationServieces.GetAll().Where(x => x.sectorid == sectorid && x.isdeleted == false).Select(x => new BusinessRegistrationIndexViewModel
+            //{
+            //    id = x.id,
+            //    sectorid = x.sectorid,
+            //    name = x.name,
+            //    SectorRegistration = _SectorRegistrationServices.GetById(x.sectorid),
+            //    img = x.img,
+            //    photo = x.photo
 
-            }).ToList();
+            //}).ToList();
+            //return View(obj);
+            var obj = _BusinessRegistrationServieces.GetAll().Where(x => x.sectorid == sectorid && x.isdeleted == false).ToList();
             return View(obj);
         }
         [HttpGet]
@@ -363,12 +370,52 @@ namespace plathora.Controllers
         }
         public IActionResult about()
         {
-            return View();
+            AboutUs obj = _aboutUsServices.GetById(1);
+            return View(obj);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        [HttpGet]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(ContactUsViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var obj = new ContactUs
+                {
+                    id = model.id
+       ,
+                    name = model.name
+       ,
+                    Email  = model.Email
+       ,
+                    Mobileno = model.Mobileno
+       ,
+                    Address = model.Address
+         
+                };
+ 
+               Int32 id= await _ContactUsServices.CreateAsync(obj);
+                //var postId = await _CustomerRegistrationservices.CreateAsync(objcustomerRegistration);
+                return RedirectToAction(nameof(Index));
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
     }
 }

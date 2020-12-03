@@ -1,4 +1,4 @@
-﻿
+﻿@model plathora.Entity.AboutUs; 
 @{
     ViewData["Title"] = "about";
     Layout = "~/Views/Shared/_front.cshtml";
@@ -29,23 +29,24 @@
                 <div class="col-lg-6">
                     <h3 class="leading-normal">About Us</h3>
                     <p class="leading-normal fs-16">
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered  by injected humour, or randomised words which don't look even slightly believable.
-                        If you are going to use a passage of Lorem Ipsum
+                       @Model.AboutUsText
                     </p>
-                    <p class="leading-normal fs-16">It is a long established fact that a reader will be distracted by the readable of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                    <a class="btn btn-secondary btn-lg mt-2" href="">View More</a>
+                    @*<p class="leading-normal fs-16">It is a long established fact that a reader will be distracted by the readable of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <a class="btn btn-secondary btn-lg mt-2" href="">View More</a>*@
                 </div>
                 <div class="col-lg-6">
                     <div class="border-5 br-4 mt-5 mt-lg-0 overflow-hidden">
+
+                        
                         <div class="owl-carousel testimonial-owl-carousel31 mt-5 mt-lg-0 about-carousel">
                             <div class="item">
-                                <img src="../assets/images/products/products/h1.jpg" alt="img">
+                                <img src="~/Bizdire/LTR/assets/images/products/products/h1.jpg" alt="img">
                             </div>
                             <div class="item">
-                                <img src="../assets/images/products/products/h2.jpg" alt="img">
+                                <img src="~/Bizdire/LTR/assets/images/products/products/h2.jpg" alt="img">
                             </div>
                             <div class="item">
-                                <img src="../assets/images/products/products/h3.jpg" alt="img">
+                                <img src="~/Bizdire/LTR/assets/images/products/products/h3.jpg" alt="img">
                             </div>
                         </div>
                     </div>
@@ -56,7 +57,7 @@
 </section>
 <!--/section-->
 <!--How to work-->
-<section class="sptb bg-white">
+@*<section class="sptb bg-white">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>How It Works?</h2>
@@ -145,10 +146,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/How to work-->
 <!--post section-->
-<section>
+@*<section>
     <div class="cover-image pt-9 pb-9 bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
         <div class="content-text mb-0">
             <div class="container">
@@ -162,10 +163,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/post section-->
 <!--section-->
-<section class="sptb">
+@*<section class="sptb">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>Why Choose Us?</h2>
@@ -252,10 +253,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/section-->
 <!--Statistics-->
-<section>
+@*<section>
     <div class="about-1 cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
         <div class="content-text mb-0 text-white info">
             <div class="container">
@@ -300,10 +301,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/Statistics-->
 <!--section-->
-<section class="sptb bg-white">
+@*<section class="sptb bg-white">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>Our Team</h2>
@@ -381,10 +382,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/section-->
 <!-- Newsletter-->
-<section class="sptb border-top">
+@*<section class="sptb border-top">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>Subscribe To Our Newsletter</h2>
@@ -403,5 +404,5 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--/Newsletter-->

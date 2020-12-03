@@ -67,12 +67,3 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathora final\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.pdb
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\bin\Release\netcoreapp3.1\plathora.Entity.deps.json
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\bin\Release\netcoreapp3.1\plathora.Entity.dll
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\bin\Release\netcoreapp3.1\plathora.Entity.pdb
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.csproj.CoreCompileInputs.cache
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.AssemblyInfoInputs.cache
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.dll
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.pdb
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache

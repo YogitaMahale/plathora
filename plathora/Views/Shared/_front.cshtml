@@ -382,14 +382,14 @@
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home </a></li>
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="about">About Us </a></li>
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Privacy">Privacy </a></li>
-                        <li>
+                        @*<li>
                             <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="#">Card Widgets</a></li>
                                 <li><a href="#">Carousel Widgets</a></li>
                                 <li><a href="#">Vertical Scroll Widgets</a></li>
                             </ul>
-                        </li>
+                        </li>*@
                         @*<li>
             <a href="#">Pages <span class="fa fa-caret-down m-0"></span></a>
             <div class="horizontal-megamenu clearfix">
@@ -530,15 +530,15 @@
                 </li>
             </ul>
         </li>*@
-                        <li><a href="#"> Contact Us <span class="wsarrow"></span></a></li>
-                        <li class="d-lg-none mt-5 pb-5 mt-lg-0">
+                        <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"> Contact Us <span class="wsarrow"></span></a></li>
+                        @*<li class="d-lg-none mt-5 pb-5 mt-lg-0">
                             <span><a class="btn btn-orange" href="#">Add Listing</a></span>
-                        </li>
+                        </li>*@
                     </ul>
                     <ul class="mb-0">
-                        <li class="mt-2 d-none d-lg-flex">
+                        @*<li class="mt-2 d-none d-lg-flex">
                             <span><a class="btn btn-secondary ad-post" href="#"><i class="fa fa-plus text-white"></i> Add Listing</a></span>
-                        </li>
+                        </li>*@
                     </ul>
                 </nav>
                 <!--Nav-->
