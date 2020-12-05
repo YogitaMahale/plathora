@@ -9,13 +9,7 @@ namespace plathora.Entity
 {
   public  class BusinessOwnerRegi
     {
-//        id, , , , , , , , , , 
-//, , , pinno, , , , , , , , , , ,
-// , , , , , Discription, Regcertificate, businessid, productid, lic
-// , registerbyAffilateID, deviceid, customerid, MondayOpen, MondayClose, TuesdayOpen, TuesdayClose,
-//  WednesdayOpen, WednesdayClose, ThursdayOpen, ThursdayClose, FridayOpen, FridayClose, SaturdayOpen,
-//   SaturdayClose, SundayOpen, SundayClose, CallCount, SMSCount, WhatssappCount, ShareCount,
-//    sliderimg1, sliderimg2, sliderimg3, sliderimg4, sliderimg5
+ 
 
         public int id { get; set; }  
 
@@ -28,9 +22,9 @@ namespace plathora.Entity
         public string Regcertificate { get; set; }
         public string businessid { get; set; }
         // public string productid { get; set; }
-        [ForeignKey("ProductMaster")]
-        public int productid { get; set; }
-        public ProductMaster ProductMaster { get; set; }
+       // [ForeignKey("ProductMaster")]
+        public string productid { get; set; }
+      //  public ProductMaster ProductMaster { get; set; }
         public string lic { get; set; }     
 
         public string MondayOpen { get; set; }

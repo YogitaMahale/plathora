@@ -546,8 +546,8 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("linkedinLink")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("productid")
-                        .HasColumnType("int");
+                    b.Property<string>("productid")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("sliderimg1")
                         .HasColumnType("nvarchar(max)");
@@ -573,8 +573,6 @@ namespace plathora.Persistence.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("customerid");
-
-                    b.HasIndex("productid");
 
                     b.ToTable("BusinessOwnerRegi");
                 });
@@ -827,6 +825,40 @@ namespace plathora.Persistence.Migrations
                     b.HasKey("id");
 
                     b.ToTable("moduleMasters");
+                });
+
+            modelBuilder.Entity("plathora.Entity.News", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("date1")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("plathora.Entity.PackageRegistration", b =>
@@ -1499,12 +1531,6 @@ namespace plathora.Persistence.Migrations
                     b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("customerid");
-
-                    b.HasOne("plathora.Entity.ProductMaster", "ProductMaster")
-                        .WithMany()
-                        .HasForeignKey("productid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("plathora.Entity.BusinessPackage", b =>

@@ -1,22 +1,17 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using plathora.Entity;
+using plathora.Models;
+using plathora.Models.Dtos;
+using plathora.Services;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using plathora.Models;
-using Microsoft.AspNetCore.Authorization;
-
-using plathora.Utility;
-using plathora.Services;
-using Dapper;
-using plathora.Models.Dtos;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.Data;
-using plathora.Entity;
 
 namespace plathora.Controllers
 {
@@ -32,7 +27,10 @@ namespace plathora.Controllers
         private IProductMasterServices _productMasterServices;
         private IAboutUsServices _aboutUsServices;
         private IContactUsServices _ContactUsServices;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices)
+        private IbusinessratingsServices _businessratingsServices;
+        private IBusinessOwnerRegiServices _businessOwnerRegiServices;
+        private INewsServices _newsServices;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices)
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -42,6 +40,9 @@ namespace plathora.Controllers
             _productMasterServices = productMasterServices;
             _aboutUsServices = aboutUsServices;
             _ContactUsServices = ContactUsServices;
+            _businessratingsServices = businessratingsServices;
+            _businessOwnerRegiServices = businessOwnerRegiServices;
+            _newsServices = newsServices;
         }
         [HttpGet]
         public IActionResult Index()
@@ -52,14 +53,28 @@ namespace plathora.Controllers
 
                 //  ViewBag.search = txtsearch;
                 var parameter = new DynamicParameters();
+
                 //IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(12).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 {
                     id = x.id,
                     name = x.name,
                     img = x.img,
                     photo = x.photo
+
+                }).ToList();
+
+                objmodel.objNews = _newsServices.GetAll().Where(x=>x.isdeleted==false).OrderByDescending(x=>x.id).Select(x => new NewIndexViewModel
+                {
+                    id = x.id,
+                    title = x.title,
+                    img = x.img,
+                    description = x.description,
+                    isdeleted = x.isdeleted,
+                    isactive = x.isactive,
+                    date1 = x.date1,
+                    createddate = x.createddate
 
                 }).ToList();
                 return View(objmodel);
@@ -83,7 +98,7 @@ namespace plathora.Controllers
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 if (txtsearch == null || txtsearch.Trim() == "")
                 {
-                    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Where(x => x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().OrderByDescending(x => x.id).Where(x => x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                     {
                         id = x.id,
                         name = x.name,
@@ -103,7 +118,18 @@ namespace plathora.Controllers
 
                     }).ToList();
                 }
+                objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).Select(x => new NewIndexViewModel
+                {
+                    id = x.id,
+                    title = x.title,
+                    img = x.img,
+                    description = x.description,
+                    isdeleted = x.isdeleted,
+                    isactive = x.isactive,
+                    date1 = x.date1,
+                    createddate = x.createddate
 
+                });
                 //------------------------------------------------------------------------------------
                 /*
                 string connString = this.Configuration.GetConnectionString("DefaultConnection");
@@ -308,11 +334,17 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult business(string id)
         {
+            businessDetailsViewModel obj = new businessDetailsViewModel();
+
 
             var parameter = new DynamicParameters();
             parameter.Add("@Id", id);
 
-            getBusinessAllInfo obj = _sP_Call.OneRecord<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+            obj.objgetBusinessAllInfo = _sP_Call.OneRecord<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+
+            //var parameter1 = new DynamicParameters();
+            //parameter1.Add("@BusinessOwnerId", id);
+            obj.objbusinessrating = _sP_Call.List<selectallBusinessRatingViewModel>("selectallBusinessRating", parameter);
             if (obj == null)
             {
                 return View();
@@ -437,5 +469,63 @@ namespace plathora.Controllers
         //    con.Close();
 
         //}
+
+
+        public IActionResult BusinessListing(int productid)
+        {
+            BusinessListingViewModel obj = new BusinessListingViewModel();
+            obj.objProductIndexViewModel = _productMasterServices.GetAll().Select(x => new ProductIndexViewModel
+            {
+
+
+                id = x.id,
+                //sectorid = x.se,
+                businessid = x.businessid,
+                productName = x.productName,
+                // BusinessRegistration = _BusinessRegistrationServiecess.GetById(x.businessid),
+                // SectorRegistration = _SectorRegistrationServices.GetById(_BusinessRegistrationServiecess.GetById(x.businessid).sectorid),
+                img = x.img
+
+            }).ToList();
+            //var parameter = new DynamicParameters();
+            //parameter.Add("@productid", productid);
+            //obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+
+
+            //var parameter = new DynamicParameters();
+            //parameter.Add("@productid", productid);
+            ////IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+            //obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+
+            return View(obj);
+            //return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Category()
+        {
+            var parameter = new DynamicParameters();            
+            IEnumerable<selectallSectorWithBusinessCount> obj = _sP_Call.List<selectallSectorWithBusinessCount>("selectallSectorWithBusinessCount", null);
+            
+            return View(obj);
+        }
+        [HttpGet]
+        public IActionResult Advertising()
+        {
+            return View();
+        }
+
+
+        public IActionResult TermsandConditions()
+        {
+            return View();
+        }
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+        
     }
 }

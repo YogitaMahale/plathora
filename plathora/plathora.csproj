@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Home\BusinessList.cshtml" />
     <Content Remove="Areas\Admin\Views\User\Edit1.cshtml" />
     <Content Remove="Areas\Identity\Pages\Account\EditRegister.cshtml" />
   </ItemGroup>
@@ -51,6 +52,7 @@
     <Folder Include="wwwroot\uploads\advertisementInfo\" />
     <Folder Include="wwwroot\uploads\feedback\" />
     <Folder Include="wwwroot\uploads\AdvertiseMaster\" />
+    <Folder Include="wwwroot\uploads\News\" />
     <Folder Include="wwwroot\uploads\user\" />
     <Folder Include="wwwroot\uploads\slider\" />
     <Folder Include="wwwroot\uploads\social\" />

@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />*@
 
     <!-- Title -->
-    <title>Plathora</title>
+    <title>Ting Tong</title>
 
     <!-- Bootstrap Css -->
     <link href="~/Bizdire/LTR/assets/plugins/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -387,19 +387,21 @@
                 <!--Nav-->
                 <nav class="horizontalMenu clearfix d-md-flex">
                     <ul class="horizontalMenu-list">
-                        
-
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home </a></li>
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="about">About Us </a></li>
-                        <li><a asp-area="Admin" asp-controller="Home" asp-action="Privacy">Privacy </a></li>
+                        <li><a asp-area="Admin" asp-controller="Home" asp-action="Category">Category </a></li>
+                        <li><a asp-area="Admin" asp-controller="Home" asp-action="Advertising">Advertising </a></li>
+                        <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"> Contact Us <span class="wsarrow"></span></a></li>
+                        <li><a >Add Listing </a></li>
+                         
                         @*<li>
-                            <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Card Widgets</a></li>
-                                <li><a href="#">Carousel Widgets</a></li>
-                                <li><a href="#">Vertical Scroll Widgets</a></li>
-                            </ul>
-                        </li>*@
+            <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
+            <ul class="sub-menu">
+                <li><a href="#">Card Widgets</a></li>
+                <li><a href="#">Carousel Widgets</a></li>
+                <li><a href="#">Vertical Scroll Widgets</a></li>
+            </ul>
+        </li>*@
                         @*<li>
             <a href="#">Pages <span class="fa fa-caret-down m-0"></span></a>
             <div class="horizontal-megamenu clearfix">
@@ -540,10 +542,10 @@
                 </li>
             </ul>
         </li>*@
-                        <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"> Contact Us <span class="wsarrow"></span></a></li>
+
                         @*<li class="d-lg-none mt-5 pb-5 mt-lg-0">
-                            <span><a class="btn btn-orange" href="#">Add Listing</a></span>
-                        </li>*@
+            <span><a class="btn btn-orange" href="#">Add Listing</a></span>
+        </li>*@
                     </ul>
                     <ul class="mb-0">
                         @*<li class="mt-2 d-none d-lg-flex">
@@ -598,10 +600,19 @@
                         <div class="col-xl-2 col-lg-6 col-md-12">
                             <h6>Useful Links</h6>
                             <ul class="list-unstyled mb-0">
-                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Our Team</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Contact US</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> About</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Terms and Services</a></li>
+
+                                
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="about"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> About</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="TermsandConditions"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Terms and Conditions</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="PrivacyPolicy"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Privacy Policy</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Category"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Category</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Feedback</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Customer Care</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Contact Us</a></li>
+
+                              
+
+
                             </ul>
                         </div>
                         <div class="col-xl-3 col-lg-6 col-md-12">
@@ -670,7 +681,7 @@
                 <div class="container">
                     <div class="row d-flex">
                         <div class="col-lg-12 col-sm-12  mt-2 mb-2 text-center ">
-                            Copyright © 2020 <a href="#" class="fs-14 text-secondary">Bizdire</a>. Designed by <a href="#" class="fs-14 text-secondary">Spruko</a> All rights reserved.
+                            Copyright ©<a href="#" class="fs-14 text-secondary">tingtongindia.com</a> Power by Plethora worldwide.
                         </div>
                     </div>
                 </div>
