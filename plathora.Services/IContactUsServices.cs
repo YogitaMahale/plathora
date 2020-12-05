@@ -12,6 +12,6 @@ namespace plathora.Services
         //Task UpdateAsync(advertisementInfo obj);
         //Task Delete(int id);
         // IEnumerable<SelectListItem> GetAllState(int businssid);
-       // IEnumerable<ContactUs> GetAll();
+       IEnumerable<ContactUs> GetAll();
     }
 }

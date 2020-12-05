@@ -2409,4 +2409,11 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\ContactUs\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

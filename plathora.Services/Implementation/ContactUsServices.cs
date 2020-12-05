@@ -30,7 +30,7 @@ namespace plathora.Services.Implementation
         //    _context.Advertise.Update(obj);
         //    await _context.SaveChangesAsync();
         //}
-      //  public IEnumerable<ContactUs> GetAll() => _context.ContactUs.ToList();
+       public IEnumerable<ContactUs> GetAll() => _context.ContactUs.ToList();
 
        
 

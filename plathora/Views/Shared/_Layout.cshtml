@@ -75,24 +75,24 @@
                             </a>
                             <div class="collapse" id="Video">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin"  asp-controller="Modulemaster" asp-action="Index"> Module Master</a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin"  asp-controller="Video" asp-action="Index"> Video Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Modulemaster" asp-action="Index"> Module Master</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Video" asp-action="Index"> Video Details</a></li>
                                 </ul>
                             </div>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
-                                <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
-                                <span class="menu-title">Affilate Registration</span>
-                                <i class="menu-arrow text-primary"></i>
-                            </a>
-                            <div class="collapse" id="Employee">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Create"> New Registration</a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Index"> All Details</a></li>
-                                </ul>
-                            </div>
-                        </li>*@
+                <a class="nav-link" data-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                    <span class="menu-title">Affilate Registration</span>
+                    <i class="menu-arrow text-primary"></i>
+                </a>
+                <div class="collapse" id="Employee">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Create"> New Registration</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="AffiltateRegistration" asp-action="Index"> All Details</a></li>
+                    </ul>
+                </div>
+            </li>*@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#UserRegistration" aria-expanded="false" aria-controls="ui-basic">
                                 <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
@@ -104,6 +104,20 @@
 
                                     <li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Register"> New Registration</a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="Index"> All Details</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#ContactUs" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                                <span class="menu-title">Contact Us</span>
+                                <i class="menu-arrow text-primary"></i>
+                            </a>
+                            <div class="collapse" id="ContactUs">
+                                <ul class="nav flex-column sub-menu">
+
+                                    
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="ContactUs" asp-action="Index"> All Details</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -121,20 +135,20 @@
                 </div>
             </li>*@
                         @*<li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#Customer" aria-expanded="false" aria-controls="ui-basic">
-                                <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
-                                <span class="menu-title">Customer  </span>
-                                <i class="menu-arrow text-primary"></i>
-                            </a>
-                            <div class="collapse" id="Customer">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Create"> New Registration</a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> All Details</a></li>
-                                </ul>
-                            </div>
-                        </li>*@
-                    }
+                <a class="nav-link" data-toggle="collapse" href="#Customer" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                    <span class="menu-title">Customer  </span>
+                    <i class="menu-arrow text-primary"></i>
+                </a>
+                <div class="collapse" id="Customer">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Create"> New Registration</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> All Details</a></li>
                     </ul>
+                </div>
+            </li>*@
+                    }
+                </ul>
             </nav>
             <div class="main-panel">
                 <partial name="_CookieConsentPartial" />
