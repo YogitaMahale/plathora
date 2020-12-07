@@ -2147,6 +2147,7 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\commission\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\commission\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\commission\Index.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\ContactUs\Index.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Index.cshtml.g.cs
@@ -2182,6 +2183,7 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Registration\Index.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Index.cshtml.g.cs
@@ -2248,11 +2250,13 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_front.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_getOtpNo.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout - Copy.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LayoutNew.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Notification.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Subscribe.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
@@ -2265,5 +2269,3 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\ContactUs\Index.cshtml.g.cs
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Subscribe.cshtml.g.cs
