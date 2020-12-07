@@ -28,17 +28,20 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnsubscribe").click(function () {
-           alert($("#txttext").val());
+          
             val1 = "5";
             val2 = "2";
              $.ajax({
             type: "POST",
                  url: "@Url.Action("Add","test1")",
                 
-            data: {number1: val1, number2: val2},
+                 data: { email: $("#txttext").val()},
             dataType: "text",
             success: function (msg) {
-                console.log("fdG");
+                console.log(msg);
+                $("#txttext").val("");
+                //alert($("#txttext").val());
+                alert("Save");
             },
             error: function (req, status, error) {
                 console.log(error);
