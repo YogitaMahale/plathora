@@ -52,6 +52,7 @@
     <Folder Include="wwwroot\uploads\advertisementInfo\" />
     <Folder Include="wwwroot\uploads\feedback\" />
     <Folder Include="wwwroot\uploads\AdvertiseMaster\" />
+    <Folder Include="wwwroot\uploads\AboutUs\" />
     <Folder Include="wwwroot\uploads\News\" />
     <Folder Include="wwwroot\uploads\user\" />
     <Folder Include="wwwroot\uploads\slider\" />

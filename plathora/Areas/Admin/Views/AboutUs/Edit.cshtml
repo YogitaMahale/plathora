@@ -1,4 +1,4 @@
-﻿@model plathora.Entity.AboutUs;
+﻿@model plathora.Models.AboutUsViewModel;
 @{
     ViewBag.Title = "About Us";
 }
@@ -17,9 +17,20 @@
 
                         <form name="form1" method="post" enctype="multipart/form-data" asp-action="Edit">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                           
+
 
                             <input type="hidden" asp-for="id" />
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="PurposeoftheCompany"></label>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <textarea asp-for="PurposeoftheCompany" class="form-control" rows="20"></textarea>
+                                    @*<textarea asp-for="AboutUsText" class="form-control" rows="10" />*@
+                                    <span asp-validation-for="PurposeoftheCompany" class="text-danger"></span>
+
+                                </div>
+                            </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label asp-for="AboutUsText"></label>
@@ -31,7 +42,22 @@
 
                                 </div>
                             </div>
-
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label asp-for="img"></label>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <div class="btn btn-primary btn-icon-text">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <input asp-for="img" type="file" value="Upload" />
+                                        <span asp-validation-for="img" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <img src="@Model.imgpath"  style="width:300px;height:200px;"  />
+                                </div>
+                            </div>
+                           
                            
 
                             <div class="form-group">

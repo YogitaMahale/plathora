@@ -1,26 +1,26 @@
-﻿@model plathora.Entity.AboutUs; 
+﻿@model plathora.Entity.AboutUs;
 @{
     ViewData["Title"] = "about";
     Layout = "~/Views/Shared/_front.cshtml";
 }
 
 <!--Breadcrumb-->
-    <section>
-        
-        <div class="bannerimg cover-image bg-background3 sptb-2" data-image-src="../assets/images/banners/banner2.jpg">
-            <div class="header-text mb-0">
-                <div class="container">
-                    <div class="text-center text-white ">
-                        <h1 class="">About Us</h1>
-                        <ol class="breadcrumb text-center">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
-                        </ol>
-                    </div>
+<section>
+
+    <div class="bannerimg cover-image bg-background3 sptb-2" data-image-src="../assets/images/banners/banner2.jpg">
+        <div class="header-text mb-0">
+            <div class="container">
+                <div class="text-center text-white ">
+                    <h1 class="">About Us</h1>
+                    <ol class="breadcrumb text-center">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">About Us</li>
+                    </ol>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <!--/Breadcrumb-->
 <!--section-->
 <section class="sptb">
@@ -28,27 +28,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
+                    <h3 class="leading-normal">Purpose of the Company </h3>
+                    <p class="leading-normal fs-16">
+                        @Model.PurposeoftheCompany
+                    </p>
+
                     <h3 class="leading-normal">About Us</h3>
                     <p class="leading-normal fs-16">
-                       @Model.AboutUsText
+                        @Model.AboutUsText
                     </p>
                     @*<p class="leading-normal fs-16">It is a long established fact that a reader will be distracted by the readable of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                    <a class="btn btn-secondary btn-lg mt-2" href="">View More</a>*@
+                        <a class="btn btn-secondary btn-lg mt-2" href="">View More</a>*@
                 </div>
                 <div class="col-lg-6">
                     <div class="border-5 br-4 mt-5 mt-lg-0 overflow-hidden">
 
-                        
+
                         <div class="owl-carousel testimonial-owl-carousel31 mt-5 mt-lg-0 about-carousel">
                             <div class="item">
-                                <img src="~/Bizdire/LTR/assets/images/products/products/h1.jpg" alt="img">
+                                <img src="@Model.img" alt="img">
                             </div>
-                            <div class="item">
-                                <img src="~/Bizdire/LTR/assets/images/products/products/h2.jpg" alt="img">
-                            </div>
-                            <div class="item">
-                                <img src="~/Bizdire/LTR/assets/images/products/products/h3.jpg" alt="img">
-                            </div>
+                            @*<div class="item">
+                                    <img src="~/Bizdire/LTR/assets/images/products/products/h2.jpg" alt="img">
+                                </div>
+                                <div class="item">
+                                    <img src="~/Bizdire/LTR/assets/images/products/products/h3.jpg" alt="img">
+                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -58,7 +63,7 @@
 </section>
 <!--/section-->
 <!--How to work-->
-@*<section class="sptb bg-white">
+<section class="sptb bg-white">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>How It Works?</h2>
@@ -147,10 +152,10 @@
             </div>
         </div>
     </div>
-</section>*@
+</section>
 <!--/How to work-->
 <!--post section-->
-@*<section>
+<section>
     <div class="cover-image pt-9 pb-9 bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
         <div class="content-text mb-0">
             <div class="container">
@@ -164,100 +169,100 @@
             </div>
         </div>
     </div>
-</section>*@
+</section>
 <!--/post section-->
 <!--section-->
 @*<section class="sptb">
-    <div class="container">
-        <div class="section-title center-block text-center">
-            <h2>Why Choose Us?</h2>
-            <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+        <div class="container">
+            <div class="section-title center-block text-center">
+                <h2>Why Choose Us?</h2>
+                <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-bullhorn fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>Provide Free Listings</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-heart fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>Best Ad Ratings</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-bookmark fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>Provide Post Features</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card mb-lg-0">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-line-chart fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>See  your Ad Progress</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card mb-lg-0 mb-md-0">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-handshake-o fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>User Friendly</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 features">
+                    <div class="card mb-0 overflow-hidden">
+                        <div class="card-body text-center">
+                            <div class="feature">
+                                <div class="cat-img category-svg d-block mt-3 mb-5">
+                                    <i class="fa fa-phone fs-30 text-primary icon-lineheight"></i>
+                                </div>
+                                <h3>24/7 Support</h3>
+                                <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row ">
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-bullhorn fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>Provide Free Listings</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-heart fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>Best Ad Ratings</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-bookmark fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>Provide Post Features</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card mb-lg-0">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-line-chart fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>See  your Ad Progress</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card mb-lg-0 mb-md-0">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-handshake-o fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>User Friendly</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 features">
-                <div class="card mb-0 overflow-hidden">
-                    <div class="card-body text-center">
-                        <div class="feature">
-                            <div class="cat-img category-svg d-block mt-3 mb-5">
-                                <i class="fa fa-phone fs-30 text-primary icon-lineheight"></i>
-                            </div>
-                            <h3>24/7 Support</h3>
-                            <p>our being able to do what we like best, every pleasure is to be welcomed and every pain.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@
+    </section>*@
 <!--/section-->
 <!--Statistics-->
-@*<section>
+<section>
     <div class="about-1 cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
         <div class="content-text mb-0 text-white info">
             <div class="container">
@@ -302,108 +307,133 @@
             </div>
         </div>
     </div>
-</section>*@
+</section>
 <!--/Statistics-->
 <!--section-->
-@*<section class="sptb bg-white">
+<section class="sptb bg-white">
     <div class="container">
         <div class="section-title center-block text-center">
             <h2>Our Team</h2>
-            <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+            @*<p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>*@
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-3 col-md-12">
                 <div class="card mb-lg-0">
                     <div class="card-body">
                         <div class="team-section text-center">
                             <div class="team-img">
                                 <img src="~/Bizdire/LTR/assets/images/faces/male/1.jpg" class="img-thumbnail rounded-circle alt=" alt="">
                             </div>
-                            <h4 class="font-weight-bold dark-grey-text mt-4">Tracey	Poole</h4>
-                            <h6 class="font-weight-semibold mb-4 mt-2">Web Designer</h6>
+                            <h4 class="font-weight-bold dark-grey-text mt-4">Dhanajay Kale</h4>
+                            <h6 class="font-weight-semibold mb-4 mt-2">Founder &Chairman </h6>
                             <p class="font-weight-normal dark-grey-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.
+                                Dhananjay is the Founder and Chairman of Ting Tong by Plethora Worldwide Pvt Ltd Company. He is the promoter of the company having 26 years of experience in businesses of health, pharma, restaurants, trading andagriculture. Dhananjay has been mentoring many entrepreneurs establishing their businesses, athletes for their championships and he is also philanthropist. Heis currently Director in Shree Parvati Fitness Hub Pvt Ltd.
                             </p>
-                            <div class="text-warning">
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star-half-full"> </i>
-                            </div>
+                            @*<div class="text-warning">
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star-half-full"> </i>
+                                </div>*@
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-3 col-md-12">
                 <div class="card mb-lg-0">
                     <div class="card-body">
                         <div class="team-section text-center">
                             <div class="team-img">
                                 <img src="~/Bizdire/LTR/assets/images/faces/female/1.jpg" class="img-thumbnail rounded-circle alt=" alt="">
                             </div>
-                            <h4 class="font-weight-bold dark-grey-text mt-4">Harry	Walker</h4>
-                            <h6 class="font-weight-semibold mb-4 mt-2">Web Designer</h6>
+                            <h4 class="font-weight-bold dark-grey-text mt-4">Sammeer Sarang</h4>
+                            <h6 class="font-weight-semibold mb-4 mt-2">Co-Founder & Managing Director </h6>
                             <p class="font-weight-normal dark-grey-text">
-                                Lorem ipsum dolor sit amet, quis nostrum exercitationem ullam quis nostrum  corporis suscipit laboriosam, nisi ut aliquid commodi.
+                                Sammeer is the co-founder and Managing Director at Ting Tong by Plethora Worldwide Pvt Ltd Company. He is bachelor degree holder and having 20 years of experience working with MNCs like HDFC Standard Life & Canara HSBC OBC Life. He has closely worked with HDFC bank, HSBC Bank, Union Bank, Canara Bank, Oriental Bank of Commerce, Saraswat Bank and HDFC Housing. He also has experience working in Real Estate industry and Education industry. Currently Chairman of Finanthropist Educare Pvt Ltd since 2018 having experience of share market. He is also Co-founder of Infinidz.com.
                             </p>
-                            <div class="text-warning">
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                            </div>
+                            @*<div class="text-warning">
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                </div>*@
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-3 col-md-12">
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="team-section text-center">
                             <div class="team-img">
                                 <img src="~/Bizdire/LTR/assets/images/faces/male/2.jpg" class="img-thumbnail rounded-circle alt=" alt="">
                             </div>
-                            <h4 class="font-weight-bold dark-grey-text mt-4">Paul White</h4>
+                            <h4 class="font-weight-bold dark-grey-text mt-4">Yogesh Manekar</h4>
                             <h6 class="font-weight-semibold mb-4 mt-2">Web Designer</h6>
                             <p class="font-weight-normal dark-grey-text">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+                                Yogesh is a Director and Head IT at Ting Tong by Plethora Worldwide Pvt Ltd Company. He is BEIT from Pune University with 9 years of experience in software IT developing IT for companies. Currently Director of Ezacus Technologies Pvt Ltd. Yogesh has worked with education industry mentoring entrepreneurs.
                             </p>
-                            <div class="text-warning">
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star"> </i>
-                                <i class="fa fa-star-o"> </i>
+                            @*<div class="text-warning">
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star-o"> </i>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="team-section text-center">
+                            <div class="team-img">
+                                <img src="~/Bizdire/LTR/assets/images/faces/male/2.jpg" class="img-thumbnail rounded-circle alt=" alt="">
                             </div>
+                            <h4 class="font-weight-bold dark-grey-text mt-4">Ayessha Sarang</h4>
+                            <h6 class="font-weight-semibold mb-4 mt-2">President Sales & Affiliates </h6>
+                            <p class="font-weight-normal dark-grey-text">
+                                Ayessha is the President of Sales & Affiliates in Ting Tong by Plethora Worldwide Pvt Ltd. Ayessha is having 14 years of diversified experiences working with Maersk, HDFC Standard Life and Tata AIG Life. Ayessha is well-known psychologist working for wellbeing of Women and Kids. Founder of Infinikiz Preschool since 2015.
+                            </p>
+                            @*<div class="text-warning">
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star"> </i>
+                                    <i class="fa fa-star-o"> </i>
+                                </div>*@
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>*@
+</section>
 <!--/section-->
 <!-- Newsletter-->
+ 
+<partial name="_Subscribe" />
 @*<section class="sptb border-top">
-    <div class="container">
-        <div class="section-title center-block text-center">
-            <h2>Subscribe To Our Newsletter</h2>
-            <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 col-xl-8 col-md-12 mx-auto d-block text-center">
-                <div class="input-group sub-input mt-0">
-                    <input type="text" class="form-control input-lg " placeholder="Enter your Email">
-                    <div class="input-group-append ">
-                        <button type="button" class="btn btn-secondary btn-lg br-tr-3 br-br-3 pl-5 pr-5">
-                            Subscribe
-                        </button>
+        <div class="container">
+            <div class="section-title center-block text-center">
+                <h2>Subscribe To Our Newsletter</h2>
+                <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 col-md-12 mx-auto d-block text-center">
+                    <div class="input-group sub-input mt-0">
+                        <input type="text" class="form-control input-lg " placeholder="Enter your Email">
+                        <div class="input-group-append ">
+                            <button type="button" class="btn btn-secondary btn-lg br-tr-3 br-br-3 pl-5 pr-5">
+                                Subscribe
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>*@
+    </section>*@
 <!--/Newsletter-->
