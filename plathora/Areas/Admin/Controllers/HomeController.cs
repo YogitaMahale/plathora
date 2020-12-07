@@ -487,9 +487,9 @@ namespace plathora.Controllers
                 img = x.img
 
             }).ToList();
-            //var parameter = new DynamicParameters();
-            //parameter.Add("@productid", productid);
-            //obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+            var parameter = new DynamicParameters();
+            parameter.Add("@productid", productid);
+            obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
 
 
             //var parameter = new DynamicParameters();
