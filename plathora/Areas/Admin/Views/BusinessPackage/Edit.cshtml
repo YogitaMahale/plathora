@@ -15,48 +15,54 @@
 
             @*id, pkgId, Amount, description, period, isdeleted, isactive*@
 
-            <form method="post" enctype="multipart/form-data" asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="pkgId"></label>
-                    <select asp-for="pkgId" class="form-control" asp-items="ViewBag.AllPackage">
-                        <option selected>--- Select Package ---</option>
-                    </select>
-                    <span asp-validation-for="pkgId" class="text-danger"></span>
-                </div><br /><br /><br />
-                <div class="form-row">
-                    <label asp-for="Amount"></label>
-                    <input asp-for="Amount" class="form-control" placeholder="Enter Amount.." />
-                    <span asp-validation-for="Amount" class="text-danger"></span>
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="pkgId"></label>
+                <select asp-for="pkgId" class="form-control" asp-items="ViewBag.AllPackage">
+                    <option selected>--- Select Package ---</option>
+                </select>
+                <span asp-validation-for="pkgId" class="text-danger"></span>
+            </div><br /><br /><br />
+            <div class="form-row">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" class="form-control" placeholder="Enter Amount.." />
+                <span asp-validation-for="Amount" class="text-danger"></span>
 
 
-                </div>
-                <div class="form-row">
-                    <label asp-for="description"></label>
-                    <input asp-for="description" class="form-control" placeholder="Enter description.." />
-                    <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="description"></label>
+                <input asp-for="description" class="form-control" placeholder="Enter description.." />
+                <span asp-validation-for="description" class="text-danger"></span>
 
 
-                </div>
-                <div class="form-row">
-                    <label asp-for="period"></label>
-                    <input asp-for="period" class="form-control" placeholder="Enter period.." />
-                    <span asp-validation-for="period" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <label asp-for="period"></label>
+                <input asp-for="period" class="form-control" placeholder="Enter period.." />
+                <span asp-validation-for="period" class="text-danger"></span>
 
 
-                </div>
+            </div>
+            <div class="form-row">
+                <label asp-for="gst"></label>
+                <input asp-for="gst" class="form-control" placeholder="Enter GST.." />
+                <span asp-validation-for="gst" class="text-danger"></span>
 
 
-                <div class="form-group">
+            </div>
 
-                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Update</button>
-                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
-                    <br />
-                    <br />
-                    <br />
+            <div class="form-group">
 
-                </div>
-            </form>
+                <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Update</button>
+                <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </form>
         </div>
     </div>
 </div>

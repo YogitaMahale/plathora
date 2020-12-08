@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using SectorRegistrationIndexViewModel = plathora.Models.SectorRegistrationIndexViewModel;
+using System.Runtime.CompilerServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -54,7 +55,8 @@ namespace plathora.API
 
         private readonly IcommissionServices _commissionServices;
         private readonly IAffilatePackageServices _AffilatePackageServices;
-        public plathoraAPI(ISectorRegistrationServices SectorRegitrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices ProductMasterServices, ICountryRegistrationservices CountryRegistrationservices, IStateRegistrationService StateRegistrationService, ICityRegistrationservices CityRegistrationservices, IProductMasterServices productMasterServices, ISP_Call sP_Call, IVideoServices videoServices, IModuleMasterServices moduleMasterServices, IWebHostEnvironment hostEnvironment, IadvertisementInfoServices advertisementInfoServices, IsocialsServices socialsServices, IsliderServices sliderServices, Iratingsservices ratingsservices, IbusinessratingsServices businessratingsServices, IConfiguration _configuration, ICustomerRegistrationservices customerRegistrationservices, ItblfeedbackServices tblfeedbackServices, IAdvertiseServices advertiseServices, IAffilatePackageServices affilatePackageServices, IMembershipServices membershipServices, IsocialdetailsServices socialdetailsServices, IcommissionServices commissionServices, IAffilatePackageServices AffilatePackageServices)
+        private readonly IBusinessPackageServices _businessPackageServices;
+        public plathoraAPI(ISectorRegistrationServices SectorRegitrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices ProductMasterServices, ICountryRegistrationservices CountryRegistrationservices, IStateRegistrationService StateRegistrationService, ICityRegistrationservices CityRegistrationservices, IProductMasterServices productMasterServices, ISP_Call sP_Call, IVideoServices videoServices, IModuleMasterServices moduleMasterServices, IWebHostEnvironment hostEnvironment, IadvertisementInfoServices advertisementInfoServices, IsocialsServices socialsServices, IsliderServices sliderServices, Iratingsservices ratingsservices, IbusinessratingsServices businessratingsServices, IConfiguration _configuration, ICustomerRegistrationservices customerRegistrationservices, ItblfeedbackServices tblfeedbackServices, IAdvertiseServices advertiseServices, IAffilatePackageServices affilatePackageServices, IMembershipServices membershipServices, IsocialdetailsServices socialdetailsServices, IcommissionServices commissionServices, IAffilatePackageServices AffilatePackageServices, IBusinessPackageServices businessPackageServices)
         {
             _SectorRegistrationServices = SectorRegitrationServices;
             _BusinessRegistrationServieces = BusinessRegistrationServieces;
@@ -83,6 +85,7 @@ namespace plathora.API
             _socialdetailsServices = socialdetailsServices;
             _commissionServices = commissionServices;
             _AffilatePackageServices = affilatePackageServices;
+            _businessPackageServices = businessPackageServices;
         }
 
         [HttpGet]
@@ -1388,6 +1391,25 @@ namespace plathora.API
 
             }
 
+        }
+
+        [HttpGet]
+        [Route("BusinessPackageSelectAll")]
+        public async Task<IActionResult> BusinessPackageSelectAll()
+        {
+            try
+            {
+                IEnumerable<BusinessPackage> obj = _businessPackageServices.GetAll().Where(x=>x.isdeleted==false);
+                if (obj != null)
+                {
+                    return Ok(obj);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch { return BadRequest(); }
         }
     }
 }

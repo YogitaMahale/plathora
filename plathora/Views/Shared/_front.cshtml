@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <html lang="en" dir="ltr">
 <head>
     <!-- META DATA -->
@@ -41,7 +44,13 @@
 
     <!-- Color-Skins -->
     <link id="theme" href="~/Bizdire/LTR/assets/color-skins/color1.css" rel="stylesheet" />
+    <style>
 
+        .modelheader {
+            background-color: #6f42c1;
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
 
@@ -264,36 +273,66 @@
                     <div class="col-xl-4 col-lg-4 col-sm-8 col-5">
                         <div class="top-bar-right">
                             <ul class="custom">
-                                <li>
-                                    <button id="btnShowModal" data-toggle="modal" data-target="#loginModal">
-                                        Register
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    @*<li class="nav-item">
+                                        <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                                    </li>*@
+                                     
+                                    <li class="dropdown">
+                                        <a href="#" class="text-dark" data-toggle="dropdown"><i class="fa fa-home mr-1"></i><span> Hello @User.Identity.Name!</span></a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">
+                                                <i class="dropdown-icon icon icon-user"></i> My Profile
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="dropdown-icon icon icon-speech"></i> Inbox
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="dropdown-icon icon icon-bell"></i> Notifications
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                <i class="dropdown-icon  icon icon-settings"></i> Account Settings
+                                            </a>
+                                            @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Admin" })" class="dropdown-item">
+                                                <i class="dropdown-icon  icon icon-settings"></i> Logout
+                                            </a>*@
+                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
-                                        @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
-                                    </button>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="text-dark" data-toggle="dropdown"><i class="fa fa-home mr-1"></i><span> My Dashboard</span></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a href="#" class="dropdown-item">
-                                            <i class="dropdown-icon icon icon-user"></i> My Profile
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="dropdown-icon icon icon-speech"></i> Inbox
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="dropdown-icon icon icon-bell"></i> Notifications
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="dropdown-icon  icon icon-settings"></i> Account Settings
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="dropdown-icon icon icon-power"></i> Log out
-                                        </a>
-                                    </div>
-                                </li>
+                                          
+
+                                            <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
+                                        </form>
+                                            
+                                        </div>
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    @*<li class="nav-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>*@
+
+                            
+                                    <li>
+
+                                        <button id="btnShowModal" data-toggle="modal" data-target="#loginModal">
+                                            Register
+
+                                            @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>
+                                    </li>
+                                }
+
+
+
                             </ul>
                         </div>
                     </div>
@@ -772,47 +811,96 @@
     </html>*@
 
 <!--Register-section-->
- 
-    <div class="modal fade" tabindex="-1" id="loginModal"
-         data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        ×
-                    </button>
-                    <h4 class="modal-title"> Login</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" asp-controller="Registration" asp-action="Index">
-                        <div class="form-group">
-                            <input    class="form-control" type="text"
-                                   placeholder="Enter Your Mobile Number" id="inputMobileNo" />
-                        </div>
-                        @*<div class="form-group">
-                                <input class="form-control" placeholder="Login Password"
-                                       type="password" id="inputPassword" />
-                            </div>*@
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="btnMobileNoSubmit" type="submit" class="btn btn-primary button button4">Submit</button>
-                    <button type="button" id="btnHideModal" class="btn btn-primary button button4">
-                        Hide
-                    </button>
-                </div>
+
+<div class="modal fade" tabindex="-1" id="loginModal"
+     data-keyboard="false" data-backdrop="static"  >
+    <div class="modal-dialog modal-sm" >
+        <div class="modal-content">
+            <div class="modal-header modelheader" >
+
+                <h4  style="color:white;"  class="modal-title"> Login</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                    <div class="form-group">
+                        <input class="form-control" type="text"
+                               placeholder="Enter Your Mobile Number" id="inputMobileNo" />
+                    </div>
+                    @*<div class="form-group">
+                            <input class="form-control" placeholder="Login Password"
+                                   type="password" id="inputPassword" />
+                        </div>*@
+                
+            </div>
+            <div class="modal-footer" style="text-align:center;">
+                @*<button id="btnMobileNoSubmit" type="submit" class="btn btn-primary button button4">Submit</button>*@
+                <button id="btnMobileNoSubmit" type="submit" class="btn btn-lg btn-block btn-secondary">Submit</button>
+                
+                @*<button type="button" id="btnHideModal" class="btn btn-primary button button4">
+            Hide
+        </button>*@
             </div>
         </div>
     </div>
- 
-    
-    <!--Register-section-->
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</div>
 
-        </script>*@
-    @*<script src="bootstrap/js/bootstrap.min.js"></script>*@
+
+<!--Register-section-->
+<!--
+get OTP NO -->
+<div class="modal fade" tabindex="-1" id="OTPModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header modelheader">
+
+                <h4 style="color:white;" class="modal-title"> Verify Your Mobile Number</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                    <div class="form-group">
+                        Enter the 4 digit One Time Password(OTP) sent  to youe Mobile Number
+
+                        via SMS
+                        <input  class="form-control" type="text" placeholder="Enter OTP" id="inputOTPNo" />
+
+
+
+                        <label id="inputOldOTPNO"></label>
+                    </div>
+                    @*<div class="form-group">
+                            <input class="form-control" placeholder="Login Password"
+                                   type="password" id="inputPassword" />
+                        </div>*@
+              
+            </div>
+            <div class="modal-footer"  style="text-align:center;">
+                <button id="btnOTPNoSubmit" type="submit" class="btn btn-primary button button4">Submit</button>
+                @*<button type="button" id="btnOTPHideModal" class="btn btn-primary button button4">
+                    Hide
+                </button>*@
+
+                <input style="display:none;"  class="form-control" type="text" id="inputOTPMobileNO" />
+                <input   style="display:none;" class="form-control" type="text" id="inputOldOTPNO" />     @*style="display:none;"*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--            -->
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+
+    </script>*@
+@*<script src="bootstrap/js/bootstrap.min.js"></script>*@
 @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
 <script type="text/javascript">
+    var mobileno = "", otpno = "";
 
         $(document).ready(function () {
             $("#btnShowModal").click(function () {
@@ -823,29 +911,101 @@
                 $("#loginModal").modal('hide');
             });
 
-
+            $("#btnOTPHideModal").click(function () {
+                $("#OTPModal").modal('hide');
+            });
 
             $("#btnMobileNoSubmit").click(function () {
-                
-                alert($("#inputMobileNo").val());
-                
+                mobileno = $("#inputMobileNo").val();
+              //  alert($("#inputMobileNo").val());
+
              $.ajax({
             type: "POST",
                  url: "@Url.Action("MobileView", "test1")",
 
                  data: { mobileNo: $("#inputMobileNo").val()},
-            dataType: "text",
-            success: function (msg) {
-                console.log(msg);
-                $("#loginModal").modal('hide');
-                
+                      dataType: "text",
+                 success: function (msg) {
+                     //console.log(msg);
+                     //alert(msg);
+
+                     if (msg == 'Login') {
+                         $("#loginModal").modal('hide');
+                        
+                         window.location.href = '/Admin/Home/Index';
+                     }
+                     else {
+                         $("#inputOTPMobileNO").val($("#inputMobileNo").val());
+                         $("#inputOldOTPNO").val(msg);
+
+
+                         $("#loginModal").modal('hide');
+                         $("#OTPModal").modal('show');
+                     }
+                    
+                 
+
+               
+
+
+                //inputOTPMobileNO
+                //inputOTPNo
+                //inputOldOTPNO
+
             },
             error: function (req, status, error) {
                 console.log(error);
             }
              });
 
-               
+
             });
+
+
+            $("#btnOTPNoSubmit").click(function () {
+               // alert("otp no click");
+                var mobileNo = $("#inputOTPMobileNO").val();
+                var oldOTPNo = $("#inputOldOTPNO").val();
+                var NewOTPNo = $("#inputOTPNo").val();
+
+                if (oldOTPNo == NewOTPNo) {
+                    $("#OTPModal").modal('hide');
+                    alert("confirm");
+                    window.location.href = '/Identity/Account/Register';
+
+                    @*$.ajax({
+                        type: "POST",
+                        url: "@Url.Action("getOTPNoSubmit", "test1")",
+
+                        data: { mobileNo: mobileNo },
+                        dataType: "text",
+                        success: function (msg) {
+                            //$("#inputOTPMobileNO").val($("#inputMobileNo").val());
+                            //$("#inputOTPNo").val(msg);
+
+                            $("#OTPModal").modal('hide');
+                            alert("confirm");
+                            window.location.href = '/Identity/Account/Register' ;
+
+
+                        },
+                        error: function (req, status, error) {
+                            console.log(error);
+                        }
+                    });*@
+                }
+                else {
+                    $("#inputOTPNo").val("");
+                    alert("Please Enter Proper OTP Number");
+                }
+                
+
+
+            });
+
+
+
+
+
         });
 </script>

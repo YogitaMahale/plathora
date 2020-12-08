@@ -38,7 +38,8 @@ namespace plathora.Controllers
                 Amount = x.Amount,
                 description = x.description,
                 period = x.period,
-                PackageRegistration = _PackageRegistrationServices.GetById(x.pkgId)
+                PackageRegistration = _PackageRegistrationServices.GetById(x.pkgId),
+                gst=x.gst
 
             }).ToList();
             return View(statedetails);
@@ -67,7 +68,8 @@ namespace plathora.Controllers
                     description = model.description,
                     period = model.period,
                     isdeleted = false,
-                    isactive = false
+                    isactive = false,
+                    gst=model.gst
                 };
 
                 await _BusinessPackageServices.CreateAsync(objcountry);
@@ -95,6 +97,7 @@ namespace plathora.Controllers
                 Amount = objcountry.Amount,
                 description = objcountry.description,
                 period  = objcountry.period,
+                gst=objcountry.gst
 
             };
             return View(model);
@@ -117,6 +120,7 @@ namespace plathora.Controllers
                 objcountry.description  = model.description;
                 objcountry.Amount  = model.Amount;
                 objcountry.period  = model.period;
+                objcountry.gst = model.gst;
 
                 await _BusinessPackageServices.UpdateAsync(objcountry);
                 return RedirectToAction(nameof(Index));

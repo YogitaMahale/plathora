@@ -22,5 +22,10 @@ namespace plathora.Models
         public string description { get; set; }
         [Required]
         public string period { get; set; }
+
+        [Required]
+        [Display(Name = "GST")]
+        [RegularExpression(@"((\d+)((\.\d{1,2})?))$")]
+        public decimal gst { get; set; }
     }
 }

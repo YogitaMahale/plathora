@@ -597,6 +597,9 @@ namespace plathora.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("gst")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<bool>("isactive")
                         .HasColumnType("bit");
 

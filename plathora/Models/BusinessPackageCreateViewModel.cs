@@ -24,7 +24,10 @@ namespace plathora.Models
         public string period { get; set; }
         
         public Boolean isdeleted { get; set; }
-       
+        [Required]
+        [Display(Name ="GST")]
+        [RegularExpression(@"((\d+)((\.\d{1,2})?))$")]
+        public decimal gst { get; set; }
         public Boolean isactive { get; set; }
     }
 }

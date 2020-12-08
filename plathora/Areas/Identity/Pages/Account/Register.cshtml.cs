@@ -111,8 +111,7 @@ namespace plathora.Areas.Identity.Pages.Account
                    ,
                     UserName = Input.mobileno1
                ,
-                    Email = Input.Email
-                
+                    Email = Input.Email               
 
                     ,
                     PhoneNumber = Input.mobileno1
