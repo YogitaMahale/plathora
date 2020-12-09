@@ -2172,6 +2172,7 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Registration\Register.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Edit.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SectorRegistration\Index.cshtml.g.cs

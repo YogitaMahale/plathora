@@ -12,6 +12,8 @@ namespace plathora.Entity
         public int id { get; set; }
         [Required]
         public string membershipName { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal gst { get; set; }
 
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }

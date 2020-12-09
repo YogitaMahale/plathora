@@ -48,7 +48,7 @@
 
         .modelheader {
             background-color: #6f42c1;
-            text-align:center;
+            text-align: center;
         }
     </style>
 </head>
@@ -276,9 +276,9 @@
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     @*<li class="nav-item">
-                                        <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                                    </li>*@
-                                     
+                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                                        </li>*@
+
                                     <li class="dropdown">
                                         <a href="#" class="text-dark" data-toggle="dropdown"><i class="fa fa-home mr-1"></i><span> Hello @User.Identity.Name!</span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -295,15 +295,15 @@
                                                 <i class="dropdown-icon  icon icon-settings"></i> Account Settings
                                             </a>
                                             @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Admin" })" class="dropdown-item">
-                                                <i class="dropdown-icon  icon icon-settings"></i> Logout
-                                            </a>*@
-                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                                    <i class="dropdown-icon  icon icon-settings"></i> Logout
+                                                </a>*@
+                                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
-                                          
 
-                                            <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
-                                        </form>
-                                            
+
+                                                <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
+                                            </form>
+
                                         </div>
                                     </li>
 
@@ -311,23 +311,29 @@
                                 else
                                 {
                                     @*<li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </li>*@
+                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                        </li>*@
 
-                            
+
                                     <li>
 
-                                        <button id="btnShowModal" data-toggle="modal" data-target="#loginModal">
+                                        <button id="btnShowModal" class="btn-secondary  mb-0" data-toggle="modal" data-target="#loginModal">
                                             Register
 
                                             @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
                                         </button>
                                     </li>
+
                                     <li>
-                                        <a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>
+                                        <button id="btnShowModal" class="btn-secondary  mb-0" data-toggle="modal" data-target="#loginModal">
+                                            Login
+
+                                            @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
+                                        </button>
+                                        @*<a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>*@
                                     </li>
                                 }
 
@@ -813,35 +819,38 @@
 <!--Register-section-->
 
 <div class="modal fade" tabindex="-1" id="loginModal"
-     data-keyboard="false" data-backdrop="static"  >
-    <div class="modal-dialog modal-sm" >
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-header modelheader" >
+            <div class="modal-header modelheader">
 
-                <h4  style="color:white;"  class="modal-title"> Login</h4>
+                <h4 style="color:white;" class="modal-title"> Login</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     ×
                 </button>
+                <button type="button" id="btnHideModal" class="btn btn-primary button button4">
+                    Hide
+                </button>
             </div>
             <div class="modal-body">
-               
-                    <div class="form-group">
-                        <input class="form-control" type="text"
-                               placeholder="Enter Your Mobile Number" id="inputMobileNo" />
-                    </div>
-                    @*<div class="form-group">
-                            <input class="form-control" placeholder="Login Password"
-                                   type="password" id="inputPassword" />
-                        </div>*@
-                
+
+                <div class="form-group">
+                    <input class="form-control" type="text"
+                           placeholder="Enter Your Mobile Number" id="inputMobileNo" />
+                </div>
+                @*<div class="form-group">
+                        <input class="form-control" placeholder="Login Password"
+                               type="password" id="inputPassword" />
+                    </div>*@
+
             </div>
             <div class="modal-footer" style="text-align:center;">
                 @*<button id="btnMobileNoSubmit" type="submit" class="btn btn-primary button button4">Submit</button>*@
                 <button id="btnMobileNoSubmit" type="submit" class="btn btn-lg btn-block btn-secondary">Submit</button>
-                
+
                 @*<button type="button" id="btnHideModal" class="btn btn-primary button button4">
-            Hide
-        </button>*@
+                        Hide
+                    </button>*@
             </div>
         </div>
     </div>
@@ -863,31 +872,31 @@ get OTP NO -->
                 </button>
             </div>
             <div class="modal-body">
-               
-                    <div class="form-group">
-                        Enter the 4 digit One Time Password(OTP) sent  to youe Mobile Number
 
-                        via SMS
-                        <input  class="form-control" type="text" placeholder="Enter OTP" id="inputOTPNo" />
+                <div class="form-group">
+                    Enter the 4 digit One Time Password(OTP) sent  to youe Mobile Number
+
+                    via SMS
+                    <input class="form-control" type="text" placeholder="Enter OTP" id="inputOTPNo" />
 
 
 
-                        <label id="inputOldOTPNO"></label>
-                    </div>
-                    @*<div class="form-group">
-                            <input class="form-control" placeholder="Login Password"
-                                   type="password" id="inputPassword" />
-                        </div>*@
-              
+                    <label id="inputOldOTPNO"></label>
+                </div>
+                @*<div class="form-group">
+                        <input class="form-control" placeholder="Login Password"
+                               type="password" id="inputPassword" />
+                    </div>*@
+
             </div>
-            <div class="modal-footer"  style="text-align:center;">
-                <button id="btnOTPNoSubmit" type="submit" class="btn btn-primary button button4">Submit</button>
+            <div class="modal-footer" style="text-align:center;">
+                <button id="btnOTPNoSubmit" type="submit" class="btn btn-lg btn-block btn-secondary">Submit</button>
                 @*<button type="button" id="btnOTPHideModal" class="btn btn-primary button button4">
-                    Hide
-                </button>*@
+                        Hide
+                    </button>*@
 
-                <input style="display:none;"  class="form-control" type="text" id="inputOTPMobileNO" />
-                <input   style="display:none;" class="form-control" type="text" id="inputOldOTPNO" />     @*style="display:none;"*@
+                <input style="display:none;" class="form-control" type="text" id="inputOTPMobileNO" />
+                <input style="display:none;" class="form-control" type="text" id="inputOldOTPNO" />     @*style="display:none;"*@
             </div>
         </div>
     </div>
@@ -902,13 +911,18 @@ get OTP NO -->
 <script type="text/javascript">
     var mobileno = "", otpno = "";
 
-        $(document).ready(function () {
+    $(document).ready(function () {
+
+
+        $("#loginModal").modal('show');
             $("#btnShowModal").click(function () {
                 $("#loginModal").modal('show');
             });
 
-            $("#btnHideModal").click(function () {
-                $("#loginModal").modal('hide');
+        $("#btnHideModal").click(function () {
+           
+            $("#loginModal").modal('hide');
+            window.location.href = '/Admin/Home/Index';
             });
 
             $("#btnOTPHideModal").click(function () {
@@ -931,7 +945,7 @@ get OTP NO -->
 
                      if (msg == 'Login') {
                          $("#loginModal").modal('hide');
-                        
+
                          window.location.href = '/Admin/Home/Index';
                      }
                      else {
@@ -942,10 +956,10 @@ get OTP NO -->
                          $("#loginModal").modal('hide');
                          $("#OTPModal").modal('show');
                      }
-                    
-                 
 
-               
+
+
+
 
 
                 //inputOTPMobileNO
@@ -970,8 +984,13 @@ get OTP NO -->
 
                 if (oldOTPNo == NewOTPNo) {
                     $("#OTPModal").modal('hide');
-                    alert("confirm");
-                    window.location.href = '/Identity/Account/Register';
+                    //alert("confirm");
+                    //window.location.href = '/Identity/Account/Register';
+                    window.location.href = '../Admin/Registration/Register';
+
+
+
+                    
 
                     @*$.ajax({
                         type: "POST",
@@ -998,14 +1017,25 @@ get OTP NO -->
                     $("#inputOTPNo").val("");
                     alert("Please Enter Proper OTP Number");
                 }
-                
+
 
 
             });
 
 
+       
 
 
+    });
+    //function checkCookies() {
+    //    alert(" window load");
+    //    //var text = "";
 
-        });
+    //    //if (navigator.cookieEnabled == true) {
+    //    //    text = "Cookies are enabled.";
+    //    //} else {
+    //    //    text = "Cookies are not enabled.";
+    //    //}
+    //    //document.getElementById("demo").innerHTML = text;
+    //}
 </script>

@@ -11,6 +11,6 @@ namespace plathora.Models
         
         public string membershipName { get; set; }
 
-        
+        public decimal  gst { get; set; }
     }
 }

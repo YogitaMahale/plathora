@@ -20,7 +20,8 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Name</th>                                     
+                                    <th>Name</th>
+                                    <th>GST</th>
                                     <th class="text-warning">Actions</th>
                                 </tr>
                             </thead>
@@ -28,21 +29,23 @@
                                 @foreach (var item in Model)
                                 {
 
-                                    <tr>
-                                        <td>
-                                            @item.membershipName
-                                        </td>
-                                        
-                                        <td>
-                                            <a class="text-success" asp-action="Edit" asp-route-id="@item.id">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
-                                          
-                                            <a class="text-danger" asp-action="Delete" asp-route-id="@item.id">
-                                                <i class="far fa-trash-alt"></i> Delete
-                                            </a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @item.membershipName
+                                    </td>
+                                    <td>
+                                        @item.gst  
+                                    </td>
+                                    <td>
+                                        <a class="text-success" asp-action="Edit" asp-route-id="@item.id">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+
+                                        <a class="text-danger" asp-action="Delete" asp-route-id="@item.id">
+                                            <i class="far fa-trash-alt"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table><br />

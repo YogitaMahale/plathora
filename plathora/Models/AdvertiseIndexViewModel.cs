@@ -10,7 +10,7 @@ namespace plathora.Models
         public int id { get; set; }
 
         public string name { get; set; }
-
+        public decimal gst { get; set; }
 
         public string img { get; set; }
         public decimal Amount { get; set; }

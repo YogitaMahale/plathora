@@ -10,7 +10,10 @@ namespace plathora.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name = "Membership Name")]
         public string membershipName { get; set; }
+        [Display(Name = "GST")]
+        public decimal  gst { get; set; }
 
     }
 }

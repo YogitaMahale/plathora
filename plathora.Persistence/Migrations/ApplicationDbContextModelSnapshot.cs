@@ -256,6 +256,9 @@ namespace plathora.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("gst")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<string>("img")
                         .HasColumnType("nvarchar(max)");
 
@@ -796,6 +799,9 @@ namespace plathora.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("gst")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<bool>("isactive")
                         .HasColumnType("bit");

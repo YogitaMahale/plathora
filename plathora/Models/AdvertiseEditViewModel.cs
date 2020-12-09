@@ -22,6 +22,10 @@ namespace plathora.Models
         [Required]
         public string period { get; set; }
 
+        [Required]
+        [Display(Name = "GST")]
+        public decimal gst { get; set; }
+
         public IFormFile img { get; set; }
     }
 }

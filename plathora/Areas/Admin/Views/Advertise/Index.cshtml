@@ -25,7 +25,7 @@
                                     <th>Amount</th>
                                     <th>Description</th>
                                     <th>Period</th>
-
+                                    <th>GST</th>
                                     <th class="text-warning">Actions</th>
                                 </tr>
                             </thead>
@@ -50,6 +50,7 @@
                                     <td>
                                         @item.period
                                     </td>
+                                    <th> @item.gst  </th>
                                     <td>
                                         <a class="text-success" asp-action="Edit" asp-route-id="@item.id">
                                             <i class="fas fa-edit"></i> Edit
