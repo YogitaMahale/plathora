@@ -19,9 +19,9 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
                         <div class="text-center text-white ">
-                            <h1 class="mb-2"><span class="font-weight-semibold">@Model.objgetBusinessAllInfo.name</span></h1>
+                            <h1 class="mb-2"><span class="font-weight-semibold">@Model.objgetBusinessAllInfo.companyName</span></h1>
                             <div class="rating-stars mx-auto mb-2 mt-3 d-flex banner-ratings">
-                                <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="2">
+                                <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@Model.objgetBusinessAllInfo.rating">
                                 <div class="rating-stars-container mr-2">
                                     <div class="rating-star sm">
                                         <i class="fa fa-star"></i>
@@ -38,7 +38,7 @@
                                     <div class="rating-star sm">
                                         <i class="fa fa-star"></i>
                                     </div>
-                                </div> <a class="text-white" href="#">4 reviews</a>
+                                </div> <a class="text-white" href="#">@Model.objbusinessrating.Count() reviews</a>
                             </div>
                             <ul class="social-icons mb-4 ml-auto">
                                 <li>
@@ -102,7 +102,7 @@
                     <div class="ribbon ribbon-top-right text-danger"><span class="bg-danger">featured</span></div>
                     <div class="card-body">
                         <div class="item-det mb-4">
-                            <a href="#" class="text-dark"><h3>@Model.objgetBusinessAllInfo.name</h3></a>
+                            <a href="#" class="text-dark"><h3>@Model.objgetBusinessAllInfo.companyName</h3></a>
                             <div class=" d-flex">
                                 <ul class="d-flex mb-0">
                                     <li class="mr-5"><a href="#" class="icons"><i class="icon icon-briefcase text-muted mr-1"></i> Education</a></li>
@@ -606,7 +606,7 @@
                             </div>
                         </div>*@
                     <div class="card-body">
-                        <h4>3 Reviews</h4>
+                        <h4>@Model.objbusinessrating.Count() Reviews</h4>
                         @foreach (var item in Model.objbusinessrating)
                         {
                             <div class="d-sm-flex mt-3 p-5 sub-review-section border border-bottom-0 br-bl-0 br-br-0">

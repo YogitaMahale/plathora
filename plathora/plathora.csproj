@@ -45,7 +45,9 @@
     <Folder Include="wwwroot\uploads\Affiltate\passbookphoto\" />
     <Folder Include="wwwroot\uploads\Affiltate\pancardphoto\" />
     <Folder Include="wwwroot\uploads\Affiltate\profilephoto\" />
-    <Folder Include="wwwroot\uploads\BusinessOwner\slider\" />
+    <Folder Include="wwwroot\uploads\BusinessOwner\adharcardphoto\" />
+    <Folder Include="wwwroot\uploads\BusinessOwner\pancardphoto\" />
+    <Folder Include="wwwroot\uploads\BusinessOwner\profilephoto\" />
     <Folder Include="wwwroot\uploads\customer\" />
     <Folder Include="wwwroot\uploads\business\" />
     <Folder Include="wwwroot\uploads\advertisements\" />

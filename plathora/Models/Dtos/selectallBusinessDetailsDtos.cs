@@ -15,6 +15,9 @@ namespace plathora.Models.Dtos
         public string mobileno2 { get; set; }
        
         public int rating { get; set; }
+        public string cityname { get; set; }
+        public string businesstime { get; set; }
+        public string Email { get; set; }
 
     }
 }

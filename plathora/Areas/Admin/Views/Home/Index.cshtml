@@ -126,7 +126,7 @@
 <section class="sptb">
     <div class="container">
         <div class="section-title center-block text-center">
-            <h2>Latest Listings</h2>
+            <h2>Latest Listings</h2>            
             <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
         </div>
         <div id="myCarousel2" class="owl-carousel owl-carousel-icons">
@@ -137,9 +137,9 @@
                     <div class="card mb-0 overflow-hidden">
                         <div class="arrow-ribbon bg-danger">Open</div>
                         <div class="item-card7-imgs">
-
-                            <img asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
-
+                         
+                            <img style="height:248px;" asp-area="Admin"  asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
+                            
                         </div>
                         <div class="item-card7-overlaytext">
                             <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
@@ -150,12 +150,15 @@
                                     <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-dark"><h4 class="">@obj.name</h4></a>
                                 </div>
                                 <ul class="item-cards7-ic mb-0">
-                                    @*<li><a href="#"><span class=""><i class="icon icon-eye mr-1"></i> 12 Views</span></a></li>
-                                        <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> Canada</a></li>
-                                        <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-event text-muted mr-1"></i> 1 hour ago</a></li>*@
+                                    <li><a href="#"><span class=""><i class="icon icon-clock mr-1"></i> @obj.businesstime</span></a></li>
+                                    @*<i class="icon icon-clock" ></i>*@
+                                    <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> @obj.cityname</a></li>
+                                    <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-envelope text-muted mr-1"></i> @obj.Email</a></li>
                                     <li class="mb-0"><a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="icons"><i class="icon icon-phone text-muted mr-1"></i> @obj.PhoneNumber</a></li>
                                 </ul>
                                 <p class="mb-0">@obj.description</p>
+
+                                @**@
                             </div>
                         </div>
                         @*<div class="card-footer">
