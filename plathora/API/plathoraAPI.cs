@@ -56,7 +56,8 @@ namespace plathora.API
         private readonly IcommissionServices _commissionServices;
         private readonly IAffilatePackageServices _AffilatePackageServices;
         private readonly IBusinessPackageServices _businessPackageServices;
-        public plathoraAPI(ISectorRegistrationServices SectorRegitrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices ProductMasterServices, ICountryRegistrationservices CountryRegistrationservices, IStateRegistrationService StateRegistrationService, ICityRegistrationservices CityRegistrationservices, IProductMasterServices productMasterServices, ISP_Call sP_Call, IVideoServices videoServices, IModuleMasterServices moduleMasterServices, IWebHostEnvironment hostEnvironment, IadvertisementInfoServices advertisementInfoServices, IsocialsServices socialsServices, IsliderServices sliderServices, Iratingsservices ratingsservices, IbusinessratingsServices businessratingsServices, IConfiguration _configuration, ICustomerRegistrationservices customerRegistrationservices, ItblfeedbackServices tblfeedbackServices, IAdvertiseServices advertiseServices, IAffilatePackageServices affilatePackageServices, IMembershipServices membershipServices, IsocialdetailsServices socialdetailsServices, IcommissionServices commissionServices, IAffilatePackageServices AffilatePackageServices, IBusinessPackageServices businessPackageServices)
+        private readonly INewsServices _newsServices;
+        public plathoraAPI(ISectorRegistrationServices SectorRegitrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices ProductMasterServices, ICountryRegistrationservices CountryRegistrationservices, IStateRegistrationService StateRegistrationService, ICityRegistrationservices CityRegistrationservices, IProductMasterServices productMasterServices, ISP_Call sP_Call, IVideoServices videoServices, IModuleMasterServices moduleMasterServices, IWebHostEnvironment hostEnvironment, IadvertisementInfoServices advertisementInfoServices, IsocialsServices socialsServices, IsliderServices sliderServices, Iratingsservices ratingsservices, IbusinessratingsServices businessratingsServices, IConfiguration _configuration, ICustomerRegistrationservices customerRegistrationservices, ItblfeedbackServices tblfeedbackServices, IAdvertiseServices advertiseServices, IAffilatePackageServices affilatePackageServices, IMembershipServices membershipServices, IsocialdetailsServices socialdetailsServices, IcommissionServices commissionServices, IAffilatePackageServices AffilatePackageServices, IBusinessPackageServices businessPackageServices, INewsServices newsServices)
         {
             _SectorRegistrationServices = SectorRegitrationServices;
             _BusinessRegistrationServieces = BusinessRegistrationServieces;
@@ -86,6 +87,7 @@ namespace plathora.API
             _commissionServices = commissionServices;
             _AffilatePackageServices = affilatePackageServices;
             _businessPackageServices = businessPackageServices;
+            _newsServices = newsServices;
         }
 
         [HttpGet]
@@ -943,7 +945,7 @@ namespace plathora.API
                                 
 
 
-                                obj.id = Convert.ToInt32(_dataRow["id"]);
+                                obj.id = Convert.ToString (_dataRow["id"]);
                                 obj.name = Convert.ToString(_dataRow["name"]);
                                 obj.profilephoto = Convert.ToString(_dataRow["profilephoto"]);
                                 obj.mobileno1 = Convert.ToString(_dataRow["mobileno1"]);
@@ -965,9 +967,9 @@ namespace plathora.API
 
 
                                 obj.pancardphoto = Convert.ToString(_dataRow["pancardphoto"]);
-                                obj.password = Convert.ToString(_dataRow["password"]);
+                                //obj.password = Convert.ToString(_dataRow["password"]);
                                 obj.gender = Convert.ToString(_dataRow["gender"]);
-                                obj.pinno = Convert.ToString(_dataRow["pinno"]);
+                              //  obj.pinno = Convert.ToString(_dataRow["pinno"]);
                                 obj.DOB = Convert.ToDateTime(_dataRow["DOB"]);
 
                                 obj.house = Convert.ToString(_dataRow["house"]);
@@ -975,7 +977,7 @@ namespace plathora.API
                                 obj.street = Convert.ToString(_dataRow["street"]);
 
 
-                                obj.cityid = Convert.ToInt32(_dataRow["cityid"]);
+                                obj.cityid = Convert.ToString (_dataRow["cityid"]);
                                 obj.zipcode = Convert.ToString(_dataRow["zipcode"]);
 
                                 obj.latitude = Convert.ToString(_dataRow["latitude"]);
@@ -984,7 +986,7 @@ namespace plathora.API
                                 obj.designation = Convert.ToString(_dataRow["designation"]);
                                 obj.gstno = Convert.ToString(_dataRow["gstno"]);
                                 obj.Website = Convert.ToString(_dataRow["Website"]);
-                                obj.Discription = Convert.ToString(_dataRow["Discription"]);
+                              //  obj.Discription = Convert.ToString(_dataRow["Discription"]);
                                 obj.Regcertificate = Convert.ToString(_dataRow["Regcertificate"]);
 
 
@@ -996,7 +998,7 @@ namespace plathora.API
 
                                 obj.productid = Convert.ToString(_dataRow["productid"]);
                                 obj.lic = Convert.ToString(_dataRow["lic"]);
-                                obj.registerbyAffilateID = Convert.ToInt32(_dataRow["registerbyAffilateID"]);
+                                obj.registerbyAffilateID = Convert.ToString(_dataRow["registerbyAffilateID"]);
                                 obj.deviceid = Convert.ToString(_dataRow["deviceid"]);
                                 obj.type = Convert.ToString(_dataRow["type"]);
 
@@ -1400,6 +1402,26 @@ namespace plathora.API
             try
             {
                 IEnumerable<BusinessPackage> obj = _businessPackageServices.GetAll().Where(x=>x.isdeleted==false);
+                if (obj != null)
+                {
+                    return Ok(obj);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch { return BadRequest(); }
+        }
+
+
+        [HttpGet]
+        [Route("NewsSelectAll")]
+        public async Task<IActionResult> NewsSelectAll()
+        {
+            try
+            {
+                IEnumerable<News> obj = _newsServices.GetAll();
                 if (obj != null)
                 {
                     return Ok(obj);

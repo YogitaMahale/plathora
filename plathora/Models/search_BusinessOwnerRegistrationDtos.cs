@@ -7,7 +7,7 @@ namespace plathora.Models
 {
     public class search_BusinessOwnerRegistrationDtos
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
         public string profilephoto { get; set; }
         public string mobileno1 { get; set; }
@@ -25,9 +25,9 @@ namespace plathora.Models
         public string pancardno { get; set; }
 
         public string pancardphoto { get; set; }
-        public string password { get; set; }
+       // public string password { get; set; }
         public string gender { get; set; }
-        public string pinno { get; set; }
+       // public string pinno { get; set; }
         public DateTime DOB { get; set; } = DateTime.UtcNow;
         // public DateTime createddate { get; set; } = DateTime.UtcNow;
 
@@ -40,7 +40,7 @@ namespace plathora.Models
         public string street { get; set; }
         //public int countryid { get; set; }
         //public int stateid { get; set; }
-        public int cityid { get; set; }
+        public string cityid { get; set; }
         public string zipcode { get; set; }
 
         public string latitude { get; set; }
@@ -49,7 +49,7 @@ namespace plathora.Models
         public string designation { get; set; }
         public string gstno { get; set; }
         public string Website { get; set; }
-        public string Discription { get; set; }
+        //public string Discription { get; set; }
         public string Regcertificate { get; set; }
 
         //public int sectorid { get; set; }
@@ -60,7 +60,7 @@ namespace plathora.Models
 
         public string productid { get; set; }
         public string lic { get; set; }
-        public int registerbyAffilateID { get; set; }
+        public string  registerbyAffilateID { get; set; }
         public string deviceid { get; set; }
         public int? customerid { get; set; }
 

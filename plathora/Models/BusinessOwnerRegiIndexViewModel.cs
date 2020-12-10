@@ -9,7 +9,11 @@ namespace plathora.Models
 {
   public  class BusinessOwnerRegiIndexViewModel
     {
-        public int id { get; set; }
+
+  //      	--, password, , pinno,, isactive, 
+		//--, Discription,
+		
+        public string  id { get; set; }
         [Required]
         public string name { get; set; }
 
@@ -24,11 +28,11 @@ namespace plathora.Models
 
         public string pancardno { get; set; }
         public string pancardphoto { get; set; }
-        [Required]
-        public string password { get; set; }
+        //[Required]
+        //public string password { get; set; }
         [Required]
         public string gender { get; set; }
-        public string pinno { get; set; }
+       // public string pinno { get; set; }
         public DateTime DOB { get; set; }
 
 
@@ -36,8 +40,8 @@ namespace plathora.Models
 
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }
-        [DefaultValue("false")]
-        public Boolean isactive { get; set; }
+      //  [DefaultValue("false")]
+        //public Boolean isactive { get; set; }
 
 
         //--------
@@ -57,7 +61,7 @@ namespace plathora.Models
         public string designation { get; set; }
         public string gstno { get; set; }
         public string Website { get; set; }
-        public string Discription { get; set; }
+     //   public string Discription { get; set; }
         public string Regcertificate { get; set; }
         public string businessid { get; set; }
         public string productid { get; set; }
@@ -70,7 +74,7 @@ namespace plathora.Models
 
 
        // [ForeignKey("customerRegistration")]
-        public int? customerid { get; set; }
+        public string? customerid { get; set; }
       //  public CustomerRegistration customerRegistration { get; set; }
 
         public string MondayOpen { get; set; }
