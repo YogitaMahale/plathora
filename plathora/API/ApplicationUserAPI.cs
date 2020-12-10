@@ -522,6 +522,8 @@ namespace plathora.API
                     affilatereg.branch = model.branch;
                     affilatereg.Membershipid = model.Membershipid;
                     affilatereg.amount = model.amount;
+                    affilatereg.latitude  = model.latitude ;
+                    affilatereg.longitude = model.longitude;
 
 
 

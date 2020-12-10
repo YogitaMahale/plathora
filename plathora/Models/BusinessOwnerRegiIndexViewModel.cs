@@ -109,6 +109,7 @@ namespace plathora.Models
         public string sliderimg4 { get; set; }
         public string sliderimg5 { get; set; }
         public string rating { get; set; }
+        public int businessSRNo { get; set; }
 
     }
 }
