@@ -14,6 +14,9 @@ namespace plathora.Models
         public string membershipName { get; set; }
         [Display(Name = "GST")]
         public decimal  gst { get; set; }
+        public decimal amount { get; set; }
 
+
+        public string period { get; set; }
     }
 }

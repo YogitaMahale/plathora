@@ -12,6 +12,8 @@ using plathora.Services;
 using Microsoft.AspNetCore.Authorization;
 
 using plathora.Utility;
+using plathora.Persistence;
+using plathora.Notification;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,10 +25,13 @@ namespace plathora.Controllers
     {
         private readonly INewsServices _newsServices;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public NewsController(INewsServices newsServices, IWebHostEnvironment hostingEnvironment)
+        private readonly ApplicationDbContext _db;
+        public fcmNotification objfcmNotification = new fcmNotification();
+        public NewsController(INewsServices newsServices, IWebHostEnvironment hostingEnvironment, ApplicationDbContext db)
         {
             _newsServices = newsServices;
             _hostingEnvironment = hostingEnvironment;
+            _db = db;
 
         }
 
@@ -84,8 +89,30 @@ namespace plathora.Controllers
                     objcountry.img = '/' + uploadDir + '/' + fileName;
 
                 }
-                
+               
+
+
                 await _newsServices.CreateAsync(objcountry);
+
+
+                var userList = _db.applicationUsers.ToList();
+                var userRole = _db.UserRoles.ToList();
+                var Roles = _db.Roles.ToList();
+                foreach (var user in userList)
+                {
+                    var roleId = userRole.FirstOrDefault(u => u.UserId == user.Id).RoleId;
+                    user.Role = Roles.FirstOrDefault(u => u.Id == roleId).Name;
+                    objfcmNotification.customerNotification(user.deviceid, model.description, "", model.title);
+                    //if(user.company==null)
+
+                    //{
+                    //    user.company = new company()
+                    //    {
+                    //        Name = ""
+                    //    };
+                    //}
+
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

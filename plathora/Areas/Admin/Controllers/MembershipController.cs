@@ -30,7 +30,9 @@ namespace plathora.Controllers
             {
                 id = x.id,
                 membershipName = x.membershipName,
-                gst=x.gst 
+                gst=x.gst ,
+                amount=x.amount,
+                period=x.period
 
             }).ToList();
             return View(countrydetails);
@@ -56,7 +58,9 @@ namespace plathora.Controllers
                     membershipName = model.membershipName,
                   gst=model.gst,
                     isdeleted = false,
-                    isactive = false
+                    isactive = false,
+                    amount=model.amount,
+                    period=model.period
                 };
 
                 await _MembershipServices.CreateAsync(objcountry);
@@ -80,7 +84,10 @@ namespace plathora.Controllers
             {
                 id = objcountry.id,
                 membershipName  = objcountry.membershipName,
-                gst = objcountry.gst
+                gst = objcountry.gst,
+                period=objcountry.period,
+                amount=objcountry.amount
+
             };
             return View(model);
 
@@ -100,6 +107,8 @@ namespace plathora.Controllers
                 objcountry.id = model.id;
                 objcountry.membershipName = model.membershipName;
                 objcountry.gst = model.gst;
+                objcountry.amount = model.amount;
+                objcountry.period  = model.period;
 
 
                 await _MembershipServices.UpdateAsync(objcountry);

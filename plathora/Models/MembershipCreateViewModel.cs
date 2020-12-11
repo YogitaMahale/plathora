@@ -17,5 +17,9 @@ namespace plathora.Models
         public Boolean isdeleted { get; set; }
          
         public Boolean isactive { get; set; }
+        public decimal amount { get; set; }
+
+
+        public string period { get; set; }
     }
 }

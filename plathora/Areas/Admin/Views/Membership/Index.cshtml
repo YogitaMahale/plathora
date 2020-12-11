@@ -22,6 +22,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>GST</th>
+                                    <th>Amount</th>
+                                    <th>Period</th>
                                     <th class="text-warning">Actions</th>
                                 </tr>
                             </thead>
@@ -34,7 +36,13 @@
                                         @item.membershipName
                                     </td>
                                     <td>
-                                        @item.gst  
+                                        @item.gst
+                                    </td>
+                                    <td>
+                                        @item.amount  
+                                    </td>
+                                    <td>
+                                        @item.period  
                                     </td>
                                     <td>
                                         <a class="text-success" asp-action="Edit" asp-route-id="@item.id">

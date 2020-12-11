@@ -275,13 +275,15 @@
                             <ul class="custom">
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                     
-
+                                    
+                                @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
                                     @*<li class="nav-item">
-                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                                        </li>*@
-
-                                    <li class="dropdown" onload="myFunction()">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </li>*@
+                                    @*<script type="text/javascript">
+                alert("login");
+            </script>*@
+                                    <li class="dropdown">
                                         <a href="#" class="text-dark" data-toggle="dropdown"><i class="fa fa-home mr-1"></i><span> Hello @User.Identity.Name!</span></a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             <a href="#" class="dropdown-item">
@@ -297,8 +299,8 @@
                                                 <i class="dropdown-icon  icon icon-settings"></i> Account Settings
                                             </a>
                                             @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Admin" })" class="dropdown-item">
-                                                    <i class="dropdown-icon  icon icon-settings"></i> Logout
-                                                </a>*@
+                        <i class="dropdown-icon  icon icon-settings"></i> Logout
+                    </a>*@
                                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
 
@@ -312,15 +314,23 @@
                                 }
                                 else
                                 {
+                                    
+
+                                    @*<script type="text/javascript">
+                $("#loginModal").modal('show');
+                window.location.href = '/Admin/Home/Index';
+                alert("Logout");
+                //$("#loginModal").modal('show');
+            </script>*@
                                     @*<li class="nav-item">
-                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                                        </li>*@
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>*@
 
 
-                                    <li onload="myFunction()">
+                                    <li>
 
                                         <button id="btnShowModal" class="btn-secondary  mb-0" data-toggle="modal" data-target="#loginModal">
                                             Register
@@ -443,160 +453,160 @@
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Category">Category </a></li>
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Advertising">Advertising </a></li>
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"> Contact Us <span class="wsarrow"></span></a></li>
-                        <li><a>Add Listing </a></li>
+                        <li><a class="btn-secondary  mb-0">Add Listing </a></li>
+                         
+                        @*<li>
+            <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
+            <ul class="sub-menu">
+                <li><a href="#">Card Widgets</a></li>
+                <li><a href="#">Carousel Widgets</a></li>
+                <li><a href="#">Vertical Scroll Widgets</a></li>
+            </ul>
+        </li>*@
+                        @*<li>
+            <a href="#">Pages <span class="fa fa-caret-down m-0"></span></a>
+            <div class="horizontal-megamenu clearfix">
+                <div class="container">
+                    <div class="megamenu-content">
+                        <div class="row">
+                            <ul class="col link-list">
+                                <li class="title">Listing pages</li>
+                                <li><a href="business-list.html">Business List</a></li>
+                                <li><a href="business-list2.html">Business List 02</a></li>
+                                <li><a href="business-list3.html">Business List 03</a></li>
+                                <li><a href="business-list-right.html">Business List Right</a></li>
+                                <li><a href="business-list-map.html">Business Map list</a></li>
+                                <li><a href="business-list-map2.html">Business Map list 02</a></li>
+                                <li><a href="business-list-map3.html">Business Map style 03</a></li>
 
+                                <li class="title mb-0 mt-3">Add Post</li>
+                                <li><a href="edit-list.html">Edit-list</a></li>
+                                <li><a href="edit-list2.html">Edit-list 02</a></li>
+                                <li><a href="#">Ad List</a></li>
+                                <li><a href="ad-list2.html">Ad List2</a></li>
+                            </ul>
+                            <ul class="col link-list">
+                                <li class="title">Categories & My Dashboard</li>
+                                <li><a href="categories.html">Categories</a></li>
+                                <li><a href="categories2.html">Categories 02</a></li>
+                                <li><a href="#">My Dashboard</a></li>
+                                <li><a href="mylistings.html">Listings</a></li>
+                                <li><a href="mylistings-2.html">Listings 02</a></li>
+                                <li><a href="myfavorite.html">Favorite Listings</a></li>
+                                <li><a href="myfavorite-2.html">Favorite Listings 02</a></li>
+                                <li><a href="manged.html">Manged Listings</a></li>
+                                <li><a href="manged-2.html">Manged Listings 02</a></li>
+                                <li><a href="payments.html">Payments</a></li>
+                                <li><a href="orders.html"> Orders</a></li>
+                                <li><a href="#"> Settings</a></li>
+                                <li><a href="tips.html">Tips</a></li>
+                            </ul>
+                            <ul class="col link-list">
+                                <li class="title">User Pages</li>
+                                <li><a href="userprofile.html"> User Profile</a></li>
+                                <li><a href="personal-blog.html">Personal Profile</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="inovice.html">Invoice</a></li>
+                                <li><a href="underconstruction.html">Under Constructions</a></li>
+                                <li><a href="404.html">404</a></li>
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="login-2.html">Login 02</a></li>
+                                <li><a href="forgot.html">Forgot Password</a></li>
+                                <li><a href="lockscreen.html">Lock Screen</a></li>
+                                <li><a href="faq.html">Faq</a></li>
+                            </ul>
+                            <ul class="col link-list">
+                                <li class="title">Headers Styles</li>
+                                <li><a href="header-style1.html">Header Style 01</a></li>
+                                <li><a href="header-style2.html">Header Style 02</a></li>
+                                <li><a href="header-style3.html">Header Style 03</a></li>
+                                <li><a href="header-style4.html">Header Style 04</a></li>
+                                <li><a href="header-style5.html">Header Style 05</a></li>
+                                <li><a href="header-style6.html">Header Style 06</a></li>
+                                <li><a href="header-style7.html">Header Style 07</a></li>
+                                <li><a href="header-style8.html">Header Style 08</a></li>
+                                <li><a href="header-style9.html">Header Style 09</a></li>
+                                <li><a href="header-style10.html">Header Style 10</a></li>
+                            </ul>
+                            <ul class="col link-list">
+                                <li class="title">Footers Styles</li>
+                                <li><a href="footer-style.html">Footer Style 01</a></li>
+                                <li><a href="footer-style2.html">Footer Style 02</a></li>
+                                <li><a href="footer-style3.html">Footer Style 03</a></li>
+                                <li><a href="footer-style4.html">Footer Style 04</a></li>
+                                <li><a href="footer-style5.html">Footer Style 05</a></li>
+                                <li><a href="footer-style6.html">Footer Style 06</a></li>
+                                <li><a href="footer-style7.html">Footer Style 07</a></li>
+                                <li><a href="footer-style8.html">Footer Style 08</a></li>
+                                <li><a href="footer-style9.html">Footer Style 09</a></li>
+                                <li><a href="footer-style10.html">Footer Style 10</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>*@
                         @*<li>
-                                <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="#">Card Widgets</a></li>
-                                    <li><a href="#">Carousel Widgets</a></li>
-                                    <li><a href="#">Vertical Scroll Widgets</a></li>
-                                </ul>
-                            </li>*@
+            <a href="#">Blog <span class="fa fa-caret-down m-0"></span></a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#">Blog Grid <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="blog-grid.html">Blog Grid Left</a></li>
+                        <li><a href="blog-grid-right.html">Blog Grid Right</a></li>
+                        <li><a href="blog-grid-center.html">Blog Grid Center</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Blog List <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="blog-list.html">Blog List Left</a></li>
+                        <li><a href="blog-list-right.html">Blog List Right</a></li>
+                        <li><a href="blog-list-center.html">Blog List Center</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Blog Details <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="blog-details.html">Blog Details Left</a></li>
+                        <li><a href="blog-details-right.html">Blog Details Right</a></li>
+                        <li><a href="blog-details-center.html">Blog Details Center</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>*@
                         @*<li>
-                                <a href="#">Pages <span class="fa fa-caret-down m-0"></span></a>
-                                <div class="horizontal-megamenu clearfix">
-                                    <div class="container">
-                                        <div class="megamenu-content">
-                                            <div class="row">
-                                                <ul class="col link-list">
-                                                    <li class="title">Listing pages</li>
-                                                    <li><a href="business-list.html">Business List</a></li>
-                                                    <li><a href="business-list2.html">Business List 02</a></li>
-                                                    <li><a href="business-list3.html">Business List 03</a></li>
-                                                    <li><a href="business-list-right.html">Business List Right</a></li>
-                                                    <li><a href="business-list-map.html">Business Map list</a></li>
-                                                    <li><a href="business-list-map2.html">Business Map list 02</a></li>
-                                                    <li><a href="business-list-map3.html">Business Map style 03</a></li>
-
-                                                    <li class="title mb-0 mt-3">Add Post</li>
-                                                    <li><a href="edit-list.html">Edit-list</a></li>
-                                                    <li><a href="edit-list2.html">Edit-list 02</a></li>
-                                                    <li><a href="#">Ad List</a></li>
-                                                    <li><a href="ad-list2.html">Ad List2</a></li>
-                                                </ul>
-                                                <ul class="col link-list">
-                                                    <li class="title">Categories & My Dashboard</li>
-                                                    <li><a href="categories.html">Categories</a></li>
-                                                    <li><a href="categories2.html">Categories 02</a></li>
-                                                    <li><a href="#">My Dashboard</a></li>
-                                                    <li><a href="mylistings.html">Listings</a></li>
-                                                    <li><a href="mylistings-2.html">Listings 02</a></li>
-                                                    <li><a href="myfavorite.html">Favorite Listings</a></li>
-                                                    <li><a href="myfavorite-2.html">Favorite Listings 02</a></li>
-                                                    <li><a href="manged.html">Manged Listings</a></li>
-                                                    <li><a href="manged-2.html">Manged Listings 02</a></li>
-                                                    <li><a href="payments.html">Payments</a></li>
-                                                    <li><a href="orders.html"> Orders</a></li>
-                                                    <li><a href="#"> Settings</a></li>
-                                                    <li><a href="tips.html">Tips</a></li>
-                                                </ul>
-                                                <ul class="col link-list">
-                                                    <li class="title">User Pages</li>
-                                                    <li><a href="userprofile.html"> User Profile</a></li>
-                                                    <li><a href="personal-blog.html">Personal Profile</a></li>
-                                                    <li><a href="pricing.html">Pricing</a></li>
-                                                    <li><a href="typography.html">Typography</a></li>
-                                                    <li><a href="inovice.html">Invoice</a></li>
-                                                    <li><a href="underconstruction.html">Under Constructions</a></li>
-                                                    <li><a href="404.html">404</a></li>
-                                                    <li><a href="#">Register</a></li>
-                                                    <li><a href="#">Login</a></li>
-                                                    <li><a href="login-2.html">Login 02</a></li>
-                                                    <li><a href="forgot.html">Forgot Password</a></li>
-                                                    <li><a href="lockscreen.html">Lock Screen</a></li>
-                                                    <li><a href="faq.html">Faq</a></li>
-                                                </ul>
-                                                <ul class="col link-list">
-                                                    <li class="title">Headers Styles</li>
-                                                    <li><a href="header-style1.html">Header Style 01</a></li>
-                                                    <li><a href="header-style2.html">Header Style 02</a></li>
-                                                    <li><a href="header-style3.html">Header Style 03</a></li>
-                                                    <li><a href="header-style4.html">Header Style 04</a></li>
-                                                    <li><a href="header-style5.html">Header Style 05</a></li>
-                                                    <li><a href="header-style6.html">Header Style 06</a></li>
-                                                    <li><a href="header-style7.html">Header Style 07</a></li>
-                                                    <li><a href="header-style8.html">Header Style 08</a></li>
-                                                    <li><a href="header-style9.html">Header Style 09</a></li>
-                                                    <li><a href="header-style10.html">Header Style 10</a></li>
-                                                </ul>
-                                                <ul class="col link-list">
-                                                    <li class="title">Footers Styles</li>
-                                                    <li><a href="footer-style.html">Footer Style 01</a></li>
-                                                    <li><a href="footer-style2.html">Footer Style 02</a></li>
-                                                    <li><a href="footer-style3.html">Footer Style 03</a></li>
-                                                    <li><a href="footer-style4.html">Footer Style 04</a></li>
-                                                    <li><a href="footer-style5.html">Footer Style 05</a></li>
-                                                    <li><a href="footer-style6.html">Footer Style 06</a></li>
-                                                    <li><a href="footer-style7.html">Footer Style 07</a></li>
-                                                    <li><a href="footer-style8.html">Footer Style 08</a></li>
-                                                    <li><a href="footer-style9.html">Footer Style 09</a></li>
-                                                    <li><a href="footer-style10.html">Footer Style 10</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-                        @*<li>
-                                <a href="#">Blog <span class="fa fa-caret-down m-0"></span></a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="#">Blog Grid <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid.html">Blog Grid Left</a></li>
-                                            <li><a href="blog-grid-right.html">Blog Grid Right</a></li>
-                                            <li><a href="blog-grid-center.html">Blog Grid Center</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog List <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-list.html">Blog List Left</a></li>
-                                            <li><a href="blog-list-right.html">Blog List Right</a></li>
-                                            <li><a href="blog-list-center.html">Blog List Center</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog Details <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-details.html">Blog Details Left</a></li>
-                                            <li><a href="blog-details-right.html">Blog Details Right</a></li>
-                                            <li><a href="blog-details-center.html">Blog Details Center</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>*@
-                        @*<li>
-                                <a href="#">Categories <span class="fa fa-caret-down m-0"></span></a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="business.html">Educational</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-2.html">Meditation</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-3.html">RealEstate</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-4.html">Restaurant</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-5.html">Backery</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-6.html">Beauty & Spa</a>
-                                    </li>
-                                    <li>
-                                        <a href="business-right.html">Automobiles</a>
-                                    </li>
-                                </ul>
-                            </li>*@
+            <a href="#">Categories <span class="fa fa-caret-down m-0"></span></a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="business.html">Educational</a>
+                </li>
+                <li>
+                    <a href="business-2.html">Meditation</a>
+                </li>
+                <li>
+                    <a href="business-3.html">RealEstate</a>
+                </li>
+                <li>
+                    <a href="business-4.html">Restaurant</a>
+                </li>
+                <li>
+                    <a href="business-5.html">Backery</a>
+                </li>
+                <li>
+                    <a href="business-6.html">Beauty & Spa</a>
+                </li>
+                <li>
+                    <a href="business-right.html">Automobiles</a>
+                </li>
+            </ul>
+        </li>*@
 
                         @*<li class="d-lg-none mt-5 pb-5 mt-lg-0">
-                                <span><a class="btn btn-orange" href="#">Add Listing</a></span>
-                            </li>*@
+            <span><a class="btn btn-orange" href="#">Add Listing</a></span>
+        </li>*@
                     </ul>
                     <ul class="mb-0">
                         @*<li class="mt-2 d-none d-lg-flex">
@@ -831,8 +841,8 @@
                     ×
                 </button>
                 @*<button type="button" id="btnHideModal" class="btn btn-primary button button4">
-                    Hide
-                </button>*@
+                        Hide
+                    </button>*@
             </div>
             <div class="modal-body">
 
@@ -922,7 +932,7 @@ get OTP NO -->
             });
 
         $("#btnHideModal").click(function () {
-           
+
             $("#loginModal").modal('hide');
             window.location.href = '/Admin/Home/Index';
             });
@@ -992,7 +1002,7 @@ get OTP NO -->
 
 
 
-                    
+
 
                     @*$.ajax({
                         type: "POST",
@@ -1025,15 +1035,15 @@ get OTP NO -->
             });
 
 
-       
+
 
 
     });
 
- 
+
 
     function myFunction() {
         alert("Page is loaded");
     }
-   
+
 </script>
