@@ -1,10 +1,12 @@
 ﻿using Dapper;
+//using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using plathora.Entity;
 using plathora.Models;
 using plathora.Models.Dtos;
+using plathora.Persistence;
 using plathora.Services;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,10 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using plathora.Entity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace plathora.Controllers
 {
@@ -30,7 +36,11 @@ namespace plathora.Controllers
         private IbusinessratingsServices _businessratingsServices;
         private IBusinessOwnerRegiServices _businessOwnerRegiServices;
         private INewsServices _newsServices;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices)
+        private readonly ApplicationDbContext _db;
+        private readonly Iratingsservices _ratingsservices;
+       private readonly UserManager<IdentityUser> _usermanager;
+
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -43,6 +53,9 @@ namespace plathora.Controllers
             _businessratingsServices = businessratingsServices;
             _businessOwnerRegiServices = businessOwnerRegiServices;
             _newsServices = newsServices;
+           _usermanager = usermanager;
+             _db = db;
+            _ratingsservices = ratingsservices;
         }
         [HttpGet]
         public IActionResult Index()
@@ -65,7 +78,7 @@ namespace plathora.Controllers
 
                 }).ToList();
 
-                objmodel.objNews = _newsServices.GetAll().Where(x=>x.isdeleted==false).OrderByDescending(x=>x.id).Select(x => new NewIndexViewModel
+                objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).OrderByDescending(x => x.id).Select(x => new NewIndexViewModel
                 {
                     id = x.id,
                     title = x.title,
@@ -326,14 +339,31 @@ namespace plathora.Controllers
             //}
             //return View();
         }
+        //private Task<IdentityUser> GetCurrentUserAsync() =>  _usermanager.GetUserAsync(this.User);
+
+        [HttpPost]
+        public async Task<string> AddReview(string rating, string bussinessid, string review)
+        {
+            var customerId =User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
+            var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
+            businessrating obj = new businessrating();
+            obj.id = 0;
+            obj.CustomerId = customerId;
+            obj.BusinessOwnerId =(int)businessId.id;
+            obj.rating = rating;
+            obj.comment = review;
+            obj.isdeleted = false;
+            await _businessratingsServices.CreateAsync(obj);
 
-
+            return "complete";
+        }
 
         [HttpGet]
         public IActionResult business(string id)
         {
+            
             businessDetailsViewModel obj = new businessDetailsViewModel();
 
 
@@ -429,15 +459,15 @@ namespace plathora.Controllers
        ,
                     name = model.name
        ,
-                    Email  = model.Email
+                    Email = model.Email
        ,
                     Mobileno = model.Mobileno
        ,
                     Address = model.Address
-         
+
                 };
- 
-               Int32 id= await _ContactUsServices.CreateAsync(obj);
+
+                Int32 id = await _ContactUsServices.CreateAsync(obj);
                 //var postId = await _CustomerRegistrationservices.CreateAsync(objcustomerRegistration);
                 return RedirectToAction(nameof(Index));
 
@@ -506,9 +536,9 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Category()
         {
-            var parameter = new DynamicParameters();            
+            var parameter = new DynamicParameters();
             IEnumerable<selectallSectorWithBusinessCount> obj = _sP_Call.List<selectallSectorWithBusinessCount>("selectallSectorWithBusinessCount", null);
-            
+
             return View(obj);
         }
         [HttpGet]
@@ -527,6 +557,6 @@ namespace plathora.Controllers
             return View();
         }
 
-      
+
     }
 }

@@ -80,6 +80,8 @@ namespace plathora.Models.Dtos
         public string twitterLink { get; set; }
         public string youtubeLink { get; set; }
         public string rating { get; set; }
-        
+        public string productName { get; set; }
+
+
     }
 }

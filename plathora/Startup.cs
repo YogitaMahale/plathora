@@ -43,14 +43,20 @@ namespace plathora
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //  .AddEntityFrameworkStores<ApplicationDbContext>()
+            // .AddDefaultTokenProviders()
+            //   .AddDefaultUI();
 
 
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
              .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddSingleton<IEmailSender, EmailSender>();
+
+           
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             // services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();
             services.AddScoped<IAffiltateRegistrationService, AffiltateRegistrationService>();

@@ -697,7 +697,18 @@
                     <div class="card overflow-hidden mb-lg-0">
                         <div class="item-card2-img">
                             <a href="#"></a>
-                            <img src="@item.img" alt="img" class="cover-image">
+                            @if (item.img.Length > 0)
+                            {
+                                <img src="@item.img" style="height:222px;" alt="img" class="cover-image">
+                            }
+                            else
+                            { 
+
+                             <img src="/uploads/blankbusinessImg.jpg" style="height:222px;" alt="img" class="cover-image" />
+                            }
+
+
+
                             <div class="blog--category">News</div>
                         </div>
                         <div class="item-card2-icons">
