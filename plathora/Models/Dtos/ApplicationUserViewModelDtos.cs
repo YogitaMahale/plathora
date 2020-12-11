@@ -8,6 +8,7 @@ namespace plathora.Models.Dtos
     public class ApplicationUserViewModelDtos
     {
         public string Id { get; set; }
+        public string  businessSrNo { get; set; }
 
         public string otpno { get; set; }
         public string name { get; set; }

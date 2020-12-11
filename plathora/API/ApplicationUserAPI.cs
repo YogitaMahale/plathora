@@ -32,13 +32,15 @@ namespace plathora.API
         private readonly ApplicationDbContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager)
+        private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
+        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices)
         {
             _userManager = userManager ;
             _db = db;
             _hostingEnvironment = hostingEnvironment;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _businessOwnerRegiServices = businessOwnerRegiServices;
         }
 
         [HttpGet]
@@ -86,7 +88,7 @@ namespace plathora.API
                 ApplicationUserViewModelDtos objApplicationUserViewModelDtos = new ApplicationUserViewModelDtos();
                 //AffiltateRegistration obj = _AffiltateRegistrationService.GetAll().Where(x => x.mobileno1 == mobileno && x.isdeleted == false).FirstOrDefault();
                 var obj = _db.applicationUsers.FirstOrDefault(x => x.PhoneNumber == mobileno);
-               
+              //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
                 if (obj != null)
                 {
 
@@ -123,6 +125,7 @@ namespace plathora.API
                     objApplicationUserViewModelDtos.Membershipid = obj.Membershipid;
                     objApplicationUserViewModelDtos.amount = obj.amount;
                     objApplicationUserViewModelDtos.otpno = no;
+                    objApplicationUserViewModelDtos.businessSrNo = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id.ToString();
 
                     return Ok(objApplicationUserViewModelDtos);
                 }
