@@ -2543,3 +2543,10 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Release\netcoreapp3.1\System.Text.Json.dll
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Release\netcoreapp3.1\AutoMapper.dll
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Release\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessListView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_SearchProductView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_SectorPartialView.cshtml.g.cs

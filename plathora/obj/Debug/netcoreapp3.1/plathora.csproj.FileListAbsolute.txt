@@ -2537,3 +2537,5 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cache
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessView.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchProductView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessListView.cshtml.g.cs
