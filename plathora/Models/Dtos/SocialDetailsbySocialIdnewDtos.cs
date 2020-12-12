@@ -10,7 +10,7 @@ namespace plathora.Models.Dtos
         public int id { get; set; }
 
         public int socialid { get; set; }
-        public int customerid { get; set; }
+        public string  customerid { get; set; }
 
         public int LikeCnt { get; set; }
         public string comment { get; set; }

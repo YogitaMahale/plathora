@@ -81,7 +81,7 @@
 <section class="sptb bg-white">
     <div class="container">
         <div class="section-title center-block text-center">
-            <h2>Sector Details</h2>
+            <h2>Category  </h2>
             @*<p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>*@
         </div>
         <div class="row">
@@ -693,19 +693,27 @@
             <!-- Wrapper for carousel items -->
             @foreach (var item in Model.objNews)
             {
-                <div class="col-lg-4 col-md-12 col-xl-4">
+                <div class="col-lg-4 col-md-12 col-xl-4  mb-2" >
                     <div class="card overflow-hidden mb-lg-0">
                         <div class="item-card2-img">
                             <a href="#"></a>
-                            @if (item.img.Length > 0)
+                            @if (item.img == null)
                             {
-                                <img src="@item.img" style="height:222px;" alt="img" class="cover-image">
+                                <img src="/uploads/blankbusinessimg.jpg" style="height:222px;" alt="img" class="cover-image" />
                             }
                             else
-                            { 
+                            {
+                                @if (item.img.Length > 0)
+                                {
+                                    <img src="@item.img" style="height:222px;" alt="img" class="cover-image">
+                                }
+                                else
+                                {
 
-                             <img src="/uploads/blankbusinessImg.jpg" style="height:222px;" alt="img" class="cover-image" />
+                                    <img src="/uploads/blankbusinessimg.jpg" style="height:222px;" alt="img" class="cover-image" />
+                                }
                             }
+
 
 
 

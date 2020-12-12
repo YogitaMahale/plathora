@@ -12,14 +12,16 @@ namespace plathora.Entity
 
         
         public int socialid { get; set; }
-      
-
-      
-        public int customerid { get; set; }
-       
 
 
-         
+
+        //  public int customerid { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string customerid { get; set; }
+
+
+
         public int LikeCnt { get; set; } = 0;
         
         public string comment { get; set; }

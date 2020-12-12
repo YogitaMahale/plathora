@@ -77,4 +77,3 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.pdb
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache

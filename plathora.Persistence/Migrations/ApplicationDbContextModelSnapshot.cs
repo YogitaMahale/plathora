@@ -1253,8 +1253,8 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("customerid")
-                        .HasColumnType("int");
+                    b.Property<string>("customerid")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
@@ -1269,8 +1269,6 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("id");
-
-                    b.HasIndex("customerid");
 
                     b.ToTable("socials");
                 });
@@ -1288,8 +1286,8 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("customerid")
-                        .HasColumnType("int");
+                    b.Property<string>("customerid")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isdeleted")
                         .HasColumnType("bit");
@@ -1613,15 +1611,6 @@ namespace plathora.Persistence.Migrations
                     b.HasOne("plathora.Entity.ModuleMaster", "moduleMaster")
                         .WithMany()
                         .HasForeignKey("fkmoduleid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("plathora.Entity.social", b =>
-                {
-                    b.HasOne("plathora.Entity.CustomerRegistration", "CustomerRegistration")
-                        .WithMany()
-                        .HasForeignKey("customerid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

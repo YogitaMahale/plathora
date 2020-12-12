@@ -98,7 +98,7 @@ namespace plathora
             services.AddScoped<IContactUsServices, ContactUsServices>();
             services.AddScoped<IAboutUsServices, AboutUsServicesServices>();
             services.AddScoped<INewsServices, NewsServices>();
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = $"/Identity/Account/Login";

@@ -1170,7 +1170,7 @@ namespace plathora.API
 
         [HttpPut]
         [Route("updateSocialLikeCnt")]
-        public async Task<IActionResult> updateSocialLikeCnt(int socialId,int customerid,int status)
+        public async Task<IActionResult> updateSocialLikeCnt(int socialId,string  customerid,int status)
         {
 
             var obj = _socialdetailsServices.GetAll().Where(x => x.socialid == socialId && x.customerid == customerid && x.isdeleted == false).FirstOrDefault();
@@ -1200,7 +1200,7 @@ namespace plathora.API
 
         [HttpPut]
         [Route("updateSocialComment")]
-        public async Task<IActionResult> updateSocialComment(int socialId, int customerid, string comment)
+        public async Task<IActionResult> updateSocialComment(int socialId, string  customerid, string comment)
         {
 
             var obj = _socialdetailsServices.GetAll().Where(x => x.socialid == socialId && x.customerid == customerid && x.isdeleted == false).FirstOrDefault();
@@ -1256,7 +1256,7 @@ namespace plathora.API
         }
         [HttpGet]
         [Route("getSocialInfo")]
-        public async Task<IActionResult> getSocialInfo(int customerid)
+        public async Task<IActionResult> getSocialInfo(string  customerid)
         {
             try
             {
