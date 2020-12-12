@@ -2361,9 +2361,6 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Debug\netcoreapp3.1\plathora.Persistence.pdb
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Debug\netcoreapp3.1\System.Web.Http.xml
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.csprojAssemblyReference.cache
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.csproj.CoreCompileInputs.cache
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cs
-E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cache
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.RazorAssemblyInfo.cache
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.RazorAssemblyInfo.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.AssemblyInfoInputs.cache
@@ -2532,3 +2529,11 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora fin
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SectorPartialView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Debug\netcoreapp3.1\AutoMapper.dll
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.csproj.CoreCompileInputs.cache
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cache
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessView.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\plathora final\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchProductView.cshtml.g.cs
