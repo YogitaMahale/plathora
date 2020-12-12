@@ -1378,8 +1378,9 @@
                 console.log(msg);
                 $("#txtReview").val("");
                 $("#txtbusinessId").val(0);
+                window.location.reload();
                 //alert($("#txttext").val());
-                alert("Review Sent");
+                //alert("Review Sent");
             },
             error: function (req, status, error) {
                 console.log(error);
