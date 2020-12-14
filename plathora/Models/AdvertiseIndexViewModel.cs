@@ -17,7 +17,7 @@ namespace plathora.Models
         
         public string description { get; set; }
         
-        public string period { get; set; }
+        public int period { get; set; }
 
  
     }

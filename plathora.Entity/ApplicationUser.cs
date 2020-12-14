@@ -85,5 +85,15 @@ namespace plathora.Entity
         public string deviceid { get; set; }
         [NotMapped]
         public string Role { get; set; }
+
+        //paymnet details
+        [ForeignKey("AffilatePackage")]
+        public int? AffilatePackageid { get; set; } = null;
+        public AffilatePackage AffilatePackage { get; set; }
+
+        public string PaymentStatus { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal PaymentAmount { get; set; }
+        public string TransactionId { get; set; }
     }
 }

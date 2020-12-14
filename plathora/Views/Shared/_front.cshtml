@@ -53,7 +53,12 @@
     </style>
 </head>
 <body>
+    <script>
+        
+            var userAuthorized = false;   
+        var Newuser = false;
 
+    </script>
     <!--Loader-->
     <div id="global-loader">
         <img src="~/Bizdire/LTR/assets/images/products/products/loader.png" class="loader-img floating" alt="">
@@ -276,7 +281,9 @@
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     <script>
-                                        var userAuthorized = true;
+                                        userAuthorized = true;                                         
+                                        Newuser = true;
+                                        
                                     </script>
 
                                     @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
@@ -318,7 +325,8 @@
                                 else
                                 {
                                     <script>
-                                        var userAuthorized = false;
+                                        userAuthorized = false;
+                                        alert(userAuthorized);
                                     </script>
 
 
@@ -354,6 +362,7 @@
                                         </button>
                                         @*<a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>*@
                                     </li>
+
                                 }
 
 
@@ -845,8 +854,8 @@
 
                 <h4 style="color:white;" class="modal-title"> Login</h4>
                 @*<button type="button" class="close" data-dismiss="modal">
-                    ×
-                </button>*@
+                        ×
+                    </button>*@
                 @*<button type="button" id="btnHideModal" class="btn btn-primary button button4">
                         Hide
                     </button>*@
@@ -887,8 +896,8 @@ get OTP NO -->
 
                 <h4 style="color:white;" class="modal-title"> Verify Your Mobile Number</h4>
                 @*<button type="button" class="close" data-dismiss="modal">
-                    ×
-                </button>*@
+                        ×
+                    </button>*@
             </div>
             <div class="modal-body">
 
@@ -930,6 +939,7 @@ get OTP NO -->
 <script type="text/javascript">
     var mobileno = "", otpno = "";
     myFunction();
+     
     $(document).ready(function () {
 
 
@@ -948,7 +958,8 @@ get OTP NO -->
                 $("#OTPModal").modal('hide');
             });
 
-            $("#btnMobileNoSubmit").click(function () {
+        $("#btnMobileNoSubmit").click(function () {
+
                 mobileno = $("#inputMobileNo").val();
               //  alert($("#inputMobileNo").val());
                 if (mobileno.length != 10 || mobileno == "") {
@@ -967,17 +978,21 @@ get OTP NO -->
                      //alert(msg);
 
                      if (msg == 'Login') {
+                         //document.cookie = "LoginUserMobileno='" + mobileno+"';";
                          $("#loginModal").modal('hide');
-
+                         
                          window.location.href = '/Admin/Home/Index';
                      }
                      else {
+                        
                          $("#inputOTPMobileNO").val($("#inputMobileNo").val());
                          $("#inputOldOTPNO").val(msg);
+                          
 
-
-                         $("#loginModal").modal('hide');
+                       $("#loginModal").modal('hide');
                          $("#OTPModal").modal('show');
+                         alert('OTP Recive : '+msg);
+                         Newuser = true;
                      }
 
 
@@ -1008,7 +1023,10 @@ get OTP NO -->
                 var NewOTPNo = $("#inputOTPNo").val();
 
                 if (oldOTPNo == NewOTPNo) {
+                    
                     $("#OTPModal").modal('hide');
+                    $("#loginModal").modal('hide');
+                   // Newuser = true;
                     //alert("confirm");
                     //window.location.href = '/Identity/Account/Register';
                     window.location.href = '../Admin/Registration/Register';
@@ -1052,16 +1070,42 @@ get OTP NO -->
 
 
     });
-
-
+     
 
     function myFunction() {
+         
+       
         if (userAuthorized) {
-           // alert("You\'re in the system");
+             //alert("You\'re in the system");
         }
         else {
-            $("#loginModal").modal('show');
+            if (Newuser) {
+                $("#loginModal").modal('hide');
+            }
+            else {
+                $("#loginModal").modal('show');
+            }
+            //alert("You\'re not in system");
+           
+
         }
+
+        //if (userAuthorized) {
+        //    // alert("You\'re in the system");
+        //}
+        //else {
+        //    if (Newuser) {
+
+        //}
+        //else {
+        //        $("#loginModal").modal('show');
+        //}
+
+        //}
+
+
+
+
 
     }
 </script>

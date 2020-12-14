@@ -21,7 +21,9 @@ namespace plathora.Models
         [Required]
         public string description { get; set; }
         [Required]
-        public string period { get; set; }
+        [Display(Name = "Period( Month )")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Enter Only Numbers")]
+        public int period { get; set; }
         [Required]
         [Display(Name ="GST")]
         public decimal gst { get; set; }

@@ -23,7 +23,7 @@ namespace plathora.Entity
         [Required]
         public string description { get; set; }
         [Required]
-        public string period { get; set; }
+        public int period { get; set; }
 
         public string img { get; set; }
 

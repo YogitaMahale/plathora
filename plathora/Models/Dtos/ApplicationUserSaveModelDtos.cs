@@ -23,11 +23,26 @@ namespace plathora.Models.Dtos
         public string password { get; set; }
         public string gender { get; set; }
         public DateTime DOB { get; set; } = DateTime.UtcNow;
+        public string registerbyAffilateID { get; set; }
+
+
+        //paymnet details----------------------------------------------
+      
+        public int? AffilatePackageid { get; set; } = null;
+         
+
+        public string PaymentStatus { get; set; }
+      
+        public decimal PaymentAmount { get; set; }
+        public string TransactionId { get; set; }
+
+
+
         //public DateTime createddate { get; set; } = DateTime.UtcNow;
         //public string house { get; set; }
         //public string landmark { get; set; }
         //public string street { get; set; }
-        
+
         //public int cityid { get; set; }
         //public string zipcode { get; set; }
 

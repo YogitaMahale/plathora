@@ -10,17 +10,25 @@ namespace plathora.Entity
     {
       
         public int id { get; set; }
-      
-        public int? affilateid { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string customerId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+
+       // public int? affilateid { get; set; }
         
 
         
-        public int cusotmerid { get; set; }
-       
+      //  public int cusotmerid { get; set; }
 
-       //// [ForeignKey("Advertise")]
-        public int advertiseid { get; set; }
-      //  public Advertise advertise { get; set; }
+        [ForeignKey("Advertise")]
+        public int? advertiseid { get; set; } = null;
+        public Advertise Advertise { get; set; }
+
+
+        //// [ForeignKey("Advertise")]
+        //public int advertiseid { get; set; }
+        //  public Advertise advertise { get; set; }
 
         //id, affilateid, customerId, Advertiseid, startdate, title, videourl, shortdesc, longdesc, img1, img2, isdeleted
 
@@ -36,6 +44,15 @@ namespace plathora.Entity
 
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }
+
+        //paymnet details
+        public DateTime Registrationdate { get; set; } = DateTime.UtcNow;
+        public DateTime Expirydate { get; set; }
+        public string PaymentStatus { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal PaymentAmount { get; set; }
+        public string TransactionId { get; set; }
+
         
     }
 }

@@ -59,6 +59,18 @@ namespace plathora.Models.Dtos
         public string linkedinLink { get; set; }
         public string googleplusLink { get; set; }
         public string instagramLink { get; set; }
+
+
+        //paymnet details
+        
+        public string PaymentStatus { get; set; }
+      
+        public decimal PaymentAmount { get; set; }
+        public string TransactionId { get; set; }
+
+      
+        public int? MembershipId { get; set; } = null;
+       
     }
 }
  

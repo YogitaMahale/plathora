@@ -393,7 +393,11 @@ namespace plathora.API
          gender = model.gender,
          DOB = model.DOB,
          createddate =DateTime.Now,
-        
+        registerbyAffilateID=model.registerbyAffilateID,
+                    AffilatePackageid=model.AffilatePackageid,
+                    PaymentStatus=model.PaymentStatus,
+                    PaymentAmount=model.PaymentAmount,
+                    TransactionId=model.TransactionId
 
                 };
                 

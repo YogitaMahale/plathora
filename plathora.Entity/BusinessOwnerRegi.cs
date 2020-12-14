@@ -66,6 +66,17 @@ namespace plathora.Entity
         public string linkedinLink { get; set; }
         public string googleplusLink { get; set; }
         public string instagramLink { get; set; }
+        //paymnet details
+        public DateTime Registrationdate { get; set; } = DateTime.Now;
+        public DateTime Expirydate { get; set; }
+        public string PaymentStatus { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal PaymentAmount { get; set; }
+        public string TransactionId { get; set; }
+
+        [ForeignKey("Membership")]
+        public int? MembershipId { get; set; } = null;
+        public Membership Membership { get; set; }
 
     }
 }

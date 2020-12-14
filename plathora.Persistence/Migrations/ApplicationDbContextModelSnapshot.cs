@@ -271,9 +271,8 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("period")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("period")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 
@@ -477,11 +476,17 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("CallCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Expirydate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FridayClose")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FridayOpen")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MembershipId")
+                        .HasColumnType("int");
 
                     b.Property<string>("MondayClose")
                         .HasColumnType("nvarchar(max)");
@@ -489,8 +494,17 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("MondayOpen")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("PaymentAmount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("PaymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Regcertificate")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Registrationdate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("SMSCount")
                         .HasColumnType("int");
@@ -514,6 +528,9 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ThursdayOpen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransactionId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TuesdayClose")
@@ -580,6 +597,8 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("MembershipId");
 
                     b.HasIndex("customerid");
 
@@ -1073,14 +1092,26 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("advertiseid")
+                    b.Property<DateTime>("Expirydate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("PaymentAmount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("PaymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Registrationdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TransactionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("advertiseid")
                         .HasColumnType("int");
 
-                    b.Property<int?>("affilateid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("cusotmerid")
-                        .HasColumnType("int");
+                    b.Property<string>("customerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("image1")
                         .HasColumnType("nvarchar(max)");
@@ -1107,6 +1138,10 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("advertiseid");
+
+                    b.HasIndex("customerId");
 
                     b.ToTable("advertisementInfos");
                 });
@@ -1356,11 +1391,23 @@ namespace plathora.Persistence.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<int?>("AffilatePackageid")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Membershipid")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("PaymentAmount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("PaymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransactionId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
@@ -1457,6 +1504,8 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("zipcode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasIndex("AffilatePackageid");
+
                     b.HasIndex("Membershipid");
 
                     b.HasIndex("cityid");
@@ -1547,6 +1596,10 @@ namespace plathora.Persistence.Migrations
 
             modelBuilder.Entity("plathora.Entity.BusinessOwnerRegi", b =>
                 {
+                    b.HasOne("plathora.Entity.Membership", "Membership")
+                        .WithMany()
+                        .HasForeignKey("MembershipId");
+
                     b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("customerid");
@@ -1615,8 +1668,23 @@ namespace plathora.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("plathora.Entity.advertisementInfo", b =>
+                {
+                    b.HasOne("plathora.Entity.Advertise", "Advertise")
+                        .WithMany()
+                        .HasForeignKey("advertiseid");
+
+                    b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("customerId");
+                });
+
             modelBuilder.Entity("plathora.Entity.ApplicationUser", b =>
                 {
+                    b.HasOne("plathora.Entity.AffilatePackage", "AffilatePackage")
+                        .WithMany()
+                        .HasForeignKey("AffilatePackageid");
+
                     b.HasOne("plathora.Entity.Membership", "Membership")
                         .WithMany()
                         .HasForeignKey("Membershipid");

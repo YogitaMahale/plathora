@@ -100,8 +100,20 @@ namespace plathora.API
                 obj.linkedinLink = model.linkedinLink;
                 obj.twitterLink = model.twitterLink;
                 obj.youtubeLink = model.youtubeLink;
-                
-                
+
+
+
+
+                //------payment ----------------------
+                obj.Registrationdate = DateTime.Now;
+                obj.Expirydate = DateTime.Now.AddYears(10);
+                obj.PaymentStatus = model.PaymentStatus;
+                obj.PaymentAmount = model.PaymentAmount;
+                obj.TransactionId = model.TransactionId;
+                obj.MembershipId = model.MembershipId;
+
+
+
 
 
                 if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
@@ -748,3 +760,4 @@ lic:lic
 deviceid:4234
 registerbyAffilateID:5
 */
+

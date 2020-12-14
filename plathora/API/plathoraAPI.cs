@@ -381,107 +381,99 @@ namespace plathora.API
         [Route("SaveadvertisementInfos")]
         public async Task<IActionResult> SaveadvertisementInfos(advertisementInfoDtos model)
         {
+
             
-            
-                advertisementInfo obj = new advertisementInfo();
-               obj.id = 0;
-            obj.affilateid = model.affilateid;
-            obj.cusotmerid = model.cusotmerid;
+
+        
+
+            advertisementInfo obj = new advertisementInfo();
+            obj.id = 0;
+            obj.customerId = model.customerId;
+          //  obj.cusotmerid = model.cusotmerid;
             obj.advertiseid = model.advertiseid;
             obj.startdate = model.startdate;
             obj.title = model.title;
             obj.videourl = model.videourl;
             obj.shortdesc = model.shortdesc;
-            obj.longdesc = model.longdesc;
-            //obj.image1 = model.image1;
-            //obj.image2 = model.image2;
+            obj.longdesc = model.longdesc;            
             obj.isdeleted = false;
-             
 
+            obj.PaymentAmount = model.PaymentAmount;
+            obj.PaymentStatus = model.PaymentStatus;
+            obj.TransactionId = model.TransactionId;
+            int pkgMonth = _advertiseServices.GetById(model.advertiseid).period;
+            obj.Expirydate = model.startdate.AddMonths(pkgMonth);
 
             if (model.image1 == null || model.image1 == string.Empty)
-                {
-                    obj.image1 = "";
+            {
+                obj.image1 = "";
 
-                }
-                else
+            }
+            else
+            {
+                string filename = Guid.NewGuid().ToString();
+                filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
+                if (!System.IO.Directory.Exists(folderpath))
                 {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image1));
-                    obj.image1 = "/uploads/advertisementInfo/" + filename;
+                    System.IO.Directory.CreateDirectory(folderpath);
                 }
-                if (model.image2 == null || model.image2 == string.Empty)
-                {
-                    obj.image2 = "";
+                System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image1));
+                obj.image1 = "/uploads/advertisementInfo/" + filename;
+            }
+            if (model.image2 == null || model.image2 == string.Empty)
+            {
+                obj.image2 = "";
 
-                }
-                else
+            }
+            else
+            {
+                string filename = Guid.NewGuid().ToString();
+                filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+                var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
+                if (!System.IO.Directory.Exists(folderpath))
                 {
-                    string filename = Guid.NewGuid().ToString();
-                    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                    var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
-                    if (!System.IO.Directory.Exists(folderpath))
-                    {
-                        System.IO.Directory.CreateDirectory(folderpath);
-                    }
-                    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image2));
-                    obj.image2 = "/uploads/advertisementInfo/" + filename;
+                    System.IO.Directory.CreateDirectory(folderpath);
                 }
-                
-            //advertisementInfo obj = new advertisementInfo();
-            ////obj.id = model.id;
-            //obj.affilateid = 1;
-            //obj.cusotmerid = 1;
-            //obj.advertiseid = 1;
-            //obj.startdate = DateTime.Now;
-            //obj.title = "title";
-            //obj.videourl = "title";
-            //obj.shortdesc = "title";
-            //obj.longdesc = "title";
-            //obj.image1 = "title";
-            //obj.image2 = "title";
-            //obj.isdeleted = false;
+                System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image2));
+                obj.image2 = "/uploads/advertisementInfo/" + filename;
+            }
 
+          
 
             try
             {
-                    if (obj == null)
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+
+                    var postid = await _advertisementInfoServices.CreateAsync(obj);
+                    int id = Convert.ToInt32(postid);
+                    if (id < 0)
                     {
-                        return NotFound();
+                        return BadRequest();
                     }
                     else
                     {
-
-                        var postid = await _advertisementInfoServices.CreateAsync(obj);
-                        int id = Convert.ToInt32(postid);
-                        if (id < 0)
-                        {
-                            return BadRequest();
-                        }
-                        else
-                        {
-                            var customer1 = _advertisementInfoServices.GetById(id);
-                            return Ok(customer1);
-                        }
-
+                        var customer1 = _advertisementInfoServices.GetById(id);
+                        return Ok(customer1);
                     }
 
-
-                }
-                catch (Exception a)
-                {
-
-                    return BadRequest();
                 }
 
 
-           
+            }
+            catch (Exception a)
+            {
+
+                return BadRequest();
+            }
+
+
+
         }
 
         [HttpPost]
