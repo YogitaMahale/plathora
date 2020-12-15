@@ -42,17 +42,73 @@
                                     @**@
                                 </div>
                             </div>
-                            @*<div class="card-footer">
+                            <div class="card-footer">
                                 <div class="footerimg d-flex mt-0 mb-0">
-                                    <div class="d-flex footerimg-l mb-0">
-                                        <img src="@obj.profilephoto" alt="image" class="avatar brround  mr-2">
-                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Victoria<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+                                    <div class=" d-flex">
+                                        @*<ul class="d-flex mb-0">
+                                            <li class="mr-5"><a href="#" class="icons"><i class="icon icon-briefcase text-muted mr-1"></i> Education</a></li>
+                                            <li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
+                                            <li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li>
+                                            <li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>
+                                        </ul>*@
+                                        <div class="rating-stars d-flex mr-5">
+                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@obj.rating">
+                                            <div class="rating-stars-container mr-2">
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div> @obj.rating
+                                        </div>
+                                        @*<div class="rating-stars d-flex">
+                                            <div class="rating-stars-container mr-2">
+                                                <div class="rating-star sm">
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                            </div> 135
+                                        </div>*@
                                     </div>
-                                    <div class="mt-2 footerimg-r ml-auto">
-                                        <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
-                                    </div>
+
+                                    @*<div class="rating-stars mx-auto mb-2 mt-3 d-flex banner-ratings">
+                                        <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="0">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div> <a class="text-white" href="#">1 reviews</a>
+                                    </div>*@
+                                    @*<div class="d-flex footerimg-l mb-0">
+            <img src="@obj.profilephoto" alt="image" class="avatar brround  mr-2">
+            <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Victoria<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="verified"></i></h5>
+        </div>
+        <div class="mt-2 footerimg-r ml-auto">
+            <a href="#" class="text-pink" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="fa fa-heart"></i></a>
+        </div>*@
                                 </div>
-                            </div>*@
+                            </div>
                         </div>
                     </div>
                 }

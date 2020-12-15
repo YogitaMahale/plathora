@@ -16,7 +16,7 @@ namespace plathora.Models
         public string rating { get; set; }
         public string comment { get; set; }
 
-     
+        public string profilephoto { get; set; }
         public Boolean isdeleted { get; set; }
 
     }

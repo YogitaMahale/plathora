@@ -29,13 +29,13 @@
 
     $(document).ready(function () {
         $("#btnsubscribe").click(function () {
-          
+
             val1 = "5";
             val2 = "2";
              $.ajax({
             type: "POST",
                  url: "@Url.Action("Add","test1")",
-                
+
                  data: { email: $("#txttext").val()},
             dataType: "text",
             success: function (msg) {
@@ -66,3 +66,4 @@
             });
     });
 </script>
+@*https://maketext.io/*@

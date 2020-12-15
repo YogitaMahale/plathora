@@ -3,6 +3,23 @@
     ViewData["Title"] = "about";
     Layout = "~/Views/Shared/_front.cshtml";
 }
+ 
+<style>
+    #more {
+        display: none;
+    }
+      #more1 {
+        display: none;
+    }
+    #more2 {
+        display: none;
+    }
+    #more3 {
+        display: none;
+    }
+</style>
+ 
+
 
 <!--Breadcrumb-->
 <section>
@@ -36,7 +53,7 @@
                     </p>
 
                     <h3 class="leading-normal">About Us</h3>
-                    <p  class="text-muted mb-0" @*class="leading-normal fs-16"*@>
+                    <p class="text-muted mb-0" @*class="leading-normal fs-16"*@>
                         @Model.AboutUsText
                     </p>
                     @*<p class="leading-normal fs-16">It is a long established fact that a reader will be distracted by the readable of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
@@ -63,7 +80,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="leading-normal">Purpose of the Company </h3>
-                    <p  class="text-muted mb-0" @*class="leading-normal fs-16"*@>
+                    <p class="text-muted mb-0" @*class="leading-normal fs-16"*@>
                         @Model.PurposeoftheCompany
                     </p>
                 </div>
@@ -336,16 +353,14 @@
                             </div>
                             <h4 class="font-weight-bold dark-grey-text mt-4">Dhanajay Kale</h4>
                             <h6 class="font-weight-semibold mb-4 mt-2">Founder &Chairman </h6>
-                            <p class="font-weight-normal dark-grey-text">
-                                Dhananjay is the Founder and Chairman of Ting Tong by Plethora Worldwide Pvt Ltd Company. He is the promoter of the company having 26 years of experience in businesses of health, pharma, restaurants, trading andagriculture. Dhananjay has been mentoring many entrepreneurs establishing their businesses, athletes for their championships and he is also philanthropist. Heis currently Director in Shree Parvati Fitness Hub Pvt Ltd.
+                            <p class="font-weight-normal dark-grey-text" align="justify">
+                                Dhananjay is the Founder and Chairman of Ting Tong by Plethora Worldwide Pvt Ltd Company.<span id="dots">...</span><span id="more"> He is the promoter of the company having 26 years of experience in businesses of health, pharma, restaurants, trading andagriculture. Dhananjay has been mentoring many entrepreneurs establishing their businesses, athletes for their championships and he is also philanthropist. Heis currently Director in Shree Parvati Fitness Hub Pvt Ltd.</span>
                             </p>
-                            @*<div class="text-warning">
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star-half-full"> </i>
-                                </div>*@
+                            <div class="text-warning">
+                                <button onclick="myFunction()" class="btn btn-lg btn-block btn-secondary" id="myBtn">Read more</button>
+
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -359,16 +374,14 @@
                             </div>
                             <h4 class="font-weight-bold dark-grey-text mt-4">Sammeer Sarang</h4>
                             <h6 class="font-weight-semibold mb-4 mt-2">Co-Founder & Managing Director </h6>
-                            <p class="font-weight-normal dark-grey-text">
-                                Sammeer is the co-founder and Managing Director at Ting Tong by Plethora Worldwide Pvt Ltd Company. He is bachelor degree holder and having 20 years of experience working with MNCs like HDFC Standard Life & Canara HSBC OBC Life. He has closely worked with HDFC bank, HSBC Bank, Union Bank, Canara Bank, Oriental Bank of Commerce, Saraswat Bank and HDFC Housing. He also has experience working in Real Estate industry and Education industry. Currently Chairman of Finanthropist Educare Pvt Ltd since 2018 having experience of share market. He is also Co-founder of Infinidz.com.
+                            <p class="font-weight-normal dark-grey-text" align="justify">
+                                Sammeer is the co-founder and Managing Director at Ting Tong by Plethora Worldwide Pvt Ltd<span id="dots1">...</span><span id="more1"> Company. He is bachelor degree holder and having 20 years of experience working with MNCs like HDFC Standard Life & Canara HSBC OBC Life. He has closely worked with HDFC bank, HSBC Bank, Union Bank, Canara Bank, Oriental Bank of Commerce, Saraswat Bank and HDFC Housing. He also has experience working in Real Estate industry and Education industry. Currently Chairman of Finanthropist Educare Pvt Ltd since 2018 having experience of share market. He is also Co-founder of Infinidz.com.</span>
                             </p>
-                            @*<div class="text-warning">
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                </div>*@
+                            <div class="text-warning">
+                                <button onclick="myFunction1()" class="btn btn-lg btn-block btn-secondary"  id="myBtn1">Read more</button>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -382,16 +395,14 @@
                             </div>
                             <h4 class="font-weight-bold dark-grey-text mt-4">Yogesh Manekar</h4>
                             <h6 class="font-weight-semibold mb-4 mt-2">Web Designer</h6>
-                            <p class="font-weight-normal dark-grey-text">
-                                Yogesh is a Director and Head IT at Ting Tong by Plethora Worldwide Pvt Ltd Company. He is BEIT from Pune University with 9 years of experience in software IT developing IT for companies. Currently Director of Ezacus Technologies Pvt Ltd. Yogesh has worked with education industry mentoring entrepreneurs.
+                            <p class="font-weight-normal dark-grey-text" align="justify">
+                                Yogesh is a Director and Head IT at Ting Tong by Plethora Worldwide Pvt Ltd Company. He is BEIT <span id="dots2">...</span><span id="more2"> from Pune University with 9 years of experience in software IT developing IT for companies. Currently Director of Ezacus Technologies Pvt Ltd. Yogesh has worked with education industry mentoring entrepreneurs.</span>
                             </p>
-                            @*<div class="text-warning">
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star-o"> </i>
-                                </div>*@
+                            <div class="text-warning">
+                                <button onclick="myFunction2()" class="btn btn-lg btn-block btn-secondary"  id="myBtn2">Read more</button>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -405,16 +416,14 @@
                             </div>
                             <h4 class="font-weight-bold dark-grey-text mt-4">Ayessha Sarang</h4>
                             <h6 class="font-weight-semibold mb-4 mt-2">President Sales & Affiliates </h6>
-                            <p class="font-weight-normal dark-grey-text">
-                                Ayessha is the President of Sales & Affiliates in Ting Tong by Plethora Worldwide Pvt Ltd. Ayessha is having 14 years of diversified experiences working with Maersk, HDFC Standard Life and Tata AIG Life. Ayessha is well-known psychologist working for wellbeing of Women and Kids. Founder of Infinikiz Preschool since 2015.
+                            <p class="font-weight-normal dark-grey-text" align="justify">
+                                Ayessha is the President of Sales & Affiliates in Ting Tong by Plethora Worldwide Pvt Ltd. <span id="dots3">...</span><span id="more3">  Ayessha is having 14 years of diversified experiences working with Maersk, HDFC Standard Life and Tata AIG Life. Ayessha is well-known psychologist working for wellbeing of Women and Kids. Founder of Infinikiz Preschool since 2015.</span>
                             </p>
-                            @*<div class="text-warning">
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star"> </i>
-                                    <i class="fa fa-star-o"> </i>
-                                </div>*@
+                            <div class="text-warning">
+                                <button onclick="myFunction3()" class="btn btn-lg btn-block btn-secondary"  id="myBtn3">Read more</button>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -447,3 +456,82 @@
         </div>
     </section>*@
 <!--/Newsletter-->
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+         
+        $("#myBtn").click(function () {
+            
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
+
+            if (dots.style.display === "none") {
+                
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+                
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "inline";
+            }
+        });
+        $("#myBtn1").click(function () {
+
+            var dots = document.getElementById("dots1");
+            var moreText = document.getElementById("more1");
+            var btnText = document.getElementById("myBtn1");
+
+            if (dots.style.display === "none") {
+
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "inline";
+            }
+        });
+    });
+    $("#myBtn2").click(function () {
+
+        var dots = document.getElementById("dots2");
+        var moreText = document.getElementById("more2");
+        var btnText = document.getElementById("myBtn2");
+
+        if (dots.style.display === "none") {
+
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    });
+    $("#myBtn3").click(function () {
+
+        var dots = document.getElementById("dots3");
+        var moreText = document.getElementById("more3");
+        var btnText = document.getElementById("myBtn3");
+
+        if (dots.style.display === "none") {
+
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    });
+</script>
