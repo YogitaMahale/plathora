@@ -27,18 +27,22 @@ namespace plathora.Areas.Admin.Controllers
 
         }
 
-        public IEnumerable<AffilateListViewModel> GetAllAffilate()
+        public IEnumerable<SelectListItem> GetAllAffilate()
         {
             var parameter = new DynamicParameters();
            // parameter.Add("@name", name);
 
             var obj = _sP_Call.List<AffilateListViewModel>("AffilateList", parameter);
 
-           // IEnumerable<SelectListItem> myGenericEnumerable = (IEnumerable<SelectListItem>)obj;
+            // IEnumerable<SelectListItem> myGenericEnumerable = (IEnumerable<SelectListItem>)obj;
 
+            IEnumerable<SelectListItem> listt= obj.Select(emp => new SelectListItem()
+            {
+                Text = emp.name,
+                Value = emp.Id.ToString()
+            });
 
-
-            return obj;
+            return listt;
         }
         [HttpGet]
         public async Task<IActionResult> collectionReport(int? PageNumber, string from1, string to1, string deliveryboyid)
@@ -54,8 +58,8 @@ namespace plathora.Areas.Admin.Controllers
 
             //ViewData["MySkills"] = mySkills;
            // IEnumerable<AffilateListViewModel> obj = GetAllAffilate();
-          //  ViewData["deliveryboylist"] = obj;
-            ViewBag.affilatelist  = GetAllAffilate(); 
+           ViewData["affilatelist"]  = GetAllAffilate();
+            //ViewBag.affilatelist  = GetAllAffilate(); 
 
             ViewBag.deliveryboyid1 = deliveryboyid;
             if(from1==null||from1=="")
@@ -101,7 +105,8 @@ namespace plathora.Areas.Admin.Controllers
             //IEnumerable<SelectListItem> obj = GetAllAffilate();
             // ViewData["deliveryboylist"] = obj;
             // ViewBag.affilatelist = obj;
-            ViewBag.affilatelist = GetAllAffilate();
+            // ViewBag.affilatelist = GetAllAffilate();
+            ViewData["affilatelist"] = GetAllAffilate();
             //---------------------------------------------
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;
@@ -190,8 +195,8 @@ namespace plathora.Areas.Admin.Controllers
             //ViewData["MySkills"] = mySkills;
             // IEnumerable<AffilateListViewModel> obj = GetAllAffilate();
             //  ViewData["deliveryboylist"] = obj;
-            ViewBag.affilatelist = GetAllAffilate();
-
+            //  ViewBag.affilatelist = GetAllAffilate();
+            ViewData["affilatelist"] = GetAllAffilate();
             ViewBag.deliveryboyid1 = deliveryboyid;
             if (from1 == null || from1 == "")
             {
@@ -236,7 +241,8 @@ namespace plathora.Areas.Admin.Controllers
             //IEnumerable<SelectListItem> obj = GetAllAffilate();
             // ViewData["deliveryboylist"] = obj;
             // ViewBag.affilatelist = obj;
-            ViewBag.affilatelist = GetAllAffilate();
+            // ViewBag.affilatelist = GetAllAffilate();
+            ViewData["affilatelist"] = GetAllAffilate();
             //---------------------------------------------
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;
@@ -323,8 +329,8 @@ namespace plathora.Areas.Admin.Controllers
             //ViewData["MySkills"] = mySkills;
             // IEnumerable<AffilateListViewModel> obj = GetAllAffilate();
             //  ViewData["deliveryboylist"] = obj;
-            ViewBag.affilatelist = GetAllAffilate();
-
+            //ViewBag.affilatelist = GetAllAffilate();
+            ViewData["affilatelist"] = GetAllAffilate();
             ViewBag.deliveryboyid1 = deliveryboyid;
             if (from1 == null || from1 == "")
             {
@@ -369,7 +375,8 @@ namespace plathora.Areas.Admin.Controllers
             //IEnumerable<SelectListItem> obj = GetAllAffilate();
             // ViewData["deliveryboylist"] = obj;
             // ViewBag.affilatelist = obj;
-            ViewBag.affilatelist = GetAllAffilate();
+            // ViewBag.affilatelist = GetAllAffilate();
+            ViewData["affilatelist"] = GetAllAffilate();
             //---------------------------------------------
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;

@@ -50,5 +50,13 @@ namespace plathora.Services.Implementation
                 Value = emp.id.ToString()
             });
         }
+        public IEnumerable<SelectListItem> GetAllCities()
+        {
+            return GetAll().Where(x => x.isdeleted == false).Select(emp => new SelectListItem()
+            {
+                Text = emp.cityName,
+                Value = emp.id.ToString()
+            });
+        }
     }
 }

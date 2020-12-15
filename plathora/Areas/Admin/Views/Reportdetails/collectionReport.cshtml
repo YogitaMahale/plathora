@@ -55,13 +55,13 @@
                             <label>Select Affilate</label>
                         </div>
                         <div class="form-group col-md-2">
-                            <select name="deliveryboyid" id="deliveryboyid" class="form-control"
+                            @*<select name="deliveryboyid" id="deliveryboyid" class="form-control"
                                     asp-items="@(new SelectList(ViewBag.affilatelist, "Id", "name"))">
 
 
                                 <option>--- Select  ---</option>
-                            </select>
-                            @*@Html.DropDownList("deliveryboyid", (IEnumerable<SelectListItem>)ViewData["deliveryboylist"], new { @class = "form-control" })*@
+                            </select>*@
+                            @Html.DropDownList("deliveryboyid", (IEnumerable<SelectListItem>)ViewData["affilatelist"], new { @class = "form-control" })
                         </div>
 
 

@@ -21,6 +21,7 @@ using System.Security.Claims;
 using Microsoft.Data.SqlClient;
 using SectorRegistrationIndexViewModel = plathora.Models.SectorRegistrationIndexViewModel;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace plathora.Controllers
 {
@@ -61,12 +62,17 @@ namespace plathora.Controllers
             _ratingsservices = ratingsservices;
             _cityRegistrationservices = cityRegistrationservices;
         }
+
+       
+
         [HttpGet]
         public IActionResult Index()
         {
             try
             {
-                ViewBag.cities = _cityRegistrationservices.GetAll().Where(x=>x.isdeleted==false).ToList();
+                IEnumerable<SelectListItem> cities=_cityRegistrationservices.GetAllCities();
+                ViewData["cities"] = cities;
+                //ViewBag.cities = _cityRegistrationservices.GetAll().Where(x=>x.isdeleted==false).ToList();
                 frontwebsiteModel objmodel = new frontwebsiteModel();
 
                 //  ViewBag.search = txtsearch;
@@ -109,7 +115,9 @@ namespace plathora.Controllers
         {
             try
             {
-                ViewBag.cities = _cityRegistrationservices.GetAll().Where(x => x.isdeleted == false).ToList();
+                IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
+                ViewData["cities"] = cities;
+                //ViewBag.cities = _cityRegistrationservices.GetAll().Where(x => x.isdeleted == false).ToList();
                 ViewBag.search = txtsearch;
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 //  ViewBag.search = txtsearch;                var parameter = new DynamicParameters();

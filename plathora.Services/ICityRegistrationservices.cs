@@ -14,6 +14,7 @@ namespace plathora.Services
         Task UpdateAsync(CityRegistration obj);
         Task Delete(int countryid);
         IEnumerable<SelectListItem> GetAllCity(int stateid);
+        IEnumerable<SelectListItem> GetAllCities();
         IEnumerable<CityRegistration> GetAll();
     }
 }
