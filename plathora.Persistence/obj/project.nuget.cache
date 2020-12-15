@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ebsesOPdcqbCsol0zBNedJtROw0keDzjvk5am9iavkPwT6lvxqxHPSiJGRxlJdiRZQovyNfOacaOhKIxXUIhUA==",
+  "dgSpecHash": "x+gRf1BSXXCN6ZdZT9SVcnsDl10U0q9KFOM8z71gDx9BSRrRT/y5jwkHptDGH5me6wRHc5EpjocbUInXo9fBAQ==",
   "success": true,
-  "projectFilePath": "E:\\yogita 6.8.19\\asp.net core\\Final backup 4.9.20\\plathoraNewDomain\\plathora final\\plathora.Persistence\\plathora.Persistence.csproj",
+  "projectFilePath": "E:\\yogita 6.8.19\\asp.net core\\Final backup 4.9.20\\plathoraNewDomain\\15.12.20\\plathora\\plathora\\plathora.Persistence\\plathora.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.0\\microsoft.aspnetcore.cryptography.internal.5.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.0\\microsoft.aspnetcore.cryptography.keyderivation.5.0.0.nupkg.sha512",

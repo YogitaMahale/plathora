@@ -107,6 +107,7 @@
                                 </ul>
                             </div>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#ContactUs" aria-expanded="false" aria-controls="ui-basic">
                                 <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
@@ -116,8 +117,27 @@
                             <div class="collapse" id="ContactUs">
                                 <ul class="nav flex-column sub-menu">
 
-                                    
+
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="ContactUs" asp-action="Index"> All Details</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#Report" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="fas fa-users fa-lg text-primary" style="margin-right:0.7em"></i>
+                                <span class="menu-title">Report</span>
+                                <i class="menu-arrow text-primary"></i>
+                            </a>
+                            <div class="collapse" id="Report">
+                                <ul class="nav flex-column sub-menu">
+
+
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Reportdetails" asp-action="collectionReport"> Affilate Register</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Reportdetails" asp-action="AdvertiseReport"> Advertise</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Reportdetails" asp-action="businessOwnerReport"> Business Owner</a></li>
+
+
+                                    
                                 </ul>
                             </div>
                         </li>

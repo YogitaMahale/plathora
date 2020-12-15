@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\NewFolder\" />
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
     <Folder Include="wwwroot\Bizdire\LTR\assets\plugins\calendar2\" />

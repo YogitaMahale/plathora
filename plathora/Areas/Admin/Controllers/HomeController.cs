@@ -42,8 +42,8 @@ namespace plathora.Controllers
         private readonly ApplicationDbContext _db;
         private readonly Iratingsservices _ratingsservices;
        private readonly UserManager<IdentityUser> _usermanager;
-
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager)//, UserManager<ApplicationUser> usermanager
+        private readonly ICityRegistrationservices _cityRegistrationservices;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -59,12 +59,14 @@ namespace plathora.Controllers
            _usermanager = usermanager;
              _db = db;
             _ratingsservices = ratingsservices;
+            _cityRegistrationservices = cityRegistrationservices;
         }
         [HttpGet]
         public IActionResult Index()
         {
             try
             {
+                ViewBag.cities = _cityRegistrationservices.GetAll().Where(x=>x.isdeleted==false).ToList();
                 frontwebsiteModel objmodel = new frontwebsiteModel();
 
                 //  ViewBag.search = txtsearch;
@@ -103,10 +105,11 @@ namespace plathora.Controllers
 
         [HttpPost]
         [ActionName("Index")]
-        public IActionResult Index1(string txtsearch)
+        public IActionResult Index1(string txtsearch,int cityid)
         {
             try
             {
+                ViewBag.cities = _cityRegistrationservices.GetAll().Where(x => x.isdeleted == false).ToList();
                 ViewBag.search = txtsearch;
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 //  ViewBag.search = txtsearch;                var parameter = new DynamicParameters();
@@ -162,6 +165,8 @@ namespace plathora.Controllers
                     cmd.Parameters.AddWithValue("@searchkeyword", txtsearch);
                     cmd.Parameters.AddWithValue("@Latitude", 0);
                     cmd.Parameters.AddWithValue("@Longitude", 0);
+                    cmd.Parameters.AddWithValue("@cityid",cityid);
+                    
                     con.Open();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
