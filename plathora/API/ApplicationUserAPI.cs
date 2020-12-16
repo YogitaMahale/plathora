@@ -125,7 +125,15 @@ namespace plathora.API
                     objApplicationUserViewModelDtos.Membershipid = obj.Membershipid;
                     objApplicationUserViewModelDtos.amount = obj.amount;
                     objApplicationUserViewModelDtos.otpno = no;
-                    objApplicationUserViewModelDtos.businessSrNo = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id.ToString();
+                    var obj1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault();
+                    if (obj1 == null)
+                    {
+                        objApplicationUserViewModelDtos.businessSrNo = "";
+                    }
+                    else
+                    {
+                        objApplicationUserViewModelDtos.businessSrNo = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id.ToString();
+                    }
 
                     return Ok(objApplicationUserViewModelDtos);
                 }

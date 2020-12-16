@@ -370,6 +370,18 @@ namespace plathora.Controllers
             //var parameter1 = new DynamicParameters();
             //parameter1.Add("@BusinessOwnerId", id);
             obj.objbusinessrating = _sP_Call.List<selectallBusinessRatingViewModel>("selectallBusinessRating", parameter);
+
+
+            //------------
+            string markers = "[";
+            markers += "{";
+            markers += string.Format("'title': '{0}',", obj.objgetBusinessAllInfo.companyName);
+            markers += string.Format("'lat': '{0}',", obj.objgetBusinessAllInfo.latitude);
+            markers += string.Format("'lng': '{0}',", obj.objgetBusinessAllInfo.longitude);
+            markers += string.Format("'description': '{0}'", obj.objgetBusinessAllInfo.description);
+            markers += "}";
+            markers += "];";
+            ViewBag.Markers = markers;
             if (obj == null)
             {
                 return View();

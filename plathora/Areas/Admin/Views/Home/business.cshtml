@@ -799,7 +799,9 @@
                     </div>
                     <div class="card-body">
                         <div class="map-header">
-                            <div id="myDiv" class="map-header-layer" ></div>
+                            @*<div id="dvMap" style="width: 500px; height: 500px">
+                            </div>*@
+                            <div id="myDiv" class="map-header-layer"></div>
                             @*<div class="map-header-layer" id="map2"></div>*@
                         </div>
                         <div class="item-user mt-5">
@@ -1418,33 +1420,66 @@
             });
     });
 </script>
+
+<input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />
+
 <script src="https://maps.googleapis.com/maps/api/js?"></script>
-@*<input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />*@
-
-
 <script type="text/javascript">
-    function DisplayGoogleMap() {
+        function DisplayGoogleMap() {
+              var markers = @Html.Raw(ViewBag.Markers);
+    //alert(markers[0].lat);
+            //Set the Latitude and Longitude of the Map
+            var myAddress = new google.maps.LatLng(markers[0].lat, markers[0].lng);
 
-        //Set the Latitude and Longitude of the Map
-        var myAddress = new google.maps.LatLng(19.9975, 73.7898);
+            //Create Options or set different Characteristics of Google Map
+            var mapOptions = {
+                center: myAddress,
+                zoom: 15,
+                minZoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-        //Create Options or set different Characteristics of Google Map
-        var mapOptions = {
-            center: myAddress,
-            zoom: 15,
-            minZoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+            //Display the Google map in the div control with the defined Options
+            var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);
 
-        //Display the Google map in the div control with the defined Options
-        var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);
+            //Set Marker on the Map
+            var marker = new google.maps.Marker({
+                position: myAddress,
+                title: markers[0].title,
+                animation: google.maps.Animation.BOUNCE,
+            });
 
-        //Set Marker on the Map
-        var marker = new google.maps.Marker({
-            position: myAddress,
-            animation: google.maps.Animation.BOUNCE,
-        });
-
-        marker.setMap(map);
-    }
-</script>  
+            marker.setMap(map);
+        }
+</script>
+@*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=API_Key"></script>
+<script type="text/javascript">
+    alert('sdf1');
+    var markers = @Html.Raw(ViewBag.Markers);
+    alert(markers[0].lat);
+    window.onload = function () {
+        alert('sdf2');
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.description);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
+</script>*@
