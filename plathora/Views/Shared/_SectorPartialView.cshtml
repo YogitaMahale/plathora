@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<SectorRegistrationIndexViewModel>
     <div class="section-title center-block text-center">
-        <h2>Category  </h2>
+        <h2>Services  </h2>
         @*<p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>*@
     </div>
 <div class="row">
     @foreach (var obj in Model)
     {
-        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
+        <div class="col-xl-2 col-lg-1 col-md-3 col-sm-2">
             <div class="card">
                 <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
                     <div class="card-body">

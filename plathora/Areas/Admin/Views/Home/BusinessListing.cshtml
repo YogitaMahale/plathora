@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
                         <div class="text-center text-white ">
-                            <h1 class=""><span class="font-weight-bold"></span> listings available</h1>
+                            <h1 class=""><span class="font-weight-bold"></span>Businesses Listings</h1>
                         </div>
                         @*<div class="search-background px-4 py-3 mt-4">
                             <div class="form row row-sm">
@@ -56,11 +56,11 @@
     <div class="container">
         <div class="page-header">
             <h4 class="page-title">Business list Right</h4>
-            <ol class="breadcrumb">
+            @*<ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Business list Right</li>
-            </ol>
+            </ol>*@
         </div>
     </div>
 </div>
@@ -91,12 +91,13 @@
                             <div class="filter-product-checkboxs">
                                 @foreach (var item in Model.objProductIndexViewModel)
                                 {
-                                    <label class="custom-control custom-checkbox mb-3">
-                                        @*<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">*@
-                                        <span class="custom-control-label">
-                                            <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-productid="@item.id"   class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
-                                        </span>
-                                    </label>
+                                <label class="custom-control  mb-3">
+                                    @*custom-checkbox*@
+                                    @*<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">*@
+                                    <span class="custom-control-label">
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-productid="@item.id" class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
+                                    </span>
+                                </label>
                                 }
 
 
@@ -174,12 +175,14 @@
                                 <div class="tab-pane active" id="tab-11">
                                     @foreach (var item in Model.objgetBusinessAllInfo)
                                     {
+                                    @*<a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-white">*@
+
                                         <div class="card overflow-hidden">
                                             <div class="ribbon ribbon-top-left text-danger"><span class="bg-danger">New</span></div>
                                             <div class="d-md-flex">
                                                 <div class="item-card9-img">
                                                     <div class="item-card9-imgs">
-                                                        <a href="business.html"></a>
+                                                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id"></a>
                                                         <img src="@item.sliderimg1" alt="img" class="cover-image">
                                                     </div>
                                                     <div class="item-card9-icons">
@@ -190,10 +193,16 @@
                                                 <div class="card border-0 mb-0">
                                                     <div class="card-body">
                                                         <div class="item-card9">
-                                                            <a href="business.html" class="text-dark"><h4 class="font-weight-semibold mt-1 mb-1">@item.companyName <i class="fa fa-exclamation-circle text-warning ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Not Verified"></i></h4></a>
+                                                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-dark">
+                                                                <h4 class="font-weight-semibold mt-1 mb-1">
+                                                                    @item.companyName
+                                                                    @*<i class="fa fa-exclamation-circle text-warning ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Not Verified">
+                                    </i>*@
+                                                                </h4>
+                                                            </a>
                                                             <div class="rating-stars d-flex mr-5">
                                                                 <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@item.rating">
-                                                                @*<div class="rating-stars-container mr-2">
+                                                                <div class="rating-stars-container mr-2">
                                                                     <div class="rating-star sm">
                                                                         <i class="fa fa-star"></i>
                                                                     </div>
@@ -209,34 +218,49 @@
                                                                     <div class="rating-star sm">
                                                                         <i class="fa fa-star"></i>
                                                                     </div>
-                                                                </div> <a class="fs-13 leading-tight mt-1" href="#">13 Reviews</a>*@
+                                                                </div> <a class="fs-13 leading-tight mt-1" href="#">@item.review Reviews</a>
                                                             </div>
                                                             <div class="mt-2 mb-2">
-                                                                <a href="#" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>@item.landmark</a>
-                                                                <a href="#" class="mt-1 mb-1 mr-1 text-muted"><i class="fa fa-map-marker mr-1"></i>@item.house</a>
+                                                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>@item.landmark</a>
+                                                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-1 text-muted">
+                                                                    <i class="fa fa-map-marker mr-1"></i>
+
+                                                                    @item.house
+
+
+
+                                                                </a>
                                                             </div>
-                                                            @*<p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>*@
+                                                            <p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>
                                                         </div>
                                                     </div>
-                                                    @*<div class="card-footer pt-2 pb-2">
+                                                    <div class="card-footer pt-2 pb-2">
                                                         <div class="item-card9-footer d-sm-flex">
                                                             <div class="item-card9-cost">
                                                                 <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
-                                                                    <a class="" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i></a>
-                                                                    <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="458-965-856"><i class="fa fa-phone"></i></a>
-                                                                    <a class="" href="https://spruko.com" data-toggle="tooltip" data-placement="top" title="" data-original-title="https://spruko.com"><i class="fa fa-globe"></i></a>
-                                                                    <a class="" href="#"><i class="fa fa-share-alt"></i></a>
+                                                                    <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i>@item.Email</a>
+                                                                    <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i>@item.PhoneNumber</a>
+
+
+
+                                                                    @*<a class="" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i></a>
+                                    <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="458-965-856"><i class="fa fa-phone"></i></a>
+                                    <a class="" href="https://spruko.com" data-toggle="tooltip" data-placement="top" title="" data-original-title="https://spruko.com"><i class="fa fa-globe"></i></a>
+                                    <a class="" href="#"><i class="fa fa-share-alt"></i></a>*@
                                                                 </div>
                                                             </div>
-                                                            <div class="ml-auto mt-3 mt-sm-0">
+                                                            <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
                                                                 <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
                                                             </div>
                                                         </div>
-                                                    </div>*@
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                    
+
+                                        
+                                }
 
 
                                 </div>

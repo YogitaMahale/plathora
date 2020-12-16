@@ -78,8 +78,11 @@ namespace plathora.Controllers
                 //  ViewBag.search = txtsearch;
                 var parameter = new DynamicParameters();
 
-                //IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+                
+                //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+
+                 
                 objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(12).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 {
                     id = x.id,
@@ -511,29 +514,36 @@ namespace plathora.Controllers
         public IActionResult BusinessListing(int productid)
         {
             BusinessListingViewModel obj = new BusinessListingViewModel();
-            obj.objProductIndexViewModel = _productMasterServices.GetAll().Select(x => new ProductIndexViewModel
+            try
             {
+                obj.objProductIndexViewModel = _productMasterServices.GetAll().Select(x => new ProductIndexViewModel
+                {
 
 
-                id = x.id,
-                //sectorid = x.se,
-                businessid = x.businessid,
-                productName = x.productName,
-                // BusinessRegistration = _BusinessRegistrationServiecess.GetById(x.businessid),
-                // SectorRegistration = _SectorRegistrationServices.GetById(_BusinessRegistrationServiecess.GetById(x.businessid).sectorid),
-                img = x.img
+                    id = x.id,
+                    //sectorid = x.se,
+                    businessid = x.businessid,
+                    productName = x.productName,
+                    // BusinessRegistration = _BusinessRegistrationServiecess.GetById(x.businessid),
+                    // SectorRegistration = _SectorRegistrationServices.GetById(_BusinessRegistrationServiecess.GetById(x.businessid).sectorid),
+                    img = x.img
 
-            }).ToList();
-            var parameter = new DynamicParameters();
-            parameter.Add("@productid", productid);
-            obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+                }).ToList();
+                var parameter = new DynamicParameters();
+                parameter.Add("@productid", productid);
+                // parameter.Add("@productid", 4);
 
+                //   obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
 
-            //var parameter = new DynamicParameters();
-            //parameter.Add("@productid", productid);
-            ////IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-            //obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+                obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
 
+            }
+            catch(Exception objmsg)
+            { }
+          
+             
+
+           
             return View(obj);
             //return View();
         }

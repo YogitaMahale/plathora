@@ -45,7 +45,7 @@ namespace plathora.Models.Dtos
        
         public string Regcertificate { get; set; }
         public int businessid { get; set; }
-        public int productid { get; set; }
+        public string  productid { get; set; }
         public string lic { get; set; }
 
 
@@ -82,6 +82,10 @@ namespace plathora.Models.Dtos
         public string rating { get; set; }
         public string productName { get; set; }
 
+        public string cityname { get; set; }
+        public string businesstime { get; set; }
+
+        public string review { get; set; }
 
     }
 }
