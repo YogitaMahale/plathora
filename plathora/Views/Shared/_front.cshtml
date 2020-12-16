@@ -55,9 +55,18 @@
 <body>
     <script>
         
-            var userAuthorized = false;   
-        var Newuser = false;
-
+        var userAuthorized = false;   
+        
+        localStorage.setItem("mobileno", "");
+        var objj = false;
+          objj = localStorage.getItem('OTPverifiy');
+        if (objj == "true") {
+           // alert("set true 1");
+            localStorage.setItem("OTPverifiy",false);
+        }
+  
+        //var Newuser = false;
+        //var OTPcnt = 0;
     </script>
     <!--Loader-->
     <div id="global-loader">
@@ -280,11 +289,11 @@
                             <ul class="custom">
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                    <script>
-                                        userAuthorized = true;                                         
-                                        Newuser = true;
-                                        
-                                    </script>
+                                <script>
+                                        userAuthorized = true;
+
+                                        localStorage.setItem("mobileno",@User.Identity.Name);
+                                </script>
 
                                     @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
                                     @*<li class="nav-item">
@@ -324,10 +333,10 @@
                                 }
                                 else
                                 {
-                                    <script>
+                            <script>
                                         userAuthorized = false;
-                                        //alert(userAuthorized);
-                                    </script>
+                                       localStorage.setItem("mobileno","");
+                            </script>
 
 
 
@@ -938,7 +947,10 @@ get OTP NO -->
 @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
 <script type="text/javascript">
     var mobileno = "", otpno = "";
-    myFunction();
+    var OTPverifiy = false;
+       myFunction();
+   
+    
      
     $(document).ready(function () {
 
@@ -988,11 +1000,11 @@ get OTP NO -->
                          $("#inputOTPMobileNO").val($("#inputMobileNo").val());
                          $("#inputOldOTPNO").val(msg);
                           
-
+                         localStorage.setItem("mobileno", "OTP");
                        $("#loginModal").modal('hide');
                          $("#OTPModal").modal('show');
                          //alert('OTP Recive : '+msg);
-                         Newuser = true;
+                         
                      }
 
 
@@ -1023,40 +1035,18 @@ get OTP NO -->
                 var NewOTPNo = $("#inputOTPNo").val();
 
                 if (oldOTPNo == NewOTPNo) {
-                    
+
                     $("#OTPModal").modal('hide');
                     $("#loginModal").modal('hide');
-                   // Newuser = true;
-                    //alert("confirm");
-                    //window.location.href = '/Identity/Account/Register';
+                   // OTPverifiy = true;
+                  //  alert("set true OTP CLICK");
+                    localStorage.setItem('OTPverifiy', true);
+                   // localStorage.setItem("mobileno", mobileNo);
                     window.location.href = '../Admin/Registration/Register';
 
-
-
-
-
-                    @*$.ajax({
-                        type: "POST",
-                        url: "@Url.Action("getOTPNoSubmit", "test1")",
-
-                        data: { mobileNo: mobileNo },
-                        dataType: "text",
-                        success: function (msg) {
-                            //$("#inputOTPMobileNO").val($("#inputMobileNo").val());
-                            //$("#inputOTPNo").val(msg);
-
-                            $("#OTPModal").modal('hide');
-                            alert("confirm");
-                            window.location.href = '/Identity/Account/Register' ;
-
-
-                        },
-                        error: function (req, status, error) {
-                            console.log(error);
-                        }
-                    });*@
                 }
                 else {
+                   
                     $("#inputOTPNo").val("");
                     alert("Please Enter Proper OTP Number");
                 }
@@ -1073,37 +1063,52 @@ get OTP NO -->
      
 
     function myFunction() {
-         
-       
+        //alert("call");
+
+        //var obj = localStorage.getItem("mobileno");
+        //alert(obj);
+        //if (obj.length == 0) {
+        //    alert("length 0");
+
+        //}
+        //else if (obj="OTP") {
+        //    alert("otp show");  
+        //}
+        //else if (obj.length >0) {
+        //    alert("Register");
+        //}
+
         if (userAuthorized) {
+
              //alert("You\'re in the system");
         }
         else {
-            if (Newuser) {
-                $("#loginModal").modal('hide');
-            }
-            else {
+            $("#loginModal").modal('show');
+            var a = false;
+             a = localStorage.getItem('OTPverifiy');
+            alert("dsfsdfsd  " +a);
+            if (a === "false") {
+                alert("hide mobile no");
                 $("#loginModal").modal('show');
             }
-            //alert("You\'re not in system");
+            else {
+                $("#loginModal").modal('hide');
+
+            }
+            //if (localStorage.getItem('OTPverifiy')) {
+            //    $("#loginModal").modal('hide');
+
+               
+            //}
+            //else {
+            //    $("#loginModal").modal('show');
+            //}
+           // $("#loginModal").modal('show');
            
-
+            //OTPModal
+            
         }
-
-        //if (userAuthorized) {
-        //    // alert("You\'re in the system");
-        //}
-        //else {
-        //    if (Newuser) {
-
-        //}
-        //else {
-        //        $("#loginModal").modal('show');
-        //}
-
-        //}
-
-
+ 
 
 
 

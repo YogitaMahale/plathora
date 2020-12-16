@@ -50,6 +50,7 @@ namespace plathora.API
         private readonly ItblfeedbackServices _tblfeedbackServices;
         private readonly IAdvertiseServices _advertiseServices;
         private readonly IAffilatePackageServices _affilatePackageServices;
+         
         private readonly IMembershipServices _membershipServices;
         private readonly IsocialdetailsServices _socialdetailsServices;
 
@@ -1141,20 +1142,49 @@ namespace plathora.API
         [Route("affilatepackageSelectall")]
         public async Task<IActionResult> affilatepackageSelectall()
         {
+            //try
+            //{
+            //    var sliderlist = _affilatePackageServices.GetAll().Where(x => x.isdeleted == false).ToList();
+            //    //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+            //    if (sliderlist == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    return Ok(sliderlist);
+            //}
+            //catch (Exception obj)
+            //{
+            //    return BadRequest();
+            //}
             try
             {
-                var sliderlist = _membershipServices.GetAll().Where(x => x.isdeleted == false).ToList();
+
+
+                var parameter = new DynamicParameters();
+                //    parameter.Add("@name", name);
+
+                var obj = _sP_Call.List<AffilatePackageSelectAllViewModel>("AffilatePackageSelectAll", parameter);
                 //  var categories = await _context.CustomerRegistration.ToListAsync(); 
-                if (sliderlist == null)
+                if (obj == null)
                 {
-                    return NotFound();
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(obj);
                 }
 
-                return Ok(sliderlist);
+
             }
             catch (Exception obj)
             {
-                return BadRequest();
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
             }
 
         }
