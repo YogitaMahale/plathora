@@ -44,7 +44,8 @@ namespace plathora.Areas.Admin.Controllers
                 amount  = x.amount,
                 Description  = x.Description,
                 Membership = _MembershipServices.GetById(x.membershipid),
-                commission  = _commissionServices .GetById(x.commissionid)
+                commission  = _commissionServices .GetById(x.commissionid),
+                gst=x.gst
 
             }).ToList();
             return View(citydetails);
@@ -106,7 +107,8 @@ namespace plathora.Areas.Admin.Controllers
                         amount = model.amount,
                         Description = model.Description,
                         isdeleted = false,
-                        isactive = false
+                        isactive = false,
+                        gst=model.gst
                     };
 
                     await _AffilatePackageServices.CreateAsync(objcountry);
@@ -146,7 +148,8 @@ namespace plathora.Areas.Admin.Controllers
                  ,
                 amount  = objcountry.amount
                  ,
-                Description  = objcountry.Description
+                Description  = objcountry.Description,
+                gst=objcountry.gst
             };
             
             return View(model);
@@ -163,7 +166,7 @@ namespace plathora.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
 
-                var obj = _AffilatePackageServices.GetAll().Where(x => x.membershipid == model.membershipid && x.isdeleted == false&&x.id!=model.id);
+                var obj = _AffilatePackageServices.GetAll().Where(x => x.membershipid == model.membershipid && x.isdeleted == false&&x.id!=model.id).FirstOrDefault();
                 if (obj == null)
                 {
 
@@ -178,7 +181,7 @@ namespace plathora.Areas.Admin.Controllers
                     objcountry.commissionid = model.commissionid;
                     objcountry.amount = model.amount;
                     objcountry.Description = model.Description;
-
+                    objcountry.gst = model.gst;
 
                     await _AffilatePackageServices.UpdateAsync(objcountry);
                     return RedirectToAction(nameof(index));

@@ -18,5 +18,6 @@ namespace plathora.Models.Dtos
         public bool  isactive   { get; set; }
         public string membershipname { get; set; }
         public string commissionper { get; set; }
+        public decimal  gst { get; set; }
     }
 }

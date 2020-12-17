@@ -22,6 +22,8 @@ using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
 using HttpPutAttribute = Microsoft.AspNetCore.Mvc.HttpPutAttribute;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 using plathora.Utility;
+using Dapper;
+
 namespace plathora.API
 {
     [Route("ApplicationUser")]
@@ -33,7 +35,8 @@ namespace plathora.API
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
-        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices)
+        private readonly ISP_Call _sP_Call;
+        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call)
         {
             _userManager = userManager ;
             _db = db;
@@ -41,6 +44,7 @@ namespace plathora.API
             _roleManager = roleManager;
             _signInManager = signInManager;
             _businessOwnerRegiServices = businessOwnerRegiServices;
+            _sP_Call = sP_Call;
         }
 
         [HttpGet]
@@ -372,7 +376,28 @@ namespace plathora.API
         {
 
             var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1).FirstOrDefault();
-                 
+            string affilateID = "";
+            if (model.registerbyAffilateID==null)
+            {
+                var parameter = new DynamicParameters();
+                //parameter.Add("@businessid", businessid);
+                var obj = _sP_Call.OneRecord<getAffilateIdViewModel>("getAffilateId", null );
+               if(obj==null)
+                {
+
+                }
+                else
+                {
+                    affilateID = obj.id;
+                }
+
+                        
+            }
+            else
+            {
+                affilateID = model.registerbyAffilateID;
+            }
+           
             if (checkduplicate == null)
             {
                 string rolename = string.Empty;
@@ -401,11 +426,12 @@ namespace plathora.API
          gender = model.gender,
          DOB = model.DOB,
          createddate =DateTime.Now,
-        registerbyAffilateID=model.registerbyAffilateID,
-                    AffilatePackageid=model.AffilatePackageid,
+        registerbyAffilateID= affilateID,
+                    AffilatePackageid =model.AffilatePackageid,
                     PaymentStatus=model.PaymentStatus,
                     PaymentAmount=model.PaymentAmount,
                     TransactionId=model.TransactionId
+                   
 
                 };
                 

@@ -24,7 +24,9 @@ namespace plathora.Entity
 
         
         public string Description { get; set; }
-
+        [Required]
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal gst { get; set; }
 
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }

@@ -24,7 +24,9 @@ namespace plathora.Models
 
         public string Description { get; set; }
 
-
+        [Required]
+        [Display(Name ="GST")]
+        public decimal gst { get; set; }
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }
         [DefaultValue("false")]

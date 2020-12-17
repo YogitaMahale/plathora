@@ -23,6 +23,7 @@
                                     <th>Membership</th>
                                     <th>Commission</th>
                                     <th>Amount</th>
+                                    <th>GST</th>
                                     <th>Description</th>
                                     <th class="text-warning">Actions</th>
                                 </tr>
@@ -42,7 +43,10 @@
                                         @item.amount
                                     </td>
                                     <td>
-                                        @item.Description  
+                                        @item.gst
+                                    </td>
+                                    <td>
+                                        @item.Description
                                     </td>
                                     <td>
                                         <a class="text-success" asp-action="Edit" asp-route-id="@item.id">

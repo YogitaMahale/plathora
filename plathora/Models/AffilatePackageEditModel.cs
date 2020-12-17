@@ -19,8 +19,9 @@ namespace plathora.Models
         [Required]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal amount { get; set; }
-
-
+        [Required]
+        [Display(Name = "GST")]
+        public decimal gst { get; set; }
         public string Description { get; set; }
 
 

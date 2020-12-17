@@ -295,6 +295,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("commissionid")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("gst")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<bool>("isactive")
                         .HasColumnType("bit");
 

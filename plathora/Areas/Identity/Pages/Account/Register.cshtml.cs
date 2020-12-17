@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using plathora.Entity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace plathora.Areas.Identity.Pages.Account
 {
@@ -102,6 +103,7 @@ namespace plathora.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var loginAdminId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
                 //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
@@ -116,7 +118,8 @@ namespace plathora.Areas.Identity.Pages.Account
                     ,
                     PhoneNumber = Input.mobileno1
                     ,
-                    Role = Input.Role
+                    Role = Input.Role ,
+                    registerbyAffilateID= loginAdminId
 
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -136,7 +139,9 @@ namespace plathora.Areas.Identity.Pages.Account
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
                     }
-                    // await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+                    //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+
+                   
                     if (user.Role == null)
                     {
                         await _userManager.AddToRoleAsync(user, SD.Role_Customer);
@@ -145,6 +150,12 @@ namespace plathora.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, user.Role);
                     }
+
+    
+
+
+
+
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     //var callbackUrl = Url.Page(

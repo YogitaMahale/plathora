@@ -21,6 +21,8 @@ namespace plathora.Models
          
         public decimal amount { get; set; }
 
+        public decimal gst { get; set; }
+
 
         public string Description { get; set; }
 
