@@ -71,10 +71,24 @@ namespace plathora.Controllers
             try
             {
                 var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
-
-
-                ViewBag.userName = objfromdb.name;
+                
+                if(customerId == null)
+                {
+                    ViewBag.userName = "";
+                    ViewBag.profilephoto = "uploads/blaankCustomer.png";
+                } 
+                else
+                {
+                    var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
+                    if (objfromdb.name == null)
+                {
+                    ViewBag.userName = objfromdb.name;
+                }
+                else
+                {
+                    ViewBag.userName = objfromdb.name;
+                }
+               
                 if(objfromdb.profilephoto==null)
                 {
                     ViewBag.profilephoto = "uploads/blaankCustomer.png";
@@ -83,6 +97,8 @@ namespace plathora.Controllers
                 {
                     ViewBag.profilephoto = objfromdb.profilephoto;
                 }
+                }
+                
                    
                 
                     ///uploads/blaankCustomer.png
