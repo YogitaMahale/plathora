@@ -99,7 +99,7 @@ namespace plathora.Controllers
             else
             {
                 var result = await _signInManager.PasswordSignInAsync(mobileNo, "Password@1",false, lockoutOnFailure: false);
-
+            
                 return "Login";
             }
 

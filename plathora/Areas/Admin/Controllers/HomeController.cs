@@ -70,7 +70,23 @@ namespace plathora.Controllers
         {
             try
             {
-                IEnumerable<SelectListItem> cities=_cityRegistrationservices.GetAllCities();
+                var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
+
+
+                ViewBag.userName = objfromdb.name;
+                if(objfromdb.profilephoto==null)
+                {
+                    ViewBag.profilephoto = "uploads/blaankCustomer.png";
+                }
+                else
+                {
+                    ViewBag.profilephoto = objfromdb.profilephoto;
+                }
+                   
+                
+                    ///uploads/blaankCustomer.png
+                    IEnumerable<SelectListItem> cities=_cityRegistrationservices.GetAllCities();
                 ViewData["cities"] = cities;
                 //ViewBag.cities = _cityRegistrationservices.GetAll().Where(x=>x.isdeleted==false).ToList();
                 frontwebsiteModel objmodel = new frontwebsiteModel();

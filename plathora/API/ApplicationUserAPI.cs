@@ -61,33 +61,7 @@ namespace plathora.API
                     int n = random.Next(0, 999);
                     no += n.ToString("D4") + "";
                 }
-                #region "sms"
-                try
-                {
-
-                    string Msg = "OTP :" + no + ".  Please Use this OTP.This is usable once and expire in 10 minutes";
-
-                    string OPTINS = "STRLIT";
-
-                    string type = "3";
-                    string strUrl = "https://www.bulksmsgateway.in/sendmessage.php?user=ezacus&password=" + "Bingo@5151" + "&message=" + Msg.ToString() + "&sender=" + OPTINS + "&mobile=" + mobileno + "&type=" + 3;
-
-                    ServicePointManager.Expect100Continue = true;
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    System.Net.WebRequest request = System.Net.WebRequest.Create(strUrl);
-                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                    Stream s = (Stream)response.GetResponseStream();
-                    StreamReader readStream = new StreamReader(s);
-                    string dataString = readStream.ReadToEnd();
-                    response.Close();
-                    s.Close();
-                    readStream.Close();
-                    //    Response.Write("Sent");
-                }
-
-                catch
-                { }
-                #endregion
+              
 
                 ApplicationUserViewModelDtos objApplicationUserViewModelDtos = new ApplicationUserViewModelDtos();
                 //AffiltateRegistration obj = _AffiltateRegistrationService.GetAll().Where(x => x.mobileno1 == mobileno && x.isdeleted == false).FirstOrDefault();
@@ -143,6 +117,33 @@ namespace plathora.API
                 }
                 else
                 {
+                    #region "sms"
+                    try
+                    {
+
+                        string Msg = "OTP :" + no + ".  Please Use this OTP.This is usable once and expire in 10 minutes";
+
+                        string OPTINS = "STRLIT";
+
+                        string type = "3";
+                        string strUrl = "https://www.bulksmsgateway.in/sendmessage.php?user=ezacus&password=" + "Bingo@5151" + "&message=" + Msg.ToString() + "&sender=" + OPTINS + "&mobile=" + mobileno + "&type=" + 3;
+
+                        ServicePointManager.Expect100Continue = true;
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                        System.Net.WebRequest request = System.Net.WebRequest.Create(strUrl);
+                        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                        Stream s = (Stream)response.GetResponseStream();
+                        StreamReader readStream = new StreamReader(s);
+                        string dataString = readStream.ReadToEnd();
+                        response.Close();
+                        s.Close();
+                        readStream.Close();
+                        //    Response.Write("Sent");
+                    }
+
+                    catch
+                    { }
+                    #endregion
                     objApplicationUserViewModelDtos.otpno = no;
                     return Ok(objApplicationUserViewModelDtos);
                 }
