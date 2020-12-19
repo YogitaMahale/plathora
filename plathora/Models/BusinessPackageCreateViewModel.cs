@@ -21,6 +21,7 @@ namespace plathora.Models
         [Required]
         public string description { get; set; }
         [Required]
+        [Display(Name ="Period in Month")]
         public string period { get; set; }
         
         public Boolean isdeleted { get; set; }

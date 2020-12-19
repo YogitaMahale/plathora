@@ -42,7 +42,24 @@ namespace plathora.Services.Implementation
             _context.AboutUs.Update(obj);
             await _context.SaveChangesAsync();
         }
+        public string generateRandomNo(string name)
+        {
+            Random generator = new Random();
+            int r = generator.Next(100000, 1000000);
+            string uniqueId = name + r;
 
+            var userList = _context.applicationUsers.Where(x => x.uniqueId == uniqueId).ToList();
+            if (userList == null || userList.Count == 0)
+            {
+                return uniqueId;
+            }
+            else
+            {
+                generateRandomNo(name);
+            }
+
+            return uniqueId;
+        }
 
 
     }

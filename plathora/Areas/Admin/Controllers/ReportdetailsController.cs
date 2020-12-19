@@ -41,7 +41,8 @@ namespace plathora.Areas.Admin.Controllers
                 Text = emp.name,
                 Value = emp.Id.ToString()
             });
-
+          
+             
             return listt;
         }
         [HttpGet]

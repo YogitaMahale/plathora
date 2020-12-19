@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using plathora.Entity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using plathora.Persistence;
+using plathora.Services;
 
 namespace plathora.Areas.Identity.Pages.Account
 {
@@ -28,19 +30,24 @@ namespace plathora.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IAboutUsServices _AboutUsServices;
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            
+             IAboutUsServices AboutUsServices)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _AboutUsServices = AboutUsServices;
         }
+        
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -48,6 +55,8 @@ namespace plathora.Areas.Identity.Pages.Account
         public string ReturnUrl { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+
 
         public class InputModel
         {
@@ -99,6 +108,24 @@ namespace plathora.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
+        //public string generateRandomNo(string name)
+        //{
+        //    Random generator = new Random();
+        //    int r = generator.Next(100000, 1000000);
+        //    string uniqueId = name + r;
+             
+        //    var userList = _db.applicationUsers.Where(x => x.uniqueId == uniqueId).ToList();
+        //    if (userList == null || userList.Count == 0)
+        //    {
+        //        return uniqueId;
+        //    }
+        //    else
+        //    {
+        //        generateRandomNo(name);
+        //    }
+
+        //    return uniqueId;
+        //}
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -106,6 +133,9 @@ namespace plathora.Areas.Identity.Pages.Account
             var loginAdminId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
+
+                string uniqueNo = _AboutUsServices.generateRandomNo(Input.name.Substring(0, 3));
+
                 //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var user = new ApplicationUser
                 {
@@ -119,7 +149,8 @@ namespace plathora.Areas.Identity.Pages.Account
                     PhoneNumber = Input.mobileno1
                     ,
                     Role = Input.Role ,
-                    registerbyAffilateID= loginAdminId
+                    registerbyAffilateID= loginAdminId,
+                    uniqueId= uniqueNo
 
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);

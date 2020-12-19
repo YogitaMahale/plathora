@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace plathora.Models.Dtos
 {
     public class BusinessOwnerRegistrationDtos
-    {
+    { 
         public int id { get; set; } = 0;
 
         
@@ -21,6 +21,7 @@ namespace plathora.Models.Dtos
         public string  productid { get; set; }
       
         public string lic { get; set; }
+
 
         public string MondayOpen { get; set; }
         public string MondayClose { get; set; }
@@ -60,17 +61,51 @@ namespace plathora.Models.Dtos
         public string googleplusLink { get; set; }
         public string instagramLink { get; set; }
 
+     
+ 
+
 
         //paymnet details
-        
+
         public string PaymentStatus { get; set; }
       
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
 
-      
-        public int? MembershipId { get; set; } = null;
+
+        //public int? MembershipId { get; set; } = null;
+        public int? BusinessPackageId { get; set; } = null;
+
+
+        public string house { get; set; }
+        public string landmark { get; set; }
+        public string street { get; set; }
+
+         
+        public int? cityid { get; set; }
        
+
+
+
+
+        public string zipcode { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+
+        //--------company info---
+        public string companyName { get; set; }
+
+        public string gstno { get; set; }
+        public string Website { get; set; }
+
+        public string businessOperation { get; set; }
+        public string businessType { get; set; }
+
+
+
+
+
+      
     }
 }
  

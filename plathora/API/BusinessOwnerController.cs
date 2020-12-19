@@ -31,11 +31,13 @@ namespace plathora.API
         private readonly IBusinessOwnerRegiServices _BusinessOwnerRegiServices;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ISP_Call _sP_Call;
-        public BusinessOwnerController(IBusinessOwnerRegiServices BusinessOwnerRegiServices, IWebHostEnvironment hostingEnvironment, ISP_Call sP_Call)
+        private readonly IBusinessPackageServices _businessPackageServices;
+        public BusinessOwnerController(IBusinessOwnerRegiServices BusinessOwnerRegiServices, IWebHostEnvironment hostingEnvironment, ISP_Call sP_Call, IBusinessPackageServices businessPackageServices)
         {
             _BusinessOwnerRegiServices = BusinessOwnerRegiServices;
             _hostingEnvironment = hostingEnvironment;
             _sP_Call = sP_Call;
+            _businessPackageServices = businessPackageServices;
         }
         //[HttpGet]
         //[Route("businessOwnerLogin")]
@@ -67,6 +69,8 @@ namespace plathora.API
               obj1 = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
             if (obj1 == null)
             {
+               
+
                 BusinessOwnerRegi obj = new BusinessOwnerRegi();
                 obj.id = model.id;
                 obj.customerid = model.customerid;
@@ -103,17 +107,31 @@ namespace plathora.API
 
 
 
-
                 //------payment ----------------------
+                int BusinessPackageId =(int) model.BusinessPackageId;
+                string  month = _businessPackageServices.GetById(BusinessPackageId).period;
+
                 obj.Registrationdate = DateTime.Now;
-                obj.Expirydate = DateTime.Now.AddYears(10);
+                obj.Expirydate = DateTime.Now.AddMonths(Convert.ToInt32(month));
                 obj.PaymentStatus = model.PaymentStatus;
                 obj.PaymentAmount = model.PaymentAmount;
                 obj.TransactionId = model.TransactionId;
-                obj.MembershipId = model.MembershipId;
 
 
-
+                // obj.MembershipId = model.MembershipId;
+                obj.house = model.house;
+                obj.landmark = model.landmark;
+                obj.street = model.street;
+                obj.cityid = model.cityid;
+                obj.zipcode = model.zipcode;
+                obj.latitude = model.latitude;
+                obj.longitude = model.longitude;
+                obj.companyName = model.companyName;
+                obj.gstno = model.gstno;
+                obj.Website = model.Website;
+                obj.businessOperation = model.businessOperation;
+                obj.businessType = model.businessType;
+                
 
 
                 if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
@@ -285,6 +303,19 @@ namespace plathora.API
                 obj1.twitterLink = model.twitterLink;
                 obj1.youtubeLink = model.youtubeLink;
 
+                // obj.MembershipId = model.MembershipId;
+                obj1.house = model.house;
+                obj1.landmark = model.landmark;
+                obj1.street = model.street;
+                obj1.cityid = model.cityid;
+                obj1.zipcode = model.zipcode;
+                obj1.latitude = model.latitude;
+                obj1.longitude = model.longitude;
+                obj1.companyName = model.companyName;
+                obj1.gstno = model.gstno;
+                obj1.Website = model.Website;
+                obj1.businessOperation = model.businessOperation;
+                obj1.businessType = model.businessType;
 
 
                 if (model.sliderimg1 != null || model.sliderimg1 != string.Empty)

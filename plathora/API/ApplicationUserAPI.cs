@@ -36,7 +36,8 @@ namespace plathora.API
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
         private readonly ISP_Call _sP_Call;
-        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call)
+        private readonly IAboutUsServices _AboutUsServices;
+        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call, IAboutUsServices AboutUsServices)
         {
             _userManager = userManager ;
             _db = db;
@@ -45,8 +46,9 @@ namespace plathora.API
             _signInManager = signInManager;
             _businessOwnerRegiServices = businessOwnerRegiServices;
             _sP_Call = sP_Call;
+            _AboutUsServices = AboutUsServices;
         }
-
+       
         [HttpGet]
         [Route("getOTPNo")]
         public async Task<IActionResult> getOTPNo(string mobileno)
@@ -83,25 +85,25 @@ namespace plathora.API
                     objApplicationUserViewModelDtos.pancardphoto = obj.pancardphoto;
                     objApplicationUserViewModelDtos.gender = obj.gender;
                     objApplicationUserViewModelDtos.DOB = obj.DOB;
-                    objApplicationUserViewModelDtos.house = obj.house;
-                    objApplicationUserViewModelDtos.landmark = obj.landmark;
-                    objApplicationUserViewModelDtos.street = obj.street;
-                    objApplicationUserViewModelDtos.cityid = obj.cityid;
-                    objApplicationUserViewModelDtos.zipcode = obj.zipcode;
-                    objApplicationUserViewModelDtos.latitude = obj.latitude;
-                    objApplicationUserViewModelDtos.longitude = obj.longitude;
-                    objApplicationUserViewModelDtos.companyName = obj.companyName;
-                    objApplicationUserViewModelDtos.designation = obj.designation;
-                    objApplicationUserViewModelDtos.gstno = obj.gstno;
-                    objApplicationUserViewModelDtos.Website = obj.Website;
+                    //objApplicationUserViewModelDtos.house = obj.house;
+                    //objApplicationUserViewModelDtos.landmark = obj.landmark;
+                    //objApplicationUserViewModelDtos.street = obj.street;
+                    //objApplicationUserViewModelDtos.cityid = obj.cityid;
+                    //objApplicationUserViewModelDtos.zipcode = obj.zipcode;
+                    //objApplicationUserViewModelDtos.latitude = obj.latitude;
+                    //objApplicationUserViewModelDtos.longitude = obj.longitude;
+                    //objApplicationUserViewModelDtos.companyName = obj.companyName;
+                    //objApplicationUserViewModelDtos.designation = obj.designation;
+                    //objApplicationUserViewModelDtos.gstno = obj.gstno;
+                    //objApplicationUserViewModelDtos.Website = obj.Website;
                     objApplicationUserViewModelDtos.bankname = obj.bankname;
                     objApplicationUserViewModelDtos.accountname = obj.accountname;
                     objApplicationUserViewModelDtos.accountno = obj.accountno;
                     objApplicationUserViewModelDtos.ifsccode = obj.ifsccode;
                     objApplicationUserViewModelDtos.branch = obj.branch;
                     objApplicationUserViewModelDtos.passbookphoto = obj.passbookphoto;
-                    objApplicationUserViewModelDtos.Membershipid = obj.Membershipid;
-                    objApplicationUserViewModelDtos.amount = obj.amount;
+                    //objApplicationUserViewModelDtos.Membershipid = obj.Membershipid;
+                    //objApplicationUserViewModelDtos.amount = obj.amount;
                     objApplicationUserViewModelDtos.otpno = no;
                     var obj1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault();
                     if (obj1 == null)
@@ -155,222 +157,7 @@ namespace plathora.API
             }
 
         }
-        //[HttpPost]
-        //[Route("SaveUser1")]
-        //public async Task<IActionResult> SaveUser1(ApplicationUserSaveModelDtos model)
-        //{
-
-        //    var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1).FirstOrDefault();
-
-        //    if (checkduplicate == null)
-        //    {
-        //        string rolename = string.Empty;
-        //        if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
-        //        {
-        //            rolename = SD.Role_Affilate;
-        //        }
-        //        else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
-        //        {
-        //            rolename = SD.Role_Customer;
-
-        //        }
-
-        //        AffiltateRegistration obj = new AffiltateRegistration();
-
-        //        var user = new ApplicationUser
-        //        {
-
-
-        //            name = model.name,
-        //            UserName = model.mobileno1,
-        //            // profilephoto = model.pro
-        //            PhoneNumber = model.mobileno1,
-        //            mobileno2 = model.mobileno2,
-        //            Email = model.emailid1,
-        //            emailid2 = model.emailid2,
-        //            adharcardno = model.adharcardno,
-        //            // adharcardphoto = model.
-
-        //            pancardno = model.pancardno,
-        //            //pancardphoto = model.
-        //            //password = model.password,
-        //            gender = model.gender,
-        //            DOB = model.DOB,
-        //            createddate = DateTime.Now,
-        //            house = model.house,
-        //            landmark = model.landmark,
-        //            street = model.street,
-
-        //            cityid = model.cityid,
-        //            zipcode = model.zipcode,
-
-        //            latitude = model.latitude,
-        //            longitude = model.longitude,
-        //            companyName = model.companyName,
-        //            designation = model.designation,
-        //            gstno = model.gstno,
-        //            Website = model.Website,
-
-
-        //            bankname = model.bankname,
-        //            accountname = model.accountname,
-        //            accountno = model.accountno,
-        //            ifsccode = model.ifsccode,
-        //            branch = model.branch,
-        //            //passbookphoto = model.pas
-        //            Membershipid = model.Membershipid,
-        //            amount = model.amount,
-        //            registerbyAffilateID = model.registerbyAffilateID,
-        //            deviceid = model.deviceid
-
-        //        };
-
-
-
-        //        if (model.profilephoto == null || model.profilephoto.Trim() == "")
-        //        {
-        //            obj.profilephoto = "";
-        //        }
-        //        else
-        //        {
-
-        //            string fileName = Guid.NewGuid().ToString();
-        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\profilephoto";
-        //            if (!System.IO.Directory.Exists(folderPath))
-        //            {
-        //                System.IO.Directory.CreateDirectory(folderPath);
-        //            }
-        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.profilephoto));
-        //            user.profilephoto = "/uploads/user/profilephoto/" + fileName;
-
-        //        }
-        //        if (model.adharcardphoto == null || model.adharcardphoto.Trim() == "")
-        //        {
-        //            obj.adharcardphoto = "";
-        //        }
-        //        else
-        //        {
-
-        //            string fileName = Guid.NewGuid().ToString();
-        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\adharcardphoto";
-        //            if (!System.IO.Directory.Exists(folderPath))
-        //            {
-        //                System.IO.Directory.CreateDirectory(folderPath);
-        //            }
-        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.adharcardphoto));
-        //            user.adharcardphoto = "/uploads/user/adharcardphoto/" + fileName;
-
-        //        }
-        //        if (model.pancardphoto == null || model.pancardphoto.Trim() == "")
-        //        {
-        //            obj.pancardphoto = "";
-        //        }
-        //        else
-        //        {
-
-        //            string fileName = Guid.NewGuid().ToString();
-        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\pancardphoto";
-        //            if (!System.IO.Directory.Exists(folderPath))
-        //            {
-        //                System.IO.Directory.CreateDirectory(folderPath);
-        //            }
-        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.pancardphoto));
-        //            user.pancardphoto = "/uploads/user/pancardphoto/" + fileName;
-
-        //        }
-        //        if (model.passbookphoto == null || model.passbookphoto.Trim() == "")
-        //        {
-        //            obj.passbookphoto = "";
-        //        }
-        //        else
-        //        {
-
-        //            string fileName = Guid.NewGuid().ToString();
-        //            fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + ".jpg";
-        //            var folderPath = _hostingEnvironment.WebRootPath + @"\uploads\user\passbookphoto";
-        //            if (!System.IO.Directory.Exists(folderPath))
-        //            {
-        //                System.IO.Directory.CreateDirectory(folderPath);
-        //            }
-        //            System.IO.File.WriteAllBytes(Path.Combine(folderPath, fileName), Convert.FromBase64String(model.passbookphoto));
-        //            user.passbookphoto = "/uploads/user/passbookphoto/" + fileName;
-
-        //        }
-        //        //if (ModelState.IsValid)
-        //        //{
-        //        try
-        //        {
-        //            if (obj == null)
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                var result = await _userManager.CreateAsync(user, model.password);
-        //                if (result.Succeeded)
-        //                {
-
-        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
-        //                    {
-        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
-        //                    }
-
-        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Affilate))
-        //                    {
-        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Affilate));
-        //                    }
-        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Customer))
-        //                    {
-        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
-        //                    }
-        //                    //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
-        //                    if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
-        //                    {
-        //                        await _userManager.AddToRoleAsync(user, SD.Role_Affilate);
-        //                    }
-        //                    else
-        //                    {
-        //                        await _userManager.AddToRoleAsync(user, SD.Role_Customer);
-        //                    }
-
-        //                    //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
-        //                    return Ok(user);
-        //                }
-        //                return Ok();
-        //                //  var postId = await _AffiltateRegistrationService.CreateAsync(obj);
-        //                //    int id = Convert.ToInt32(postId);
-        //                //if (id < 0)
-        //                //{
-        //                //    return BadRequest();
-        //                //}
-        //                //else
-        //                //{
-        //                //    var customer1 = _AffiltateRegistrationService.GetById(id);
-        //                //    return Ok(customer1);
-        //                //}
-
-        //            }
-
-
-        //        }
-        //        catch (Exception a)
-        //        {
-
-        //            return BadRequest();
-        //        }
-
-        //        //}
-        //    }
-        //    else
-        //    {
-        //        return BadRequest("Duplicate Mobile No");
-        //    }
-
-
-        //}
+          
         [HttpPost]
         [Route("SaveUser")]
         public async Task<IActionResult> SaveUser(ApplicationUserSaveModelDtos model)
@@ -411,14 +198,16 @@ namespace plathora.API
                     rolename = SD.Role_Customer;
 
                 }
-
-                AffiltateRegistration obj = new AffiltateRegistration();
+                string uniqueNo = _AboutUsServices.generateRandomNo(model.name.Substring(0, 3));
+                //AffiltateRegistration obj = new AffiltateRegistration();
 
                 var user = new ApplicationUser
                 {
                      
          
          name = model.name,
+         MiddleName=model.MiddleName,
+         LastName=model.LastName,
                     UserName=model.mobileno1,
         // profilephoto = model.pro
          PhoneNumber = model.mobileno1,        
@@ -431,7 +220,8 @@ namespace plathora.API
                     AffilatePackageid =model.AffilatePackageid,
                     PaymentStatus=model.PaymentStatus,
                     PaymentAmount=model.PaymentAmount,
-                    TransactionId=model.TransactionId
+                    TransactionId=model.TransactionId,
+                    uniqueId=uniqueNo
                    
 
                 };
@@ -439,16 +229,10 @@ namespace plathora.API
 
 
               
-                //if (ModelState.IsValid)
-                //{
+                
                 try
                 {
-                    if (obj == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
+                    
                         var result = await _userManager.CreateAsync(user, model.password);
                         if (result.Succeeded)
                         {
@@ -480,19 +264,9 @@ namespace plathora.API
                             return Ok(user);
                         }
                         return Ok();
-                            //  var postId = await _AffiltateRegistrationService.CreateAsync(obj);
-                        //    int id = Convert.ToInt32(postId);
-                        //if (id < 0)
-                        //{
-                        //    return BadRequest();
-                        //}
-                        //else
-                        //{
-                        //    var customer1 = _AffiltateRegistrationService.GetById(id);
-                        //    return Ok(customer1);
-                        //}
+                           
 
-                    }
+                  
 
 
                 }
@@ -504,7 +278,7 @@ namespace plathora.API
 
                 }
 
-                //}
+                 
             }
             else
             {
@@ -516,6 +290,7 @@ namespace plathora.API
 
             
         }
+        /*
         [HttpPut]
         [Route("updateUser")]
         public async Task<IActionResult> updateUser(ApplicationUserEditModelDtos model)
@@ -648,7 +423,7 @@ namespace plathora.API
 
             return BadRequest();
         }
-
+        */
         [HttpGet]
         [Route("UserLogin")]
         public async Task<IActionResult> UserLogin(string mobileNo, string password)

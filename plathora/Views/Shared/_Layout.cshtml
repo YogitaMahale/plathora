@@ -42,23 +42,84 @@
                             <div class="collapse" id="Payroll">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Admindashboard" asp-action="Index"> Dashboard</a></li>
+                                   
+
+                                    @*<li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> Customer</a></li>*@
+                                     
+                                   
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="tax" asp-action="Index"> Tax </a></li>
+                                 
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="commission" asp-action="Index"> commission</a></li>
+                                     
+
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="BankRegistration" asp-action="Index"> Bank</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="slider" asp-action="Index"> Slider</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="AboutUs" asp-action="Edit"> AboutUs</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="News" asp-action="Index"> News</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#location" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
+                                <span class="menu-title">Location</span>
+                                <i class="menu-arrow text-primary"></i>
+                            </a>
+                            <div class="collapse" id="location">
+                                <ul class="nav flex-column sub-menu">
+
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="CountryRegistration" asp-action="Index"> Country</a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="StateRegistration" asp-action="Index"> State</a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="CityRegistration" asp-action="Index"> City</a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Taluka" asp-action="Index"> Taluka </a></li>
 
-                                    @*<li class="nav-item"><a class="nav-link" asp-controller="CustomerRegistration" asp-action="Index"> Customer</a></li>*@
+
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#pkg" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
+                                <span class="menu-title">Packages</span>
+                                <i class="menu-arrow text-primary"></i>
+                            </a>
+                            <div class="collapse" id="pkg">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="AffilatePackage" asp-action="Index"> Affilate  </a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="BusinessPackage" asp-action="Index"> Business   </a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Advertise" asp-action="Index"> Advertise </a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="PackageRegistration" asp-action="Index"> Package </a></li>
+
+
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="tax" asp-action="Index"> Tax </a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Membership" asp-action="Index"> Membership</a></li>
+
+
+
+
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#Category" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="fas fa-pound-sign fa-lg text-primary" style="margin-right:0.7em"></i>
+                                <span class="menu-title">Category</span>
+                                <i class="menu-arrow text-primary"></i>
+                            </a>
+                            <div class="collapse" id="Category">
+                                <ul class="nav flex-column sub-menu">
+                                     
+
+                                   
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="SectorRegistration" asp-action="Index"> Sector</a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="BusinessRegistration" asp-action="Index"> Business </a></li>
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index"> Product </a></li>
-
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="PackageRegistration" asp-action="Index"> Package </a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="BusinessPackage" asp-action="Index"> Business Package </a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Advertise" asp-action="Index"> Advertise </a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="tax" asp-action="Index"> Tax </a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Membership" asp-action="Index"> Membership</a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="commission" asp-action="Index"> commission</a></li>
-                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="AffilatePackage" asp-action="Index"> Affilate Package</a></li>
+                                     
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="tax" asp-action="Index"> Tax </a></li> 
+                                    <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="commission" asp-action="Index"> commission</a></li> 
 
 
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="BankRegistration" asp-action="Index"> Bank</a></li>
@@ -139,7 +200,7 @@
                                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Reportdetails" asp-action="businessOwnerReport"> Business Owner</a></li>
 
 
-                                    
+
                                 </ul>
                             </div>
                         </li>

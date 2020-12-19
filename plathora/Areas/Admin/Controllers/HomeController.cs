@@ -62,59 +62,56 @@ namespace plathora.Controllers
             _ratingsservices = ratingsservices;
             _cityRegistrationservices = cityRegistrationservices;
         }
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-       
-
+         /*
         [HttpGet]
         public IActionResult Index()
         {
             try
             {
+
                 var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                
-                if(customerId == null)
+
+                if (customerId == null)
                 {
                     ViewBag.userName = "";
                     ViewBag.profilephoto = "uploads/blaankCustomer.png";
-                } 
+                }
                 else
                 {
                     var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
                     if (objfromdb.name == null)
-                {
-                    ViewBag.userName = objfromdb.name;
+                    {
+                        ViewBag.userName = objfromdb.name;
+                    }
+                    else
+                    {
+                        ViewBag.userName = objfromdb.name;
+                    }
+
+                    if (objfromdb.profilephoto == null)
+                    {
+                        ViewBag.profilephoto = "uploads/blaankCustomer.png";
+                    }
+                    else
+                    {
+                        ViewBag.profilephoto = objfromdb.profilephoto;
+                    }
                 }
-                else
-                {
-                    ViewBag.userName = objfromdb.name;
-                }
-               
-                if(objfromdb.profilephoto==null)
-                {
-                    ViewBag.profilephoto = "uploads/blaankCustomer.png";
-                }
-                else
-                {
-                    ViewBag.profilephoto = objfromdb.profilephoto;
-                }
-                }
-                
-                   
-                
-                    ///uploads/blaankCustomer.png
-                    IEnumerable<SelectListItem> cities=_cityRegistrationservices.GetAllCities();
+
+
+
+
+                IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
                 ViewData["cities"] = cities;
-                //ViewBag.cities = _cityRegistrationservices.GetAll().Where(x=>x.isdeleted==false).ToList();
                 frontwebsiteModel objmodel = new frontwebsiteModel();
-
-                //  ViewBag.search = txtsearch;
                 var parameter = new DynamicParameters();
-
-                
-                //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-
-                 
                 objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(12).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 {
                     id = x.id,
@@ -370,7 +367,7 @@ namespace plathora.Controllers
             //return View();
         }
         //private Task<IdentityUser> GetCurrentUserAsync() =>  _usermanager.GetUserAsync(this.User);
-
+        */
         [HttpPost]
         public async Task<string> AddReview(string rating, string bussinessid, string review)
         {

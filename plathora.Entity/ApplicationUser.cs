@@ -9,15 +9,14 @@ using System.Text;
 namespace plathora.Entity
 {
   public   class ApplicationUser: IdentityUser
-    { //      , name, profilephoto,  mobileno2,  emailid2, adharcardno, adharcardphoto, pancardno,
-      //pancardphoto,  gender, DOB, createddate, isdeleted,  house, landmark, street, cityid, 
-      //zipcode, latitude, longitude, companyName, designation, gstno, Website, bankname, accountname, accountno, 
-      //ifsccode, branch, passbookphoto, Membershipid, amount, registerbyAffilateID, deviceid
+    {  
 
-
+        
 
         [Required]
         public string name { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
 
         public string profilephoto { get; set; }
 
@@ -42,28 +41,30 @@ namespace plathora.Entity
         public Boolean isdeleted { get; set; }
 
 
-        //-------- address info
-        public string house { get; set; }
-        public string landmark { get; set; }
-        public string street { get; set; }
+        ////-------- address info
+       
 
-        [ForeignKey("CityRegistration")]
-        public int? cityid { get; set; } 
-        public CityRegistration CityRegistration { get; set; }
+        //public string house { get; set; }
+        //public string landmark { get; set; }
+        //public string street { get; set; }
+
+        //[ForeignKey("CityRegistration")]
+        //public int? cityid { get; set; } 
+        //public CityRegistration CityRegistration { get; set; }
 
 
 
 
-        public string zipcode { get; set; }
-        public string latitude { get; set; }
-        public string longitude { get; set; }
+        //public string zipcode { get; set; }
+        //public string latitude { get; set; }
+        //public string longitude { get; set; }
 
-        //--------company info---
-        public string companyName { get; set; }
-        public string designation { get; set; }
-        public string gstno { get; set; }
-        public string Website { get; set; }
-        //--------bank info---
+        ////--------company info---
+        //public string companyName { get; set; }
+        //public string designation { get; set; }
+        //public string gstno { get; set; }
+        //public string Website { get; set; }
+        ////--------bank info---
         public string bankname { get; set; }
         public string accountname { get; set; }
         public string accountno { get; set; }
@@ -71,15 +72,15 @@ namespace plathora.Entity
         public string branch { get; set; }
         public string passbookphoto { get; set; }
         //----affliate membership
-        [ForeignKey("Membership")]
-        public int? Membershipid { get; set; } = null;
-        public Membership Membership { get; set; }
+        //[ForeignKey("Membership")]
+        //public int? Membershipid { get; set; } = null;
+        //public Membership Membership { get; set; }
 
 
         
         public string registerbyAffilateID { get; set; }
         
-        public string amount { get; set; }
+      //  public string amount { get; set; }
 
       
         public string deviceid { get; set; }
@@ -95,5 +96,9 @@ namespace plathora.Entity
         [Column(TypeName = "decimal(18, 2)")]
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
+        public string uniqueId { get; set; }
+
+
+
     }
 }

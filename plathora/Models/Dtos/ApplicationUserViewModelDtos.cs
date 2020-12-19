@@ -39,29 +39,29 @@ namespace plathora.Models.Dtos
 
 
         //-------- address info
-        public string house { get; set; }
-        public string landmark { get; set; }
-        public string street { get; set; }
+        //public string house { get; set; }
+        //public string landmark { get; set; }
+        //public string street { get; set; }
 
        
         //public int countryid { get; set; }
         
         //public int stateid { get; set; }
         
-        public int? cityid { get; set; }
+    //    public int? cityid { get; set; }
 
 
 
 
-        public string zipcode { get; set; }
-        public string latitude { get; set; }
-        public string longitude { get; set; }
+        //public string zipcode { get; set; }
+        //public string latitude { get; set; }
+        //public string longitude { get; set; }
 
         //--------company info---
-        public string companyName { get; set; }
-        public string designation { get; set; }
-        public string gstno { get; set; }
-        public string Website { get; set; }
+        //public string companyName { get; set; }
+        //public string designation { get; set; }
+        //public string gstno { get; set; }
+        //public string Website { get; set; }
         //--------bank info---
         public string bankname { get; set; }
         public string accountname { get; set; }
@@ -71,9 +71,9 @@ namespace plathora.Models.Dtos
         public string  passbookphoto { get; set; }
         //----affliate membership
 
-        public int? Membershipid { get; set; }
+      // public int? Membershipid { get; set; }
 
-        public string amount { get; set; }
+      //  public string amount { get; set; }
       //  public string rolename { get; set; }
     }
 }

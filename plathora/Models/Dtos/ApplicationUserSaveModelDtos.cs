@@ -10,7 +10,10 @@ namespace plathora.Models.Dtos
        public string  id { get; set; }
         public string usertype { get; set; }
         public string name { get; set; }
-       // public string profilephoto { get; set; }
+
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        // public string profilephoto { get; set; }
         public string mobileno1 { get; set; }
       //  public string mobileno2 { get; set; }
         public string emailid1 { get; set; }
