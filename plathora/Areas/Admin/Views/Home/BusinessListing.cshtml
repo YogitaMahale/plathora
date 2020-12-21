@@ -202,6 +202,8 @@
                                                 <div class="card border-0 mb-0">
                                                     <div class="card-body">
                                                         <div class="item-card9">
+                                                            <br />
+
                                                             <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-dark">
                                                                 <h4 class="font-weight-semibold mt-1 mb-1">
                                                                     @item.companyName
@@ -687,7 +689,7 @@
                                 </div>*@
                             </div>
                         </div>
-                        <div class="center-block text-center">
+                        <div class="center-block text-center" style="display:none;">
                             <ul class="pagination mb-5">
                                 <li class="page-item page-prev disabled">
                                     <a class="page-link" href="#" tabindex="-1">Prev</a>
@@ -710,7 +712,7 @@
 </section>
 <!--/Add Listings-->
 <!-- Newsletter-->
-<partial name="_LoginPartial" />
+<partial name="_Subscribe" />
 <!--/Newsletter-->
 <!--Footer Section-->
  

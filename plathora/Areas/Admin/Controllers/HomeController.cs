@@ -216,131 +216,145 @@ namespace plathora.Controllers
                     con.Open();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
+                    
+
+                    
+
 
                     if (ds != null)
                     {
-                        if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
+                        try
                         {
-                            objmodel.SearchModelType = "sector".ToString().ToLower().Trim();
-                            objmodel.objSectorRegistration = ds.Tables[0].AsEnumerable().Select(row => new SectorRegistrationIndexViewModel
+
+
+                            if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
                             {
-                                id = Convert.ToInt32(row["id"].ToString()),
-                                name = row["name"].ToString(),
-                                img = row["img"].ToString()
-                            });
+                                objmodel.SearchModelType = "sector".ToString().ToLower().Trim();
+                                objmodel.objSectorRegistration = ds.Tables[0].AsEnumerable().Select(row => new SectorRegistrationIndexViewModel
+                                {
+                                    id = Convert.ToInt32(row["id"].ToString()),
+                                    name = row["name"].ToString(),
+                                    img = row["img"].ToString()
+                                });
 
-                            // public IEnumerable<SectorRegistrationIndexViewModel> objSectorRegistration { get; set; }
-                        }
-                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
-                        {
-                            objmodel.SearchModelType = "business".ToString().ToLower().Trim();
-                            //   public IEnumerable<search_BusinessRegistrationIndexViewModel> objsearch_BusinessRegistrationIndexViewModel { get; set; }
-                            objmodel.objsearch_BusinessRegistrationIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessRegistrationIndexViewModel
+                                // public IEnumerable<SectorRegistrationIndexViewModel> objSectorRegistration { get; set; }
+                            }
+                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
                             {
-                                id = Convert.ToInt32(row["id"].ToString()),
-                                name = row["name"].ToString(),
-                                img = row["img"].ToString(),
-                                sectorid = Convert.ToInt32(row["sectorid"].ToString()),
-                                type = row["type"].ToString()
-                            });
-                            
-                        }
-                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
-                        {
-                            objmodel.SearchModelType = "product".ToString().ToLower().Trim();
-                            // public IEnumerable<search_ProductIndexViewModel> objsearch_ProductIndexViewModel { get; set; }
-                            objmodel.objsearch_ProductIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_ProductIndexViewModel
+                                objmodel.SearchModelType = "business".ToString().ToLower().Trim();
+                                //   public IEnumerable<search_BusinessRegistrationIndexViewModel> objsearch_BusinessRegistrationIndexViewModel { get; set; }
+                                objmodel.objsearch_BusinessRegistrationIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessRegistrationIndexViewModel
+                                {
+                                    id = Convert.ToInt32(row["id"].ToString()),
+                                    name = row["name"].ToString(),
+                                    img = row["img"].ToString(),
+                                    sectorid = Convert.ToInt32(row["sectorid"].ToString()),
+                                    type = row["type"].ToString()
+                                });
+
+                            }
+                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
                             {
-                                id = Convert.ToInt32(row["id"].ToString()),
-                                businessid = Convert.ToInt32(row["businessid"].ToString()),
-                                productName = row["productName"].ToString(),
-                                img = row["img"].ToString(),
-                                
-                                type = row["type"].ToString()
-                            });
-                            
+                                objmodel.SearchModelType = "product".ToString().ToLower().Trim();
+                                // public IEnumerable<search_ProductIndexViewModel> objsearch_ProductIndexViewModel { get; set; }
+                                objmodel.objsearch_ProductIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_ProductIndexViewModel
+                                {
+                                    id = Convert.ToInt32(row["id"].ToString()),
+                                    businessid = Convert.ToInt32(row["businessid"].ToString()),
+                                    productName = row["productName"].ToString(),
+                                    img = row["img"].ToString(),
+
+                                    type = row["type"].ToString()
+                                });
+
+                            }
+                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
+                            {
+                                // selectallBusinessDetailsDtos
+                                //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+
+                                objmodel.objBusinessDetails = ds.Tables[0].AsEnumerable().Select(row => new selectallBusinessDetailsDtos
+                                {         //                        
+
+                                    Id = Convert.ToString(row["Id"].ToString()),
+                                    name = Convert.ToString(row["name"].ToString()),
+                                    description = row["description"].ToString(),
+                                    profilephoto = row["profilephoto"].ToString(),
+                                    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
+                                    PhoneNumber = Convert.ToString(row["PhoneNumber"].ToString()),
+                                    rating = Convert.ToInt32(row["rating"].ToString()),
+                                    cityname = row["cityname"].ToString(),
+                                    businesstime = Convert.ToString(row["businesstime"].ToString()),
+                                    Email = Convert.ToString(row["Email"].ToString()),
+
+
+                                });
+
+
+                                //objmodel.SearchModelType = "businessowner".ToString().ToLower().Trim();
+                                ////public IEnumerable<search_BusinessOwnerRegistrationDtos> objsearch_BusinessOwnerRegistrationDtos { get; set; }
+                                //objmodel.objsearch_BusinessOwnerRegistrationDtos = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessOwnerRegistrationDtos
+                                //{
+                                //    id = Convert.ToString(row["id"].ToString()),
+                                //    name = Convert.ToString(row["name"].ToString()),
+                                //    profilephoto = row["profilephoto"].ToString(),
+                                //    mobileno1 = row["mobileno1"].ToString(),
+                                //    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
+                                //    emailid1 = Convert.ToString(row["emailid1"].ToString()),
+                                //    emailid2 = row["emailid2"].ToString(),
+                                //    adharcardno = row["adharcardno"].ToString(),
+                                //    adharcardphoto = Convert.ToString(row["adharcardphoto"].ToString()),
+                                //    pancardno = Convert.ToString(row["pancardno"].ToString()),
+                                //    pancardphoto = row["pancardphoto"].ToString(),
+                                //    gender = row["gender"].ToString(),
+                                //    DOB = Convert.ToDateTime(row["DOB"].ToString()),
+                                //    house = Convert.ToString(row["house"].ToString()),
+                                //    landmark = row["landmark"].ToString(),
+                                //    street = row["street"].ToString(),
+
+                                //    cityid = row["cityid"].ToString(),
+                                //    zipcode = row["zipcode"].ToString(),
+                                //    latitude = Convert.ToString(row["latitude"].ToString()),
+                                //    longitude = Convert.ToString(row["longitude"].ToString()),
+                                //    companyName = row["companyName"].ToString(),
+                                //    designation = row["designation"].ToString(),
+                                //    gstno = Convert.ToString(row["gstno"].ToString()),
+                                //    Website = Convert.ToString(row["Website"].ToString()),
+                                //    Regcertificate = row["Regcertificate"].ToString(),
+                                //    businessid = row["businessid"].ToString(),
+                                //    productid = Convert.ToString(row["productid"].ToString()),
+                                //    lic = row["lic"].ToString(),
+                                //    registerbyAffilateID = row["registerbyAffilateID"].ToString(),
+
+                                //    deviceid = Convert.ToString(row["deviceid"].ToString()),
+                                //    type = row["type"].ToString(),
+
+                                //});
+
+
+
+                            }
+                            else
+                            {
+
+                            }
                         }
-                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
+                        catch (Exception obj)
                         {
-                            // selectallBusinessDetailsDtos
-                            //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-
-                            objmodel.objBusinessDetails = ds.Tables[0].AsEnumerable().Select(row => new selectallBusinessDetailsDtos
-                            {         //                        
-
-                                Id = Convert.ToString(row["Id"].ToString()),
-                                name = Convert.ToString(row["name"].ToString()),
-                                description = row["description"].ToString(),
-                                profilephoto = row["profilephoto"].ToString(),
-                                mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
-                                PhoneNumber = Convert.ToString(row["PhoneNumber"].ToString()),
-                                rating = Convert.ToInt32(row["rating"].ToString()),
-                                cityname = row["cityname"].ToString(),
-                                businesstime = Convert.ToString(row["businesstime"].ToString()),
-                                Email = Convert.ToString(row["Email"].ToString()),
-                               
-
-                            });
-
-
-                            //objmodel.SearchModelType = "businessowner".ToString().ToLower().Trim();
-                            ////public IEnumerable<search_BusinessOwnerRegistrationDtos> objsearch_BusinessOwnerRegistrationDtos { get; set; }
-                            //objmodel.objsearch_BusinessOwnerRegistrationDtos = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessOwnerRegistrationDtos
-                            //{
-                            //    id = Convert.ToString(row["id"].ToString()),
-                            //    name = Convert.ToString(row["name"].ToString()),
-                            //    profilephoto = row["profilephoto"].ToString(),
-                            //    mobileno1 = row["mobileno1"].ToString(),
-                            //    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
-                            //    emailid1 = Convert.ToString(row["emailid1"].ToString()),
-                            //    emailid2 = row["emailid2"].ToString(),
-                            //    adharcardno = row["adharcardno"].ToString(),
-                            //    adharcardphoto = Convert.ToString(row["adharcardphoto"].ToString()),
-                            //    pancardno = Convert.ToString(row["pancardno"].ToString()),
-                            //    pancardphoto = row["pancardphoto"].ToString(),
-                            //    gender = row["gender"].ToString(),
-                            //    DOB = Convert.ToDateTime(row["DOB"].ToString()),
-                            //    house = Convert.ToString(row["house"].ToString()),
-                            //    landmark = row["landmark"].ToString(),
-                            //    street = row["street"].ToString(),
-
-                            //    cityid = row["cityid"].ToString(),
-                            //    zipcode = row["zipcode"].ToString(),
-                            //    latitude = Convert.ToString(row["latitude"].ToString()),
-                            //    longitude = Convert.ToString(row["longitude"].ToString()),
-                            //    companyName = row["companyName"].ToString(),
-                            //    designation = row["designation"].ToString(),
-                            //    gstno = Convert.ToString(row["gstno"].ToString()),
-                            //    Website = Convert.ToString(row["Website"].ToString()),
-                            //    Regcertificate = row["Regcertificate"].ToString(),
-                            //    businessid = row["businessid"].ToString(),
-                            //    productid = Convert.ToString(row["productid"].ToString()),
-                            //    lic = row["lic"].ToString(),
-                            //    registerbyAffilateID = row["registerbyAffilateID"].ToString(),
-
-                            //    deviceid = Convert.ToString(row["deviceid"].ToString()),
-                            //    type = row["type"].ToString(),
-
-                            //});
-
-
-
-                        }
-                        else
-                        {
-                            
+                            objmodel.SearchModelType = "NotFound";
                         }
                     }
                     else
                     {
-                       
+                        objmodel.SearchModelType = "NotFound";
                     }
 
                 }
                 catch(Exception obj)
                 {
-                    string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
-                    return NotFound(myJson2);
+                    objmodel.SearchModelType = "Record Not Found";
+                    //string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
+                    //return NotFound(myJson2);
                 }
                 finally { con.Close(); }
 
@@ -556,9 +570,12 @@ namespace plathora.Controllers
         {
             LoginUserDetails();
             BusinessListingViewModel obj = new BusinessListingViewModel();
+
+           
             try
             {
-                obj.objProductIndexViewModel = _productMasterServices.GetAll().Select(x => new ProductIndexViewModel
+                int businessid = _productMasterServices.GetById(productid).businessid;
+                obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x=>x.businessid==businessid).Select(x => new ProductIndexViewModel
                 {
 
 

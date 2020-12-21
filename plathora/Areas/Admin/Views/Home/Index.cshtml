@@ -94,6 +94,14 @@
                 await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
 
             }
+
+            else  if (Model.SearchModelType == "NotFound")
+            {
+                
+                   <script>
+                    alert("Record Not Found");
+                </script>
+            }
         }
         @*<div class="row">
                 @foreach (var obj in Model.objSectorRegistration)
