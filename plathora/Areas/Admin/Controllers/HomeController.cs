@@ -62,47 +62,53 @@ namespace plathora.Controllers
             _ratingsservices = ratingsservices;
             _cityRegistrationservices = cityRegistrationservices;
         }
-        [HttpGet]
-        public IActionResult Index()
+      
+        public void LoginUserDetails()
         {
-            return View();
-        }
+            var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-         /*
-        [HttpGet]
-        public IActionResult Index()
-        {
-            try
+            if (customerId == null)
             {
+                ViewBag.userName = "";
+                ViewBag.profilephoto = "/uploads/blaankCustomer.png";
 
-                var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-                if (customerId == null)
+                 
+            }
+            else
+            {
+                var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
+                if (objfromdb.name == null)
                 {
+                   
                     ViewBag.userName = "";
-                    ViewBag.profilephoto = "uploads/blaankCustomer.png";
                 }
                 else
                 {
-                    var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
-                    if (objfromdb.name == null)
-                    {
-                        ViewBag.userName = objfromdb.name;
-                    }
-                    else
-                    {
-                        ViewBag.userName = objfromdb.name;
-                    }
-
-                    if (objfromdb.profilephoto == null)
-                    {
-                        ViewBag.profilephoto = "uploads/blaankCustomer.png";
-                    }
-                    else
-                    {
-                        ViewBag.profilephoto = objfromdb.profilephoto;
-                    }
+                    
+                    ViewBag.userName = objfromdb.name;
                 }
+               
+                
+                if (objfromdb.profilephoto == null)
+                {
+                    
+                    ViewBag.profilephoto = "/uploads/blaankCustomer.png";
+                }
+                else
+                {
+                    
+                    ViewBag.profilephoto = objfromdb.profilephoto;
+                }
+            }
+        }
+        [HttpGet]
+        public IActionResult Index()
+        {
+            LoginUserDetails();
+            try
+            {
+
+               
 
 
 
@@ -367,18 +373,19 @@ namespace plathora.Controllers
             //return View();
         }
         //private Task<IdentityUser> GetCurrentUserAsync() =>  _usermanager.GetUserAsync(this.User);
-        */
+        
         [HttpPost]
-        public async Task<string> AddReview(string rating, string bussinessid, string review)
+        public async Task<string> AddReview(string rating, int bussinessid, string review)
         {
             var customerId =User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
-            var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
+           // var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
             businessrating obj = new businessrating();
             obj.id = 0;
             obj.CustomerId = customerId;
-            obj.BusinessOwnerId =(int)businessId.id;
+            //obj.BusinessOwnerId =(int)businessId.id;
+            obj.BusinessOwnerId =(int)bussinessid;
             obj.rating = rating;
             obj.comment = review;
             obj.isdeleted = false;
@@ -390,7 +397,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult business(string id)
         {
-            
+            LoginUserDetails();
             businessDetailsViewModel obj = new businessDetailsViewModel();
 
 
@@ -431,6 +438,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult businessDetails(int sectorid)
         {
+            LoginUserDetails();
             //var obj = _BusinessRegistrationServieces.GetAll().Where(x => x.sectorid == sectorid && x.isdeleted == false).Select(x => new BusinessRegistrationIndexViewModel
             //{
             //    id = x.id,
@@ -448,6 +456,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult productDetails(int businessid)
         {
+            LoginUserDetails();
             var obj = _productMasterServices.GetAll().Where(x => x.businessid == businessid && x.isdeleted == false).Select(x => new ProductIndexViewModel
             {
 
@@ -467,10 +476,12 @@ namespace plathora.Controllers
 
         public IActionResult Privacy()
         {
+            LoginUserDetails();
             return View();
         }
         public IActionResult about()
         {
+            LoginUserDetails();
             AboutUs obj = _aboutUsServices.GetById(1);
             return View(obj);
         }
@@ -484,6 +495,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult ContactUs()
         {
+            LoginUserDetails();
             return View();
         }
         [HttpPost]
@@ -542,6 +554,7 @@ namespace plathora.Controllers
 
         public IActionResult BusinessListing(int productid)
         {
+            LoginUserDetails();
             BusinessListingViewModel obj = new BusinessListingViewModel();
             try
             {
@@ -568,7 +581,9 @@ namespace plathora.Controllers
 
             }
             catch(Exception objmsg)
-            { }
+            {
+                string p = objmsg.Message;
+            }
           
              
 
@@ -582,6 +597,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Category()
         {
+            LoginUserDetails();
             var parameter = new DynamicParameters();
             IEnumerable<selectallSectorWithBusinessCount> obj = _sP_Call.List<selectallSectorWithBusinessCount>("selectallSectorWithBusinessCount", null);
 
@@ -590,16 +606,19 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Advertising()
         {
+            LoginUserDetails();
             return View();
         }
 
 
         public IActionResult TermsandConditions()
         {
+            LoginUserDetails();
             return View();
         }
         public IActionResult PrivacyPolicy()
         {
+            LoginUserDetails();
             return View();
         }
 

@@ -619,7 +619,7 @@
                                         @*<span class="fs-14 ml-0" data-toggle="tooltip" data-placement="top" title="verified"><i class="fa fa-check-circle-o text-success"></i></span>
                                             <span class="fs-14 ml-2"> 4.5 <i class="fa fa-star text-yellow"></i></span>*@
                                     </h5>
-                                    <small class="text-muted"><i class="fa fa-calendar"></i> Dec 21st  <i class=" ml-3 fa fa-clock-o"></i> 13.00  <i class=" ml-3 fa fa-map-marker"></i> Brezil</small>
+                                    @*<small class="text-muted"><i class="fa fa-calendar"></i> Dec 21st  <i class=" ml-3 fa fa-clock-o"></i> 13.00  <i class=" ml-3 fa fa-map-marker"></i> Brezil</small>*@
                                     <p class="font-13  mb-2 mt-2">
                                         @item.comment
                                     </p>
@@ -1421,7 +1421,7 @@
     });
 </script>
 
-<input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />
+<input style="display:none;" type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />
 
 <script src="https://maps.googleapis.com/maps/api/js?"></script>
 <script type="text/javascript">

@@ -9,7 +9,7 @@ namespace plathora.Models.Dtos
     { 
         public int id { get; set; } = 0;
 
-        
+        public string UniqueId { get; set; }
         public string customerid { get; set; }
       
 

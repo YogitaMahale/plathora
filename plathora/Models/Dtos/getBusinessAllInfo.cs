@@ -44,7 +44,7 @@ namespace plathora.Models.Dtos
         public string amount { get; set; }
        
         public string Regcertificate { get; set; }
-        public int businessid { get; set; }
+        public string  businessid { get; set; }
         public string  productid { get; set; }
         public string lic { get; set; }
 

@@ -65,10 +65,10 @@ namespace plathora.API
         [Route("saveBusinessDetails")]
         public async Task<IActionResult> saveBusinessDetails(BusinessOwnerRegistrationDtos model)
         {
-            BusinessOwnerRegi obj1 = new BusinessOwnerRegi();
-              obj1 = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
-            if (obj1 == null)
-            {
+            //BusinessOwnerRegi obj1 = new BusinessOwnerRegi();
+            //  obj1 = _BusinessOwnerRegiServices.GetAll().Where(x => x.customerid == model.customerid).FirstOrDefault();
+            //if (obj1 == null)
+            //{
                
 
                 BusinessOwnerRegi obj = new BusinessOwnerRegi();
@@ -131,7 +131,7 @@ namespace plathora.API
                 obj.Website = model.Website;
                 obj.businessOperation = model.businessOperation;
                 obj.businessType = model.businessType;
-                
+                obj.registerbyAffilateUniqueId = model.UniqueId;
 
 
                 if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
@@ -248,11 +248,11 @@ namespace plathora.API
 
                
 
-            }
-            else
-            {
-                return BadRequest("Duplicate Record");
-            }
+            //}
+            //else
+            //{
+            //    return BadRequest("Duplicate Record");
+            //}
 
              
         }

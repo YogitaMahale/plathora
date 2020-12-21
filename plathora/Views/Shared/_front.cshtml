@@ -26,7 +26,7 @@
 
     <!-- Font-awesome  Css -->
     <link href="~/Bizdire/LTR/assets/css/icons.css" rel="stylesheet" />
-
+   
     <!--Select2 Plugin -->
     <link href="~/Bizdire/LTR/assets/plugins/select2/select2.min.css" rel="stylesheet" />
 
@@ -427,9 +427,12 @@
         </script>*@
                             <li class="dropdown">
                                 <a href="#" class="text-dark" data-toggle="dropdown">
-
+                                   
                                     <img src="@ViewBag.profilephoto" style="width:30px;height:25px;">
-                                    <span> Hello @ViewBag.userName  </span>
+        <span> Hello @ViewBag.userName  </span>
+
+
+                                    
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                     <a href="#" class="dropdown-item">
@@ -721,6 +724,7 @@
                                         <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Feedback</a></li>
                                         <li><a href="#"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Customer Care</a></li>
                                         <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Contact Us</a></li>
+                                        @*<li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"><i class="fa fa-angle-double-right mr-2 text-secondary"></i> Become Affilate</a></li>*@
 
 
 

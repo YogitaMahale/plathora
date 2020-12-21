@@ -34,7 +34,16 @@
             {
                 <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6">
                     <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-productid="@obj.id" class="top-cities card text-center mb-xl-0 box-shadow2">
-                        <img src="@obj.img" alt="img" class="w-70 bg-pink-transparent">
+                        @if (obj.img == null || obj.img == "")
+                        {
+                        <img src="~/uploads/blank1.jpg" alt="img" class="w-70 ">
+                        }
+                        else
+                        {
+                     <img src="@obj.img" alt="img" class="w-70 ">
+                        }
+
+                        @*<img src="@obj.img" alt="img" class="w-70 bg-pink-transparent">*@
                         <div class="servic-data mt-3">
                             <h4 class="font-weight-semibold mb-0">@obj.productName</h4>
                         </div>

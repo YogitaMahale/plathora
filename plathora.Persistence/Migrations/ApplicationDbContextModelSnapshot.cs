@@ -608,6 +608,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("productid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("registerbyAffilateUniqueId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("sliderimg1")
                         .HasColumnType("nvarchar(max)");
 

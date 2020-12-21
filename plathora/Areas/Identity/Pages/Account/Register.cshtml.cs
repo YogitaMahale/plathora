@@ -78,8 +78,21 @@ namespace plathora.Areas.Identity.Pages.Account
 
 
             [Required]
-            [Display(Name = "Name")]
+            [Display(Name = "First Name")]
             public string name { get; set; }
+
+
+            [Required]
+            [Display(Name = "Middle Name")]
+
+            public string MiddleName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+
+            public string LastName { get; set; }
+
+
 
             [Display(Name = "Mobile No.")]
             public string mobileno1 { get; set; }
@@ -141,6 +154,8 @@ namespace plathora.Areas.Identity.Pages.Account
                 {
                     name = Input.name
                    ,
+                    MiddleName=Input.MiddleName,
+                    LastName=Input.LastName,
                     UserName = Input.mobileno1
                ,
                     Email = Input.Email               

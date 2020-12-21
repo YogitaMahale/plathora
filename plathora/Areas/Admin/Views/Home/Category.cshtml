@@ -39,7 +39,15 @@
 
                                     <div class="cat-img category-svg">
                                         @*<a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id"><img src="@obj.img" /></a>*@
-                                        <img src="@obj.img" />
+                                        @*<img src="@obj.img" />*@
+                                        @if (obj.img == null || obj.img == "")
+                                        {
+                                            <img src="~/uploads/blank1.jpg" alt="img" >
+                                        }
+                                        else
+                                        {
+                                            <img src="@obj.img" alt="img" >
+                                        }
                                         <!--Clothing Icon Svg -->
                                         @*<svg viewBox="-59 0 512 512" xmlns="http://www.w3.org/2000/svg">
         <path d="m206.949219 412c0-5.519531-4.480469-10-10-10s-10 4.480469-10 10 4.480469 10 10 10 10-4.480469 10-10zm0 0" />

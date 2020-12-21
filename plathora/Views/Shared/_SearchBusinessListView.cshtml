@@ -18,8 +18,15 @@
                         <div class="card mb-0 overflow-hidden">
                             <div class="arrow-ribbon bg-danger">Open</div>
                             <div class="item-card7-imgs">
-
-                                <img style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
+                                @if (obj.profilephoto == null || obj.profilephoto == "")
+                                {
+                                    <img src="~/uploads/blank1.jpg" alt="img" class="cover-image" style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id">
+                                }
+                                else
+                                {
+                                    <img src="@obj.profilephoto" alt="img" class="cover-image" style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id">
+                                }
+                                @*<img style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">*@
 
                             </div>
                             <div class="item-card7-overlaytext">
