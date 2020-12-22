@@ -9,15 +9,33 @@ namespace plathora.Models
     {
 
      //   id,MembershipId,customerName,membershipName,gstper,pkgamt,gstamt,PaymentAmount,Registrationdate
-        public int id { get; set; }
-        public int MembershipId { get; set; }
-        public string customerName { get; set; }
-        public string membershipName { get; set; }
-        public decimal pkgamt { get; set; }
+        public string  Id { get; set; }
+        public string businessid { get; set; }
+        public string name { get; set; }
+        public string PhoneNumber { get; set; }
+        public string createddate { get; set; }
 
-        public decimal gstper { get; set; }
-        public decimal gstamt { get; set; }
+        public string BusinessPackageId { get; set; }
+        public string pkgname { get; set; }
+        public decimal gst { get; set; }
+        public decimal gstAmount { get; set; }
+
+
+
+
+        public decimal PackageAmount { get; set; }
+        public decimal commissionper { get; set; }
+        public decimal commission1 { get; set; }
+        public decimal tds { get; set; }
+        public decimal commissionAmount { get; set; }
+
         public decimal PaymentAmount { get; set; }
-        public string Registrationdate { get; set; }
+        public decimal plethoraamt { get; set; }
+       
+
+        //  Id businessid  name PhoneNumber createddate BusinessPackageId   pkgname gst gstAmount AffilatePackageAmount
+
+        //commissionper commission1 tds commissionAmount    PaymentAmount plethoraamt
+
     }
 }

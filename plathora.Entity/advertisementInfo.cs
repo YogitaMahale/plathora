@@ -53,6 +53,6 @@ namespace plathora.Entity
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
 
-        
+        public string AfilateuniqueId { get; set; }
     }
 }

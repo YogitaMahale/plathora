@@ -27,6 +27,7 @@ namespace plathora.Models.Dtos
         public string PaymentStatus { get; set; }
         public string TransactionId { get; set; }
 
+        public string uniqueId { get; set; }
 
     }
 }

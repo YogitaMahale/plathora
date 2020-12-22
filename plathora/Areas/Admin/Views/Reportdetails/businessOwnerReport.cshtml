@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <input type="submit" name="search" value="Search" class="btn btn-primary" />
-                            <input style="display:none;" type="submit" name="ExcelFileDownload" value="Excel Download" class="btn btn-primary" />
+                            <input  type="submit" name="ExcelFileDownload" value="Excel Download" class="btn btn-primary" />
                         </div>
                         <div class="form-group col-md-4">
                         </div>
@@ -81,91 +81,112 @@
                 @{
                     decimal amount = 0;
                 }
-                <div class="row">
-                    <div class="col-md-12 table-responsive-md">
-                        @*<a class="btn btn-xs btn-outline-success float-md-right" asp-action="Create"> New Driver</a>*@
-                        <b>  <h4>@ViewBag.message</h4> </b>
-                        <table class="table table-bordered tblShow">
-                            <thead>
-                                <tr>
+            <div class="row">
+                <b>  <h4>@ViewBag.message</h4> </b>
+                <div class="col-md-12 table-responsive-md" style="overflow-x:scroll;">
+                    <table class="table table-bordered tblShow ">
+                        <thead>
+                            <tr>
 
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>Business Package</th>
+                                <th>Package Amount</th>
+                                <th>Commi(%)</th>
+                                <th>GST(%)</th>
+                                <th>GST Amount</th>
+                                <th>Plethora </th>
+                                <th>Commission</th>
+                                <th>TDS</th>
+                                <th>Total</th>
+                                @*//  Id businessid  name PhoneNumber createddate BusinessPackageId   pkgname gst gstAmount PackageAmount
 
-                                    <th>Customer</th>
-                                    <th>Membership</th>
-                                    <th>Date</th>
-                                    <th>Package Amount</th>
-                                    <th>GST( % )</th>
-                                    <th>GST Amount</th>
-                                    <th>Payment Amount</th>
+                                //commissionper commission1 tds commissionAmount    PaymentAmount plethoraamt*@
 
-                                    @*id,MembershipId,customerName,membershipName,gstper,pkgamt,gstamt,
-        PaymentAmount,Registrationdate*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
 
+                            <tr>
+                                <td>@item.name</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.createddate</td>
+                                <td>@item.pkgname</td>
+                                <td>@item.PackageAmount</td>
+                                <td>@item.commissionper</td>
+                                <td>@item.gst</td>
+                                <td>@item.gstAmount</td>
+                                <td>@item.plethoraamt </td>
+                                <td>@item.commissionAmount</td>
+                                <td>@item.tds</td>
+                                <td>@item.PaymentAmount</td>
+                            </tr>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-
-                                <tr>
-                                    <td> @item.customerName       </td>
-                                    <td>@item.membershipName</td>
-                                    <td> @item.Registrationdate    </td>
-                                    <td>@item.pkgamt</td>
-                                    <td> @item.gstper       </td>
-                                    <td> @item.gstamt       </td>
-                                    <td>@item.PaymentAmount</td>
-
-
-                                </tr>
-
-                                }
-                            </tbody>
-                            @{
-                                @foreach (var item in Model)
-                                {
-                                    amount += item.PaymentAmount;
-                                }
                             }
-
-                        <tr>
-                             
-                            <th> </th>
-                            <th> </th>
-                            <th> </th>
-                            <th> </th>
-                            <th> </th>
-                            <th></th>
-                            <th>@amount</th>
-                            
-                        </tr>
-
-                        </table><br />
+                        </tbody>
                         @{
-                            var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
-                            var disableNext = !Model.IsNextAvailable ? "disabled" : "";
+                            @foreach (var item in Model)
+                            {
+                                amount += item.PaymentAmount;
+                            }
                         }
 
-                        <a asp-action="businessOwnerReport"
-                           asp-route-pageNumber="@(Model.PageIndex - 1)"
-                           asp-route-from1="@ViewBag.from1"
-                           asp-route-to1="@ViewBag.to1"
-                           asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
-                           class="btn btn-primary @disablePrevious">
-                            Previous
-                        </a>
-                        <a asp-action="businessOwnerReport"
-                           asp-route-pageNumber="@(Model.PageIndex + 1)"
-                           asp-route-from1="@ViewBag.from1"
-                           asp-route-to1="@ViewBag.to1"
-                           asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
-                           class="btn btn-primary @disableNext">
-                            Next
-                        </a>
+                        <tr>
+                            @*id, customerid, amount, placedate, deliveryboyid, paymentstatus, orderstatus,
+                    isdeleted, discount, storeid, deliveryaddress, paymenttype, promocode, transactionid*@
 
-                    </div>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>  </th>
+                            <th> </th>
+                            <th>Total</th>
+
+                            <th>@amount</th>
+                            @*Id,name,PhoneNumber ,pkgamount,gstamt,createddate*@
+                            @*<th class="text-warning">Actions</th>*@
+                        </tr>
+
+                    </table>
                 </div>
+                <div class="col-md-12 table-responsive-md">
+                    @*<a class="btn btn-xs btn-outline-success float-md-right" asp-action="Create"> New Driver</a>*@
+
+
+
+                    <br />
+                    @{
+                        var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
+                        var disableNext = !Model.IsNextAvailable ? "disabled" : "";
+                    }
+
+                    <a asp-action="businessOwnerReport"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       asp-route-from1="@ViewBag.from1"
+                       asp-route-to1="@ViewBag.to1"
+                       asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
+                       class="btn btn-primary @disablePrevious">
+                        Previous
+                    </a>
+                    <a asp-action="businessOwnerReport"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       asp-route-from1="@ViewBag.from1"
+                       asp-route-to1="@ViewBag.to1"
+                       asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
+                       class="btn btn-primary @disableNext">
+                        Next
+                    </a>
+
+                </div>
+            </div>
             </div>
         </div>
     </div>

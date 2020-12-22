@@ -19,6 +19,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using SectorRegistrationIndexViewModel = plathora.Models.SectorRegistrationIndexViewModel;
 using System.Runtime.CompilerServices;
+using System.Xml;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -404,7 +405,7 @@ namespace plathora.API
             obj.TransactionId = model.TransactionId;
             int pkgMonth = _advertiseServices.GetById(model.advertiseid).period;
             obj.Expirydate = model.startdate.AddMonths(pkgMonth);
-
+            obj.AfilateuniqueId = model.uniqueId;
             if (model.image1 == null || model.image1 == string.Empty)
             {
                 obj.image1 = "";

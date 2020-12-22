@@ -1136,6 +1136,9 @@ namespace plathora.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AfilateuniqueId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Expirydate")
                         .HasColumnType("datetime2");
 

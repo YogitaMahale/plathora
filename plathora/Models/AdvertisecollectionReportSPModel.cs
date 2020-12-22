@@ -9,13 +9,25 @@ namespace plathora.Models
     {
      //   id,advertiseid,title ,pkgamount,gstper,gstamt,PaymentAmount,startdate
         public string Id { get; set; }
-        public int advertiseid { get; set; }
+        public string createddate { get; set; }
         public string title { get; set; }
-        public decimal pkgamount { get; set; }
-
-        public decimal gstper { get; set; }
-        public decimal gstamt { get; set; }
+        public string  name { get; set; }
+        public string PhoneNumber { get; set; }
+        public int advertiseid { get; set; }
+        public string pkgname { get; set; }
+        public decimal gst { get; set; }
+        public decimal gstAmount { get; set; }
+        public decimal PackageAmount { get; set; }
+        public decimal commissionper { get; set; }
+        public decimal commission1 { get; set; }
+        public decimal tds { get; set; }
+        public decimal commissionAmount { get; set; }
         public decimal PaymentAmount { get; set; }
-        public string startdate { get; set; }
+        public decimal plethoraamt { get; set; }
+
+
+
+         
+
     }
 }

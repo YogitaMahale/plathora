@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
@@ -63,13 +64,19 @@ namespace plathora.Areas.Admin.Controllers
             //ViewBag.affilatelist  = GetAllAffilate(); 
 
             ViewBag.deliveryboyid1 = deliveryboyid;
-            if(from1==null||from1=="")
+
+
+            //   DateTime dt = DateTime.ParseExact(DateTime.Now.ToString(), "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+
+            string s = DateTime.Now.ToString("dd/MM/yyyy").Replace('-', '/');
+            if (from1==null||from1=="")
             {
-                from1 = "01/01/2020";
+                //from1 = "01/01/2020";
+                from1 = s;
             }
             if (to1 == null || to1 == "")
             {
-                to1 = "01/01/2021";
+                to1 = s;
             }
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;
@@ -118,54 +125,74 @@ namespace plathora.Areas.Admin.Controllers
             if (search != null)
             {
                 
+                try
+                {
                 var paramter = new DynamicParameters();
-
                 DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime l2 = DateTime.ParseExact(to1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                paramter.Add("@from", l1);
+                paramter.Add("@to", l2);
+                paramter.Add("@affilateId", deliveryboyid);
+                var orderheaderList1 = _sP_Call.List<collectionreport_affilateViewModel>("collectionReport", paramter);
+                //  return View(orderheaderList1.ToList());
+                int PageSize = 10;
+                    return View(collectionreport_affilatePagination<collectionreport_affilateViewModel>.Create(orderheaderList1.ToList(), PageNumber ?? 1, PageSize));
 
+                }
+                catch (Exception obj)
+                {
+                    string msg = obj.Message;
+                }
+              
+                
+            }
+            else if (ExcelFileDownload != null)
+            {
 
+                var paramter = new DynamicParameters();
+                DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                DateTime l2 = DateTime.ParseExact(to1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 paramter.Add("@from", l1);
                 paramter.Add("@to", l2);
                 paramter.Add("@affilateId", deliveryboyid);
                 var orderheaderList1 = _sP_Call.List<collectionreport_affilateViewModel>("collectionReport", paramter);
 
-                //  return View(orderheaderList1.ToList());
-                int PageSize = 10;
-
-                return View(collectionreport_affilatePagination<collectionreport_affilateViewModel>.Create(orderheaderList1.ToList(), PageNumber ?? 1, PageSize));
-                 
-            }
-            else if (ExcelFileDownload != null)
-            {
-                /*
-                var paramter = new DynamicParameters();
-
-                DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                DateTime l2 = DateTime.ParseExact(to1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
 
-                paramter.Add("@from", l1);
-                paramter.Add("@to", l2);
-                paramter.Add("@deliveryboyid", deliveryboyid);
-                var orderheaderList1 = _ISP_Call.List<amtcollectionReportViewModel>("amtcollectionReport", paramter);
-
-                string deliveryname = _driverRegistrationServices.GetById(deliveryboyid).name;
+                string Affilatename = _db.applicationUsers.Where(x=>x.Id==deliveryboyid).FirstOrDefault().name;
 
 
                 var builder = new StringBuilder();
-                builder.AppendLine("Date,Amount");
-                decimal tot_amt = 0;
+                builder.AppendLine(" Name,Phone,Date,Package,Package Amount, Commi(%), GST(%), GST Amount, Plethora ,  Commission, TDS,  Total");
+
+
+                
+                      decimal tot_amt = 0;
 
                 foreach (var item in orderheaderList1)
                 {
-                    tot_amt += item.amount;
+                    tot_amt += item.PaymentAmount;
 
-                    builder.AppendLine($"{item.date1 },{item.amount}");
+                    builder.AppendLine($" {item.name }, {item.PhoneNumber }, {item.createddate }, {item.AffilatePackageName },  {item.AffilatePackageAmount }, {item.commissionper }, {item.gst },{item.gstAmount }, {item.plethoraamt }, {item.commissionAmount },{item.tds }, {item.PaymentAmount }");
                 }
                 builder.AppendLine($" {"Total :"},{tot_amt }");
-                string namee = deliveryname + "_collectionReport.csv";
+                string namee = Affilatename + "_AffilateReport.csv";
                 return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", namee);
-                */
+                 
+
+
+             //< td > @item.name </ td >
+             //                       < td > @item.PhoneNumber </ td >
+             //                       < td > @item.createddate </ td >
+             //                       < td > @item.AffilatePackageName </ td >
+             //                       < td > @item.AffilatePackageAmount </ td >
+             //                       < td > @item.commissionper </ td >
+             //                       < td > @item.gst </ td >
+             //                       < td > @item.gstAmount </ td >
+             //                       < td > @item.plethoraamt </ td >
+             //                       < td > @item.commissionAmount </ td >
+             //                       < td > @item.tds </ td >
+             //                       < td > @item.PaymentAmount </ td >
             }
 
 
@@ -199,13 +226,14 @@ namespace plathora.Areas.Admin.Controllers
             //  ViewBag.affilatelist = GetAllAffilate();
             ViewData["affilatelist"] = GetAllAffilate();
             ViewBag.deliveryboyid1 = deliveryboyid;
+            string s = DateTime.Now.ToString("dd/MM/yyyy").Replace('-', '/');
             if (from1 == null || from1 == "")
             {
-                from1 = "01/01/2020";
+                from1 = s;
             }
             if (to1 == null || to1 == "")
             {
-                to1 = "01/01/2021";
+                to1 = s;
             }
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;
@@ -273,7 +301,7 @@ namespace plathora.Areas.Admin.Controllers
             }
             else if (ExcelFileDownload != null)
             {
-                /*
+
                 var paramter = new DynamicParameters();
 
                 DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -282,26 +310,27 @@ namespace plathora.Areas.Admin.Controllers
 
                 paramter.Add("@from", l1);
                 paramter.Add("@to", l2);
-                paramter.Add("@deliveryboyid", deliveryboyid);
-                var orderheaderList1 = _ISP_Call.List<amtcollectionReportViewModel>("amtcollectionReport", paramter);
+                paramter.Add("@affilateId", deliveryboyid);
+                var orderheaderList1 = _sP_Call.List<AdvertisecollectionReportSPModel>("AdvertisecollectionReportSP", paramter);
 
-                string deliveryname = _driverRegistrationServices.GetById(deliveryboyid).name;
+                string Affilatename = _db.applicationUsers.Where(x => x.Id == deliveryboyid).FirstOrDefault().name;
+
 
 
                 var builder = new StringBuilder();
-                builder.AppendLine("Date,Amount");
+                builder.AppendLine("    Name , Phone ,Title ,Date , Package ,  Package Amount ,  Commi(%) ,  GST(%) , GST Amount , Plethora  , Commission , TDS ,  Total ");
                 decimal tot_amt = 0;
 
                 foreach (var item in orderheaderList1)
                 {
-                    tot_amt += item.amount;
+                    tot_amt += item.PaymentAmount;
 
-                    builder.AppendLine($"{item.date1 },{item.amount}");
+                    builder.AppendLine($"{@item.name}, {@item.PhoneNumber}, {@item.title}, {@item.createddate}, {@item.pkgname}, {@item.PackageAmount}, {@item.commissionper}, {@item.gst},{@item.gstAmount},  {@item.plethoraamt },{@item.commissionAmount}, {@item.tds},{@item.PaymentAmount}");
                 }
                 builder.AppendLine($" {"Total :"},{tot_amt }");
-                string namee = deliveryname + "_collectionReport.csv";
+                string namee = Affilatename + "_advertiseReport.csv";
                 return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", namee);
-                */
+                
             }
 
 
@@ -333,13 +362,14 @@ namespace plathora.Areas.Admin.Controllers
             //ViewBag.affilatelist = GetAllAffilate();
             ViewData["affilatelist"] = GetAllAffilate();
             ViewBag.deliveryboyid1 = deliveryboyid;
+            string s = DateTime.Now.ToString("dd/MM/yyyy").Replace('-', '/');
             if (from1 == null || from1 == "")
             {
-                from1 = "01/01/2020";
+                from1 = s;
             }
             if (to1 == null || to1 == "")
             {
-                to1 = "01/01/2021";
+                to1 = s;
             }
             ViewBag.from1 = from1;
             ViewBag.to1 = to1;
@@ -387,8 +417,9 @@ namespace plathora.Areas.Admin.Controllers
 
             if (search != null)
             {
-
-                var paramter = new DynamicParameters();
+                try
+                {
+               var paramter = new DynamicParameters();
 
                 DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime l2 = DateTime.ParseExact(to1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -404,10 +435,17 @@ namespace plathora.Areas.Admin.Controllers
 
                 return View(collectionreport_affilatePagination<BusinessownercollectionReportSPModel>.Create(orderheaderList1.ToList(), PageNumber ?? 1, PageSize));
 
+                }
+                catch(Exception obj)
+                {
+                    string msg = obj.Message;
+                }
+
+              
             }
             else if (ExcelFileDownload != null)
             {
-                /*
+
                 var paramter = new DynamicParameters();
 
                 DateTime l1 = DateTime.ParseExact(from1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -416,26 +454,26 @@ namespace plathora.Areas.Admin.Controllers
 
                 paramter.Add("@from", l1);
                 paramter.Add("@to", l2);
-                paramter.Add("@deliveryboyid", deliveryboyid);
-                var orderheaderList1 = _ISP_Call.List<amtcollectionReportViewModel>("amtcollectionReport", paramter);
+                paramter.Add("@affilateId", deliveryboyid);
+                var orderheaderList1 = _sP_Call.List<BusinessownercollectionReportSPModel>("BusinessownercollectionReportSP", paramter);
 
-                string deliveryname = _driverRegistrationServices.GetById(deliveryboyid).name;
+                string Affilatename = _db.applicationUsers.Where(x => x.Id == deliveryboyid).FirstOrDefault().name;
 
 
                 var builder = new StringBuilder();
-                builder.AppendLine("Date,Amount");
+                builder.AppendLine("Name, Phone, Date, Business Package,  Package Amount,  Commi(%),   GST(%), GST Amount, Plethora ,  Commission, TDS,    Total");
                 decimal tot_amt = 0;
 
                 foreach (var item in orderheaderList1)
                 {
-                    tot_amt += item.amount;
+                    tot_amt += item.PaymentAmount;
 
-                    builder.AppendLine($"{item.date1 },{item.amount}");
+                    builder.AppendLine($"  {@item.name}, {@item.PhoneNumber}, {@item.createddate}, {@item.pkgname},{@item.PackageAmount}, {@item.commissionper},  {@item.gst},{item.gstAmount},{@item.plethoraamt }, {@item.commissionAmount},  {@item.tds}, {@item.PaymentAmount}");
                 }
                 builder.AppendLine($" {"Total :"},{tot_amt }");
-                string namee = deliveryname + "_collectionReport.csv";
+                string namee = Affilatename + "_BusinessDetails.csv";
                 return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", namee);
-                */
+                 
             }
 
 
