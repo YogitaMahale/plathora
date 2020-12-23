@@ -496,5 +496,106 @@ namespace plathora.API
             return BadRequest();
         }
 
+
+        [HttpGet]
+        [Route("checkUniqueId")]
+        public async Task<IActionResult> checkUniqueId(string uniqueId)
+        {
+            try
+            {
+
+                
+
+               
+                var obj = _db.applicationUsers.FirstOrDefault(x => x.uniqueId == uniqueId);
+                //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
+                if (obj != null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Record Found\"" + "}";
+                    return Ok(myJson);
+                }
+                else
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+
+            }
+            catch (Exception obj)
+            {
+                return BadRequest();
+            }
+
+        }
+        [HttpGet]
+        [Route("affilateList")]
+        public async Task<IActionResult> affilateList(string uniqueid)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@uniqueId", uniqueid);
+
+
+                var obj = _sP_Call.List<AffilateListSPViewModel>("AffilateListSP", parameter);
+
+                //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
+                if (obj != null)
+                {
+
+                    
+                    return Ok(obj);
+                }
+                else
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+
+            }
+            catch (Exception obj)
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpGet]
+        [Route("BusinessRegistrationList")]
+        public async Task<IActionResult> BusinessRegistrationList(string uniqueid)
+        {
+            try
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@registerbyAffilateUniqueId", uniqueid);
+
+
+                var obj = _sP_Call.List<BusinessOwnerRegiListViewModel>("BusinessOwnerRegiList", parameter);
+
+                //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
+                if (obj != null)
+                {
+
+
+                    return Ok(obj);
+                }
+                else
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+
+            }
+            catch (Exception obj)
+            {
+                return BadRequest();
+            }
+
+        }
+
     }
 }
