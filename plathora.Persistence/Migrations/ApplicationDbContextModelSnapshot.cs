@@ -1477,6 +1477,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("branch")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("cityid")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("createddate")
                         .HasColumnType("datetime2");
 
@@ -1490,11 +1493,23 @@ namespace plathora.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("house")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ifsccode")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isdeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("landmark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("latitude")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("longitude")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mobileno2")
                         .HasColumnType("nvarchar(max)");
@@ -1518,10 +1533,18 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("registerbyAffilateID")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("street")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("uniqueId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("zipcode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasIndex("AffilatePackageid");
+
+                    b.HasIndex("cityid");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -1701,6 +1724,10 @@ namespace plathora.Persistence.Migrations
                     b.HasOne("plathora.Entity.AffilatePackage", "AffilatePackage")
                         .WithMany()
                         .HasForeignKey("AffilatePackageid");
+
+                    b.HasOne("plathora.Entity.CityRegistration", "CityRegistration")
+                        .WithMany()
+                        .HasForeignKey("cityid");
                 });
 #pragma warning restore 612, 618
         }

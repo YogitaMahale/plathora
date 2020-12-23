@@ -42,22 +42,22 @@ namespace plathora.Entity
 
 
         ////-------- address info
-       
-
-        //public string house { get; set; }
-        //public string landmark { get; set; }
-        //public string street { get; set; }
-
-        //[ForeignKey("CityRegistration")]
-        //public int? cityid { get; set; } 
-        //public CityRegistration CityRegistration { get; set; }
 
 
+        public string house { get; set; }
+       public string landmark { get; set; }
+        public string street { get; set; }
+
+        [ForeignKey("CityRegistration")]
+        public int? cityid { get; set; }
+        public CityRegistration CityRegistration { get; set; }
+
+         
 
 
-        //public string zipcode { get; set; }
-        //public string latitude { get; set; }
-        //public string longitude { get; set; }
+        public string zipcode { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
 
         ////--------company info---
         //public string companyName { get; set; }

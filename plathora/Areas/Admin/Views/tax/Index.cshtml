@@ -3,7 +3,7 @@
     ViewBag.Title = "Tax Details";
 }
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
             <div class="card-body">
@@ -54,6 +54,79 @@
 
 
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<div class="side-app">
+    <div class="page-header">
+        <h4 class="page-title">Data Tables</h4>
+        <ol class="breadcrumb">
+            
+        </ol>
+    </div>
+    <div class="row">
+         
+        <div class="col-md-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title" style="text-align:right;">
+                        <a class="btn btn-xs btn-info float-md-right" asp-action="Create"> Add New Tax</a>
+                    </div>
+                    
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example2" class="hover table-bordered border-top-0 border-bottom-0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Percentage</th>
+                                    <th class="text-warning">Actions</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 
+                                    @foreach (var item in Model)
+                                    {
+
+                                    <tr>
+                                        <td>
+                                            @item.name
+                                        </td>
+                                        <td>
+                                            @item.percentage
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" asp-action="Edit" asp-route-id="@item.id">  <i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" asp-action="Delete" asp-route-id="@item.id"><i class="fa fa-trash-o"></i>Delete</a><br>
+
+                                            @*<a class="text-success" asp-action="Edit" asp-route-id="@item.id">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+
+                                            <a class="text-danger" asp-action="Delete" asp-route-id="@item.id">
+                                                <i class="far fa-trash-alt"></i> Delete
+                                            </a>*@
+                                        </td>
+                                    </tr>
+                                }
+                                    
+
+                                </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Percentage</th>
+                                    <th class="text-warning">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
             </div>

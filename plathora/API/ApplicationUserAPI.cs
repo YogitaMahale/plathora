@@ -290,7 +290,7 @@ namespace plathora.API
 
             
         }
-        /*
+       
         [HttpPut]
         [Route("updateUser")]
         public async Task<IActionResult> updateUser(ApplicationUserEditModelDtos model)
@@ -309,7 +309,9 @@ namespace plathora.API
                     }
 
                     affilatereg.Id = model.id;
-                    affilatereg.name = model.name;
+                    affilatereg.name = model.FirstName;
+                    affilatereg.LastName = model.LastName;
+                    affilatereg.MiddleName = model.MiddleName;
                     //profilephoto,
                     affilatereg.PhoneNumber = model.mobileno1;
                     affilatereg.mobileno2 = model.mobileno2;
@@ -327,19 +329,23 @@ namespace plathora.API
                     affilatereg.landmark = model.landmark;
                     affilatereg.street = model.street;
                     affilatereg.cityid = model.cityid;
-                    affilatereg.companyName = model.companyName;
-                    affilatereg.designation = model.designation;
-                    affilatereg.gstno = model.gstno;
-                    affilatereg.Website = model.Website;
+                    //affilatereg.companyName = model.companyName;
+                    //affilatereg.designation = model.designation;
+                    //affilatereg.gstno = model.gstno;
+                    //affilatereg.Website = model.Website;
+                    affilatereg.zipcode = model.zipcode;
+
+
+
                     affilatereg.bankname = model.bankname;
                     affilatereg.accountname = model.accountname;
 
                     affilatereg.accountno = model.accountno;
                     affilatereg.ifsccode = model.ifsccode;
                     affilatereg.branch = model.branch;
-                    affilatereg.Membershipid = model.Membershipid;
-                    affilatereg.amount = model.amount;
-                    affilatereg.latitude  = model.latitude ;
+                    //affilatereg.Membershipid = model.Membershipid;
+                    //affilatereg.amount = model.amount;
+                    affilatereg.latitude = model.latitude;
                     affilatereg.longitude = model.longitude;
 
 
@@ -423,7 +429,7 @@ namespace plathora.API
 
             return BadRequest();
         }
-        */
+       
         [HttpGet]
         [Route("UserLogin")]
         public async Task<IActionResult> UserLogin(string mobileNo, string password)

@@ -8,6 +8,7 @@ namespace plathora.Models.Dtos
     public class ApplicationUserSaveModelDtos
     {
        public string  id { get; set; }
+        public string uniqueId { get; set; }
         public string usertype { get; set; }
         public string name { get; set; }
 
