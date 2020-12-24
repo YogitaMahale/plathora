@@ -95,7 +95,7 @@ namespace plathora.Controllers
 
                 }
                 await _sliderServices .CreateAsync(store);
-                TempData["success"] = "Record Saved successfully";
+              //  TempData["success"] = "Record Saved successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -153,7 +153,7 @@ namespace plathora.Controllers
                 }
 
                 await _sliderServices.UpdateAsync(storeobj);
-                TempData["success"] = "Record Updated successfully";
+                //TempData["success"] = "Record Updated successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -167,7 +167,7 @@ namespace plathora.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _sliderServices .Delete(id);
-            TempData["success"] = "Record Delete successfully";
+        //    TempData["success"] = "Record Delete successfully";
             return RedirectToAction(nameof(Index));
 
 

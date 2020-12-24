@@ -69,7 +69,7 @@ namespace plathora.Models
         //public int productid { get; set; }
         //public ProductMaster ProductMaster { get; set; }
         public string lic { get; set; }
-        public int registerbyAffilateID { get; set; }
+        public string registerbyAffilateID { get; set; }
         public string deviceid { get; set; }
 
 

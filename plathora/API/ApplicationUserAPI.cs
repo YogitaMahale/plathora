@@ -562,37 +562,109 @@ namespace plathora.API
             }
 
         }
-
         [HttpGet]
-        [Route("BusinessRegistrationList")]
-        public async Task<IActionResult> BusinessRegistrationList(string uniqueid)
+        [Route("BusinessListbyAffilateId")]
+        public async Task<IActionResult> BusinessListbyAffilateId(string uniqueId)
         {
             try
             {
-                var parameter = new DynamicParameters();
-                parameter.Add("@registerbyAffilateUniqueId", uniqueid);
 
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@registerbyAffilateUniqueId", uniqueId);
 
                 var obj = _sP_Call.List<BusinessOwnerRegiListViewModel>("BusinessOwnerRegiList", parameter);
-
-                //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
-                if (obj != null)
-                {
-
-
-                    return Ok(obj);
-                }
-                else
+                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+                if (obj == null)
                 {
 
                     string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
                     return NotFound(myJson);
                 }
+                else
+                {
+
+                    return Ok(obj);
+                }
+
 
             }
             catch (Exception obj)
             {
-                return BadRequest();
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
+            }
+
+        }
+
+        [HttpGet]
+        [Route("advertisementByAffilateUniqueId")]
+        public async Task<IActionResult> advertisementByAffilateUniqueId(string uniqueId)
+        {
+            try
+            {
+
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@registerbyAffilateUniqueId", uniqueId);
+
+                var obj = _sP_Call.List<advertisementInfoViewModel>("advertisementByAffilateUniqueId", parameter);
+                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+                if (obj == null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(obj);
+                }
+
+
+            }
+            catch (Exception obj)
+            {
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
+            }
+
+        }
+        [HttpGet]
+        [Route("commisionbyAffilateUniqueId")]
+        public async Task<IActionResult> commisionbyAffilateUniqueId(string uniqueId)
+        {
+            try
+            {
+
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@registerbyAffilateUniqueId", uniqueId);
+
+                var obj = _sP_Call.List<AffilateCommisionViewModel>("AffilateCommision", parameter);
+                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+                if (obj == null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(obj);
+                }
+
+
+            }
+            catch (Exception obj)
+            {
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
             }
 
         }

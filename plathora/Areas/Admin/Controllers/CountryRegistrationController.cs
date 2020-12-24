@@ -63,6 +63,7 @@ namespace plathora.Controllers
                 };
  
                 await _CountryRegistrationservices.CreateAsync(objcountry);
+                TempData["success"] = "Record Save successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
