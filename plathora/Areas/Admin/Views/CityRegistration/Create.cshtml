@@ -2,89 +2,86 @@
 @{
     ViewBag.Title = "New Registration";
 }
-<div class="col-md-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="breadcrumb-item"><a asp-action="Index">City List</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">New City Registration</li>
-                </ol>
-            </nav><br /><br />
 
-            @*id, name, profilephoto, mobileno1, mobileno2, emailid1, emailid2, adharcardno, adharcardphoto
-                , pancardno, pancardphoto, password, gender, DOB, createddate*@
-
-            <form name="form1" method="post" enctype="multipart/form-data" asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label asp-for="countryid"></label>
+    <div class="side-app">
+        @*<div class="page-header">
+            <h4 class="page-title">Tax</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tax</a></li>
+                <li class="breadcrumb-item active" aria-current="page">New Tax</li>
+            </ol>
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">City</h3>
                     </div>
-                    <div class="form-group col-md-4">
-                        
-                        <select name="countryid" id="countryid" asp-for="countryid" class="form-control"
-                                asp-items="@(new SelectList(ViewBag.Countries,"id","countryname"))">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="countryid"></label>
+                                        <select name="countryid" id="countryid" asp-for="countryid" class="form-control"
+                                                asp-items="@(new SelectList(ViewBag.Countries,"id","countryname"))">
 
 
-                            <option>--- Select  ---</option>
-                        </select>
-                        <span asp-validation-for="countryid" class="text-danger"></span>
+                                            <option>--- Select  ---</option>
+                                        </select>
+                                        <span asp-validation-for="countryid" class="text-danger"></span>
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="stateid"></label>
+                                        <select name="stateid" id="stateid" asp-for="stateid" class="form-control"
+                                                asp-items="@(new SelectList(String.Empty,"id","StateName"))">
+
+
+                                            <option>--- Select  ---</option>
+                                        </select>
+
+
+
+                                        <span asp-validation-for="stateid" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="cityName"> </label>
+                                        <input class="form-control" asp-for="cityName">
+                                        <span asp-validation-for="cityName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-save" style="margin-right:0.7em"></i>Save</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+                        </form>
                     </div>
-
-
-
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label asp-for="stateid"></label>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <select name="stateid" id="stateid" asp-for="stateid" class="form-control"
-                                asp-items="@(new SelectList(String.Empty,"id","StateName"))">
-
-
-                            <option>--- Select  ---</option>
-                        </select>
-                        @*<select name="stateid" id="stateid" asp-for="stateid" class="form-control"
-                                    asp-items="@ViewBag.States"
-                                    disabled="@(ViewBag.StateEnabled == false ? "disabled" : null)">
-                                <option selected>--- Select  ---</option>
-                            </select>*@
-
-
-                        <span asp-validation-for="stateid" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label asp-for="cityName"></label>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <input asp-for="cityName" class="form-control" placeholder="Enter City Name.." />
-                        <span asp-validation-for="cityName" class="text-danger"></span>
-
-                    </div>
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
-                    <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
-                    <br />
-                    <br />
-                    <br />
-
-                </div>
-            </form>
+            </div>
         </div>
+
+
+
+
+
     </div>
-</div>
+
+ 
 
 @*@section Scripts{
         @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -2,7 +2,87 @@
 @{
     ViewBag.Title = "New Registration";
 }
-<div class="col-md-12 grid-margin stretch-card">
+
+    <div class="side-app">
+        @*<div class="page-header">
+
+
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                             
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="countryid"></label>
+                                             
+                                            <select name="countryid" id="countryid" asp-for="countryid" class="form-control"
+                                                    asp-items="@ViewBag.Countries"
+                                                    onchange="DoPostBack();">
+                                                <option>--- Select  ---</option>
+                                            </select>
+                                            <span asp-validation-for="countryid" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="stateid"></label>
+                                            <select class="form-control" name="stateid" id="stateid" asp-for="stateid" class="form-control"
+                                                    asp-items="@ViewBag.States">
+                                                @*disabled="@(ViewBag.StateEnabled == false ? "disabled" : null)"*@
+                                                <option>--- Select  ---</option>
+                                            </select>
+
+
+
+                                            <span asp-validation-for="stateid" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="cityName"> </label>
+                                            <input class="form-control" asp-for="cityName">
+                                            <span asp-validation-for="cityName" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                           
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+@*<div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -43,7 +123,7 @@
 
                         <select name="stateid" id="stateid" asp-for="stateid" class="form-control"
                                 asp-items="@ViewBag.States">
-                            @*disabled="@(ViewBag.StateEnabled == false ? "disabled" : null)"*@
+                            
                             <option>--- Select  ---</option>
                         </select>
 
@@ -76,7 +156,7 @@
             </form>
         </div>
     </div>
-</div>
+</div>*@
 
 @*@section Scripts{
         @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -98,11 +98,14 @@ namespace plathora.Controllers
                 };
 
                 await _CityRegistrationservices.CreateAsync(objcountry);
+                TempData["success"] = "Record Save Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                return View();
+                ViewBag.Countries = _CountryRegistrationservices.GetAll().ToList();
+                TempData["error"] = "Record Not Save";
+                return View(model);
             }
 
         }
@@ -178,10 +181,13 @@ namespace plathora.Controllers
 
 
                 await _CityRegistrationservices.UpdateAsync(objcountry);
+                TempData["success"] = "Record Updated Successfully";
                 return RedirectToAction(nameof(index));
             }
             else
             {
+                ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
+                TempData["error"] = "Record Not Updated";
                 return View(model);
             }
 
