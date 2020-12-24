@@ -14,6 +14,7 @@ namespace plathora.Models
         public int countryid { get; set; }
         
         [Required]
+        [Display(Name = "State Name")]
         public string StateName { get; set; }
 
  

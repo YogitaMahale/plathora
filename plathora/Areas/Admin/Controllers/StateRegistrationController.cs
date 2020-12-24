@@ -65,6 +65,7 @@ namespace plathora.Controllers
                 };
 
                 await _StateRegistrationService.CreateAsync(objcountry);
+                TempData["success"] = "Record Save Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -110,6 +111,7 @@ namespace plathora.Controllers
 
 
                 await _StateRegistrationService.UpdateAsync(objcountry);
+                TempData["success"] = "Record Update Successfully";
                 return RedirectToAction(nameof(Index));
             }
             else
