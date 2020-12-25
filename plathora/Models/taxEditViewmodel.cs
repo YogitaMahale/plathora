@@ -10,6 +10,7 @@ namespace plathora.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name = "Name")]
         public string name { get; set; }
         [Required]
         [RegularExpression(@"((\d+)((\.\d{1,2})?))$"), Display(Name = "Amount")]

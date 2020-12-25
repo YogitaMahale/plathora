@@ -11,17 +11,18 @@ namespace plathora.Models
     public class AffilatePackageCreateModel
     {
         public int id { get; set; }
-         
+        [Display(Name = "Select Membership")]
         public int membershipid { get; set; }
-        
-         
+
+        [Display(Name = "Select Commission")]
         public int commissionid { get; set; }
         
         [Required]
+        [Display(Name = "Amount")]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal amount { get; set; }
 
-
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Required]

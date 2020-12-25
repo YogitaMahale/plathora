@@ -669,5 +669,45 @@ namespace plathora.API
 
         }
 
+
+        [HttpPut]
+        [Route("updateUserLoginStatus")]
+        public async Task<IActionResult> updateUserLoginStatus(string userId,bool status)
+        {
+
+            
+                try
+                {
+                    var affilatereg = _db.applicationUsers.FirstOrDefault(u => u.Id == userId);
+                    if (affilatereg == null)
+                    {
+                       string myJson1 = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson1);
+                    }
+
+                affilatereg.loginStatus = status;
+                affilatereg.logintime = DateTime.Now;
+
+
+                var result = await _userManager.UpdateAsync(affilatereg);
+                    if (result.Succeeded)
+                    {
+                        return Ok(affilatereg);
+                    }
+                }
+                catch (Exception obj)
+                {
+
+                    string ff = obj.Message.ToString();
+                }
+
+
+
+
+            string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+            return BadRequest(myJson);
+        }
+
+
     }
 }

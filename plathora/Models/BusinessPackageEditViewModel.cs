@@ -19,6 +19,7 @@ namespace plathora.Models
         [RegularExpression(@"((\d+)((\.\d{1,2})?))$"), Display(Name = "Amount")]
         public decimal Amount { get; set; }
         [Required]
+        [Display(Name = "Description")]
         public string description { get; set; }
         [Required]
         [Display(Name = "Period in Month")]

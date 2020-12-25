@@ -107,7 +107,8 @@ namespace plathora.Areas.Admin.Controllers
                 Amount = objcountry.Amount,
                 description = objcountry.description,
                 period = objcountry.period,
-                gst=objcountry.gst
+                gst=objcountry.gst,
+                img1=objcountry.img
 
             };
             return View(model);

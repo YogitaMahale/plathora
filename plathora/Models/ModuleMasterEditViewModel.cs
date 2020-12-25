@@ -12,7 +12,7 @@ namespace plathora.Models
         [RegularExpression(@"^[a-zA-Z\s]+$"), Display(Name = "Name")]
         public string Name { get; set; }
         [Required]
-
+        [ Display(Name = "Amount")]
         public decimal amount { get; set; }
 
 

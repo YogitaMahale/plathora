@@ -22,7 +22,7 @@ namespace plathora.Models
         [Required]
         [Display(Name = "Product Name")]
         public string productName { get; set; }
-
+        [Display(Name = "Image")]
         public IFormFile img { get; set; }
 
         public Boolean isdeleted { get; set; }

@@ -135,7 +135,8 @@ namespace plathora.Controllers
                 ,
                 productName = objcountry.productName
                 ,
-                sectorid = _BusinessRegistrationServiecess.GetById(objcountry.businessid).sectorid
+                sectorid = _BusinessRegistrationServiecess.GetById(objcountry.businessid).sectorid,
+                img1=objcountry.img
 
             };
              ViewBag.StateEnabled = false  ;

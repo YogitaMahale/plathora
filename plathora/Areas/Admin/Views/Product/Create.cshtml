@@ -2,7 +2,91 @@
 @{
     ViewBag.Title = "New Registration";
 }
-<div class="col-md-12 grid-margin stretch-card">
+
+    <div class="side-app">
+        @*<div class="page-header">
+            <h4 class="page-title">Tax</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tax</a></li>
+                <li class="breadcrumb-item active" aria-current="page">New Tax</li>
+            </ol>
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">New Product Registration</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="sectorid"></label>
+                                        <select name="sectorid" id="sectorid" asp-for="sectorid" class="form-control"
+                                                asp-items="@(new SelectList(ViewBag.SectorList,"id","name"))">
+
+
+                                            <option>--- Select  ---</option>
+                                        </select>
+                                        <span asp-validation-for="sectorid" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="businessid"></label>
+                                        <select name="businessid" id="businessid" asp-for="businessid" class="form-control"
+                                                asp-items="@(new SelectList(String.Empty,"id","name"))">
+
+
+                                            <option>--- Select  ---</option>
+                                        </select>
+                                        <span asp-validation-for="businessid" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="productName"></label>
+                                        <input type="text" class="form-control" asp-for="productName" id="name1" placeholder="Enter Name">
+                                        <span asp-validation-for="productName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="img">Percentage</label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="img" type="file" value="Upload" />
+                                            <span asp-validation-for="img" class="text-danger"></span>
+                                        </div>
+                                        <span asp-validation-for="img" class="text-danger"></span>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-save" style="margin-right:0.7em"></i>Save</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+@*<div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -12,9 +96,7 @@
                     <li class="breadcrumb-item active" aria-current="page">New Product Registration</li>
                 </ol>
             </nav><br /><br />
-
-            @*id, name, profilephoto, mobileno1, mobileno2, emailid1, emailid2, adharcardno, adharcardphoto
-                , pancardno, pancardphoto, password, gender, DOB, createddate*@
+ 
 
         <form name="form1" method="post" enctype="multipart/form-data" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -24,11 +106,7 @@
                     <label asp-for="sectorid"></label>
                 </div>
                 <div class="form-group col-md-4">
-                    @*<select name="countryid" id="countryid" asp-for="countryid" class="form-control"
-                        asp-items="@ViewBag.Countries"
-                        onchange="DoPostBack();">
-                    <option selected>--- Select  ---</option>
-                </select>*@
+                     
                     <select name="sectorid" id="sectorid" asp-for="sectorid" class="form-control"
                             asp-items="@(new SelectList(ViewBag.SectorList,"id","name"))">
 
@@ -53,11 +131,7 @@
 
                         <option>--- Select  ---</option>
                     </select>
-                    @*<select name="stateid" id="stateid" asp-for="stateid" class="form-control"
-                        asp-items="@ViewBag.States"
-                        disabled="@(ViewBag.StateEnabled == false ? "disabled" : null)">
-                    <option selected>--- Select  ---</option>
-                </select>*@
+                   
 
 
                     <span asp-validation-for="businessid" class="text-danger"></span>
@@ -101,7 +175,7 @@
         </form>
         </div>
     </div>
-</div>
+</div>*@
 
 @*@section Scripts{
         @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

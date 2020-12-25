@@ -104,6 +104,6 @@ namespace plathora.Models
         public string businessOperation { get; set; }
         public string businessType { get; set; }
 
-
+        public string Registrationdate { get; set; }
     }
 }

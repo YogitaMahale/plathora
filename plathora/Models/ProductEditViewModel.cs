@@ -24,8 +24,9 @@ namespace plathora.Models
         [Display(Name = "Product Name")]
         public string productName { get; set; }
 
-
+        [Display(Name = "Image")]
         public IFormFile img { get; set; }
+        public string img1 { get; set; }
 
     }
 }

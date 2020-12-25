@@ -98,7 +98,8 @@ namespace plathora.Entity
         public string TransactionId { get; set; }
         public string uniqueId { get; set; }
 
-
+        public bool loginStatus { get; set; }
+        public DateTime logintime { get; set; }
 
     }
 }

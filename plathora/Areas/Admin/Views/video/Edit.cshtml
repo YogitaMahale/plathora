@@ -2,7 +2,94 @@
 @{
     ViewBag.Title = "Edit Details";
 }
-<div class="col-md-12 grid-margin stretch-card">
+    <div class="side-app">
+        @*<div class="page-header">
+
+
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="fkmoduleid"></label>
+                                        <select name="fkmoduleid" id="fkmoduleid" asp-for="fkmoduleid" class="form-control"
+                                                asp-items="@(new SelectList(ViewBag.ModuleList,"id","Name"))">
+
+
+                                            <option>--- Select  ---</option>
+                                        </select>
+                                        <span asp-validation-for="fkmoduleid" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="type"></label>
+                                        <select asp-for="type" class="form-control">
+
+                                            <option value="Select" selected>-- Select --</option>
+                                            <option value="Paid">Paid</option>
+                                            <option value="Unpaid">Unpaid</option>
+                                        </select>
+                                        <span asp-validation-for="type" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="videoName"></label>
+                                        <input type="text" class="form-control" asp-for="videoName" id="name1" placeholder="Video Name">
+                                        <span asp-validation-for="videoName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="videoLink"></label>
+                                        <input type="text" asp-for="videoLink" class="form-control" id="name2" placeholder="video Link">
+
+                                        <span asp-validation-for="videoLink" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="description"></label>
+                                        <input type="text" class="form-control" asp-for="description" id="name1" placeholder="Description">
+                                        <span asp-validation-for="description" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+@*<div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -40,7 +127,7 @@
                                     <label asp-for="type"></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    @*<select asp-for="gender" class="form-control" asp-items="Html.GetEnumSelectList<plathora.Entity.Gender>()"></select>*@
+                                   
                                     <select asp-for="type" class="form-control">
 
                                         <option value="Select" selected>-- Select --</option>
@@ -99,7 +186,7 @@
                         </form>
         </div>
     </div>
-</div>
+</div>*@
 
 @*@section Scripts{
         @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

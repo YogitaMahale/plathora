@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Edit Registration";
 }
+    
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -13,8 +14,7 @@
                 </ol>
             </nav><br /><br />
 
-            @*id, name, profilephoto, mobileno1, mobileno2, emailid1, emailid2, adharcardno, adharcardphoto
-                , pancardno, pancardphoto, password, gender, DOB, createddate*@
+             
 
             <form name="form1" method="post" enctype="multipart/form-data" asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -29,12 +29,7 @@
                                 onchange="DoPostBack();">
                             <option>--- Select  ---</option>
                         </select>
-                        @*<select name="countryid" id="countryid" asp-for="countryid" class="form-control"
-                                asp-items="@(new SelectList(ViewBag.Countries,"id","countryname"))" onchange="DoPostBack();">
-
-
-                            <option>--- Select  ---</option>
-                        </select>*@
+                      
                         <span asp-validation-for="countryid" class="text-danger"></span>
 
                     </div>
@@ -49,15 +44,10 @@
                     <div class="form-group col-md-4">
                         <select name="stateid" id="stateid" asp-for="stateid" class="form-control"
                                 asp-items="@ViewBag.States">
-                            @*disabled="@(ViewBag.StateEnabled == false ? "disabled" : null)"*@
+                             
                             <option>--- Select  ---</option>
                         </select>
-                        @*<select name="stateid" id="stateid" asp-for="stateid" class="form-control"
-                asp-items="@(new SelectList(String.Empty,"id","StateName"))">
-
-
-            <option>--- Select  ---</option>
-        </select>*@
+                       
 
 
                         <span asp-validation-for="stateid" class="text-danger"></span>

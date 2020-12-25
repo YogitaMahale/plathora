@@ -30,19 +30,26 @@ function loadtable() {
                         return `
 <div class="text-center">
 
-    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Lockunlock('${data.id}')>
-       <i class="fas fa-lock-open"></i> 
-    </a>
-
-<a href="/Admin/User/Edit/${data.id}" class="btn btn-sm btn-success text-white" style="cursor:pointer">
-    <i class="fas fa-edit"></i>
-         
-    </a>
 
  
- <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}")>
-        <i class="far fa-trash-alt"></i> 
-    </a>
+  <a class="btn btn-danger btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
+                                               <i class="fas fa-lock"></i> 
+                          </a>                        
+
+                
+  <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${data.id}" >
+                                                <i class="fa fa-edit">
+                                                </i>
+                                            </a>
+                                            <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" 
+                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}">
+                                                <i class="fa fa-trash-o">
+
+                                                </i>
+
+                                            </a>
+
+   
 </div>`
 
 
@@ -52,19 +59,22 @@ function loadtable() {
                         return `
 <div class="text-center">
 
-    <a  class="btn btn-success text-white" style="cursor:pointer" onclick=Lockunlock('${data.id}')>
-       <i class="fas fa-lock"></i> 
-    </a>
+    
+  <a class="btn btn-success btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}' >
+                                               <i class="fas fa-lock"></i> 
+                          </a>                        
 
-<a href="/Admin/User/Edit/${data.id}" class="btn btn-sm btn-success text-white" style="cursor:pointer">
-   <i class="fas fa-edit"></i>
-         
-    </a>
+  <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${data.id}" >
+                                                <i class="fa fa-edit">
+                                                </i>
+                                            </a>
+                                            <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" 
+                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}">
+                                                <i class="fa fa-trash-o">
 
- 
-    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}")>
-        <i class="far fa-trash-alt"></i> 
-    </a>
+                                                </i>
+
+                                            </a>
 </div>`
                     }
 
@@ -175,3 +185,25 @@ function Delete(url) {
 //    </a>
 //</div>`
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+//                            < a href = "/Admin/User/Edit/${data.id}" class="btn btn-sm btn-success text-white" style = "cursor:pointer" >
+//                                <i class="fas fa-edit"></i>
+         
+//    </a >
+
+
+//                            <a class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}") >
+//                                <i class="far fa-trash-alt"></i> 
+//    </a >
+//</div > `

@@ -13,12 +13,15 @@ namespace plathora.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name = "Name")]
         public string name { get; set; }
 
-
+        [Required]
         [Column(TypeName = "decimal(18, 2)")]
+        [Display(Name = "Amount")]
         public decimal Amount { get; set; }
         [Required]
+        [Display(Name = "Description")]
         public string description { get; set; }
         [Required]
         [Display(Name = "Period( Month )")]
@@ -27,7 +30,7 @@ namespace plathora.Models
         [Required]
         [Display(Name ="GST")]
         public decimal gst { get; set; }
-
+        [Display(Name = "Image")]
         public IFormFile img { get; set; }
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }

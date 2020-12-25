@@ -4,7 +4,288 @@
     ViewData["Title"] = "Edit User";
 }
 
-<div class="col-md-12 grid-margin stretch-card">
+
+
+
+
+    <div class="side-app">
+        @*<div class="page-header">
+
+
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="name">First Name</label>
+                                        <input type="text" class="form-control" asp-for="name" id="name1" placeholder="First Name">
+                                        <span asp-validation-for="name" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="MiddleName">Middle Name</label>
+                                        <input type="text" asp-for="MiddleName" class="form-control" id="name2" placeholder="Middle Name">
+                                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="LastName">Last Name</label>
+                                        <input type="text" class="form-control" asp-for="LastName" id="name1" placeholder="Last Name">
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="PhoneNumber">Phone No</label>
+                                        <input type="text" asp-for="PhoneNumber" class="form-control" id="name2" placeholder="Phone No.">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="mobileno2">Mobile No2</label>
+                                        <input type="text" class="form-control" asp-for="mobileno2" id="name1" placeholder="Mobile No">
+                                        <span asp-validation-for="mobileno2" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="Email">Email</label>
+                                        <input type="text" asp-for="Email" class="form-control" id="name2" placeholder="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="emailid2">Email Id2</label>
+                                        <input type="text" class="form-control" asp-for="emailid2" id="name1" placeholder="Email Id">
+                                        <span asp-validation-for="emailid2" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="profilephoto">Profile Photo</label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="profilephoto" type="file" value="Upload" />
+                                            <span asp-validation-for="profilephoto" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @if (Model.profilephoto1 == null || Model.profilephoto1 == "")
+                                    {
+                                        <img src="~/uploads/blank.jpg" style="width: 80px;height: 50px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.profilephoto1" style="width: 80px;height: 50px;">
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="adharcardno">Adhar No</label>
+                                        <input type="text" class="form-control" asp-for="adharcardno" id="name1" placeholder="Adhar No">
+                                        <span asp-validation-for="adharcardno" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="adharcardphoto">Adhar Image</label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="adharcardphoto" type="file" value="Upload" />
+                                            <span asp-validation-for="adharcardphoto" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @if (Model.adharcardphoto1 == null || Model.adharcardphoto1 == "")
+                                    {
+                                        <img src="~/uploads/blank.jpg" style="width: 80px;height: 50px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.adharcardphoto1" style="width: 80px;height: 50px;">
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="pancardno">Pan No</label>
+                                        <input type="text" class="form-control" asp-for="pancardno" id="name1" placeholder="Pan No">
+                                        <span asp-validation-for="pancardno" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="pancardphoto">Pancard Image</label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="pancardphoto" type="file" value="Upload" />
+                                            <span asp-validation-for="pancardphoto" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @if (Model.pancardphoto1 == null || Model.pancardphoto1 == "")
+                                    {
+                                        <img src="~/uploads/blank.jpg" style="width: 80px;height: 50px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.pancardphoto1" style="width: 80px;height: 50px;">
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="gender">First Name</label>
+                                        <select asp-for="gender" class="form-control">
+
+                                            <option value="Select" selected>-- Select --</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                        <span asp-validation-for="gender" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="DOB">Date of Birth</label>
+                                        <input type="text" asp-for="DOB" class="form-control" id="name2" placeholder="DOB">
+                                        <span asp-validation-for="DOB" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-header">
+                                <h3 class="card-title">Bank Information</h3>
+                            </div>
+                            
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="bankname">Bank Name</label>
+                                        <input type="text" class="form-control" asp-for="bankname" id="name1" placeholder="Bank Name">
+                                        <span asp-validation-for="bankname" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="accountname">Account Name</label>
+                                        <input type="text" asp-for="accountname" class="form-control" id="name2" placeholder="Account Name">
+                                        <span asp-validation-for="accountname" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="accountno">Account No</label>
+                                        <input type="text" class="form-control" asp-for="accountno" id="name1" placeholder="Account No">
+                                        <span asp-validation-for="accountno" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="ifsccode">IFSC Code</label>
+                                        <input type="text" asp-for="ifsccode" class="form-control" id="name2" placeholder="IFSC Code">
+                                        <span asp-validation-for="ifsccode" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="branch">Branch</label>
+                                        <input type="text" class="form-control" asp-for="branch" id="name1" placeholder="Branch">
+                                        <span asp-validation-for="branch" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="passbookphoto">Passbook Image</label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="passbookphoto" type="file" value="Upload" />
+                                            <span asp-validation-for="passbookphoto" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @if (Model.passbookphoto1 == null || Model.passbookphoto1 == "")
+                                    {
+                                        <img src="~/uploads/blank.jpg" style="width: 80px;height: 50px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.passbookphoto1" style="width: 80px;height: 50px;">
+                                    }
+                                </div>
+
+                            </div>
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+@*<div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -188,7 +469,7 @@
                     <label asp-for="gender"></label>
                 </div>
                 <div class="form-group col-md-3">
-                    @*<select asp-for="gender" class="form-control" asp-items="Html.GetEnumSelectList<plathora.Entity.Gender>()"></select>*@
+                  
                     <select asp-for="gender" class="form-control">
 
                         <option value="Select" selected>-- Select --</option>
@@ -208,131 +489,11 @@
             </div>
 
             <br />
-            @*<div style="text-align:center;">
-                <b>
-                    <h1 style="color:#c60b4a;">Address Information</h1>
-                </b>
+          
+           
+           
 
-            </div> <br />
-            <br />*@
-
-
-            @*<div class="form-row">
-                <div class="form-group col-md-2">
-                    <label asp-for="house"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <input asp-for="house" class="form-control" placeholder="Enter house.." />
-                    <span asp-validation-for="house" class="text-danger"></span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-1">
-                    <label asp-for="landmark"></label>
-                </div>
-                <div class="form-group col-md-4">
-                    <input asp-for="landmark" class="form-control" placeholder="Enter Landmark.." />
-                    <span asp-validation-for="landmark" class="text-danger"></span>
-                </div>
-            </div>*@
-            @*<div class="form-row">
-                <div class="form-group col-md-2">
-                    <label asp-for="street"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <input asp-for="street" class="form-control" placeholder="Enter Street.." />
-                    <span asp-validation-for="street" class="text-danger"></span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-1">
-                    <label asp-for="zipcode"></label>
-                </div>
-                <div class="form-group col-md-4">
-                    <input asp-for="zipcode" class="form-control" placeholder="Enter zipcode.." />
-                    <span asp-validation-for="zipcode" class="text-danger"></span>
-                </div>
-            </div>*@
-
-            @*<div class="form-row">
-                <div class="form-group col-md-1">
-                    <label asp-for="countryid"></label>
-                </div>
-                <div class="form-group col-md-3">
-                  
-                    <select name="countryid" id="countryid" asp-for="countryid" class="form-control"
-                            asp-items="@ViewBag.Countries"
-                            onchange="DoPostBack();">
-                        <option>--- Select  ---</option>
-                    </select>
-                    <span asp-validation-for="countryid" class="text-danger"></span>
-                </div>
-
-                <div class="form-group col-md-1">
-                    <label asp-for="stateid"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <select name="stateid" id="stateid" asp-for="stateid" class="form-control"
-                            asp-items="@ViewBag.States">
-                       
-                        <option>--- Select  ---</option>
-                    </select>
-
-
-                    <span asp-validation-for="stateid" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-1">
-                    <label asp-for="cityid"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <select name="cityid" id="cityid" asp-for="cityid" class="form-control"
-                            asp-items="@ViewBag.Cities">
-
-
-                        <option>--- Select  ---</option>
-                    </select>
-                    <span asp-validation-for="cityid" class="text-danger"></span>
-                </div>
-            </div>*@
-            @*<div style="text-align:center;">
-                <b>
-                    <h1 style="color:#c60b4a;">Company Information</h1>
-                </b>
-
-            </div> <br />
-            <br />*@
-            @*<div class="form-row">
-                <div class="form-group col-md-2">
-                    <label asp-for="companyName"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <input asp-for="companyName" class="form-control" placeholder="Enter companyName.." />
-                    <span asp-validation-for="companyName" class="text-danger"></span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-1">
-                    <label asp-for="designation"></label>
-                </div>
-                <div class="form-group col-md-4">
-                    <input asp-for="designation" class="form-control" placeholder="Enter designation.." />
-                    <span asp-validation-for="designation" class="text-danger"></span>
-                </div>
-            </div>*@
-            @*<div class="form-row">
-                <div class="form-group col-md-2">
-                    <label asp-for="gstno"></label>
-                </div>
-                <div class="form-group col-md-3">
-                    <input asp-for="gstno" class="form-control" placeholder="Enter gstno.." />
-                    <span asp-validation-for="gstno" class="text-danger"></span>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-1">
-                    <label asp-for="Website"></label>
-                </div>
-                <div class="form-group col-md-4">
-                    <input asp-for="Website" class="form-control" placeholder="Enter Website.." />
-                    <span asp-validation-for="Website" class="text-danger"></span>
-                </div>
-            </div>*@
+            
 
             <div style="text-align:center;">
                 <b>
@@ -341,8 +502,7 @@
 
             </div> <br />
             <br />
-            @*bankname, accountname, accountno, ifsccode, branch,
-        passbookphoto, Membershipid, amount*@
+             
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label asp-for="bankname"></label>
@@ -411,41 +571,7 @@
             </div>
 
 
-            @*@if (Model.rolename.ToUpper().Trim()== "AFFILATE".Trim())
-            {
-                <div style="text-align:center;">
-                    <b>
-                        <h1 style="color:#c60b4a;">Affilate Member ship</h1>
-                    </b>
-
-                </div> <br />
-                <br />
-                <div class="form-row">
-                    <div class="form-group col-md-1">
-                        <label asp-for="Membershipid"></label>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <select name="Membershipid" id="Membershipid" asp-for="Membershipid" class="form-control"
-                                asp-items="@(new SelectList(ViewBag.membershiplist, "id", "membershipName"))">
-
-
-                            <option>--- Select  ---</option>
-                        </select>
-                        <span asp-validation-for="Membershipid" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label asp-for="amount"></label>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <input asp-for="amount" class="form-control" disabled style="color:black;" placeholder="Enter amount.." />
-                        <span asp-validation-for="amount" class="text-danger"></span>
-                    </div>
-
-                </div>
-            }*@
+            
 
                 <div class="form-group">
 
@@ -459,7 +585,7 @@
             </form>
         </div>
     </div>
-</div>
+</div>*@
 
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

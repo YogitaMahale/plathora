@@ -114,7 +114,9 @@ namespace plathora.Controllers
             {
                 id = objbusiness.id,
                 sectorid = objbusiness.sectorid ,
-                name = objbusiness.name 
+                name = objbusiness.name ,
+                img1 = objbusiness.img,
+                photo1 = objbusiness.photo
 
             };
             return View(model);

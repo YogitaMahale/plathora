@@ -57,8 +57,9 @@ namespace plathora.Models
         public string ifsccode { get; set; }
         public string branch { get; set; }
         public string passbookphoto { get; set; }
-      
-
+        public string uniqueId { get; set; }
+        
+        public string registrationDate { get; set; }
     }
 }
 

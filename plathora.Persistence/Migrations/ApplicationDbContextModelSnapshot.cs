@@ -1508,6 +1508,12 @@ namespace plathora.Persistence.Migrations
                     b.Property<string>("latitude")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("loginStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("logintime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("longitude")
                         .HasColumnType("nvarchar(max)");
 

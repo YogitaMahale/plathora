@@ -2,7 +2,106 @@
 @{
     ViewBag.Title = "Edit Advertise Details";
 }
-<div class="col-md-12 grid-margin stretch-card">
+    <div class="side-app">
+        @*<div class="page-header">
+
+
+        </div>*@
+        <!-- end row -->
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                <div class="card m-b-20">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="name"> </label>
+                                        <input type="text" class="form-control" asp-for="name" id="name1" placeholder="Name">
+                                        <span asp-validation-for="name" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="Amount"></label>
+                                        <input type="text" asp-for="Amount" class="form-control" id="name2" placeholder="Amount">
+
+                                        <span asp-validation-for="Amount" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="period"> </label>
+                                        <input type="text" class="form-control" asp-for="period" id="name1" placeholder="Period">
+                                        <span asp-validation-for="period" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="gst"></label>
+                                        <input type="text" asp-for="gst" class="form-control" id="name2" placeholder="GST">
+
+                                        <span asp-validation-for="gst" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="description"> </label>
+                                        <textarea class="form-control" asp-for="description" placeholder="Description Name" rows="3"></textarea>
+                                        @*<input type="text" class="form-control" asp-for="description" id="name1" placeholder="Description Name">*@
+                                        <span asp-validation-for="description" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="img"> </label>
+                                        <div class="btn btn-primary btn-icon-text">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <input asp-for="img" type="file" value="Upload" />
+                                            <span asp-validation-for="img" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <img alt="image" src="@Model.img1" style="width:150px;height:100px;" />
+                                    </div>
+                                </div>
+                                <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
+                                <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+
+
+
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+@*<div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -13,7 +112,7 @@
                 </ol>
             </nav><br /><br />
 
-            @*id, pkgId, Amount, description, period, isdeleted, isactive*@
+            
 
         <form method="post" enctype="multipart/form-data" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -81,11 +180,11 @@
         </form>
         </div>
     </div>
-</div>
+</div>*@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        alert('ready');
+        //alert('ready');
     });
 </script>
 @section Scripts{

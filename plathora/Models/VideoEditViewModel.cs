@@ -10,13 +10,16 @@ namespace plathora.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name ="Select Module")]
         public int fkmoduleid { get; set; }
-
+        [Display(Name = "Type")]
 
         public string type { get; set; }
+        [Display(Name = "Video Name")]
         public string videoName { get; set; }
-
+        [Display(Name = "Link")]
         public string videoLink { get; set; }
+        [Display(Name = "Description")]
         public string description { get; set; }
 
 

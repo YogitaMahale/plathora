@@ -109,8 +109,11 @@ namespace plathora.Controllers
             var model = new SectorRegistrationEditViewModel
             {
                 id = objcountry.id,
-                name = objcountry.name
-               
+                name = objcountry.name,
+                img1 = objcountry.img,
+                photo1 = objcountry.photo
+
+
 
             };
             return View(model);
