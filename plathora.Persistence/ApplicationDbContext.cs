@@ -50,7 +50,7 @@ namespace plathora.Persistence
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<ContactUs> ContactUs  { get; set; }
         public DbSet<News> News { get; set; }
-        //public DbSet<AdvertiseDetails> advertiseDetails { get; set; }
+        public DbSet<dashboardTable> dashboardTable { get; set; }
         //public DbSet<Advadd-migrationertisementDetails> advertisementDetails { get; set; }
         //public DbSet<advertisementtest> advertisementtest { get; set; }
 

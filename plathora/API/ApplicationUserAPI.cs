@@ -439,7 +439,13 @@ namespace plathora.API
                 var result = await _signInManager.PasswordSignInAsync(mobileNo, password,true,  lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    var obj = _db.applicationUsers.Where(x => x.PhoneNumber == mobileNo);
+                    // var obj = _db.applicationUsers.Where(x => x.PhoneNumber == mobileNo);
+
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@mobileno", mobileNo);
+
+                    var obj = _sP_Call.OneRecord<AffilateLoginViewModel>("affilateLogin", parameter);
+
                     return Ok(obj);
                 }
                

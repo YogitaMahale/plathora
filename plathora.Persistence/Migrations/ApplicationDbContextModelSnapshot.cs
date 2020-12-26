@@ -1241,6 +1241,27 @@ namespace plathora.Persistence.Migrations
                     b.ToTable("commission");
                 });
 
+            modelBuilder.Entity("plathora.Entity.dashboardTable", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("affilate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("customer")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.ToTable("dashboardTable");
+                });
+
             modelBuilder.Entity("plathora.Entity.distance", b =>
                 {
                     b.Property<int>("id")

@@ -7,7 +7,7 @@ namespace plathora.Models.Dtos
 {
     public class WebsiteDashboard
     {
-        public WebsiteDashboardSPViewModel objWebsiteDashboardSPViewModel { get; set; }
+        public WebsiteDashboardSPViewModel objWebsiteDashboardcnt { get; set; }
         //public IEnumerable<ProductIndexViewModel> objWebsiteDashboardSPViewModel { get; set; }
     }
 }
