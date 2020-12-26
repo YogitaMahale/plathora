@@ -11,7 +11,8 @@ namespace plathora.Models
 
 
         public string customername { get; set; }
-
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string UniqueId { get; set; }
         public string customerid { get; set; }

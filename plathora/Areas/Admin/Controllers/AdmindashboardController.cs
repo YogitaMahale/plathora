@@ -1,4 +1,5 @@
 ﻿using appFoodDelivery.Services;
+using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using plathora.Entity;
@@ -20,6 +21,15 @@ namespace plathora.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            var paramter = new DynamicParameters();          
+
+            //paramter.Add("@from", l1);
+            //paramter.Add("@to", l2);
+            //paramter.Add("@affilateId", deliveryboyid);
+            var orderheaderList1 = _sP_Call.List<collectionreport_affilateViewModel>("collectionReport", paramter);
+
+
+
             return View();
         }
     }

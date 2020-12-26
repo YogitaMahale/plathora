@@ -3770,3 +3770,5 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\mul
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_LoginPartial.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layoutmain.cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartial - Copy.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\User\Edit - Copy.cshtml.g.cs
+E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\View.cshtml.g.cs

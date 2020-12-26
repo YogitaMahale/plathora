@@ -26,6 +26,17 @@ function loadtable() {
                 "render": function (data) {
                     var today = new Date().getTime();
                     var lockout = new Date(data.lockoutEnd).getTime();
+//                    return `
+//<div class="text-center">
+
+  
+//  <a class="btn btn-danger btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
+//                               <i class="fa fa-lock"></i>  Lock               
+//                          </a>                        
+
+        
+   
+//</div>`
                     if (lockout > today) {
                         return `
 <div class="text-center">
@@ -33,7 +44,7 @@ function loadtable() {
 
  
   <a class="btn btn-danger btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
-                                               <i class="fas fa-lock"></i> 
+                                               <i class="fa fa-lock"></i> 
                           </a>                        
 
                 
@@ -42,7 +53,7 @@ function loadtable() {
                                                 </i>
                                             </a>
                                             <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" 
-                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}">
+                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}")>
                                                 <i class="fa fa-trash-o">
 
                                                 </i>
@@ -59,9 +70,11 @@ function loadtable() {
                         return `
 <div class="text-center">
 
+
+
     
-  <a class="btn btn-success btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}' >
-                                               <i class="fas fa-lock"></i> 
+  <a class="btn btn-success btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
+                                               <i class="fa fa-unlock"></i> 
                           </a>                        
 
   <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${data.id}" >
@@ -69,7 +82,7 @@ function loadtable() {
                                                 </i>
                                             </a>
                                             <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" 
-                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}">
+                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}")>
                                                 <i class="fa fa-trash-o">
 
                                                 </i>

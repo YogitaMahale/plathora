@@ -4,8 +4,169 @@
     ViewBag.Title = "Advertise Details";
 }
 
+    <div class="side-app">
 
-<div class="row">
+        @{
+            decimal amount = 0;
+        }
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-lg-12">
+                <div class="card-header">
+                    <h3 class="card-title">@ViewBag.Title</h3>
+                </div>
+                <div class="card">
+                    @*<div style="text-align:right;padding-right: 20px;padding-left: 0px;padding-top: 10px;">
+                        <a class="btn btn-sm btn-primary float-md-right;" asp-action="Create"> Add New Tax</a>
+                    </div>*@
+
+
+
+                    @using (Html.BeginForm("AdvertiseReport", "Reportdetails", FormMethod.Post))
+                    {
+                        <table class="table">
+                            <tr>
+                                <td> <label style="width:70px;">From Date</label></td>
+                                <td>
+                                    <input style="width:120px;" type="text" id="datepicker1" autocomplete="off" class="form-control datepicker" value="@ViewBag.from1" name="from1">
+
+                                    @*<div style="width:120px;" class="input-group date" data-provide="datepicker">
+
+
+                                        <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+                                    </div>*@
+                                </td>
+                                <td> <label style="width:50px;">To Date</label></td>
+                                <td>
+                                    <input  style="width:120px;" type="text" id="datepicker2" autocomplete="off" class="form-control datepicker" value="@ViewBag.to1" name="to1">
+                                </td>
+
+                                <td> <label style="width:100px;">Select Affilate</label></td>
+                                <td>@Html.DropDownList("deliveryboyid", (IEnumerable<SelectListItem>)ViewData["affilatelist"], new { @class = "form-control", style = "width:200px;" })</td>
+                                <td> <input type="submit" name="search" value="Search" class="btn btn-primary" /></td>
+                                <td> <input type="submit" name="ExcelFileDownload" value="Excel Download" class="btn btn-primary" /></td>
+
+                            </tr>
+                        </table>
+
+
+                    }
+
+                    <div class="card-body">
+                        <div class="table-responsive" style="overflow-x:scroll;">
+                            <table id="example2" class="hover table-bordered border-top-0 border-bottom-0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Title</th>
+                                        <th>Date</th>
+                                        <th>Package</th>
+                                        <th>Package Amount</th>
+                                        <th>Commi(%)</th>
+                                        <th>GST(%)</th>
+                                        <th>GST Amount</th>
+                                        <th>Plethora </th>
+                                        <th>Commission</th>
+                                        <th>TDS</th>
+                                        <th>Total</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                    <tr>
+                                        <td>@item.name</td>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.title</td>
+                                        <td>@item.createddate</td>
+                                        <td>@item.pkgname</td>
+                                        <td>@item.PackageAmount</td>
+                                        <td>@item.commissionper</td>
+                                        <td>@item.gst</td>
+                                        <td>@item.gstAmount</td>
+                                        <td>@item.plethoraamt </td>
+                                        <td>@item.commissionAmount</td>
+                                        <td>@item.tds</td>
+                                        <td>@item.PaymentAmount</td>
+
+
+                                    </tr>
+                                    }
+
+
+                                </tbody>
+                                @{
+                                    @foreach (var item in Model)
+                                    {
+                                        amount += item.PaymentAmount;
+                                    }
+                                }
+
+                                <tfoot>
+
+                                    <tr>
+
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>  </th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th></th>
+                                        <th>@amount</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            @*<div class="col-md-12 table-responsive-md">
+
+                                <br />
+                                @{
+                                    var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
+                                    var disableNext = !Model.IsNextAvailable ? "disabled" : "";
+                                }
+
+                                <a asp-action="collectionReport"
+                                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                                   asp-route-from1="@ViewBag.from1"
+                                   asp-route-to1="@ViewBag.to1"
+                                   asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
+                                   class="btn btn-primary @disablePrevious">
+                                    Previous
+                                </a>
+                                <a asp-action="collectionReport"
+                                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                                   asp-route-from1="@ViewBag.from1"
+                                   asp-route-to1="@ViewBag.to1"
+                                   asp-route-deliveryboyid="@ViewBag.deliveryboyid1"
+                                   class="btn btn-primary @disableNext">
+                                    Next
+                                </a>
+
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@*<div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
 
@@ -26,41 +187,29 @@
                         </div>
                         <div class="form-group col-md-2">
                             <div class="input-group date" data-provide="datepicker">
-                                @*<input type="text" class="" name="from">*@
+                                
                                 <input type="text" id="datepicker1" autocomplete="off" class="form-control datepicker" value="@ViewBag.from1" name="from1">
 
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
-                            @*<input type="text" id="datepicker1" class="datepicker" value="@ViewBag.from1"  name="from1">*@
-
-                            @*<input type="date" value="@DateTime.Now" name="from" />*@
+                            
                         </div>
                         <div class="form-group col-md-1">
                             <label>To Date</label>
                         </div>
                         <div class="form-group col-md-2">
-                            @*<div class="input-group date" data-provide="datepicker">
-                                    <input type="text" class="form-control" name="to">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>*@
+                            
                             <input type="text" id="datepicker2" autocomplete="off" class="form-control datepicker" value="@ViewBag.to1" name="to1">
-                            @*<input type="date" value="@DateTime.Now" name="to" />*@
+                           
                         </div>
 
                         <div class="form-group col-md-1">
                             <label>Select Affilate</label>
                         </div>
                         <div class="form-group col-md-2">
-                            @*<select name="deliveryboyid" id="deliveryboyid" class="form-control"
-                asp-items="@(new SelectList(ViewBag.affilatelist, "Id", "name"))">
-
-
-            <option>--- Select  ---</option>
-        </select>*@
+                            
                             @Html.DropDownList("deliveryboyid", (IEnumerable<SelectListItem>)ViewData["affilatelist"], new { @class = "form-control" })
                         </div>
 
@@ -87,12 +236,7 @@
                     <table class="table table-bordered tblShow ">
                         <thead>
                             <tr>
-                                @*id, customerid, amount, placedate, deliveryboyid, paymentstatus, orderstatus,
-        isdeleted, discount, storeid, deliveryaddress, paymenttype, promocode, transactionid*@
-
-                                @*Id	createddate	title	name	PhoneNumber	advertiseid	pkgname	gst	gstAmount	PackageAmount	commissionper
-                                commission1	tds	commissionAmount	PaymentAmount	plethoraamt*@
-
+                                
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Title</th>
@@ -106,9 +250,7 @@
                                 <th>Commission</th>
                                 <th>TDS</th>
                                 <th>Total</th>
-                                @*Id	name	PhoneNumber	createddate	AffilatePackageid	AffilatePackageName	gst	gstAmount
-        AffilatePackageAmount	commissionper	commission1	tds	commissionAmount	PaymentAmount
-        plethoraamt*@
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -142,9 +284,7 @@
                         }
 
                     <tr>
-                        @*id, customerid, amount, placedate, deliveryboyid, paymentstatus, orderstatus,
-        isdeleted, discount, storeid, deliveryaddress, paymenttype, promocode, transactionid*@
-
+                        
                         <th></th>
                         <th></th>
                         <th></th>
@@ -158,17 +298,14 @@
                         <th> </th>
                         <th></th>
                         <th>@amount</th>
-                        @*Id,name,PhoneNumber ,pkgamount,gstamt,createddate*@
-                        @*<th class="text-warning">Actions</th>*@
+                         
                     </tr>
 
                     </table>
                 </div>
 
                 <div class="col-md-12 table-responsive-md">
-                    @*<a class="btn btn-xs btn-outline-success float-md-right" asp-action="Create"> New Driver</a>*@
-
-
+                    
                     @{
                         var disablePrevious = !Model.IsPreviousAvailable ? "disabled" : "";
                         var disableNext = !Model.IsNextAvailable ? "disabled" : "";
@@ -196,7 +333,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
 @*<script>
