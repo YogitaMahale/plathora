@@ -157,7 +157,48 @@ namespace plathora.API
             }
 
         }
-          
+
+        //private bool SendMail(string Name, string Email, string Password)
+        //{
+        //    bool send = false;
+        //    MailMessage mail = new MailMessage();
+        //    mail.To.Add(Email);
+        //    mail.From = new MailAddress("demo@moryatools.com", "Morya Tools App");
+        //    mail.Subject = "Morya App Forgot Password Details";
+        //    StringBuilder strBul = new StringBuilder("<div>");
+        //    strBul = strBul.Append("<div>Dear " + Name + ",</div>");
+        //    strBul = strBul.Append("<br />");
+        //    strBul = strBul.Append("<div>Your Account Details</div>");
+        //    strBul = strBul.Append("<br />");
+        //    strBul = strBul.Append("<div>Email -: &nbsp; " + Email + "</div>");
+        //    strBul = strBul.Append("<br />");
+        //    strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
+        //    strBul = strBul.Append("<br />");
+        //    strBul = strBul.Append("<div>Thank you,</div>");
+        //    strBul = strBul.Append("<div>Morya App - Support Team.</div>");
+        //    strBul = strBul.Append("</div>");
+        //    mail.Body = strBul.ToString();
+        //    mail.IsBodyHtml = true;
+        //    SmtpClient smtp = new SmtpClient();
+        //    smtp.Host = "103.250.184.62";
+        //    smtp.Port = 25;
+        //    smtp.UseDefaultCredentials = false;
+        //    smtp.Credentials = new System.Net.NetworkCredential("demo@moryatools.com", "vsys@2017");
+        //    try
+        //    {
+        //        smtp.Send(mail);
+        //        send = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        send = false;
+        //        ErrHandler.writeError(ex.Message, ex.StackTrace);
+        //    }
+        //    return send;
+        //}
+
+
+
         [HttpPost]
         [Route("SaveUser")]
         public async Task<IActionResult> SaveUser(ApplicationUserSaveModelDtos model)
