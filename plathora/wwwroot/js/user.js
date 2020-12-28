@@ -13,12 +13,54 @@ function loadtable() {
             //"datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "30% " },
+            { "data": "name", "width": "20% " },
 
             { "data": "email", "width": "10%" },
             { "data": "phoneNumber", "width": "10%" },
             { "data": "uniqueId", "width": "10%" },
             { "data": "role", "width": "10%" },
+            //{ "data": "loginStatus", "width": "10%" },
+            //---------------------
+            {
+                "data": {
+                    id: "loginStatus"
+                },
+                "render": function (data) {
+                   
+                    var loginStatus1 = data.loginStatus
+                   // alert(loginStatus1);
+                    if (loginStatus1) {
+                        return `
+<div class="text-center">  
+
+   <span class="text-green">
+<i class="fa fa-circle text-green"> 
+</i> 
+</span>
+</div>`
+
+
+
+                    }
+                    else {
+                        return `
+<div class="text-center">
+<span class="text-red">
+<i class="fa fa-circle text-red"> 
+</i> 
+</span>
+ 
+</div>`
+                    }
+
+
+
+
+                }, "width": "10%"
+
+            },
+
+            //---------------------------------
             {
                 "data": {
                     id: "id", lockoutEnd: "lockoutEnd"

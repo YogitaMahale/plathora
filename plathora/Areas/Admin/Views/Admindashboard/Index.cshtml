@@ -7,11 +7,11 @@
 
 <div class="side-app">
     <div class="page-header">
-        <h4 class="page-title">Dashboard 01</h4>
-        <ol class="breadcrumb">
+        <h4 class="page-title">Dashboard  </h4>
+        @*<ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Dashboard 01</li>
-        </ol>
+        </ol>*@
     </div>
 
     <div class="row row-cards">
@@ -21,7 +21,7 @@
                     <h5 class="text-muted">Register Customer</h5>
                     <h1 class="mb-2 font-weight-semibold">@Model.objWebsiteDashboardcnt.CustomerCnt</h1>
 
-                    <p><span class="text-green"><i class="fa fa-arrow-up text-green"> </i>@Model.objWebsiteDashboardcnt.CustomerOnlineCnt Online</span> <span class="text-red"><i class="fa fa-arrow-down text-red"> </i>@Model.objWebsiteDashboardcnt.CustomerOfflineCount Offline</span></p>
+                    <p><span class="text-green"><i class="fa fa-circle text-green"> </i> @Model.objWebsiteDashboardcnt.CustomerOnlineCnt Online</span> <span class="text-red"><i class="fa fa-circle text-red"> </i> @Model.objWebsiteDashboardcnt.CustomerOfflineCount Offline</span></p>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <div class="card-body iconfont text-center">
                     <h5 class="text-muted">Register Affilate </h5>
                     <h1 class="mb-2 font-weight-semibold">@Model.objWebsiteDashboardcnt.AffilateCnt</h1>
-                    <p><span class="text-green"><i class="fa fa-arrow-up text-green"> </i>@Model.objWebsiteDashboardcnt.AffilateOnlineCnt Online</span> <span class="text-red"><i class="fa fa-arrow-down text-red"> </i>@Model.objWebsiteDashboardcnt.AffilateOfflineCount Offline</span></p>
+                    <p><span class="text-green"><i class="fa fa-circle text-green"> </i> @Model.objWebsiteDashboardcnt.AffilateOnlineCnt Online</span> <span class="text-red"><i class="fa fa-circle text-red"> </i> @Model.objWebsiteDashboardcnt.AffilateOfflineCount Offline</span></p>
                 </div>
             </div>
         </div>
@@ -55,10 +55,10 @@
     </div>
 
     <div class="row row-deck">
-        <div class="col-xl-8 col-lg-12 col-md-12">
+        <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Last Year Overview</h3>
+                    <h3 class="card-title">Registration Overview</h3>
                 </div>
                 <div class="card-body">
                     <div class="chart-wrapper">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-lg-12 col-md-12">
+        @*<div class="col-xl-4 col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Browser Usage</h3>
@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 
     <div class="row" style="display:none;">
@@ -305,6 +305,120 @@
 </div>
 
 @section Scripts{
+
+    <script type="text/javascript">
+
+$(function (e) {
+	'use strict'
+	 
+
+
+	//var Customermarkers = $('#' + '@(ViewBag.Customermarkers)').val();
+	//var Affilatemarkers = $('#' + '@(ViewBag.Affilatemarkers)').val();
+	//var Labelsmarkers = $('#' + '@(ViewBag.Labelsmarkers)').val();
+	//alert(Customermarkers);
+
+	var Customermarkers = @Html.Raw(ViewBag.Customermarkers);
+	var Affilatemarkers = @Html.Raw(ViewBag.Affilatemarkers);
+	var Labelsmarkers = @Html.Raw(ViewBag.Labelsmarkers);
+	/* chartjs (#sales-status) */
+
+	 
+
+	var ctx = $('#sales-status');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			//labels: ["P1-6", "p1-8", "p2-6"],
+            labels: Labelsmarkers,
+			type: 'bar',
+			datasets: [{
+				label: "Customer Register",
+				//data: [20000, 25000,50000],
+                data: Customermarkers,
+				backgroundColor: '#00148e',
+				borderColor: '#00148e',
+				borderWidth: 3,
+				pointStyle: 'circle',
+				pointRadius: 5,
+				pointBorderColor: 'transparent',
+				pointBackgroundColor: '#00148e',
+			}, {
+				label: "Affilate Register",
+				//data: [25000, 32000,45000],
+                    data: Affilatemarkers,
+				backgroundColor: '#ff8819',
+				borderColor: '#ff8819',
+				borderWidth: 3,
+				pointStyle: 'circle',
+				pointRadius: 5,
+				pointBorderColor: 'transparent',
+				pointBackgroundColor: '#ff8819',
+			}]
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false,
+			tooltips: {
+				mode: 'index',
+				titleFontSize: 12,
+				titleFontColor: '#000',
+				bodyFontColor: '#000',
+				backgroundColor: '#fff',
+				cornerRadius: 3,
+				intersect: false,
+			},
+			legend: {
+				display: true,
+				labels: {
+					usePointStyle: false,
+				},
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						fontColor: "#605e7e",
+					},
+					display: true,
+					gridLines: {
+						display: true,
+						color: 'rgba(96, 94, 126, 0.1)',
+						drawBorder: false
+					},
+					scaleLabel: {
+						display: false,
+						labelString: 'Month',
+						fontColor: 'transparent'
+					}
+				}],
+				yAxes: [{
+					ticks: {
+						fontColor: "#605e7e",
+					},
+					display: true,
+					gridLines: {
+						display: true,
+						color: 'rgba(96, 94, 126, 0.1)',
+						drawBorder: false
+					},
+					scaleLabel: {
+						display: false,
+						labelString: 'sales',
+						fontColor: 'transparent'
+					}
+				}]
+			},
+			title: {
+				display: false,
+				text: 'Normal Legend'
+			}
+		}
+	});
+	/* chartjs (#sales-status) closed */
+
+});
+
+    </script>
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     <script src="~/js/dashboardJS.js"></script>
      

@@ -38,9 +38,10 @@
 
 
     <a class="nav-link pr-0 leading-none user-img" data-toggle="dropdown" asp-area="Identity" asp-page="/Account/Manage/Index">
-        <img src="~/Bizdire/LTR/assets/images/faces/male/25.jpg" alt="profile-img" class="avatar avatar-md brround">
+        <img src="@ViewBag.profilephoto" alt="profile-img" class="avatar avatar-md brround">
         <span class="text-white">
-            Hello @User.Identity.Name
+            @*Hello @User.Identity.Name*@
+            Hello @ViewBag.userName
         </span>
         
     </a>

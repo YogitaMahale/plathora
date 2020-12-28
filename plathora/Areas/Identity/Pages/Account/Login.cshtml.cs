@@ -82,9 +82,12 @@ namespace plathora.Areas.Identity.Pages.Account
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {
+                {     
+
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    //   return LocalRedirect(returnUrl);
+                  //  admin / admindashboard / index
+                    return RedirectToRoute(new { action = "Index", controller = "admindashboard", area = "Admin" });
                 }
                 if (result.RequiresTwoFactor)
                 {
