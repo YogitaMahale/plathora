@@ -132,9 +132,9 @@ namespace plathora.API
                 obj.businessOperation = model.businessOperation;
                 obj.businessType = model.businessType;
                 obj.registerbyAffilateUniqueId = model.UniqueId;
+            obj.organization = model.organization;
 
-
-                if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
+            if (model.sliderimg1 == null || model.sliderimg1 == string.Empty)
                 {
                     obj.sliderimg1 = "";
 

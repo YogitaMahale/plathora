@@ -164,8 +164,10 @@ namespace plathora.API
 
         }
 
-        private bool SendMail(string Name, string Email, string Password,string uniqueId,string paymentstatus,string paymentamt,string transactionid,string packagename)
+        private bool SendMail(string Name, string Email,string userpassword,string uniqueId,string phonenumber)
         {
+
+           // SendMail(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber);
             //string email = "support@tingtongindia.com";
             // string password = "3kAa$94h";
 
@@ -179,6 +181,7 @@ namespace plathora.API
             bool send = false;
             MailMessage mail = new MailMessage();
             mail.To.Add(Email);
+            mail.To.Add("support@easebuzz.com");
             mail.From = new MailAddress(email, "Registration");
             mail.Subject = "Affilate Registration Details";
             StringBuilder strBul = new StringBuilder("<div>");
@@ -186,22 +189,23 @@ namespace plathora.API
             strBul = strBul.Append("<br />");
             //strBul = strBul.Append("<div>Your Account Details</div>");
             //strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Email -: &nbsp; " + Email + "</div>");
+            strBul = strBul.Append("<div>We are pleased to inform you that your Tingtong account with Affilate  CODE -: &nbsp;"+uniqueId+" has been Created successfully.</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
+            //strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
+            //strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Please use the information given below to login your online trading account</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>UniqueId -: &nbsp; " + uniqueId + "</div>");
+            strBul = strBul.Append("<div>User Name / User ID -: &nbsp; " + phonenumber + "</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Payment Status -: &nbsp; " + paymentstatus + "</div>");
+            strBul = strBul.Append("<div>Transaction Password -: &nbsp; " + userpassword + "</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Package Name -: &nbsp; " + packagename + "</div>");
+            strBul = strBul.Append("<div>Feel free to call us or email us if you need any other information.</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Payment Amount -: &nbsp; " + paymentamt + "</div>");
+            strBul = strBul.Append("<div>Assuring you of our best services at all times.</div>");
             strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Transaction ID -: &nbsp; " + transactionid + "</div>");
-            strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Thank you,</div>");
-            strBul = strBul.Append("<div>TingTong - Support Team.</div>");
+            strBul = strBul.Append("<div>Best Regards,</div>");
+            strBul = strBul.Append("<div>Team TingTong</div>");
+            strBul = strBul.Append("<div>Mail Us: suppport@tingtongindia.com</ div>");
             strBul = strBul.Append("</div>");
             mail.Body = strBul.ToString();
             mail.IsBodyHtml = true;
@@ -223,8 +227,217 @@ namespace plathora.API
             return send;
         }
 
+        private bool SendMailToEasebuzz(string Name, string Email, string userpassword, string uniqueId, string phonenumber)
+        {
+
+            // SendMail(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber);
+            //string email = "support@tingtongindia.com";
+            // string password = "3kAa$94h";
+
+            string email = "demo@moryatools.com";
+            string password = "vsys@2017";
 
 
+
+
+
+            bool send = false;
+            MailMessage mail = new MailMessage();
+            mail.To.Add(Email);
+            mail.To.Add("support@easebuzz.com");
+            mail.From = new MailAddress(email, "Registration");
+            mail.Subject = "Affilate Registration Details";
+            StringBuilder strBul = new StringBuilder("<div>");
+            //strBul = strBul.Append("<div>Dear " + Name + ",</div>");
+            //strBul = strBul.Append("<br />");
+            ////strBul = strBul.Append("<div>Your Account Details</div>");
+            ////strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>We are pleased to inform you that your Tingtong account with Affilate  CODE -: &nbsp;" + uniqueId + " has been Created successfully.</div>");
+            //strBul = strBul.Append("<br />");
+            ////strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
+            ////strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>Please use the information given below to login your online trading account</div>");
+            //strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Merchant ID-: &nbsp; " + uniqueId + "</div>");
+            strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>Transaction Password -: &nbsp; " + userpassword + "</div>");
+            //strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>Feel free to call us or email us if you need any other information.</div>");
+            //strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>Assuring you of our best services at all times.</div>");
+            //strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Best Regards,</div>");
+            strBul = strBul.Append("<div>Team TingTong</div>");
+            strBul = strBul.Append("<div>Mail Us: suppport@tingtongindia.com</ div>");
+            strBul = strBul.Append("</div>");
+            mail.Body = strBul.ToString();
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "103.250.184.62";
+            smtp.Port = 25;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential(email, password);
+            try
+            {
+                smtp.Send(mail);
+                send = true;
+            }
+            catch (Exception ex)
+            {
+                send = false;
+                //  ErrHandler.writeError(ex.Message, ex.StackTrace);
+            }
+            return send;
+        }
+
+
+
+        //[HttpPost]
+        //[Route("SaveUser")]
+        //public async Task<IActionResult> SaveUser(ApplicationUserSaveModelDtos model)
+        //{
+
+        //    var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1).FirstOrDefault();
+        //    string affilateID = "";
+        //    if (model.registerbyAffilateID==null)
+        //    {
+        //        var parameter = new DynamicParameters();
+        //        //parameter.Add("@businessid", businessid);
+        //        var obj = _sP_Call.OneRecord<getAffilateIdViewModel>("getAffilateId", null );
+        //       if(obj==null)
+        //        {
+
+        //        }
+        //        else
+        //        {
+        //            affilateID = obj.id;
+        //        }
+
+
+        //    }
+        //    else
+        //    {
+        //        affilateID = model.registerbyAffilateID;
+        //    }
+
+        //    if (checkduplicate == null)
+        //    {
+        //        string rolename = string.Empty;
+        //        if(model.usertype.ToUpper().Trim()== "AFFILATE".Trim())
+        //        {
+        //            rolename = SD.Role_Affilate;
+        //        }
+        //       else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+        //        {
+        //            rolename = SD.Role_Customer;
+
+        //        }
+        //        string uniqueNo = _AboutUsServices.generateRandomNo(model.name.Substring(0, 3));
+        //        //AffiltateRegistration obj = new AffiltateRegistration();
+
+        //        var user = new ApplicationUser
+        //        {
+
+
+        // name = model.name,
+        // MiddleName=model.MiddleName,
+        // LastName=model.LastName,
+        //            UserName=model.mobileno1,
+        //// profilephoto = model.pro
+        // PhoneNumber = model.mobileno1,        
+        // Email  = model.emailid1,
+        // emailid2 = model.emailid2, 
+        // gender = model.gender,
+        // DOB = model.DOB,
+        // createddate =DateTime.Now,
+        //registerbyAffilateID= affilateID,
+        //            AffilatePackageid =model.AffilatePackageid,
+        //            PaymentStatus=model.PaymentStatus,
+        //            PaymentAmount=model.PaymentAmount,
+        //            TransactionId=model.TransactionId,
+        //            uniqueId=uniqueNo
+
+
+        //        };
+
+
+
+
+
+        //        try
+        //        {
+
+        //                var result = await _userManager.CreateAsync(user, model.password);
+        //                if (result.Succeeded)
+        //                {
+
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+        //                    }
+
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Affilate))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Affilate));
+        //                    }
+        //                    if (!await _roleManager.RoleExistsAsync(SD.Role_Customer))
+        //                    {
+        //                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
+        //                    }
+        //                    //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+        //                    if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+        //                    {
+        //                        await _userManager.AddToRoleAsync(user, SD.Role_Affilate);
+        //                    }
+        //                    else
+        //                    {
+        //                        await _userManager.AddToRoleAsync(user, SD.Role_Customer);
+        //                    }
+
+
+        //                //if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+        //                //{
+        //                //    int membershipid = _AffilatePackageServices.getbyid((int)model.AffilatePackageid).membershipid;
+        //                //    string pkgname = _MembershipServices.GetById(membershipid).membershipName;
+        //                //    string name = model.name + " " + model.MiddleName + " " + model.LastName;
+        //                //    SendMail(name, model.emailid1, model.password, uniqueNo, model.PaymentStatus,model.PaymentAmount.ToString(),model.TransactionId, pkgname);
+        //                //}
+        //                else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+        //                {
+        //                    rolename = SD.Role_Customer;
+
+        //                }
+
+        //                //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
+        //                return Ok(user);
+        //                }
+        //                return Ok();
+
+
+
+
+
+        //        }
+        //        catch (Exception a)
+        //        {
+
+        //            string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+        //            return BadRequest(myJson);
+
+        //        }
+
+
+        //    }
+        //    else
+        //    {
+
+        //        string myJson = "{\"Message\": " + "\"Duplicate Mobile No\"" + "}";
+        //        return BadRequest(myJson);
+
+        //    }
+
+
+        //}
         [HttpPost]
         [Route("SaveUser")]
         public async Task<IActionResult> SaveUser(ApplicationUserSaveModelDtos model)
@@ -232,12 +445,12 @@ namespace plathora.API
 
             var checkduplicate = _db.applicationUsers.Where(x => x.PhoneNumber == model.mobileno1).FirstOrDefault();
             string affilateID = "";
-            if (model.registerbyAffilateID==null)
+            if (model.registerbyAffilateID == null)
             {
                 var parameter = new DynamicParameters();
                 //parameter.Add("@businessid", businessid);
-                var obj = _sP_Call.OneRecord<getAffilateIdViewModel>("getAffilateId", null );
-               if(obj==null)
+                var obj = _sP_Call.OneRecord<getAffilateIdViewModel>("getAffilateId", null);
+                if (obj == null)
                 {
 
                 }
@@ -246,21 +459,21 @@ namespace plathora.API
                     affilateID = obj.id;
                 }
 
-                        
+
             }
             else
             {
                 affilateID = model.registerbyAffilateID;
             }
-           
+
             if (checkduplicate == null)
             {
                 string rolename = string.Empty;
-                if(model.usertype.ToUpper().Trim()== "AFFILATE".Trim())
+                if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
                 {
                     rolename = SD.Role_Affilate;
                 }
-               else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+                else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
                 {
                     rolename = SD.Role_Customer;
 
@@ -270,84 +483,84 @@ namespace plathora.API
 
                 var user = new ApplicationUser
                 {
-                     
-         
-         name = model.name,
-         MiddleName=model.MiddleName,
-         LastName=model.LastName,
-                    UserName=model.mobileno1,
-        // profilephoto = model.pro
-         PhoneNumber = model.mobileno1,        
-         Email  = model.emailid1,
-         emailid2 = model.emailid2, 
-         gender = model.gender,
-         DOB = model.DOB,
-         createddate =DateTime.Now,
-        registerbyAffilateID= affilateID,
-                    AffilatePackageid =model.AffilatePackageid,
-                    PaymentStatus=model.PaymentStatus,
-                    PaymentAmount=model.PaymentAmount,
-                    TransactionId=model.TransactionId,
-                    uniqueId=uniqueNo
-                   
+
+
+                    name = model.name,
+                    MiddleName = model.MiddleName,
+                    LastName = model.LastName,
+                    UserName = model.mobileno1,
+                    // profilephoto = model.pro
+                    PhoneNumber = model.mobileno1,
+                    Email = model.emailid1,
+                    emailid2 = model.emailid2,
+                    gender = model.gender,
+                    DOB = model.DOB,
+                    createddate = DateTime.Now,
+                    registerbyAffilateID = affilateID,
+                    AffilatePackageid = model.AffilatePackageid,
+                    PaymentStatus = model.PaymentStatus,
+                    PaymentAmount = model.PaymentAmount,
+                    TransactionId = model.TransactionId,
+                    uniqueId = uniqueNo
+
 
                 };
-                
 
 
-              
-                
+
+
+
                 try
                 {
-                    
-                        var result = await _userManager.CreateAsync(user, model.password);
-                        if (result.Succeeded)
+
+                    var result = await _userManager.CreateAsync(user, model.password);
+                    if (result.Succeeded)
+                    {
+
+                        if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
                         {
-                            
-                            if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
-                            {
-                                await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
-                            }
+                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+                        }
 
-                            if (!await _roleManager.RoleExistsAsync(SD.Role_Affilate))
-                            {
-                                await _roleManager.CreateAsync(new IdentityRole(SD.Role_Affilate));
-                            }
-                            if (!await _roleManager.RoleExistsAsync(SD.Role_Customer))
-                            {
-                                await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
-                            }
-                            //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
-                            if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
-                            {
-                                await _userManager.AddToRoleAsync(user, SD.Role_Affilate);
-                            }
-                            else
-                            {
-                                await _userManager.AddToRoleAsync(user, SD.Role_Customer);
-                            }
-
-
+                        if (!await _roleManager.RoleExistsAsync(SD.Role_Affilate))
+                        {
+                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_Affilate));
+                        }
+                        if (!await _roleManager.RoleExistsAsync(SD.Role_Customer))
+                        {
+                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer));
+                        }
+                        //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
                         if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
                         {
-                            int membershipid = _AffilatePackageServices.getbyid((int)model.AffilatePackageid).membershipid;
-                            string pkgname = _MembershipServices.GetById(membershipid).membershipName;
-                            string name = model.name + " " + model.MiddleName + " " + model.LastName;
-                            SendMail(name, model.emailid1, model.password, uniqueNo, model.PaymentStatus,model.PaymentAmount.ToString(),model.TransactionId, pkgname);
+                            await _userManager.AddToRoleAsync(user, SD.Role_Affilate);
                         }
-                        else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+                        else
                         {
-                            rolename = SD.Role_Customer;
-
+                            await _userManager.AddToRoleAsync(user, SD.Role_Customer);
                         }
+
+
+                        //if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+                        //{
+                        //    int membershipid = _AffilatePackageServices.getbyid((int)model.AffilatePackageid).membershipid;
+                        //    string pkgname = _MembershipServices.GetById(membershipid).membershipName;
+                        //    string name = model.name + " " + model.MiddleName + " " + model.LastName;
+                        //    SendMail(name, model.emailid1, model.password, uniqueNo, model.PaymentStatus, model.PaymentAmount.ToString(), model.TransactionId, pkgname);
+                        //}
+                        //else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+                        //{
+                        //    rolename = SD.Role_Customer;
+
+                        //}
 
                         //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
                         return Ok(user);
-                        }
-                        return Ok();
-                           
+                    }
+                    return Ok();
 
-                  
+
+
 
 
                 }
@@ -359,19 +572,19 @@ namespace plathora.API
 
                 }
 
-                 
+
             }
             else
             {
 
                 string myJson = "{\"Message\": " + "\"Duplicate Mobile No\"" + "}";
                 return BadRequest(myJson);
-               
+
             }
 
-            
+
         }
-       
+
         [HttpPut]
         [Route("updateUser")]
         public async Task<IActionResult> updateUser(ApplicationUserEditModelDtos model)
@@ -491,6 +704,16 @@ namespace plathora.API
                     var result = await _userManager.UpdateAsync(affilatereg);
                     if (result.Succeeded)
                     {
+
+                        if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+                        {
+                            
+                            //int membershipid = _AffilatePackageServices.getbyid((int)affilatereg.AffilatePackageid).membershipid;
+                            //string pkgname = _MembershipServices.GetById(membershipid).membershipName;
+                            string name = model.FirstName + " " + model.MiddleName + " " + model.LastName;
+                            SendMail(name, model.emailid1,model.password, affilatereg.uniqueId,affilatereg.PhoneNumber);
+                           // SendMailToEasebuzz(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber, affilatereg.profilephoto, affilatereg.adharcardphoto, affilatereg.pancardphoto);
+                        }
                         return Ok(affilatereg);
                     }
                 }

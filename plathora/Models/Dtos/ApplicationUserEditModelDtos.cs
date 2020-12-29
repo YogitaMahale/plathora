@@ -57,6 +57,7 @@ namespace plathora.Models.Dtos
      //   public string amount { get; set; }
     //    public string registerbyAffilateID { get; set; }
         public string deviceid { get; set; }
+        public string password { get; set; }
     }
 }
 

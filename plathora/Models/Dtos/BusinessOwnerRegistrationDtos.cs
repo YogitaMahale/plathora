@@ -100,12 +100,12 @@ namespace plathora.Models.Dtos
 
         public string businessOperation { get; set; }
         public string businessType { get; set; }
+        public string organization { get; set; }
 
 
 
 
 
-      
     }
 }
  

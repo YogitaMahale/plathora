@@ -111,6 +111,7 @@ namespace plathora.Entity
         public string businessType { get; set; }
 
         public string registerbyAffilateUniqueId { get; set; }
+        public string organization { get; set; }
     }
 }
 
