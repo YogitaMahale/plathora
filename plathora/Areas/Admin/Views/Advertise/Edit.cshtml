@@ -57,6 +57,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="affilateamt"></label>
+                                        <input type="text" asp-for="affilateamt" class="form-control" id="name2" placeholder="Affilate Amount">
+                                        <span asp-validation-for="affilateamt" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="plethoraamt"></label>
+                                        <input type="text" asp-for="plethoraamt" class="form-control" id="name2" placeholder="Plethora Amount">
+                                        <span asp-validation-for="plethoraamt" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="form-group">
@@ -82,14 +102,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <img alt="image" src="@Model.img1" style="width:150px;height:100px;" />
-                                    </div>
                                 </div>
-                                <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
-                                <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
+                            </div>
+                            <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
+                            <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
 
 
 
-</form>
+                        </form>
                     </div>
                 </div>
             </div>

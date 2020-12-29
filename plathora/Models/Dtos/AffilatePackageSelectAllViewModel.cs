@@ -19,5 +19,9 @@ namespace plathora.Models.Dtos
         public string membershipname { get; set; }
         public string commissionper { get; set; }
         public decimal  gst { get; set; }
+
+        public decimal affilateamt { get; set; }
+        public decimal plethoraamt { get; set; }
+
     }
 }

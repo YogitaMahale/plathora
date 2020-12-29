@@ -16,8 +16,8 @@ namespace plathora.Models
         public int pkgId { get; set; }
 
         [Required]
-         
-        [RegularExpression(@"((\d+)((\.\d{1,2})?))$"), Display(Name = "Amount")]
+
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
         public decimal Amount { get; set; }
         [Required]
         [Display(Name = "Description")]
@@ -29,8 +29,24 @@ namespace plathora.Models
         public Boolean isdeleted { get; set; }
         [Required]
         [Display(Name ="GST")]
-        [RegularExpression(@"((\d+)((\.\d{1,2})?))$")]
+         
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
         public decimal gst { get; set; }
+
+
+
+        [Required]
+        [Display(Name = "Affilate Amount")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
+        public decimal affilateamt { get; set; }
+        [Required]
+        [Display(Name = "Plethora Amount")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
+
+        public decimal plethoraamt { get; set; }
+
+
+
         public Boolean isactive { get; set; }
     }
 }

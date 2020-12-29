@@ -22,6 +22,12 @@ namespace plathora.Models
         public string period { get; set; }
 
         public decimal gst { get; set; }
+
+        public decimal affilateamt { get; set; }
+        
+        public decimal plethoraamt { get; set; }
+
+
         public virtual PackageRegistration PackageRegistration { get; set; }
     }
 }

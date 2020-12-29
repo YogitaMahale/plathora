@@ -23,6 +23,8 @@ using HttpPutAttribute = Microsoft.AspNetCore.Mvc.HttpPutAttribute;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 using plathora.Utility;
 using Dapper;
+using System.Net.Mail;
+using System.Text;
 
 namespace plathora.API
 {
@@ -37,7 +39,9 @@ namespace plathora.API
         private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
         private readonly ISP_Call _sP_Call;
         private readonly IAboutUsServices _AboutUsServices;
-        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call, IAboutUsServices AboutUsServices)
+        private readonly IAffilatePackageServices _AffilatePackageServices;
+        private readonly IMembershipServices _MembershipServices;
+        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call, IAboutUsServices AboutUsServices, IAffilatePackageServices AffilatePackageServices, IMembershipServices MembershipServices)
         {
             _userManager = userManager ;
             _db = db;
@@ -47,6 +51,8 @@ namespace plathora.API
             _businessOwnerRegiServices = businessOwnerRegiServices;
             _sP_Call = sP_Call;
             _AboutUsServices = AboutUsServices;
+            _AffilatePackageServices = AffilatePackageServices;
+            _MembershipServices = MembershipServices;
         }
        
         [HttpGet]
@@ -158,44 +164,64 @@ namespace plathora.API
 
         }
 
-        //private bool SendMail(string Name, string Email, string Password)
-        //{
-        //    bool send = false;
-        //    MailMessage mail = new MailMessage();
-        //    mail.To.Add(Email);
-        //    mail.From = new MailAddress("demo@moryatools.com", "Morya Tools App");
-        //    mail.Subject = "Morya App Forgot Password Details";
-        //    StringBuilder strBul = new StringBuilder("<div>");
-        //    strBul = strBul.Append("<div>Dear " + Name + ",</div>");
-        //    strBul = strBul.Append("<br />");
-        //    strBul = strBul.Append("<div>Your Account Details</div>");
-        //    strBul = strBul.Append("<br />");
-        //    strBul = strBul.Append("<div>Email -: &nbsp; " + Email + "</div>");
-        //    strBul = strBul.Append("<br />");
-        //    strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
-        //    strBul = strBul.Append("<br />");
-        //    strBul = strBul.Append("<div>Thank you,</div>");
-        //    strBul = strBul.Append("<div>Morya App - Support Team.</div>");
-        //    strBul = strBul.Append("</div>");
-        //    mail.Body = strBul.ToString();
-        //    mail.IsBodyHtml = true;
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Host = "103.250.184.62";
-        //    smtp.Port = 25;
-        //    smtp.UseDefaultCredentials = false;
-        //    smtp.Credentials = new System.Net.NetworkCredential("demo@moryatools.com", "vsys@2017");
-        //    try
-        //    {
-        //        smtp.Send(mail);
-        //        send = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        send = false;
-        //        ErrHandler.writeError(ex.Message, ex.StackTrace);
-        //    }
-        //    return send;
-        //}
+        private bool SendMail(string Name, string Email, string Password,string uniqueId,string paymentstatus,string paymentamt,string transactionid,string packagename)
+        {
+            //string email = "support@tingtongindia.com";
+            // string password = "3kAa$94h";
+
+            string email = "demo@moryatools.com";
+            string password = "vsys@2017";
+
+
+
+
+
+            bool send = false;
+            MailMessage mail = new MailMessage();
+            mail.To.Add(Email);
+            mail.From = new MailAddress(email, "Registration");
+            mail.Subject = "Affilate Registration Details";
+            StringBuilder strBul = new StringBuilder("<div>");
+            strBul = strBul.Append("<div>Dear " + Name + ",</div>");
+            strBul = strBul.Append("<br />");
+            //strBul = strBul.Append("<div>Your Account Details</div>");
+            //strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Email -: &nbsp; " + Email + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>UniqueId -: &nbsp; " + uniqueId + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Payment Status -: &nbsp; " + paymentstatus + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Package Name -: &nbsp; " + packagename + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Payment Amount -: &nbsp; " + paymentamt + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Transaction ID -: &nbsp; " + transactionid + "</div>");
+            strBul = strBul.Append("<br />");
+            strBul = strBul.Append("<div>Thank you,</div>");
+            strBul = strBul.Append("<div>TingTong - Support Team.</div>");
+            strBul = strBul.Append("</div>");
+            mail.Body = strBul.ToString();
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "103.250.184.62";
+            smtp.Port = 25;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential(email, password);
+            try
+            {
+                smtp.Send(mail);
+                send = true;
+            }
+            catch (Exception ex)
+            {
+                send = false;
+              //  ErrHandler.writeError(ex.Message, ex.StackTrace);
+            }
+            return send;
+        }
 
 
 
@@ -300,9 +326,23 @@ namespace plathora.API
                             {
                                 await _userManager.AddToRoleAsync(user, SD.Role_Customer);
                             }
-                            
-                            //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
-                            return Ok(user);
+
+
+                        if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
+                        {
+                            int membershipid = _AffilatePackageServices.getbyid((int)model.AffilatePackageid).membershipid;
+                            string pkgname = _MembershipServices.GetById(membershipid).membershipName;
+                            string name = model.name + " " + model.MiddleName + " " + model.LastName;
+                            SendMail(name, model.emailid1, model.password, uniqueNo, model.PaymentStatus,model.PaymentAmount.ToString(),model.TransactionId, pkgname);
+                        }
+                        else if (model.usertype.ToUpper().Trim() == "CUSTOMER".Trim())
+                        {
+                            rolename = SD.Role_Customer;
+
+                        }
+
+                        //var objj = _db.applicationUsers.Where(x=>x.Id==user.Id).FirstOrDefault();
+                        return Ok(user);
                         }
                         return Ok();
                            

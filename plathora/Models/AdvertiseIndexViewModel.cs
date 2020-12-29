@@ -16,7 +16,13 @@ namespace plathora.Models
         public decimal Amount { get; set; }
         
         public string description { get; set; }
-        
+
+
+        public decimal affilateamt { get; set; }
+         
+        public decimal plethoraamt { get; set; }
+
+
         public int period { get; set; }
 
  

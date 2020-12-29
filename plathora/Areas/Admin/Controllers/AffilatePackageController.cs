@@ -45,7 +45,9 @@ namespace plathora.Areas.Admin.Controllers
                 Description  = x.Description,
                 Membership = _MembershipServices.GetById(x.membershipid),
                 commission  = _commissionServices .GetById(x.commissionid),
-                gst=x.gst
+                gst=x.gst,
+                affilateamt=x.affilateamt,
+                plethoraamt=x.plethoraamt
 
             }).ToList();
             return View(citydetails);
@@ -108,7 +110,9 @@ namespace plathora.Areas.Admin.Controllers
                         Description = model.Description,
                         isdeleted = false,
                         isactive = false,
-                        gst=model.gst
+                        gst=model.gst,
+                        affilateamt=model.affilateamt,
+                        plethoraamt=model.plethoraamt
                     };
 
                     await _AffilatePackageServices.CreateAsync(objcountry);
@@ -120,7 +124,12 @@ namespace plathora.Areas.Admin.Controllers
             }
             else
             {
-                return View();
+                ModelState.AddModelError("CustomError", "This Package Name Already Added");
+                ViewBag.MembershipList = _MembershipServices.GetAll().ToList();
+                ViewBag.CommissionList = _commissionServices.GetAll().ToList();
+                //  ViewBag.StateEnabled = false;
+
+                return View(model);
             }
 
         }
@@ -149,7 +158,9 @@ namespace plathora.Areas.Admin.Controllers
                 amount  = objcountry.amount
                  ,
                 Description  = objcountry.Description,
-                gst=objcountry.gst
+                gst=objcountry.gst,
+                plethoraamt = objcountry.plethoraamt,
+                affilateamt = objcountry.affilateamt
             };
             
             return View(model);
@@ -182,6 +193,9 @@ namespace plathora.Areas.Admin.Controllers
                     objcountry.amount = model.amount;
                     objcountry.Description = model.Description;
                     objcountry.gst = model.gst;
+
+                    objcountry.plethoraamt = model.plethoraamt;
+                    objcountry.affilateamt = model.affilateamt;
 
                     await _AffilatePackageServices.UpdateAsync(objcountry);
                     return RedirectToAction(nameof(index));

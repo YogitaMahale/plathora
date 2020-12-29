@@ -32,6 +32,8 @@
                                         <th>Description</th>
                                         <th>Period( Month )</th>
                                         <th>GST</th>
+                                        <th>Affilate Amount</th>
+                                        <th>Plethora Amount</th>
                                         <th class="text-warning">Actions</th>
 
                                     </tr>
@@ -60,6 +62,12 @@
                                         </td>
                                         <th> @item.gst  </th>
 
+                                        <td>
+                                            @item.affilateamt
+                                        </td>
+                                        <td>
+                                            @item.plethoraamt
+                                        </td>
                                         <td>
                                             <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" asp-action="Edit" asp-route-id="@item.id">  <i class="fa fa-edit"></i> </a>
                                             <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" asp-action="Delete" asp-route-id="@item.id"><i class="fa fa-trash-o"></i></a><br>

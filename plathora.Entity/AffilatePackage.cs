@@ -28,6 +28,16 @@ namespace plathora.Entity
         [Column(TypeName = "decimal(18, 2)")]
         public decimal gst { get; set; }
 
+
+        [Required]
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal affilateamt { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal plethoraamt { get; set; }
+
+
         [DefaultValue("false")]
         public Boolean isdeleted { get; set; }
         [DefaultValue("false")]

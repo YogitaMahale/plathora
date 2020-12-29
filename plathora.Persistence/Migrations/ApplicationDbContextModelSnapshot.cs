@@ -252,6 +252,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<decimal>("affilateamt")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -274,6 +277,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("period")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("plethoraamt")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.HasKey("id");
 
                     b.ToTable("Advertise");
@@ -288,6 +294,9 @@ namespace plathora.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("affilateamt")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<decimal>("amount")
                         .HasColumnType("decimal(18, 2)");
@@ -306,6 +315,9 @@ namespace plathora.Persistence.Migrations
 
                     b.Property<int>("membershipid")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("plethoraamt")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("id");
 
@@ -659,6 +671,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<decimal>("affilateamt")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -678,6 +693,9 @@ namespace plathora.Persistence.Migrations
 
                     b.Property<int>("pkgId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("plethoraamt")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("id");
 

@@ -18,11 +18,25 @@ namespace plathora.Models
 
         [Required]
         [Column(TypeName = "decimal(18, 2)")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
         public decimal amount { get; set; }
         [Required]
         [Display(Name = "GST")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
         public decimal gst { get; set; }
         public string Description { get; set; }
+
+
+        [Required]
+        [Display(Name = "Affilate Amount")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
+        public decimal affilateamt { get; set; }
+        [Required]
+        [Display(Name = "Plethora Amount")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})$", ErrorMessage = "Valid Decimal number with maximum 2 decimal places.")]
+
+        public decimal plethoraamt { get; set; }
+
 
 
     }

@@ -38,7 +38,9 @@ namespace plathora.Areas.Admin.Controllers
                 description = x.description,
                 period = x.period,
                 img=x.img,
-                gst=x.gst
+                gst=x.gst,
+                affilateamt=x.affilateamt,
+                plethoraamt=x.plethoraamt
 
             }).ToList();
             return View(statedetails);
@@ -68,7 +70,9 @@ namespace plathora.Areas.Admin.Controllers
                     period = model.period,
                     isdeleted = false,
                     isactive = false,
-                    gst=model.gst 
+                    gst=model.gst ,
+                    affilateamt=model.affilateamt,
+                    plethoraamt=model.plethoraamt
                 };
                 if (model.img != null && model.img.Length > 0)
                 {
@@ -108,7 +112,9 @@ namespace plathora.Areas.Admin.Controllers
                 description = objcountry.description,
                 period = objcountry.period,
                 gst=objcountry.gst,
-                img1=objcountry.img
+                img1=objcountry.img,
+                affilateamt=objcountry.affilateamt,
+                plethoraamt=objcountry.plethoraamt
 
             };
             return View(model);
@@ -133,6 +139,9 @@ namespace plathora.Areas.Admin.Controllers
                 objcountry.Amount = model.Amount;
                 objcountry.period = model.period;
                 objcountry.gst = model.gst;
+
+                objcountry.plethoraamt  = model.plethoraamt;
+                objcountry.affilateamt = model.affilateamt;
                 if (model.img != null && model.img.Length > 0)
                 {
                     var uploadDir = @"uploads/AdvertiseMaster";
