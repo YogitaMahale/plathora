@@ -25,6 +25,10 @@ using plathora.Utility;
 using Dapper;
 using System.Net.Mail;
 using System.Text;
+using System.Net.Mime;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Text.Encodings.Web;
 
 namespace plathora.API
 {
@@ -41,7 +45,8 @@ namespace plathora.API
         private readonly IAboutUsServices _AboutUsServices;
         private readonly IAffilatePackageServices _AffilatePackageServices;
         private readonly IMembershipServices _MembershipServices;
-        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call, IAboutUsServices AboutUsServices, IAffilatePackageServices AffilatePackageServices, IMembershipServices MembershipServices)
+        private readonly Microsoft.AspNetCore.Identity.UI.Services.IEmailSender _emailSender;
+        public ApplicationUserAPI(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IBusinessOwnerRegiServices businessOwnerRegiServices, ISP_Call sP_Call, IAboutUsServices AboutUsServices, IAffilatePackageServices AffilatePackageServices, IMembershipServices MembershipServices, IEmailSender emailSender)
         {
             _userManager = userManager ;
             _db = db;
@@ -53,8 +58,10 @@ namespace plathora.API
             _AboutUsServices = AboutUsServices;
             _AffilatePackageServices = AffilatePackageServices;
             _MembershipServices = MembershipServices;
+            _emailSender = emailSender;
+
         }
-       
+
         [HttpGet]
         [Route("getOTPNo")]
         public async Task<IActionResult> getOTPNo(string mobileno)
@@ -167,12 +174,12 @@ namespace plathora.API
         private bool SendMail(string Name, string Email,string userpassword,string uniqueId,string phonenumber)
         {
 
-           // SendMail(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber);
-            //string email = "support@tingtongindia.com";
-            // string password = "3kAa$94h";
+            // SendMail(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber);
+            string email = "info@tingtongindia.com";
+            string password = "Plethora@123";
 
-            string email = "demo@moryatools.com";
-            string password = "vsys@2017";
+            //string email = "demo@moryatools.com";
+            //string password = "vsys@2017";
 
 
 
@@ -181,7 +188,7 @@ namespace plathora.API
             bool send = false;
             MailMessage mail = new MailMessage();
             mail.To.Add(Email);
-            mail.To.Add("support@easebuzz.com");
+           
             mail.From = new MailAddress(email, "Registration");
             mail.Subject = "Affilate Registration Details";
             StringBuilder strBul = new StringBuilder("<div>");
@@ -226,49 +233,134 @@ namespace plathora.API
             }
             return send;
         }
+        private AlternateView Mail_Body(string Name, string bankname, string accountname, string accountno, string uniqueId, string pancardphoto, string passbookphoto)
+        {
+            string pancardphotopath = _hostingEnvironment.WebRootPath +(pancardphoto.Replace('/','\\'));
+            string passbookphotopath = _hostingEnvironment.WebRootPath + (passbookphoto.Replace('/', '\\'));
+            // string path = Server.MapPath(pancardphoto);
+            LinkedResource pancardphotoImg = new LinkedResource(pancardphotopath, MediaTypeNames.Image.Jpeg);
+            pancardphotoImg.ContentId = "MyImage";
 
-        private bool SendMailToEasebuzz(string Name, string Email, string userpassword, string uniqueId, string phonenumber)
+            LinkedResource passbookphotoImg = new LinkedResource(passbookphotopath, MediaTypeNames.Image.Jpeg);
+            passbookphotoImg.ContentId = "MyImage1";
+
+            
+
+            StringBuilder str = new StringBuilder();
+            str = str.Append("<div>Hello Team,</div>");
+            str = str.Append("<br />");
+            str = str.Append("<div>Hope you are doing well, </div>");
+            str = str.Append("<br />");
+            str = str.Append("<div>We want create label for following account</div>");
+            str = str.Append("<br />");
+            //str = str.Append("<div>Company  Merchant id: plethoraworldwide@gmail.com</div>");
+            //str = str.Append("<br />");
+
+
+            //str = str.Append("<div>Person Name -: &nbsp; " + Name + "</div>");
+            //str = str.Append("<br />");
+            //str = str.Append("<div>Bank Name -: &nbsp; " + bankname + "</div>");
+            //str = str.Append("<br />");
+            //str = str.Append("<div>Account Name -: &nbsp; " + accountname + "</div>");
+            //str = str.Append("<br />");
+            //str = str.Append("<div>Account No -: &nbsp; " + accountno + "</div>");
+            //str = str.Append("<br />");
+            //str = str.Append("<div>Label: -: &nbsp; " + uniqueId + "</div>");
+            //str = str.Append("<br />");
+            str = str.Append(@"            
+   
+               <table class='table table - condensed'>
+                <tr>  
+                    <td> " + "Company  Merchant ID : " + @" 
+                    </td>  
+                  
+                    <td>  " + "plethoraworldwide@gmail.com" + @"                       
+                    </td>  
+                </tr>
+                   <tr>  
+                    <td> " + "Bank Name : " + @"  
+                    </td>  
+                  
+                    <td>  " + bankname + @"                       
+                    </td>  
+                </tr>
+                     <tr>  
+                    <td> " + "Account Name : " + @"  
+                    </td>  
+                  
+                    <td>  " + accountname + @"                       
+                    </td>  
+                </tr>
+                       <tr>  
+                    <td> " + "Account No : " + @"  
+                    </td>  
+                  
+                    <td>  " + accountno + @"                       
+                    </td>  
+                </tr>
+
+                 <tr>  
+                    <td> " + "Account No : " + @"  
+                    </td>  
+                  
+                    <td> " + accountno + @"                       
+                    </td>  
+                </tr>
+                     <tr>  
+                    <td> " + "Label : " + @"  
+                    </td>  
+                  
+                    <td>  " + uniqueId + @"                       
+                    </td>  
+                </tr>
+                <tr>  
+                    <td> " + "Pancard Photo : " + @"  
+                    </td>  
+                  
+                    <td>  
+                      <img src=cid:MyImage  id='img' alt='' width='250px' height='100px'/>   
+                    </td>  
+                </tr>
+                <tr>  
+                    <td> " + "Passbook Photo : " + @"  
+                    </td>  
+                   
+                    <td>  
+                      <img src=cid:MyImage1  id='img' alt='' width='250px' height='100px'/>   
+                    </td>  
+                </tr>
+           </table> 
+
+            ");
+            str = str.Append("<div>Thank you.</div>");
+            AlternateView AV =
+             AlternateView.CreateAlternateViewFromString(str.ToString(), null, MediaTypeNames.Text.Html);
+
+            AV.LinkedResources.Add(pancardphotoImg);
+            AV.LinkedResources.Add(passbookphotoImg);
+            return AV;
+        }
+        private bool SendMailToEasebuzz(string Name, string bankname, string accountname,string accountno, string uniqueId, string pancardphoto,string passbookphoto)
         {
 
-            // SendMail(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber);
-            //string email = "support@tingtongindia.com";
-            // string password = "3kAa$94h";
+            string email = "info@tingtongindia.com";
+            string password = "Plethora@123";
 
-            string email = "demo@moryatools.com";
-            string password = "vsys@2017";
+            
 
-
-
-
-
+            //string email = "demo@moryatools.com";
+            //string password = "vsys@2017";
             bool send = false;
             MailMessage mail = new MailMessage();
-            mail.To.Add(Email);
+            mail.To.Add("mahaleyogita233@gmail.com");
             mail.To.Add("support@easebuzz.com");
-            mail.From = new MailAddress(email, "Registration");
-            mail.Subject = "Affilate Registration Details";
+            mail.From = new MailAddress(email, "Label ID Creation");
+            mail.Subject = "Label Creation";
             StringBuilder strBul = new StringBuilder("<div>");
-            //strBul = strBul.Append("<div>Dear " + Name + ",</div>");
-            //strBul = strBul.Append("<br />");
-            ////strBul = strBul.Append("<div>Your Account Details</div>");
-            ////strBul = strBul.Append("<br />");
-            //strBul = strBul.Append("<div>We are pleased to inform you that your Tingtong account with Affilate  CODE -: &nbsp;" + uniqueId + " has been Created successfully.</div>");
-            //strBul = strBul.Append("<br />");
-            ////strBul = strBul.Append("<div>Password -: &nbsp; " + Password + "</div>");
-            ////strBul = strBul.Append("<br />");
-            //strBul = strBul.Append("<div>Please use the information given below to login your online trading account</div>");
-            //strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Merchant ID-: &nbsp; " + uniqueId + "</div>");
-            strBul = strBul.Append("<br />");
-            //strBul = strBul.Append("<div>Transaction Password -: &nbsp; " + userpassword + "</div>");
-            //strBul = strBul.Append("<br />");
-            //strBul = strBul.Append("<div>Feel free to call us or email us if you need any other information.</div>");
-            //strBul = strBul.Append("<br />");
-            //strBul = strBul.Append("<div>Assuring you of our best services at all times.</div>");
-            //strBul = strBul.Append("<br />");
-            strBul = strBul.Append("<div>Best Regards,</div>");
-            strBul = strBul.Append("<div>Team TingTong</div>");
-            strBul = strBul.Append("<div>Mail Us: suppport@tingtongindia.com</ div>");
+           
+            mail.AlternateViews.Add(Mail_Body(Name, bankname, accountname, accountno, uniqueId, pancardphoto, passbookphoto));
+            
+           
             strBul = strBul.Append("</div>");
             mail.Body = strBul.ToString();
             mail.IsBodyHtml = true;
@@ -712,7 +804,8 @@ namespace plathora.API
                             //string pkgname = _MembershipServices.GetById(membershipid).membershipName;
                             string name = model.FirstName + " " + model.MiddleName + " " + model.LastName;
                             SendMail(name, model.emailid1,model.password, affilatereg.uniqueId,affilatereg.PhoneNumber);
-                           // SendMailToEasebuzz(name, model.emailid1, model.password, affilatereg.uniqueId, affilatereg.PhoneNumber, affilatereg.profilephoto, affilatereg.adharcardphoto, affilatereg.pancardphoto);
+                            //string Name, string bankname, string accountname,string accountno, string uniqueId, string pancardphoto,string passbookphoto)
+                            SendMailToEasebuzz(name, model.bankname, model.accountname, affilatereg.accountno, affilatereg.uniqueId, affilatereg.pancardphoto,affilatereg.passbookphoto);
                         }
                         return Ok(affilatereg);
                     }
@@ -1016,6 +1109,53 @@ namespace plathora.API
 
             string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
             return BadRequest(myJson);
+        }
+
+        [System.Web.Mvc.HttpGet]
+        [Route("ForgetPassword")]
+        public async Task<IActionResult> ForgetPassword(string mobileNo)
+        {
+
+
+            try
+            {
+                var user = await _userManager.FindByNameAsync(mobileNo);
+                //if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null)
+                {
+
+                    return NotFound("Not Found");
+                }
+
+                 
+                // visit https://go.microsoft.com/fwlink/?LinkID=532713
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                var callbackUrl = Url.Page(
+                    "/Account/ResetPassword",
+                    pageHandler: null,
+                    values: new { area = "Identity", code },
+                    protocol: Request.Scheme);
+
+                await _emailSender.SendEmailAsync(
+                    user.Email,
+                    "Reset Password",
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+
+                string myJson = "{\"Message\": " + "\"Please check your email to reset your password.\"" + "}";
+                return BadRequest(myJson);
+            }
+            catch (Exception obj)
+            {
+
+                string ff = obj.Message.ToString();
+            }
+            return BadRequest("Bad Request");
+
+
+
+
         }
 
 

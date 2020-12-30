@@ -69,8 +69,8 @@ namespace plathora.Controllers
 
             if (customerId == null)
             {
-                ViewBag.userName = "";
-                ViewBag.profilephoto = "/uploads/blaankCustomer.png";
+                TempData["userName"] = "";
+                TempData["profilephoto"] = "/uploads/blaankCustomer.png";
 
                  
             }
@@ -79,27 +79,29 @@ namespace plathora.Controllers
                 var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == customerId);
                 if (objfromdb.name == null)
                 {
-                   
-                    ViewBag.userName = "";
+
+                    TempData["userName"] = "";
                 }
                 else
                 {
-                    
-                    ViewBag.userName = objfromdb.name;
+
+                    TempData["userName"] = objfromdb.name;
                 }
                
                 
                 if (objfromdb.profilephoto == null)
                 {
-                    
-                    ViewBag.profilephoto = "/uploads/blaankCustomer.png";
+
+                    TempData["profilephoto"] = "/uploads/blaankCustomer.png";
                 }
                 else
                 {
-                    
-                    ViewBag.profilephoto = objfromdb.profilephoto;
+
+                    TempData["profilephoto"] = objfromdb.profilephoto;
                 }
             }
+            TempData.Keep("userName");
+            TempData.Keep("profilephoto");
         }
         [HttpGet]
         public IActionResult Index()
@@ -411,7 +413,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult business(string id)
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             businessDetailsViewModel obj = new businessDetailsViewModel();
 
 
@@ -452,7 +454,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult businessDetails(int sectorid)
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             //var obj = _BusinessRegistrationServieces.GetAll().Where(x => x.sectorid == sectorid && x.isdeleted == false).Select(x => new BusinessRegistrationIndexViewModel
             //{
             //    id = x.id,
@@ -470,7 +472,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult productDetails(int businessid)
         {
-            LoginUserDetails();
+           // LoginUserDetails();
             var obj = _productMasterServices.GetAll().Where(x => x.businessid == businessid && x.isdeleted == false).Select(x => new ProductIndexViewModel
             {
 
@@ -490,12 +492,12 @@ namespace plathora.Controllers
 
         public IActionResult Privacy()
         {
-            LoginUserDetails();
+           // LoginUserDetails();
             return View();
         }
         public IActionResult about()
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             AboutUs obj = _aboutUsServices.GetById(1);
             return View(obj);
         }
@@ -509,7 +511,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult ContactUs()
         {
-            LoginUserDetails();
+           // LoginUserDetails();
             return View();
         }
         [HttpPost]
@@ -568,7 +570,7 @@ namespace plathora.Controllers
 
         public IActionResult BusinessListing(int productid)
         {
-            LoginUserDetails();
+           // LoginUserDetails();
             BusinessListingViewModel obj = new BusinessListingViewModel();
 
            
@@ -614,7 +616,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Category()
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             var parameter = new DynamicParameters();
             IEnumerable<selectallSectorWithBusinessCount> obj = _sP_Call.List<selectallSectorWithBusinessCount>("selectallSectorWithBusinessCount", null);
 
@@ -623,19 +625,19 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Advertising()
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             return View();
         }
 
 
         public IActionResult TermsandConditions()
         {
-            LoginUserDetails();
+           // LoginUserDetails();
             return View();
         }
         public IActionResult PrivacyPolicy()
         {
-            LoginUserDetails();
+          //  LoginUserDetails();
             return View();
         }
 

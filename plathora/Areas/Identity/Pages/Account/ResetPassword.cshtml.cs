@@ -28,7 +28,8 @@ namespace plathora.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+         
+            //[EmailAddress]
             public string Email { get; set; }
 
             [Required]
@@ -67,7 +68,7 @@ namespace plathora.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            var user = await _userManager.FindByEmailAsync(Input.Email);
+            var user = await _userManager.FindByNameAsync(Input.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist

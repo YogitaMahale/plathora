@@ -425,11 +425,19 @@
                             @*<script type="text/javascript">
             alert("login");
         </script>*@
+
+                            string userName = TempData["userName"].ToString();
+                            string profilephoto = TempData["profilephoto"].ToString();
+
+                            TempData.Keep("userName");
+                            TempData.Keep("profilephoto");
+
+
                             <li class="dropdown">
                                 <a href="#" class="text-dark" data-toggle="dropdown">
                                    
-                                    <img src="@ViewBag.profilephoto" style="width:30px;height:25px;">
-        <span> Hello @ViewBag.userName  </span>
+                                    <img src="@profilephoto" style="width:30px;height:25px;">
+        <span> Hello @userName  </span>
 
 
                                     

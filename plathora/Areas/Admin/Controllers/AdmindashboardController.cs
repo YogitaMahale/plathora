@@ -2,6 +2,7 @@
 using Dapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Nancy.Session;
 using plathora.Entity;
 using plathora.Models;
 using plathora.Models.Dtos;
@@ -38,9 +39,10 @@ namespace plathora.Areas.Admin.Controllers
 
             if (customerId == null)
             {
-                ViewBag.userName = "";
-                ViewBag.profilephoto = "/uploads/blaankCustomer.png";
-
+                //ViewBag.userName = "";
+                //ViewBag.profilephoto = "/uploads/blaankCustomer.png";
+                TempData["userName"] = "";
+                TempData["profilephoto"] = "/uploads/blaankCustomer.png";
 
             }
             else
@@ -49,26 +51,33 @@ namespace plathora.Areas.Admin.Controllers
                 if (objfromdb.name == null)
                 {
 
-                    ViewBag.userName = "";
+                    TempData["userName"] = "";
                 }
                 else
                 {
 
-                    ViewBag.userName = objfromdb.name;
+                    TempData["userName"] = objfromdb.name;
                 }
 
 
                 if (objfromdb.profilephoto == null)
                 {
-
-                    ViewBag.profilephoto = "/uploads/blaankCustomer.png";
+                    TempData["profilephoto"] = "/uploads/blaankCustomer.png";
+                    //ViewBag.profilephoto = "/uploads/blaankCustomer.png";
                 }
                 else
                 {
 
-                    ViewBag.profilephoto = objfromdb.profilephoto;
+                    TempData["profilephoto"] = objfromdb.profilephoto;
                 }
+
+                
             }
+            //TempData["userName"] = ViewBag.userName;
+            //TempData["profilephoto"] = ViewBag.profilephoto;
+            TempData.Keep("userName");
+            TempData.Keep("profilephoto");
+            //TempData.Keep();
         }
         public IActionResult Index()
         {
